@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { DatasetsComponent }      from './heroes/datasets.component';
-import { DatasetDetailComponent }  from './hero-detail/dataset-detail.component';
+import { DatasetDetailComponent }  from './dataset-detail/dataset-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
