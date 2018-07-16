@@ -10,10 +10,10 @@ import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
-import { HeroService }          from './hero.service';
+import { DatasetDetailComponent }  from './hero-detail/dataset-detail.component';
+import { DatasetsComponent }      from './heroes/datasets.component';
+import { DatasetSearchComponent }  from './hero-search/dataset-search.component';
+import { DatasetService }          from './dataset.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
 
@@ -34,12 +34,12 @@ import { isPlatformBrowser } from '@angular/common';
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
+    DatasetsComponent,
+    DatasetDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    DatasetSearchComponent
   ],
-  providers: [ HeroService, MessageService ],
+  providers: [ DatasetService, MessageService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
