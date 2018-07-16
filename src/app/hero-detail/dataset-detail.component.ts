@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero }         from '../hero';
-import { HeroService }  from '../hero.service';
+import { Dataset }         from '../dataset';
+import { DatasetService }  from '../dataset.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -11,11 +11,11 @@ import { HeroService }  from '../hero.service';
   styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero;
+  @Input() hero: Dataset;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: HeroService,
+    private heroService: DatasetService,
     private location: Location
   ) {}
 

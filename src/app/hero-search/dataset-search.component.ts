@@ -6,8 +6,8 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Dataset } from '../dataset';
+import { DatasetService } from '../dataset.service';
 
 @Component({
   selector: 'hero-search',
@@ -15,10 +15,10 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './hero-search.component.css' ]
 })
 export class HeroSearchComponent implements OnInit {
-  heroes: Observable<Hero[]>;
+  heroes: Observable<Dataset[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: DatasetService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {
