@@ -1,11 +1,30 @@
 <div *ngIf="dataset">
   <h2>{{ dataset.name | uppercase }} Details</h2>
   <div><span>id: </span>{{dataset.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="dataset.name" placeholder="name"/>
-    </label>
-  </div>
+
+  <table style="width:500">
+    <tr>
+      <th>pid</th>
+      <td>{{ dataset.name}}</td>
+    </tr>
+    <tr>
+      <th>creator</th>
+      <td>{{ dataset.creator}}</td>
+    </tr>
+    <tr>
+      <th>publisher</th>
+      <td>{{ dataset.publisher}}</td>
+    </tr>
+    <tr>
+      <th>affiliation</th>
+      <td>{{ dataset.affiliation}}</td>
+    </tr>
+    <tr>
+      <th>resource_type</th>
+      <td>{{ dataset.resource_type}}</td>
+    </tr>
+  </table>
+
+
   <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
 </div>
