@@ -10,9 +10,9 @@ import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { DatasetDetailComponent }  from './hero-detail/dataset-detail.component';
+import { DatasetDetailComponent }  from './dataset-detail/dataset-detail.component';
 import { DatasetsComponent }      from './heroes/datasets.component';
-import { DatasetSearchComponent }  from './hero-search/dataset-search.component';
+import { DatasetSearchComponent }  from './dataset-search/dataset-search.component';
 import { DatasetService }          from './dataset.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
