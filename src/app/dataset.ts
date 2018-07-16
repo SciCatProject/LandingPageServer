@@ -1,4 +1,4 @@
-export class Hero {
+export class Dataset
   id: number;
   name: string;
 }
