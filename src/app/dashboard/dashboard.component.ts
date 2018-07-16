@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Dataset } from '../dataset';
+import { DatasetService } from '../dataset.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +8,9 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  heroes: Dataset[] = [];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: DatasetService) { }
 
   ngOnInit() {
     this.getHeroes();
