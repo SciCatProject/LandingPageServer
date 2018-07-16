@@ -11,7 +11,7 @@ import { DatasetService }  from '../dataset.service';
   styleUrls: [ './dataset-detail.component.css' ]
 })
 export class DatasetDetailComponent implements OnInit {
-  @Input() hero: Dataset;
+  @Input() dataset: Dataset;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class DatasetDetailComponent implements OnInit {
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(hero => this.dataset = hero);
   }
 
   goBack(): void {
@@ -34,7 +34,7 @@ export class DatasetDetailComponent implements OnInit {
   }
 
  save(): void {
-    this.heroService.updateHero(this.hero)
+    this.heroService.updateHero(this.dataset)
       .subscribe(() => this.goBack());
   }
 }
