@@ -1,5 +1,7 @@
 # SciCat Landing Page Server
 
+![scicat logo](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
+
 A landing page server for publically accessible DOI datasets in SciCat
 
 ## Getting Started
