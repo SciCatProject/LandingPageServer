@@ -33,7 +33,7 @@ export class DatasetService {
       );
   }
 
-  /** GET hero by id. Return `undefined` when id not found */
+  /** GET dataset by id. Return `undefined` when id not found */
   getHeroNo404<Data>(id: number): Observable<Dataset> {
     const url = `${this.heroesUrl}/?id=${id}`;
     return this.http.get<Dataset[]>(url)
@@ -47,7 +47,7 @@ export class DatasetService {
       );
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET dataset by id. Will 404 if id not found */
   getHero(id: number): Observable<Dataset> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Dataset>(url).pipe(
@@ -59,7 +59,7 @@ export class DatasetService {
   /* GET heroes whose name contains search term */
   searchHeroes(term: string): Observable<Dataset[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty dataset array.
       return of([]);
     }
     return this.http.get<Dataset[]>(`${this.heroesUrl}/?name=${term}`).pipe(
@@ -70,7 +70,7 @@ export class DatasetService {
 
   //////// Save methods //////////
 
-  /** POST: add a new hero to the server */
+  /** POST: add a new dataset to the server */
   addHero (name: string): Observable<Dataset> {
     const hero = { name };
 
@@ -80,7 +80,7 @@ export class DatasetService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
+  /** DELETE: delete the dataset from the server */
   deleteHero (hero: Dataset | number): Observable<Dataset> {
     const id = typeof hero === 'number' ? hero : hero.id;
     const url = `${this.heroesUrl}/${id}`;
@@ -91,7 +91,7 @@ export class DatasetService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the dataset on the server */
   updateHero (hero: Dataset): Observable<any> {
     return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
