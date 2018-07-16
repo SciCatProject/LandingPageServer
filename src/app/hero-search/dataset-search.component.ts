@@ -11,10 +11,10 @@ import { DatasetService } from '../dataset.service';
 
 @Component({
   selector: 'hero-search',
-  templateUrl: './hero-search.component.html',
-  styleUrls: [ './hero-search.component.css' ]
+  templateUrl: './dataset-search.component.html',
+  styleUrls: [ './dataset-search.component.css' ]
 })
-export class HeroSearchComponent implements OnInit {
+export class DatasetSearchComponent implements OnInit {
   heroes: Observable<Dataset[]>;
   private searchTerms = new Subject<string>();
 
