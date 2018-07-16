@@ -7,10 +7,10 @@ import { DatasetService }  from '../dataset.service';
 
 @Component({
   selector: 'app-hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: [ './hero-detail.component.css' ]
+  templateUrl: './dataset-detail.component.html',
+  styleUrls: [ './dataset-detail.component.css' ]
 })
-export class HeroDetailComponent implements OnInit {
+export class DatasetDetailComponent implements OnInit {
   @Input() hero: Dataset;
 
   constructor(
