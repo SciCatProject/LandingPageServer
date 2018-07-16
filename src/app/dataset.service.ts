@@ -13,7 +13,7 @@ const httpOptions = {
 };
 
 @Injectable()
-export class HeroService {
+export class DatasetService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
 
@@ -119,7 +119,7 @@ export class HeroService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a DatasetService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`DatasetService: ${message}`);
   }
