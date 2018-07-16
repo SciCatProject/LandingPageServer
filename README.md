@@ -1,1 +1,3 @@
-# landing_page_server
+# SciCat Landing Page Server
+
+
