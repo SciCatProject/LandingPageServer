@@ -1,7 +1,7 @@
-<h2>My Heroes</h2>
+<h2>Dataset  List</h2>
 
 <div>
-  <label>Hero name:
+  <label>Dataset id:
     <input #heroName />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
@@ -15,7 +15,5 @@
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
-    <button class="delete" title="delete hero"
-    (click)="delete(hero);$event.stopPropagation()">x</button>
   </li>
 </ul>
