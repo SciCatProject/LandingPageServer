@@ -5,10 +5,10 @@ import { DatasetService } from '../dataset.service';
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  templateUrl: './datasets.component.html',
+  styleUrls: ['./datasets.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class DatasetsComponent implements OnInit {
   heroes: Dataset[];
 
   constructor(private heroService: DatasetService) { }
