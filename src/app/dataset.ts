@@ -1,4 +1,4 @@
-export class Dataset
+export class Dataset {
   id: number;
   name: string;
 }
