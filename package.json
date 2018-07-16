@@ -2,7 +2,7 @@
   "name": "scicat-landing-page-server",
   "version": "1.0.0",
   "private": true,
-  "description": "Example project from an angular.io guide.",
+  "description": "landing page server side rendering for scicat published data",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
