@@ -25,13 +25,13 @@ A step by step series of examples that tell you have to get a development env ru
 Say what the step will be
 
 ```
-npm build ssr
+npm build:ssr
 ```
 
 And repeat
 
 ```
-npm run ssr
+npm run:ssr
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -62,9 +62,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [NPM](http://npm.org) - node package manager
-* [node](https://node.org/) - node javascript runtime
-* [angular](https://angular.io) - Web framework
+* [NPM](http://npmjs.com) - node package manager
+* [Node](https://nodejs.org/) - node javascript runtime
+* [Angular](https://angular.io) - Web framework
 
 ## Contributing
 
