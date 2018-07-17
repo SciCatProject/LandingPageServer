@@ -25,13 +25,13 @@ A step by step series of examples that tell you have to get a development env ru
 Say what the step will be
 
 ```
-npm build ssr
+npm run build:ssr
 ```
 
 And repeat
 
 ```
-npm run ssr
+npm run serve:ssr
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
