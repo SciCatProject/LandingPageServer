@@ -1,6 +1,5 @@
 FROM node:9
 
-
 RUN mkdir /usr/html
 RUN mkdir /landing
 WORKDIR /landing
