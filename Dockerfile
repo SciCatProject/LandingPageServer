@@ -32,10 +32,7 @@ RUN npm install http-server -g
 
 
 RUN npm run build:ssr
-RUN ls
-RUN ls dist
-COPY dist /dist/
 
-WORKDIR /dist/browser
+WORKDIR /landing/dist/browser
 EXPOSE 8080
 CMD ["http-server"]
