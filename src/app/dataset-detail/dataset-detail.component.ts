@@ -6,7 +6,7 @@ import {Dataset} from '../dataset';
 import {DatasetService} from '../dataset.service';
 
 @Component({
-  selector: 'app-hero-detail',
+  selector: 'app-dataset-detail',
   templateUrl: './dataset-detail.component.html',
   styleUrls: ['./dataset-detail.component.css']
 })
@@ -21,13 +21,13 @@ export class DatasetDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getHero();
+    this.getDataset();
   }
 
-  getHero(): void {
+  getDataset(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.datasetService.getDataset(id)
-      .subscribe(hero => this.dataset = hero);
+      .subscribe(dataset => this.dataset = dataset);
   }
 
   goBack(): void {
