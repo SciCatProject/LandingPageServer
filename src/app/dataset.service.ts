@@ -16,27 +16,27 @@ const httpOptions = {
 @Injectable()
 export class DatasetService {
 
-  readonly heroesUrl = 'api/heroes';  // URL to web api
+  private datasetsUrl = 'api/datasets';  // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
     @Optional() @Inject(APP_BASE_HREF) origin: string) {
-    this.heroesUrl = `${origin}${this.heroesUrl}`;
+    this.datasetsUrl = `${origin}${this.datasetsUrl}`;
   }
 
-  /** GET heroes from the server */
-  getHeroes(): Observable<Dataset[]> {
-    return this.http.get<Dataset[]>(this.heroesUrl)
+  /** GET datasets from the server */
+  getDatasets(): Observable<Dataset[]> {
+    return this.http.get<Dataset[]>(this.datasetsUrl)
       .pipe(
         tap(heroes => this.log('fetched datasets')),
-        catchError(this.handleError('getHeroes', []))
+        catchError(this.handleError('getDatasets', []))
       );
   }
 
   /** GET dataset by id. Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<Dataset> {
-    const url = `${this.heroesUrl}/?id=${id}`;
+  getDatasetNo404<Data>(id: number): Observable<Dataset> {
+    const url = `${this.datasetsUrl}/?id=${id}`;
     return this.http.get<Dataset[]>(url)
       .pipe(
         map(heroes => heroes[0]), // returns a {0|1} element array
@@ -49,21 +49,21 @@ export class DatasetService {
   }
 
   /** GET dataset by id. Will 404 if id not found */
-  getHero(id: number): Observable<Dataset> {
-    const url = `${this.heroesUrl}/${id}`;
+  getDataset(id: number): Observable<Dataset> {
+    const url = `${this.datasetsUrl}/${id}`;
     return this.http.get<Dataset>(url).pipe(
       tap(_ => this.log(`fetched dataset id=${id}`)),
       catchError(this.handleError<Dataset>(`getHero id=${id}`))
     );
   }
 
-  /* GET heroes whose name contains search term */
+  /* GET datasets whose name contains search term */
   searchHeroes(term: string): Observable<Dataset[]> {
     if (!term.trim()) {
       // if not search term, return empty dataset array.
       return of([]);
     }
-    return this.http.get<Dataset[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+    return this.http.get<Dataset[]>(`${this.datasetsUrl}/?name=${term}`).pipe(
       tap(_ => this.log(`found heroes matching "${term}"`)),
       catchError(this.handleError<Dataset[]>('searchHeroes', []))
     );
@@ -72,19 +72,19 @@ export class DatasetService {
   //////// Save methods //////////
 
   /** POST: add a new dataset to the server */
-  addHero(name: string): Observable<Dataset> {
+  addDataset(name: string): Observable<Dataset> {
     const hero = {name};
 
-    return this.http.post<Dataset>(this.heroesUrl, hero, httpOptions).pipe(
+    return this.http.post<Dataset>(this.datasetsUrl, hero, httpOptions).pipe(
       tap((hero: Dataset) => this.log(`added hero w/ id=${hero.id}`)),
-      catchError(this.handleError<Dataset>('addHero'))
+      catchError(this.handleError<Dataset>('addDataset'))
     );
   }
 
   /** DELETE: delete the dataset from the server */
   deleteHero(hero: Dataset | number): Observable<Dataset> {
     const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.datasetsUrl}/${id}`;
 
     return this.http.delete<Dataset>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
@@ -94,7 +94,7 @@ export class DatasetService {
 
   /** PUT: update the dataset on the server */
   updateHero(hero: Dataset): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+    return this.http.put(this.datasetsUrl, hero, httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
