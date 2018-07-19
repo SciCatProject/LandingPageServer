@@ -58,7 +58,7 @@ export class DatasetService {
   }
 
   /* GET datasets whose name contains search term */
-  searchHeroes(term: string): Observable<Dataset[]> {
+  searchHeroes (term: string): Observable<Dataset[]> {
     if (!term.trim()) {
       // if not search term, return empty dataset array.
       return of([]);
@@ -82,21 +82,21 @@ export class DatasetService {
   }
 
   /** DELETE: delete the dataset from the server */
-  deleteHero(hero: Dataset | number): Observable<Dataset> {
+  deleteDataset (hero: Dataset | number): Observable<Dataset> {
     const id = typeof hero === 'number' ? hero : hero.id;
     const url = `${this.datasetsUrl}/${id}`;
 
     return this.http.delete<Dataset>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Dataset>('deleteHero'))
+      catchError(this.handleError<Dataset>('deleteDataset'))
     );
   }
 
   /** PUT: update the dataset on the server */
-  updateHero(hero: Dataset): Observable<any> {
+  updateDataset (hero: Dataset): Observable<any> {
     return this.http.put(this.datasetsUrl, hero, httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateDataset'))
     );
   }
 
