@@ -13,10 +13,10 @@ export class DashboardComponent implements OnInit {
   constructor(private datasetService: DatasetService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getDatasets();
   }
 
-  getHeroes(): void {
+  getDatasets(): void {
     this.datasetService.getDatasets()
     .subscribe(datasets => this.datasets = datasets.slice(1, 5));
   }
