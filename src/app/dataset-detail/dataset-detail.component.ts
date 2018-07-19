@@ -1,14 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 
-import { Dataset }         from '../dataset';
-import { DatasetService }  from '../dataset.service';
+import {Dataset} from '../dataset';
+import {DatasetService} from '../dataset.service';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './dataset-detail.component.html',
-  styleUrls: [ './dataset-detail.component.css' ]
+  styleUrls: ['./dataset-detail.component.css']
 })
 export class DatasetDetailComponent implements OnInit {
   @Input() dataset: Dataset;
@@ -17,7 +17,8 @@ export class DatasetDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private heroService: DatasetService,
     private location: Location
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getHero();
@@ -33,7 +34,7 @@ export class DatasetDetailComponent implements OnInit {
     this.location.back();
   }
 
- save(): void {
+  save(): void {
     this.heroService.updateHero(this.dataset)
       .subscribe(() => this.goBack());
   }
