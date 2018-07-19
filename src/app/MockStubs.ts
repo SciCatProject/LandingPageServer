@@ -2,7 +2,7 @@ import {of} from 'rxjs';
 
 export class MockDatasetService {
   getDatasets() {
-    return  (of([{'username': 'admin'}]));
+    return (of([{'username': 'admin'}]));
   }
 
   deleteDataset() {
@@ -16,16 +16,15 @@ export class MockDatasetService {
 }
 
 export class MockMessageService {
-  getDatasets() {
-    return 123;
+  messages: string[] = [];
+
+  add() {
+    return 'string';
   }
 
-  deleteDataset() {
+  clear() {
     return (of([{'username': 'admin'}]));
   }
 
-  addDataset() {
-    return {'user': {'username': 'admin'}};
-  }
 
 }
