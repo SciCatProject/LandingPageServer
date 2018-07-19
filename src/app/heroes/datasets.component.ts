@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Dataset } from '../dataset';
-import { DatasetService } from '../dataset.service';
+import {Dataset} from '../dataset';
+import {DatasetService} from '../dataset.service';
 
 @Component({
   selector: 'app-heroes',
@@ -11,7 +11,8 @@ import { DatasetService } from '../dataset.service';
 export class DatasetsComponent implements OnInit {
   heroes: Dataset[];
 
-  constructor(private heroService: DatasetService) { }
+  constructor(private heroService: DatasetService) {
+  }
 
   ngOnInit() {
     this.getHeroes();
@@ -19,12 +20,14 @@ export class DatasetsComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
+      .subscribe(heroes => this.heroes = heroes);
   }
 
   add(name: string): void {
     name = name.trim();
-    if (!name) { return; }
+    if (!name) {
+      return;
+    }
     this.heroService.addHero(name)
       .subscribe(hero => {
         this.heroes.push(hero);
@@ -33,9 +36,9 @@ export class DatasetsComponent implements OnInit {
 
   delete(hero: Dataset): void {
     this.heroService.deleteHero(hero)
-        .subscribe(() => {
-          this.heroes = this.heroes.filter(h => h !== hero);
-        });
+      .subscribe(() => {
+        this.heroes = this.heroes.filter(h => h !== hero);
+      });
   }
 
 }
