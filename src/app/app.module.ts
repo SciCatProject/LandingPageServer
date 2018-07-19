@@ -21,7 +21,7 @@ import {isPlatformBrowser} from '@angular/common';
 
 @NgModule({
   imports: [
-    BrowserModule.withServerTransition({appId: 'tour-of-datasets'}),
+    BrowserModule.withServerTransition({appId: 'landing-page-server'}),
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
