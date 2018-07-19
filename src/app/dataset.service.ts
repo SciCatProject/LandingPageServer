@@ -29,7 +29,7 @@ export class DatasetService {
   getDatasets(): Observable<Dataset[]> {
     return this.http.get<Dataset[]>(this.datasetsUrl)
       .pipe(
-        tap(heroes => this.log('fetched datasets')),
+        tap(datasets => this.log('fetched datasets')),
         catchError(this.handleError('getDatasets', []))
       );
   }
@@ -44,7 +44,7 @@ export class DatasetService {
           const outcome = h ? `fetched` : `did not find`;
           this.log(`${outcome} hero id=${id}`);
         }),
-        catchError(this.handleError<Dataset>(`getHero id=${id}`))
+        catchError(this.handleError<Dataset>(`getDataset id=${id}`))
       );
   }
 
@@ -53,19 +53,19 @@ export class DatasetService {
     const url = `${this.datasetsUrl}/${id}`;
     return this.http.get<Dataset>(url).pipe(
       tap(_ => this.log(`fetched dataset id=${id}`)),
-      catchError(this.handleError<Dataset>(`getHero id=${id}`))
+      catchError(this.handleError<Dataset>(`getDataset id=${id}`))
     );
   }
 
   /* GET datasets whose name contains search term */
-  searchHeroes (term: string): Observable<Dataset[]> {
+  searchDatasets (term: string): Observable<Dataset[]> {
     if (!term.trim()) {
       // if not search term, return empty dataset array.
       return of([]);
     }
     return this.http.get<Dataset[]>(`${this.datasetsUrl}/?name=${term}`).pipe(
       tap(_ => this.log(`found heroes matching "${term}"`)),
-      catchError(this.handleError<Dataset[]>('searchHeroes', []))
+      catchError(this.handleError<Dataset[]>('searchDatasets', []))
     );
   }
 
