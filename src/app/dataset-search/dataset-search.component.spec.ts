@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DatasetSearchComponent } from './dataset-search.component';
+import {DatasetSearchComponent} from './dataset-search.component';
 
 describe('DatasetSearchComponent', () => {
   let component: DatasetSearchComponent;
@@ -8,9 +8,9 @@ describe('DatasetSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatasetSearchComponent ]
+      declarations: [DatasetSearchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
