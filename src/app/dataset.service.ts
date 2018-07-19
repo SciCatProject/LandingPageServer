@@ -73,17 +73,17 @@ export class DatasetService {
 
   /** POST: add a new dataset to the server */
   addDataset(name: string): Observable<Dataset> {
-    const hero = {name};
+    const dataset = {name};
 
-    return this.http.post<Dataset>(this.datasetsUrl, hero, httpOptions).pipe(
-      tap((hero: Dataset) => this.log(`added hero w/ id=${hero.id}`)),
+    return this.http.post<Dataset>(this.datasetsUrl, dataset, httpOptions).pipe(
+      tap((dataset1: Dataset) => this.log(`added hero w/ id=${dataset1.id}`)),
       catchError(this.handleError<Dataset>('addDataset'))
     );
   }
 
   /** DELETE: delete the dataset from the server */
-  deleteDataset (hero: Dataset | number): Observable<Dataset> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+  deleteDataset (dataset: Dataset | number): Observable<Dataset> {
+    const id = typeof dataset === 'number' ? dataset : dataset.id;
     const url = `${this.datasetsUrl}/${id}`;
 
     return this.http.delete<Dataset>(url, httpOptions).pipe(
@@ -93,9 +93,9 @@ export class DatasetService {
   }
 
   /** PUT: update the dataset on the server */
-  updateDataset (hero: Dataset): Observable<any> {
-    return this.http.put(this.datasetsUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
+  updateDataset (dataset: Dataset): Observable<any> {
+    return this.http.put(this.datasetsUrl, dataset, httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${dataset.id}`)),
       catchError(this.handleError<any>('updateDataset'))
     );
   }
