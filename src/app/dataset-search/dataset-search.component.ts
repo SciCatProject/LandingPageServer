@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
-import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Dataset } from '../dataset';
-import { DatasetService } from '../dataset.service';
+import {Dataset} from '../dataset';
+import {DatasetService} from '../dataset.service';
 
 @Component({
   selector: 'hero-search',
   templateUrl: './dataset-search.component.html',
-  styleUrls: [ './dataset-search.component.css' ]
+  styleUrls: ['./dataset-search.component.css']
 })
 export class DatasetSearchComponent implements OnInit {
   heroes: Observable<Dataset[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: DatasetService) {}
+  constructor(private heroService: DatasetService) {
+  }
 
   // Push a search term into the observable stream.
   search(term: string): void {
