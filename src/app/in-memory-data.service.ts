@@ -2,7 +2,7 @@ import {InMemoryDbService} from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const heroes = [
+    const datasets = [
       {
         id: 11,
         name: 'https://doi.org/10.1799/ESS0001',
@@ -114,6 +114,6 @@ export class InMemoryDataService implements InMemoryDbService {
         resource_type: 'NeXus HDF5 file'
       }
     ];
-    return {heroes};
+    return {datasets: datasets};
   }
 }
