@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DatasetSearchComponent} from './dataset-search.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('DatasetSearchComponent', () => {
   let component: DatasetSearchComponent;
@@ -8,6 +9,7 @@ describe('DatasetSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [DatasetSearchComponent]
     })
       .compileComponents();
