@@ -4,7 +4,7 @@ import {Dataset} from '../dataset';
 import {DatasetService} from '../dataset.service';
 
 @Component({
-  selector: 'app-heroes',
+  selector: 'app-datasets',
   templateUrl: './datasets.component.html',
   styleUrls: ['./datasets.component.css']
 })
@@ -20,7 +20,7 @@ export class DatasetsComponent implements OnInit {
 
   getDatasets (): void {
     this.datasetService.getDatasets()
-      .subscribe(heroes => this.datasets = heroes);
+      .subscribe(datasets => this.datasets = datasets);
   }
 
   add(name: string): void {
@@ -29,15 +29,15 @@ export class DatasetsComponent implements OnInit {
       return;
     }
     this.datasetService.addDataset(name)
-      .subscribe(hero => {
-        this.datasets.push(hero);
+      .subscribe(dataset => {
+        this.datasets.push(dataset);
       });
   }
 
-  delete(hero: Dataset): void {
-    this.datasetService.deleteDataset(hero)
+  delete(dataset: Dataset): void {
+    this.datasetService.deleteDataset(dataset)
       .subscribe(() => {
-        this.datasets = this.datasets.filter(h => h !== hero);
+        this.datasets = this.datasets.filter(h => h !== dataset);
       });
   }
 
