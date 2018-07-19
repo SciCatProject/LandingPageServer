@@ -26,7 +26,7 @@ export class DatasetDetailComponent implements OnInit {
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
+    this.heroService.getDataset(id)
       .subscribe(hero => this.dataset = hero);
   }
 
