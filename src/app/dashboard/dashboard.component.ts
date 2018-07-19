@@ -8,16 +8,16 @@ import { DatasetService } from '../dataset.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Dataset[] = [];
+  datasets: Dataset[] = [];
 
-  constructor(private heroService: DatasetService) { }
+  constructor(private datasetService: DatasetService) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService.getDatasets()
-    .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+    this.datasetService.getDatasets()
+    .subscribe(datasets => this.datasets = datasets.slice(1, 5));
   }
 }
