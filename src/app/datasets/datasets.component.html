@@ -1,19 +1,10 @@
 <h2>Dataset  List</h2>
 
-<div>
-  <label>Dataset id:
-    <input #heroName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
-    add
-  </button>
-</div>
 
 <ul class="heroes">
-  <li *ngFor="let hero of datasets">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.id}}
+  <li *ngFor="let dataset of datasets">
+    <a routerLink="/detail/{{dataset.id}}">
+      <span class="badge">{{dataset.id}}</span> {{dataset.id}}
     </a>
   </li>
 </ul>
