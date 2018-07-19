@@ -8,7 +8,7 @@ import {Dataset} from '../dataset';
 import {DatasetService} from '../dataset.service';
 
 @Component({
-  selector: 'hero-search',
+  selector: 'dataset-search',
   templateUrl: './dataset-search.component.html',
   styleUrls: ['./dataset-search.component.css']
 })
@@ -16,7 +16,7 @@ export class DatasetSearchComponent implements OnInit {
   datasets: Observable<Dataset[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: DatasetService) {
+  constructor(private datasetService: DatasetService) {
   }
 
   // Push a search term into the observable stream.
@@ -33,7 +33,7 @@ export class DatasetSearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.heroService.searchHeroes(term)),
+      switchMap((term: string) => this.datasetService.searchHeroes(term)),
     );
   }
 }
