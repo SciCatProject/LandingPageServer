@@ -28,7 +28,7 @@ export class DatasetsComponent implements OnInit {
     if (!name) {
       return;
     }
-    this.heroService.addHero(name)
+    this.heroService.addDataset(name)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
