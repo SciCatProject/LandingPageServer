@@ -3,6 +3,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, of} from 'rxjs';
+
 import {catchError, map, tap} from 'rxjs/operators';
 
 import {Dataset} from './dataset';
@@ -15,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class DatasetService {
 
-  private readonly heroesUrl = 'api/heroes';  // URL to web api
+  readonly heroesUrl = 'api/heroes';  // URL to web api
 
   constructor(
     private http: HttpClient,
