@@ -1,6 +1,6 @@
 import {Dataset} from './dataset';
 
-export const HEROES: Dataset[] = [
+export const DATASETS: Dataset[] = [
   {
     id: 11,
     name: 'https://doi.org/10.1799/ESS0001',
