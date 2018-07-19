@@ -13,7 +13,7 @@ import {DatasetService} from '../dataset.service';
   styleUrls: ['./dataset-search.component.css']
 })
 export class DatasetSearchComponent implements OnInit {
-  heroes: Observable<Dataset[]>;
+  datasets: Observable<Dataset[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: DatasetService) {
@@ -25,7 +25,7 @@ export class DatasetSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes = this.searchTerms.pipe(
+    this.datasets = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
 
