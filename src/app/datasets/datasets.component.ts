@@ -9,7 +9,7 @@ import {DatasetService} from '../dataset.service';
   styleUrls: ['./datasets.component.css']
 })
 export class DatasetsComponent implements OnInit {
-  heroes: Dataset[];
+  datasets: Dataset[];
 
   constructor(private datasetService: DatasetService) {
   }
@@ -20,7 +20,7 @@ export class DatasetsComponent implements OnInit {
 
   getDatasets (): void {
     this.datasetService.getDatasets()
-      .subscribe(heroes => this.heroes = heroes);
+      .subscribe(heroes => this.datasets = heroes);
   }
 
   add(name: string): void {
@@ -30,14 +30,14 @@ export class DatasetsComponent implements OnInit {
     }
     this.datasetService.addDataset(name)
       .subscribe(hero => {
-        this.heroes.push(hero);
+        this.datasets.push(hero);
       });
   }
 
   delete(hero: Dataset): void {
     this.datasetService.deleteDataset(hero)
       .subscribe(() => {
-        this.heroes = this.heroes.filter(h => h !== hero);
+        this.datasets = this.datasets.filter(h => h !== hero);
       });
   }
 
