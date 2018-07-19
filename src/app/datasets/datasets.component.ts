@@ -19,7 +19,7 @@ export class DatasetsComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
+    this.heroService.getDatasets()
       .subscribe(heroes => this.heroes = heroes);
   }
 
