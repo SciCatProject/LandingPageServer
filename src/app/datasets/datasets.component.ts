@@ -35,7 +35,7 @@ export class DatasetsComponent implements OnInit {
   }
 
   delete(hero: Dataset): void {
-    this.heroService.deleteHero(hero)
+    this.heroService.deleteDataset(hero)
       .subscribe(() => {
         this.heroes = this.heroes.filter(h => h !== hero);
       });
