@@ -11,15 +11,15 @@ import {DatasetService} from '../dataset.service';
 export class DatasetsComponent implements OnInit {
   heroes: Dataset[];
 
-  constructor(private heroService: DatasetService) {
+  constructor(private datasetService: DatasetService) {
   }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getDatasets();
   }
 
-  getHeroes(): void {
-    this.heroService.getDatasets()
+  getDatasets (): void {
+    this.datasetService.getDatasets()
       .subscribe(heroes => this.heroes = heroes);
   }
 
@@ -28,14 +28,14 @@ export class DatasetsComponent implements OnInit {
     if (!name) {
       return;
     }
-    this.heroService.addDataset(name)
+    this.datasetService.addDataset(name)
       .subscribe(hero => {
         this.heroes.push(hero);
       });
   }
 
   delete(hero: Dataset): void {
-    this.heroService.deleteDataset(hero)
+    this.datasetService.deleteDataset(hero)
       .subscribe(() => {
         this.heroes = this.heroes.filter(h => h !== hero);
       });
