@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MessagesComponent } from './messages.component';
+import {MessagesComponent} from './messages.component';
 import {MessageService} from '../message.service';
 import {MockMessageService} from '../MockStubs';
 
@@ -11,10 +11,10 @@ describe('MessagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessagesComponent ],
-      providers: [ {provide: MessageService, useClass:MockMessageService}]
-    })
-    .compileComponents();
+      declarations: [MessagesComponent],
+      providers: [{provide: MessageService, useClass: MockMessageService}]
+    });
+      TestBed.compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('MessagesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it('should be created MC', () => {
     expect(component).toBeTruthy();
   });
 });
