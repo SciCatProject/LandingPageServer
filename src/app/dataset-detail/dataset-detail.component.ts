@@ -15,7 +15,7 @@ export class DatasetDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: DatasetService,
+    private datasetService: DatasetService,
     private location: Location
   ) {
   }
@@ -26,7 +26,7 @@ export class DatasetDetailComponent implements OnInit {
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getDataset(id)
+    this.datasetService.getDataset(id)
       .subscribe(hero => this.dataset = hero);
   }
 
@@ -35,7 +35,7 @@ export class DatasetDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.heroService.updateHero(this.dataset)
+    this.datasetService.updateDataset(this.dataset)
       .subscribe(() => this.goBack());
   }
 }
