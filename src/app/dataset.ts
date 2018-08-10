@@ -4,6 +4,7 @@ export class Dataset {
   creator: string;
   affiliation: string;
   title: string;
+  abstract: string;
   publisher: string;
   year: string;
   url: string;
