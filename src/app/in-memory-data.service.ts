@@ -9,6 +9,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -20,6 +23,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -31,6 +37,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -42,6 +51,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -53,6 +65,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -64,6 +79,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -75,6 +93,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -86,6 +107,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -97,6 +121,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS Detector Group',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
@@ -108,6 +135,9 @@ export class InMemoryDataService implements InMemoryDbService {
         creator: 'Dorothea Pfeiffer',
         affiliation: 'ESS DG',
         title: 'Vanadium sample data from NMX beam line',
+        abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
+          'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
+          'It consists of test data for the NMX detector.',
         publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.1799/ESS0001',
