@@ -7,7 +7,7 @@ export const DATASETS: Dataset[] = [
     creator: 'Dorothea Pfeiffer',
     affiliation: 'BRIGHTNESS.NMX DG',
     title: 'Vanadium sample data from NMX beam line',
-    abstract: 'This data was collected as part of BrightnBRIGHTNESS.NMX, funded by the European Union ' +
+    abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
       'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
       'It consists of test data for the NMX detector',
     publisher: 'BRIGHTNESS.NMX-DMSC',
@@ -23,7 +23,7 @@ export const DATASETS: Dataset[] = [
     creator: 'Dorothea Pfeiffer',
     affiliation: 'BRIGHTNESS.NMX DG',
     title: 'Vanadium sample data from NMX beam line',
-    abstract: 'This data was collected as part of BrightnBRIGHTNESS.NMX, funded by the European Union ' +
+    abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
       'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
       'It consists of test data for the NMX detector',
     publisher: 'BRIGHTNESS.NMX-DMSC',
@@ -39,7 +39,7 @@ export const DATASETS: Dataset[] = [
     creator: 'Dorothea Pfeiffer',
     affiliation: 'BRIGHTNESS.NMX DG',
     title: 'Vanadium sample data from NMX beam line',
-    abstract: 'This data was collected as part of BrightnBRIGHTNESS.NMX, funded by the European Union ' +
+    abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
       'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
       'It consists of test data for the NMX detector',
     publisher: 'BRIGHTNESS.NMX-DMSC',
@@ -55,7 +55,7 @@ export const DATASETS: Dataset[] = [
     creator: 'Dorothea Pfeiffer',
     affiliation: 'BRIGHTNESS.NMX DG',
     title: 'Vanadium sample data from NMX beam line',
-    abstract: 'This data was collected as part of BrightnBRIGHTNESS.NMX, funded by the European Union ' +
+    abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
       'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
       'It consists of test data for the NMX detector',
     publisher: 'BRIGHTNESS.NMX-DMSC',
@@ -73,7 +73,7 @@ export const DATASETS: Dataset[] = [
     creator: 'Dorothea Pfeiffer',
     affiliation: 'BRIGHTNESS.NMX DG',
     title: 'Vanadium sample data from NMX beam line',
-    abstract: 'This data was collected as part of BrightnBRIGHTNESS.NMX, funded by the European Union ' +
+    abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
       'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
       'It consists of test data for the NMX detector',
     publisher: 'BRIGHTNESS.NMX-DMSC',
