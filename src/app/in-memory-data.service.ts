@@ -12,7 +12,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         resource_type: 'NeXus HDF5 file',
@@ -28,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -44,7 +44,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -60,7 +60,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -76,7 +76,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -92,7 +92,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -108,7 +108,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -124,7 +124,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -135,12 +135,12 @@ export class InMemoryDataService implements InMemoryDbService {
         id: 19,
         name: 'https://doi.org/10.17199/BRIGHTNESS.NMX0009',
         creator: 'Dorothea Pfeiffer',
-        affiliation: 'BRIGHTNESS.NMX Detector Group',
+        affiliation: 'ESS Detector Group',
         title: 'Vanadium sample data from NMX beam line',
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
@@ -156,7 +156,7 @@ export class InMemoryDataService implements InMemoryDbService {
         abstract: 'This data was collected as part of BrightnESS, funded by the European Union ' +
           'Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  ' +
           'It consists of test data for the NMX detector.',
-        publisher: 'BRIGHTNESS.NMX-DMSC',
+        publisher: 'ESS-DMSC',
         year: '2017',
         url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
         size: 50,
