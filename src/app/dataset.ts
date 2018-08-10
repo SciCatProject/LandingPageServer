@@ -9,4 +9,6 @@ export class Dataset {
   year: string;
   url: string;
   resource_type: string;
+  size: number;
+  number_of_datasets: number;
 }
