@@ -63,8 +63,6 @@ export const DATASETS: Dataset[] = [
     url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
     size: 50,
     number_of_datasets: 26,
-    size: 50,
-    number_of_datasets: 26,
     resource_type: 'NeXus HDF5 file'
   },
   {
