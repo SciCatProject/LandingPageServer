@@ -3,7 +3,7 @@ import {Dataset} from './dataset';
 export const DATASETS: Dataset[] = [
   {
     id: 11,
-    name: 'https://doi.org/10.1799/ESS0001',
+    name: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
     creator: 'Dorothea Pfeiffer',
     affiliation: 'ESS DG',
     title: 'Vanadium sample data from NMX beam line',
@@ -12,12 +12,14 @@ export const DATASETS: Dataset[] = [
       'It consists of test data for the NMX detector',
     publisher: 'ESS-DMSC',
     year: '2017',
-    url: 'https://doi.org/10.1799/ESS0001',
+    url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
+    size: 50,
+    number_of_datasets: 26,
     resource_type: 'NeXus HDF5 file'
   },
   {
     id: 12,
-    name: 'https://doi.org/10.1799/ESS0002',
+    name: 'https://doi.org/10.17199/BRIGHTNESS.NMX0002',
     creator: 'Dorothea Pfeiffer',
     affiliation: 'ESS DG',
     title: 'Vanadium sample data from NMX beam line',
@@ -26,12 +28,14 @@ export const DATASETS: Dataset[] = [
       'It consists of test data for the NMX detector',
     publisher: 'ESS-DMSC',
     year: '2017',
-    url: 'https://doi.org/10.1799/ESS0001',
+    url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
+    size: 50,
+    number_of_datasets: 26,
     resource_type: 'NeXus HDF5 file'
   },
   {
     id: 13,
-    name: 'https://doi.org/10.1799/ESS0003',
+    name: 'https://doi.org/10.17199/BRIGHTNESS.NMX0003',
     creator: 'Dorothea Pfeiffer',
     affiliation: 'ESS DG',
     title: 'Vanadium sample data from NMX beam line',
@@ -40,12 +44,14 @@ export const DATASETS: Dataset[] = [
       'It consists of test data for the NMX detector',
     publisher: 'ESS-DMSC',
     year: '2017',
-    url: 'https://doi.org/10.1799/ESS0001',
+    url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
+    size: 50,
+    number_of_datasets: 26,
     resource_type: 'NeXus HDF5 file'
   },
   {
     id: 14,
-    name: 'https://doi.org/10.1799/ESS0004',
+    name: 'https://doi.org/10.17199/BRIGHTNESS.NMX0004',
     creator: 'Dorothea Pfeiffer',
     affiliation: 'ESS DG',
     title: 'Vanadium sample data from NMX beam line',
@@ -54,12 +60,16 @@ export const DATASETS: Dataset[] = [
       'It consists of test data for the NMX detector',
     publisher: 'ESS-DMSC',
     year: '2017',
-    url: 'https://doi.org/10.1799/ESS0001',
+    url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
+    size: 50,
+    number_of_datasets: 26,
+    size: 50,
+    number_of_datasets: 26,
     resource_type: 'NeXus HDF5 file'
   },
   {
     id: 20,
-    name: 'https://doi.org/10.1799/ESS0010',
+    name: 'https://doi.org/10.17199/BRIGHTNESS.NMX0010',
     creator: 'Dorothea Pfeiffer',
     affiliation: 'ESS DG',
     title: 'Vanadium sample data from NMX beam line',
@@ -68,7 +78,9 @@ export const DATASETS: Dataset[] = [
       'It consists of test data for the NMX detector',
     publisher: 'ESS-DMSC',
     year: '2017',
-    url: 'https://doi.org/10.1799/ESS0001',
+    url: 'https://doi.org/10.17199/BRIGHTNESS.NMX0001',
+    size: 50,
+    number_of_datasets: 26,
     resource_type: 'NeXus HDF5 file'
   }
 ];
