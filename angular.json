@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular.io-example": {
+    "LandingPageServer": {
       "root": "",
       "projectType": "application",
       "architect": {
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular.io-example:build"
+            "browserTarget": "LandingPageServer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular.io-example:build:production"
+              "browserTarget": "LandingPagerServer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular.io-example:build"
+            "browserTarget": "LandingPageServer:build"
           }
         },
         "test": {
@@ -116,25 +116,21 @@
         }
       }
     },
-    "angular.io-example-e2e": {
-      "root": "",
+    "LandingPageServer-e2e": {
+      "root": "e2e/",
       "projectType": "application",
-      "cli": {},
-      "schematics": {},
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular.io-example:serve"
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "LandingPageServer:serve"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig":  "e2e/tsconfig.e2e.json" ,
             "exclude": [
               "**/node_modules/**"
             ]
