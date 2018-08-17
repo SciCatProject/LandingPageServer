@@ -1,12 +1,12 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {DatasetsComponent} from "./datasets.component";
+import { DatasetsComponent } from "./datasets.component";
 
-import {RouterTestingModule} from "@angular/router/testing";
-import {InMemoryWebApiModule} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "../in-memory-data.service";
-import {MockDatasetService} from "../MockStubs";
-import {DatasetService} from "../dataset.service";
+import { RouterTestingModule } from "@angular/router/testing";
+import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { InMemoryDataService } from "../in-memory-data.service";
+import { MockDatasetService } from "../MockStubs";
+import { DatasetService } from "../dataset.service";
 
 describe("DatasetsComponent", () => {
   let component: DatasetsComponent;
