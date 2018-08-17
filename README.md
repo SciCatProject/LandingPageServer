@@ -2,7 +2,7 @@
 
 ![scicat logo](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
 
-[![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer)
+[![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer) [![Greenkeeper badge](https://badges.greenkeeper.io/SciCatProject/LandingPageServer.svg)](https://greenkeeper.io/)
 
 
 A landing page server for publically accessible DOI datasets in SciCat
