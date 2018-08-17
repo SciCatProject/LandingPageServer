@@ -1,18 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
+import {Component, Input, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
 
-import {Dataset} from '../dataset';
-import {DatasetService} from '../dataset.service';
-
+import {Dataset} from "../dataset";
+import {DatasetService} from "../dataset.service";
 
 @Component({
-  selector: 'app-dataset-detail',
-  templateUrl: './dataset-detail.component.html',
-  styleUrls: ['./dataset-detail.component.css']
+  selector: "app-dataset-detail",
+  templateUrl: "./dataset-detail.component.html",
+  styleUrls: ["./dataset-detail.component.css"]
 })
 export class DatasetDetailComponent implements OnInit {
-  @Input() dataset: Dataset;
+  @Input()
+  dataset: Dataset;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +26,10 @@ export class DatasetDetailComponent implements OnInit {
   }
 
   getDataset(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.datasetService.getDataset(id)
-      .subscribe(dataset => this.dataset = dataset);
+    const id = +this.route.snapshot.paramMap.get("id");
+    this.datasetService
+      .getDataset(id)
+      .subscribe(dataset => (this.dataset = dataset));
   }
 
   goBack(): void {
@@ -36,7 +37,8 @@ export class DatasetDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.datasetService.updateDataset(this.dataset)
+    this.datasetService
+      .updateDataset(this.dataset)
       .subscribe(() => this.goBack());
   }
 }
