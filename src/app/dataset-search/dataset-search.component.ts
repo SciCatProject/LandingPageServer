@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import {Observable, Subject} from 'rxjs';
+import { Observable, Subject } from "rxjs";
 
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
-import {Dataset} from '../dataset';
-import {DatasetService} from '../dataset.service';
+import { Dataset } from "../dataset";
+import { DatasetService } from "../dataset.service";
 
 @Component({
-  selector: 'dataset-search',
-  templateUrl: './dataset-search.component.html',
-  styleUrls: ['./dataset-search.component.css']
+  selector: "dataset-search",
+  templateUrl: "./dataset-search.component.html",
+  styleUrls: ["./dataset-search.component.css"]
 })
 export class DatasetSearchComponent implements OnInit {
   datasets: Observable<Dataset[]>;

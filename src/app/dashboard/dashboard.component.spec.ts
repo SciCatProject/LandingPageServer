@@ -1,12 +1,12 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {DashboardComponent} from "./dashboard.component";
+import { DashboardComponent } from "./dashboard.component";
 
-import {RouterTestingModule} from "@angular/router/testing";
+import { RouterTestingModule } from "@angular/router/testing";
 
-import {DatasetSearchComponent} from "../dataset-search/dataset-search.component";
-import {MockDatasetService} from "../MockStubs";
-import {DatasetService} from "../dataset.service";
+import { DatasetSearchComponent } from "../dataset-search/dataset-search.component";
+import { MockDatasetService } from "../MockStubs";
+import { DatasetService } from "../dataset.service";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;

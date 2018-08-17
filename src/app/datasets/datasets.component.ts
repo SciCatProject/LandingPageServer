@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
-import {Dataset} from "../dataset";
-import {DatasetService} from "../dataset.service";
+import { Dataset } from "../dataset";
+import { DatasetService } from "../dataset.service";
 
 @Component({
   selector: "app-datasets",
@@ -11,7 +11,8 @@ import {DatasetService} from "../dataset.service";
 export class DatasetsComponent implements OnInit {
   datasets: Dataset[];
 
-  constructor(private datasetService: DatasetService) {}
+  constructor(private datasetService: DatasetService) {
+  }
 
   ngOnInit() {
     this.getDatasets();
