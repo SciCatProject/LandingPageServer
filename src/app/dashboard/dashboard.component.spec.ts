@@ -16,7 +16,7 @@ describe("DashboardComponent", () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [DashboardComponent, DatasetSearchComponent],
-      providers: [{provide: DatasetService, useClass: MockDatasetService}]
+      providers: [{ provide: DatasetService, useClass: MockDatasetService }]
     }).compileComponents();
   }));
 

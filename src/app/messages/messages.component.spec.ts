@@ -11,7 +11,7 @@ describe("MessagesComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MessagesComponent],
-      providers: [{provide: MessageService, useClass: MockMessageService}]
+      providers: [{ provide: MessageService, useClass: MockMessageService }]
     });
     TestBed.compileComponents();
   }));

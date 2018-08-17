@@ -11,8 +11,7 @@ import {DatasetService} from "../dataset.service";
 export class DatasetsComponent implements OnInit {
   datasets: Dataset[];
 
-  constructor(private datasetService: DatasetService) {
-  }
+  constructor(private datasetService: DatasetService) {}
 
   ngOnInit() {
     this.getDatasets();

@@ -19,7 +19,7 @@ describe("DatasetsComponent", () => {
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
       declarations: [DatasetsComponent],
-      providers: [{provide: DatasetService, useClass: MockDatasetService}]
+      providers: [{ provide: DatasetService, useClass: MockDatasetService }]
     });
     TestBed.compileComponents();
   }));
