@@ -57,7 +57,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 14,
         name: "https://doi.org/10.17199/BRIGHTNESS/SONDE0001",
-        creator: "Ramsay Al Jabali",
+        creator: "Ramsey Al Jebali",
         affiliation: "ESS DG",
         title: "Sample data from SONDE detector",
         abstract:
