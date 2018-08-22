@@ -8,6 +8,7 @@ export class Dataset {
   publisher: string;
   year: string;
   url: string;
+  download: string;
   resource_type: string;
   size: number;
   number_of_datasets: number;
