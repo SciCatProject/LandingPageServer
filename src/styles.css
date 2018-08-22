@@ -2,21 +2,21 @@
 
 /* Master Styles */
 h1 {
-  max-width: 500px;
+  max-width: 414px;
   margin: auto;
   color: #0094ca;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
 h2, h3 {
-  max-width: 500px;
+  max-width: 414px;
   margin: auto;
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
 body {
-  max-width: 500px;
+  max-width: 414px;
   margin: auto;
 }
 body, input[text], button {
