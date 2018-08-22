@@ -14,7 +14,7 @@ export const DATASETS: Dataset[] = [
     publisher: "ESS-DMSC",
     year: "2017",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
+    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FNMX0001",
     size: 50,
     number_of_datasets: 26,
     resource_type: "NeXus HDF5 file"

@@ -16,7 +16,7 @@ export class InMemoryDataService implements InMemoryDbService {
         publisher: "ESS-DMSC",
         year: "2017",
         url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-        download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
+        download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FNMX0001",
         resource_type: "NeXus HDF5 file",
         size: 50,
         number_of_datasets: 26
@@ -34,7 +34,7 @@ export class InMemoryDataService implements InMemoryDbService {
         publisher: "ESS-DMSC",
         year: "2017",
         url: "https://doi.org/10.17199/BRIGHTNESS.MG0002",
-        download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
+        download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMG0001",
         size: 50,
         number_of_datasets: 26,
         resource_type: "NeXus HDF5 file"
@@ -88,7 +88,7 @@ export class InMemoryDataService implements InMemoryDbService {
         publisher: "ESS-DMSC",
         year: "2017",
         url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-        download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
+        download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FSONDE0001",
         size: 50,
         number_of_datasets: 26,
         resource_type: "NeXus HDF5 file"
