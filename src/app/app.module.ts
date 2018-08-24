@@ -18,12 +18,16 @@ import { MessageService } from "./message.service";
 import { MessagesComponent } from "./messages/messages.component";
 import { isPlatformBrowser } from "@angular/common";
 
+import { SDKBrowserModule } from "./shared/sdk/index";
+import { UserApi } from "./shared/sdk/services";
+
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({ appId: "landing-page-server" }),
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    SDKBrowserModule.forRoot(),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false
     })
@@ -36,7 +40,7 @@ import { isPlatformBrowser } from "@angular/common";
     MessagesComponent,
     DatasetSearchComponent
   ],
-  providers: [DatasetService, MessageService],
+  providers: [DatasetService, UserApi, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
