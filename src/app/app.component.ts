@@ -1,15 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";
 import { UserApi } from "./shared/sdk/services";
 import { environment } from "../environments/environment";
-import {
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation
-} from "@angular/core";
 
 @Component({
   selector: "app-root",

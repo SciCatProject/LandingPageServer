@@ -16,7 +16,16 @@ const httpOptions = {
 
 @Injectable()
 export class DatasetService {
+  limit = 1000;
   private datasetsUrl = "api/datasets"; // URL to web api
+
+  detailFilter = {
+    limit: this.limit
+  };
+
+  filter = {
+    limit: this.limit
+  };
 
   constructor(
     private rds: PublishedDataApi,
@@ -31,6 +40,7 @@ export class DatasetService {
 
   /** GET datasets from the server */
   getDatasets(): Observable<Dataset[]> {
+    console.log("gm get datasets");
     return this.rds.find();
   }
 
@@ -49,7 +59,7 @@ export class DatasetService {
 
   /** GET dataset by id. Will 404 if id not found */
   getDataset(id: number): Observable<Dataset> {
-    return this.rds.findById(id);
+    return this.rds.findById(id, this.detailFilter);
   }
 
   /* GET datasets whose name contains search term */

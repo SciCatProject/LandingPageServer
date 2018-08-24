@@ -17,8 +17,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getDatasets(): void {
-    this.datasetService
-      .getDatasets()
-      .subscribe(datasets => (this.datasets = datasets.slice(1, 5)));
+    this.datasetService.getDatasets().subscribe(datasets => {
+      console.log("gm datasets", datasets);
+      this.datasets = datasets.slice(1, 5);
+    });
   }
 }
