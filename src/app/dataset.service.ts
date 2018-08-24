@@ -7,6 +7,7 @@ import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 
 import { Dataset } from "./dataset";
+import { PublishedDataApi } from "./shared/sdk/services/custom";
 import { MessageService } from "./message.service";
 
 const httpOptions = {
@@ -18,6 +19,7 @@ export class DatasetService {
   private datasetsUrl = "api/datasets"; // URL to web api
 
   constructor(
+    private rds: PublishedDataApi,
     private http: HttpClient,
     private messageService: MessageService,
     @Optional()
@@ -29,10 +31,7 @@ export class DatasetService {
 
   /** GET datasets from the server */
   getDatasets(): Observable<Dataset[]> {
-    return this.http.get<Dataset[]>(this.datasetsUrl).pipe(
-      tap(datasets => this.log("fetched datasets")),
-      catchError(this.handleError("getDatasets", []))
-    );
+    return this.rds.find();
   }
 
   /** GET dataset by id. Return `undefined` when id not found */
@@ -50,11 +49,7 @@ export class DatasetService {
 
   /** GET dataset by id. Will 404 if id not found */
   getDataset(id: number): Observable<Dataset> {
-    const url = `${this.datasetsUrl}/${id}`;
-    return this.http.get<Dataset>(url).pipe(
-      tap(_ => this.log(`fetched dataset id=${id}`)),
-      catchError(this.handleError<Dataset>(`getDataset id=${id}`))
-    );
+    return this.rds.findById(id);
   }
 
   /* GET datasets whose name contains search term */
