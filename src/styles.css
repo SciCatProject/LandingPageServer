@@ -1,5 +1,7 @@
 
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 /* Master Styles */
 h1 {
   max-width: 414px;

@@ -17,6 +17,8 @@ import { DatasetService } from "./dataset.service";
 import { MessageService } from "./message.service";
 import { MessagesComponent } from "./messages/messages.component";
 import { isPlatformBrowser } from "@angular/common";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatButtonModule } from "@angular/material";
 
 import { SDKBrowserModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
@@ -26,8 +28,10 @@ import { UserApi } from "./shared/sdk/services";
     BrowserModule.withServerTransition({ appId: "landing-page-server" }),
     FormsModule,
     AppRoutingModule,
+    MatButtonModule,
     HttpClientModule,
     SDKBrowserModule.forRoot(),
+    BrowserAnimationsModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false
     })
