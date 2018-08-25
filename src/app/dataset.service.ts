@@ -76,7 +76,6 @@ export class DatasetService {
   /** DELETE: delete the dataset from the server */
   deleteDataset(dataset: PublishedData | number): Observable<PublishedData> {
     const id = typeof dataset === "number" ? dataset : dataset.id;
-    const url = `${this.datasetsUrl}/${id}`;
 
     return this.rds.deleteById(id);
   }

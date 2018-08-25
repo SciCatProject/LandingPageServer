@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     LoopBackConfig.setBaseURL(environment.lbBaseURL);
-    console.log(LoopBackConfig.getPath());
+    console.log("gm lb config get path ", LoopBackConfig.getPath());
     if ("lbApiVersion" in environment) {
       const lbApiVersion = environment["lbApiVersion"];
       LoopBackConfig.setApiVersion(lbApiVersion);

@@ -7,12 +7,12 @@ export const DATASETS: PublishedData[] = [
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    publicationYear: "2017",
+    publicationYear: 2017,
     title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     pidArray: ["x", "x"],
-    author: ["x", "x"],
-    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
+    authors: ["x", "x"],
+    doiRegisteredSuccessfullyTime: new Date()
   },
   {
     id: 12,
@@ -20,12 +20,12 @@ export const DATASETS: PublishedData[] = [
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    publicationYear: "2017",
+    publicationYear: 2017,
     title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     pidArray: ["x", "x"],
-    author: ["x", "x"],
-    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
+    authors: ["x", "x"],
+    doiRegisteredSuccessfullyTime: new Date()
   },
   {
     id: 13,
@@ -33,12 +33,12 @@ export const DATASETS: PublishedData[] = [
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    publicationYear: "2017",
+    publicationYear: 2017,
     title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     pidArray: ["x", "x"],
-    author: ["x", "x"],
-    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
+    authors: ["x", "x"],
+    doiRegisteredSuccessfullyTime: new Date()
   },
   {
     id: 14,
@@ -46,12 +46,12 @@ export const DATASETS: PublishedData[] = [
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    publicationYear: "2017",
+    publicationYear: 2017,
     title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     pidArray: ["x", "x"],
-    author: ["x", "x"],
-    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
+    authors: ["x", "x"],
+    doiRegisteredSuccessfullyTime: new Date()
   },
   {
     id: 20,
@@ -59,11 +59,11 @@ export const DATASETS: PublishedData[] = [
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    publicationYear: "2017",
+    publicationYear: 2017,
     title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     pidArray: ["x", "x"],
-    author: ["x", "x"],
-    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
+    authors: ["x", "x"],
+    doiRegisteredSuccessfullyTime: new Date()
   }
 ];
