@@ -37,22 +37,24 @@
     </tr>
   </table>
 
-  <div class="download_button">
+  <div class="download_button" >
     <a class="e2e-trusted-url" [href]="trustedUrl">
       Access data
     </a>
   </div>
+  <a mat-raised-button href="https://stackoverflow.com/">Stackoverflow</a>
+
 
   <p>
     <b> Instructions: </b> Login with brightness username and password
   </p>
 
-  <p>
+  <div >
     <b>
       Abstract:
     </b>
     {{dataset.abstract}}
-  </p>
+  </div>
 
   <button (click)="goBack()">go back</button>
 </div>
