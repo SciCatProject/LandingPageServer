@@ -1,94 +1,69 @@
-import { Dataset } from "./dataset";
+import { PublishedData } from "./shared/sdk/models";
 
-export const DATASETS: Dataset[] = [
+export const DATASETS: PublishedData[] = [
   {
     id: 11,
-    name: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    creator: "Dorothea Pfeiffer",
+    doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
-    title: "Vanadium sample data from NMX beam line",
-    abstract:
-      "This data was collected as part of BrightnESS, funded by the European Union " +
-      "Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  " +
-      "It consists of test data for the NMX detector",
+    creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    year: "2017",
+    publicationYear: "2017",
+    title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FNMX0001",
-    size: 50,
-    number_of_datasets: 26,
-    resource_type: "NeXus HDF5 file"
+    pidArray: ["x", "x"],
+    author: ["x", "x"],
+    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
   },
   {
     id: 12,
-    name: "https://doi.org/10.17199/BRIGHTNESS.NMX0002",
-    creator: "Dorothea Pfeiffer",
+    doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
-    title: "Vanadium sample data from NMX beam line",
-    abstract:
-      "This data was collected as part of BrightnESS, funded by the European Union " +
-      "Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  " +
-      "It consists of test data for the NMX detector",
+    creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    year: "2017",
+    publicationYear: "2017",
+    title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
-    size: 50,
-    number_of_datasets: 26,
-    resource_type: "NeXus HDF5 file"
+    pidArray: ["x", "x"],
+    author: ["x", "x"],
+    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
   },
   {
     id: 13,
-    name: "https://doi.org/10.17199/BRIGHTNESS.NMX0003",
-    creator: "Dorothea Pfeiffer",
+    doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
-    title: "Vanadium sample data from NMX beam line",
-    abstract:
-      "This data was collected as part of BrightnESS, funded by the European Union " +
-      "Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  " +
-      "It consists of test data for the NMX detector",
+    creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    year: "2017",
+    publicationYear: "2017",
+    title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
-    size: 50,
-    number_of_datasets: 26,
-    resource_type: "NeXus HDF5 file"
+    pidArray: ["x", "x"],
+    author: ["x", "x"],
+    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
   },
   {
     id: 14,
-    name: "https://doi.org/10.17199/BRIGHTNESS.NMX0004",
-    creator: "Dorothea Pfeiffer",
+    doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
-    title: "Vanadium sample data from NMX beam line",
-    abstract:
-      "This data was collected as part of BrightnESS, funded by the European Union " +
-      "Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  " +
-      "It consists of test data for the NMX detector",
+    creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    year: "2017",
+    publicationYear: "2017",
+    title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
-    size: 50,
-    number_of_datasets: 26,
-    resource_type: "NeXus HDF5 file"
+    pidArray: ["x", "x"],
+    author: ["x", "x"],
+    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
   },
   {
     id: 20,
-    name: "https://doi.org/10.17199/BRIGHTNESS.NMX0010",
-    creator: "Dorothea Pfeiffer",
+    doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
-    title: "Vanadium sample data from NMX beam line",
-    abstract:
-      "This data was collected as part of BrightnESS, funded by the European Union " +
-      "Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.  " +
-      "It consists of test data for the NMX detector",
+    creator: "Dorothea Pfeiffer",
     publisher: "ESS-DMSC",
-    year: "2017",
+    publicationYear: "2017",
+    title: "Vanadium sample data from NMX beam line",
     url: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
-    download: "https://scicat.esss.se/dataset/10.17199%2FBRIGHTNESS%2FMB0001",
-    size: 50,
-    number_of_datasets: 26,
-    resource_type: "NeXus HDF5 file"
+    pidArray: ["x", "x"],
+    author: ["x", "x"],
+    doiRegisteredSuccessfullyTime: "20180701.01.00.0"
   }
 ];

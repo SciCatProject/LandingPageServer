@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-
-import { Dataset } from "../dataset";
 import { DatasetService } from "../dataset.service";
+import { PublishedData } from "../shared/sdk/models";
 
 @Component({
   selector: "app-datasets",
@@ -9,10 +8,9 @@ import { DatasetService } from "../dataset.service";
   styleUrls: ["./datasets.component.css"]
 })
 export class DatasetsComponent implements OnInit {
-  datasets: Dataset[];
+  datasets: PublishedData[];
 
-  constructor(private datasetService: DatasetService) {
-  }
+  constructor(private datasetService: DatasetService) {}
 
   ngOnInit() {
     this.getDatasets();
@@ -34,7 +32,7 @@ export class DatasetsComponent implements OnInit {
     });
   }
 
-  delete(dataset: Dataset): void {
+  delete(dataset: PublishedData): void {
     this.datasetService.deleteDataset(dataset).subscribe(() => {
       this.datasets = this.datasets.filter(h => h !== dataset);
     });

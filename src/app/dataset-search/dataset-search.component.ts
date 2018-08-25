@@ -4,8 +4,8 @@ import { Observable, Subject } from "rxjs";
 
 import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
-import { Dataset } from "../dataset";
 import { DatasetService } from "../dataset.service";
+import { PublishedData } from "../shared/sdk/models";
 
 @Component({
   selector: "dataset-search",
@@ -13,7 +13,7 @@ import { DatasetService } from "../dataset.service";
   styleUrls: ["./dataset-search.component.css"]
 })
 export class DatasetSearchComponent implements OnInit {
-  datasets: Observable<Dataset[]>;
+  datasets: Observable<PublishedData[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private datasetService: DatasetService) {

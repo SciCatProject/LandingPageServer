@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Dataset } from "../dataset";
 import { DatasetService } from "../dataset.service";
+import { PublishedData } from "../shared/sdk/models";
 
 @Component({
   selector: "app-dashboard",
@@ -8,7 +8,7 @@ import { DatasetService } from "../dataset.service";
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  datasets: Dataset[] = [];
+  datasets: PublishedData[] = [];
 
   constructor(private datasetService: DatasetService) {}
 
