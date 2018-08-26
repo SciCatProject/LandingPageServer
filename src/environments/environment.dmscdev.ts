@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  lbBaseURL: 'https://catamelservice.esss.dk:30003',
-  facility: 'ESS'
+  lbBaseURL: "https://catamelservice.esss.dk:30003",
+  facility: "ess"
 };
