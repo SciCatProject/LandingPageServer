@@ -18,9 +18,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.publishedDataApi.find().subscribe(dataset => {
-      console.log(dataset);
-    });
     this.getDatasets();
   }
 
