@@ -45,7 +45,7 @@ export class DatasetService {
   }
 
   /** GET dataset by id. Will 404 if id not found */
-  getDataset(id: number): Observable<PublishedData> {
+  getDataset(id: string): Observable<PublishedData> {
     return this.rds.findById(id, this.detailFilter);
   }
 
@@ -74,8 +74,8 @@ export class DatasetService {
   }
 
   /** DELETE: delete the dataset from the server */
-  deleteDataset(dataset: PublishedData | number): Observable<PublishedData> {
-    const id = typeof dataset === "number" ? dataset : dataset.id;
+  deleteDataset(dataset: PublishedData | string): Observable<PublishedData> {
+    const id = typeof dataset === "string" ? dataset : dataset.id;
 
     return this.rds.deleteById(id);
   }
