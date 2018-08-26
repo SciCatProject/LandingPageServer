@@ -8,6 +8,8 @@ WORKDIR /landing
 
 COPY package.json .
 
+RUN npm install http-server -g
+RUN npm install -g @angular/cli
 
 RUN npm install
 
@@ -21,7 +23,6 @@ ARG APP_PROD='true'
 ARG LB_BASE_URL='http://localhost/api'
 ARG LB_API_VERSION=''
 
-RUN npm install http-server -g
 
 
 RUN ng build --configuration=dmsc  && ng run LandingPageServer:server:dmsc && npm run webpack:server
