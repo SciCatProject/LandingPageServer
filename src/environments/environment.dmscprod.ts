@@ -5,6 +5,6 @@
 
 export const environment = {
   production: true,
-  lbBaseURL: 'https://scicatapi.esss.dk',
-  facility: 'ESS'
+  lbBaseURL: "https://scicatapi.esss.dk",
+  facility: "ess"
 };
