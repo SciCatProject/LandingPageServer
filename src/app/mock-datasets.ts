@@ -2,7 +2,7 @@ import { PublishedData } from "./shared/sdk/models";
 
 export const DATASETS: PublishedData[] = [
   {
-    id: 11,
+    id: "11",
     doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
@@ -15,7 +15,7 @@ export const DATASETS: PublishedData[] = [
     doiRegisteredSuccessfullyTime: new Date()
   },
   {
-    id: 12,
+    id: "12",
     doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
@@ -28,7 +28,7 @@ export const DATASETS: PublishedData[] = [
     doiRegisteredSuccessfullyTime: new Date()
   },
   {
-    id: 13,
+    id: "13",
     doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
@@ -41,7 +41,7 @@ export const DATASETS: PublishedData[] = [
     doiRegisteredSuccessfullyTime: new Date()
   },
   {
-    id: 14,
+    id: "14",
     doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
@@ -54,7 +54,7 @@ export const DATASETS: PublishedData[] = [
     doiRegisteredSuccessfullyTime: new Date()
   },
   {
-    id: 20,
+    id: "20",
     doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
     affiliation: "ESS DG",
     creator: "Dorothea Pfeiffer",
