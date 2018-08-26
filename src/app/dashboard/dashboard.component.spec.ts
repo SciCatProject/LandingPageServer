@@ -5,8 +5,9 @@ import { DashboardComponent } from "./dashboard.component";
 import { RouterTestingModule } from "@angular/router/testing";
 
 import { DatasetSearchComponent } from "../dataset-search/dataset-search.component";
-import { MockDatasetService } from "../MockStubs";
+import { MockDatasetService, MockPublishedDataApi } from "../MockStubs";
 import { DatasetService } from "../dataset.service";
+import { PublishedDataApi } from "../shared/sdk/services/custom";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -16,7 +17,10 @@ describe("DashboardComponent", () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [DashboardComponent, DatasetSearchComponent],
-      providers: [{ provide: DatasetService, useClass: MockDatasetService }]
+      providers: [
+        { provide: PublishedDataApi, useClass: MockPublishedDataApi },
+        { provide: DatasetService, useClass: MockDatasetService }
+      ]
     }).compileComponents();
   }));
 
