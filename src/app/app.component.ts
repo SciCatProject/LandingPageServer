@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     if (this.appConfig.production === true) {
       status = "";
     }
-    this.title = "SciCat" + " " + facility + " " + status;
+    this.title = facility.toUpperCase() + " Public Data Repository " + status;
     this.setTitle(this.title);
   }
 
