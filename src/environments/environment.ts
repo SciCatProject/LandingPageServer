@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  lbBaseURL: "http://localhost:3000",
+  lbBaseURL: "http://127.0.0.1:3000",
   facility: "ess"
 };
 
