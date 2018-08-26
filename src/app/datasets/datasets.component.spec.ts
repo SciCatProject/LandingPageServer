@@ -7,6 +7,7 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { MockDatasetService } from "../MockStubs";
 import { DatasetService } from "../dataset.service";
+import { AppConfigModule, APP_CONFIG } from "../app-config.module";
 
 describe("DatasetsComponent", () => {
   let component: DatasetsComponent;
@@ -19,7 +20,10 @@ describe("DatasetsComponent", () => {
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
       declarations: [DatasetsComponent],
-      providers: [{ provide: DatasetService, useClass: MockDatasetService }]
+      providers: [
+        { provide: DatasetService, useClass: MockDatasetService },
+        { provide: APP_CONFIG }
+      ]
     });
     TestBed.compileComponents();
   }));
