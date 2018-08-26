@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  lbBaseURL: 'https://dacat-development.psi.ch',
-  facility: 'PSI'
+  lbBaseURL: "https://dacat-development.psi.ch",
+  facility: "PSI"
 };
