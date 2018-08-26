@@ -1,6 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { PublishedData } from "../shared/sdk/models";
+import { APP_CONFIG, AppConfig } from "../app-config.module";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+const httpOptions = {
+  headers: new HttpHeaders({ "Content-Type": "application/json" })
+};
 
 @Component({
   selector: "app-datasets",
@@ -10,9 +15,18 @@ import { PublishedData } from "../shared/sdk/models";
 export class DatasetsComponent implements OnInit {
   datasets: PublishedData[];
 
-  constructor(private datasetService: DatasetService) {}
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private http: HttpClient,
+    private datasetService: DatasetService
+  ) {}
 
   ngOnInit() {
+    this.http
+      .get("http://127.0.0.1:3000/api/v2/PublishedData", httpOptions  )
+      .subscribe(res => {
+        console.log("gm datasets", res);
+      });
     this.getDatasets();
   }
 
