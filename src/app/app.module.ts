@@ -4,7 +4,6 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDataService } from "./in-memory-data.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -19,6 +18,10 @@ import { MessagesComponent } from "./messages/messages.component";
 import { isPlatformBrowser } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material";
+import { AppConfigModule } from "./app-config.module";
+
+import { SDKBrowserModule } from "./shared/sdk/index";
+import { UserApi } from "./shared/sdk/services";
 
 @NgModule({
   imports: [
@@ -26,11 +29,10 @@ import { MatButtonModule } from "@angular/material";
     FormsModule,
     AppRoutingModule,
     MatButtonModule,
+    AppConfigModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    })
+    SDKBrowserModule.forRoot(),
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -40,7 +42,7 @@ import { MatButtonModule } from "@angular/material";
     MessagesComponent,
     DatasetSearchComponent
   ],
-  providers: [DatasetService, MessageService],
+  providers: [DatasetService, UserApi, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

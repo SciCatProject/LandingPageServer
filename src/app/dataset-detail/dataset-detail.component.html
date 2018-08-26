@@ -5,7 +5,7 @@
   <table style="width:500px">
     <tr>
       <th>DOI</th>
-      <td><a href="{{ dataset.url}}">{{ dataset.url}}</a></td>
+      <td><a href="{{ dataset.doi}}">{{ dataset.url}}</a></td>
     </tr>
     <tr>
       <th>Creator</th>
@@ -21,19 +21,19 @@
     </tr>
     <tr>
       <th>Year</th>
-      <td>{{ dataset.year}}</td>
+      <td>{{ dataset.publicationYear}}</td>
     </tr>
     <tr>
       <th>Resource Type</th>
-      <td>{{ dataset.resource_type}}</td>
+      <td>{{ dataset.pidArray}}</td>
     </tr>
     <tr>
       <th>No. of datasets</th>
-      <td>{{ dataset.number_of_datasets}}</td>
+      <td>{{ dataset.authors}}</td>
     </tr>
     <tr>
       <th> Size</th>
-      <td>{{ dataset.size}}</td>
+      <td>{{ dataset.doiRegisteredSuccessfullyTime}}</td>
     </tr>
   </table>
 
