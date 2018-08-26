@@ -27,7 +27,7 @@ export class DatasetDetailComponent implements OnInit {
   }
 
   getDataset(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+    const id: string = this.route.snapshot.params.id;
     this.datasetService.getDataset(id).subscribe(dataset => {
       console.log("gm get dataset");
       this.dataset = dataset;
