@@ -18,7 +18,7 @@ h2, h3 {
   font-weight: lighter;
 }
 body {
-  max-width: 414px;
+  max-width: 600px;
   margin: auto;
 }
 body, input[text], button {

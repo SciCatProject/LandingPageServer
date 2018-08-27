@@ -17,7 +17,7 @@ import { MessageService } from "./message.service";
 import { MessagesComponent } from "./messages/messages.component";
 import { isPlatformBrowser } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule } from "@angular/material";
+import {MatButtonModule, MatCardModule} from '@angular/material';
 import { AppConfigModule } from "./app-config.module";
 
 import { SDKBrowserModule } from "./shared/sdk/index";
@@ -29,6 +29,7 @@ import { UserApi } from "./shared/sdk/services";
     FormsModule,
     AppRoutingModule,
     MatButtonModule,
+    MatCardModule,
     AppConfigModule,
     HttpClientModule,
     SDKBrowserModule.forRoot(),

@@ -1,7 +1,13 @@
+
+<div layout="row">
+  <div flex>First item in row</div>
+  <div flex>Second item in row</div>
+</div>
+
 <div *ngIf="dataset">
   <h2>{{ dataset.title }} </h2>
 
-  <table style="width:500px">
+  <table style="width:400px">
     <tr>
       <th>DOI</th>
       <td><a href="{{ dataset.doi}}">{{ dataset.doi}}</a></td>
@@ -34,7 +40,7 @@
       <th> Size</th>
       <td> 5.1 GB </td>
     </tr>
-  </table>
+  </table> <img src="/assets/logo_banner.png" width="100" alt="ESS site">
 
   <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
 

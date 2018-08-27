@@ -4,6 +4,7 @@ import { Location } from "@angular/common";
 import { DatasetService } from "../dataset.service";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { PublishedData } from "../shared/sdk/models";
+import { MatCard} from '@angular/material';
 
 @Component({
   selector: "app-dataset-detail",
