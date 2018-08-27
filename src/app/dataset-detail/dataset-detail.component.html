@@ -1,8 +1,6 @@
 
-<div layout="row">
-  <div flex>First item in row</div>
-  <div flex>Second item in row</div>
-</div>
+<div fxLayout="row">
+  <div fxFlex="55">
 
 <div *ngIf="dataset">
   <h2>{{ dataset.title }} </h2>
@@ -40,21 +38,28 @@
       <th> Size</th>
       <td> 5.1 GB </td>
     </tr>
-  </table> <img src="/assets/logo_banner.png" width="100" alt="ESS site">
-
+  </table>
   <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
-
-
   <p>
     <b> Instructions: </b> Login with brightness username and password
   </p>
-
-  <div >
+   <div >
     <b>
       Abstract:
     </b>
-    {{dataset.abstract}}
+     This data was collected as part of BrightnESS, funded by the European Union
+     Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.
+     It consists of test data for the detector.
+  </div>
+  <button (click)="goBack()">go back</button>
+
+</div>
+    <div fxFlex="40">
+      <img src="/assets/example_image.png" width="100" alt="ESS site">
+    </div>
   </div>
 
-  <button (click)="goBack()">go back</button>
-</div>
+
+
+
+ </div>
