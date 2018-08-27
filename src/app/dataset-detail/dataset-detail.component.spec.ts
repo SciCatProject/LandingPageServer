@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DatasetsComponent } from "./datasets.component";
+import { DatasetDetailComponent } from "./dataset-detail.component";
 
 import { RouterTestingModule } from "@angular/router/testing";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
@@ -15,9 +15,9 @@ import { APP_CONFIG } from "../app-config.module";
 import { HttpClient } from "@angular/common/http";
 import { PublishedDataApi } from "../shared/sdk/services/custom";
 
-describe("DatasetsComponent", () => {
-  let component: DatasetsComponent;
-  let fixture: ComponentFixture<DatasetsComponent>;
+describe("DatasetDetailComponent", () => {
+  let component: DatasetDetailComponent;
+  let fixture: ComponentFixture<DatasetDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,7 +25,7 @@ describe("DatasetsComponent", () => {
         RouterTestingModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
-      declarations: [DatasetsComponent],
+      declarations: [DatasetDetailComponent],
       providers: [
         { provide: HttpClient, useClass: MockHttp },
         { provide: PublishedDataApi, useClass: MockPublishedDataApi },
@@ -37,7 +37,7 @@ describe("DatasetsComponent", () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatasetsComponent);
+    fixture = TestBed.createComponent(DatasetDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

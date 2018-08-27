@@ -4,9 +4,21 @@ export class MockHttp {
 }
 
 export class MockPublishedDataApi {
+  getDataset() {
+    return of([{ username: "admin" }]);
+  }
+
+  getDatasets() {
+    return of([{ username: "admin" }]);
+  }
 
 }
+
 export class MockDatasetService {
+  getDataset() {
+    return of([{ username: "admin" }]);
+  }
+
   getDatasets() {
     return of([{ username: "admin" }]);
   }
