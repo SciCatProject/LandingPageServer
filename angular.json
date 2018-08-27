@@ -106,7 +106,7 @@
                 }
               ]
             },
-            "dmscproduction": {
+            "dmscprod": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
