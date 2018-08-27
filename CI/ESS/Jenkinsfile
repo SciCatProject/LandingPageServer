@@ -16,7 +16,7 @@ node('docker') {
       sh "docker push dacat/landing:latest"
     }
   }
-  stage('Unit Test Catanie '){
+  stage('Unit Test Landing Page Server '){
     // unit tests require mongodb container
     //sh 'docker run  -t dacat/landing:latest npm run -- ng test --watch false --single-run true -v ./test:./test '
   }
