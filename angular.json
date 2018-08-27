@@ -166,8 +166,8 @@
             "development": {
               "browserTarget": "LandingPageServer:build:development"
             },
-            "dmscproduction": {
-              "browserTarget": "LandingPageServer:build:dmscproduction"
+            "dmscprod": {
+              "browserTarget": "LandingPageServer:build:dmscprod"
             },
             "production": {
               "browserTarget": "LandingPagerServer:build:production"
