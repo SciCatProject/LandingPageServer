@@ -1,4 +1,9 @@
 /* DatasetDetailComponent's private CSS styles */
+h2 {
+  text-align: right;
+  margin-left: 1px;
+}
+
 label {
   display: inline-block;
   width: 3em;
@@ -6,11 +11,13 @@ label {
   color: #607D8B;
   font-weight: bold;
 }
+
 input {
   height: 2em;
   font-size: 1em;
   padding-left: .4em;
 }
+
 button {
   margin-top: 20px;
   font-family: Arial;
@@ -18,26 +25,52 @@ button {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
-  cursor: pointer; cursor: hand;
+  cursor: pointer;
+  cursor: hand;
 }
+
 button:hover {
   background-color: #cfd8dc;
 }
+
 button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
 }
-table, th, td {
+
+table   {
+  width: 300px;
+  table-layout: fixed;
   border: 1px solid black;
   border-collapse: collapse;
+  font-size: 80%;
 }
-th{
-  text-align:left;
-  background-color:#d3d3d3;
+
+th {
+  width: 100px;
+  text-align: left;
+  background-color: #d3d3d3;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 80%;
 }
-download_button{
-  text-align:left;
-  background-color:#00ee00;
+
+td {
+  width: 200px;
+  text-align: left;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 80%;
+
+}
+
+download_button {
+  text-align: left;
+  background-color: #00ee00;
+}
+
+colgroup {
+  display: table-column-group;
 }
 

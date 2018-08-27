@@ -1,65 +1,70 @@
-
-<div fxLayout="row">
-  <div fxFlex="55">
-
 <div *ngIf="dataset">
+  <div fxLayout="column">
   <h2>{{ dataset.title }} </h2>
-
-  <table style="width:400px">
-    <tr>
-      <th>DOI</th>
-      <td><a href="{{ dataset.doi}}">{{ dataset.doi}}</a></td>
-    </tr>
-    <tr>
-      <th>Creator</th>
-      <td>{{ dataset.creator}}</td>
-    </tr>
-    <tr>
-      <th>Publisher</th>
-      <td>{{ dataset.publisher}}</td>
-    </tr>
-    <tr>
-      <th>Affiliation</th>
-      <td>{{ dataset.affiliation}}</td>
-    </tr>
-    <tr>
-      <th>Year</th>
-      <td>{{ dataset.publicationYear}}</td>
-    </tr>
-    <tr>
-      <th>Resource Type</th>
-      <td>NeXus HDF5 files</td>
-    </tr>
-    <tr>
-      <th>No. of datasets</th>
-      <td> 26 </td>
-    </tr>
-    <tr>
-      <th> Size</th>
-      <td> 5.1 GB </td>
-    </tr>
-  </table>
-  <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
-  <p>
-    <b> Instructions: </b> Login with brightness username and password
-  </p>
-   <div >
-    <b>
-      Abstract:
-    </b>
-     This data was collected as part of BrightnESS, funded by the European Union
-     Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.
-     It consists of test data for the detector.
   </div>
-  <button (click)="goBack()">go back</button>
+  <br>
+  <div fxLayout="row">
+    <div fxFlex="55">
 
-</div>
-    <div fxFlex="40">
-      <img src="/assets/example_image.png" width="100" alt="ESS site">
+
+      <table>
+        <tr>
+          <th>Creator</th>
+          <td>{{ dataset.creator}}</td>
+        </tr>
+        <tr>
+          <th>Publisher</th>
+          <td>{{ dataset.publisher}}</td>
+        </tr>
+        <tr>
+          <th>Affiliation</th>
+          <td>{{ dataset.affiliation}}</td>
+        </tr>
+        <tr>
+          <th>Year</th>
+          <td>{{ dataset.publicationYear}}</td>
+        </tr>
+        <tr>
+          <th>Resource Type</th>
+          <td>NeXus HDF5 files</td>
+        </tr>
+        <tr>
+          <th>No. of datasets</th>
+          <td> 26</td>
+        </tr>
+        <tr>
+          <th> Size</th>
+          <td> 5.1 GB</td>
+        </tr>
+      </table>
+
+      <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
+
     </div>
+
+    <div fxFlex="40">
+      <img src="/assets/example_image.png" width="150" alt="data thumbnail">
+    </div>
+
+
   </div>
+  <div fxLayout="column">
 
 
+    <b> DOI: </b> <a href="{{ dataset.doi}} "> {{dataset.doi}}</a>
+    <p>
+      <b> Instructions: </b> Login with brightness username and password
+    </p>
+    <div>
+      <b>
+        Abstract:
+      </b>
+      This data was collected as part of BrightnESS, funded by the European Union
+      Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.
+      It consists of test data for the detector.
+    </div>
+    <button (click)="goBack()" style="width:100px">go back</button>
 
 
- </div>
+  </div>
+</div>

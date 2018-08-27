@@ -3,11 +3,13 @@ h1 {
   font-size: 1.2em;
   color: #0094ca;
   margin-bottom: 0;
+  margin-left: 1px;
 }
 h2 {
   font-size: 2em;
   margin-top: 0;
   padding-top: 0;
+  margin-left: 1px;
 }
 nav a {
   padding: 5px 10px;
