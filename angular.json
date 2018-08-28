@@ -64,23 +64,6 @@
                 }
               ]
             },
-            "dmscprod": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dmscprod.ts"
-                }
-              ]
-            },
             "maxiv-prod": {
               "optimization": true,
               "outputHashing": "all",
@@ -174,9 +157,6 @@
             "development": {
               "browserTarget": "LandingPageServer:build:development"
             },
-            "dmscprod": {
-              "browserTarget": "LandingPageServer:build:dmscprod"
-            },
             "production": {
               "browserTarget": "LandingPageServer:build:production"
             }
@@ -239,6 +219,38 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.dmsc.ts"
+                }
+              ]
+            },
+            "maxiv-prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.maxiv.prod.ts"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ]
             },
