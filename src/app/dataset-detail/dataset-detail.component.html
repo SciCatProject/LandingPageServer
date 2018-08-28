@@ -1,6 +1,6 @@
 <div *ngIf="dataset">
   <div fxLayout="column">
-  <h2>{{ dataset.title }} </h2>
+    <h2>{{ dataset.title }} </h2>
   </div>
   <br>
   <div fxLayout="row">
@@ -26,15 +26,15 @@
         </tr>
         <tr>
           <th>Resource Type</th>
-          <td>NeXus HDF5 files</td>
+          <td> {{ dataset.resourceType }}</td>
         </tr>
         <tr>
           <th>No. of datasets</th>
-          <td> 25</td>
+          <td> {{ dataset.numberOfFiles }}</td>
         </tr>
         <tr>
           <th> Size</th>
-          <td> 5.1 GB</td>
+          <td> {{ dataset.sizeOfArchive}}</td>
         </tr>
       </table>
 
@@ -59,9 +59,7 @@
       <b>
         Abstract:
       </b>
-      This data was collected as part of BrightnESS, funded by the European Union
-      Framework Programme for Research and Innovation Horizon 2020, under grant agreement 676548.
-      It consists of test data for the detector.
+      {{ dataset.abstract}}
     </div>
     <button (click)="goBack()" style="width:100px">go back</button>
 
