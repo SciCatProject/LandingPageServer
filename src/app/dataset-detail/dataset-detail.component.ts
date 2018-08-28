@@ -14,6 +14,7 @@ export class DatasetDetailComponent implements OnInit {
   @Input()
   dataset: PublishedData;
   trustedUrl: SafeUrl;
+  doi: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,8 +29,11 @@ export class DatasetDetailComponent implements OnInit {
 
   getDataset(): void {
     const id: string = this.route.snapshot.params.id;
+    console.log("gm22 ", id);
+    console.log("gm22 ", id);
     this.datasetService.getDataset(id).subscribe(dataset => {
       console.log("gm get dataset");
+      this.doi = decodeURIComponent(dataset.doi);
       this.dataset = dataset;
     });
     this.datasetService

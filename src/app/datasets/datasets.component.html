@@ -2,9 +2,9 @@
 
 
 <ul class="heroes">
-  <li *ngFor="let dataset of datasets">
+  <li *ngFor="let dataset of doi_list">
     <a routerLink="/detail/{{dataset.doi}}">
-       {{dataset.doi}}
+       {{dataset.value}}
     </a>
   </li>
 </ul>

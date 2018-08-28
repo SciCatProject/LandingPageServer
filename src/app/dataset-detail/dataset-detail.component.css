@@ -65,7 +65,7 @@ td {
 
 }
 
-download_button {
+.e2e-trusted-url {
   text-align: left;
   background-color: #00ee00;
 }
