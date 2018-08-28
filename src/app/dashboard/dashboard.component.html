@@ -1,9 +1,9 @@
 <h3>ESS Public Dataset Access</h3>
 <div class="grid grid-pad">
   <a *ngFor="let dataset of datasets"
-     routerLink="/detail/{{dataset.id}}">
+     routerLink="/detail/{{dataset.doi}}">
     <div class="module dataset">
-      {{dataset.id}}
+      {{dataset.doi}}
     </div>
   </a>
 </div>
