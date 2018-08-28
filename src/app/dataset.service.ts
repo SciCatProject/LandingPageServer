@@ -67,7 +67,7 @@ export class DatasetService {
 
     return this.rds.create(dataset).pipe(
       tap((dataset1: PublishedData) =>
-        this.log(`added hero w/ id=${dataset1.id}`)
+        this.log(`added hero w/ id=${dataset1.doi}`)
       ),
       catchError(this.handleError<PublishedData>("addDataset"))
     );
@@ -75,7 +75,7 @@ export class DatasetService {
 
   /** DELETE: delete the dataset from the server */
   deleteDataset(dataset: PublishedData | string): Observable<PublishedData> {
-    const id = typeof dataset === "string" ? dataset : dataset.id;
+    const id = typeof dataset === "string" ? dataset : dataset.doi;
 
     return this.rds.deleteById(id);
   }
@@ -83,7 +83,7 @@ export class DatasetService {
   /** PUT: update the dataset on the server */
   updateDataset(dataset: PublishedData): Observable<any> {
     return this.rds.patchOrCreate(dataset).pipe(
-      tap(_ => this.log(`updated hero id=${dataset.id}`)),
+      tap(_ => this.log(`updated hero id=${dataset.doi}`)),
       catchError(this.handleError<any>("updateDataset"))
     );
   }
