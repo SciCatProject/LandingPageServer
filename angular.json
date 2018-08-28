@@ -95,6 +95,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.maxiv.prod.ts"
+                },
+                {
+                  "replace": "src/assets/site_banner.png",
+                  "with": "CI/MAXIV/maxivbanner.png"
                 }
               ]
             },
@@ -137,6 +141,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/assets/site_banner.png",
+                  "with": "CI/PSI/psibanner.png"
                 }
               ]
             }
@@ -170,7 +178,7 @@
               "browserTarget": "LandingPageServer:build:dmscprod"
             },
             "production": {
-              "browserTarget": "LandingPagerServer:build:production"
+              "browserTarget": "LandingPageServer:build:production"
             }
           }
         },

@@ -10,6 +10,7 @@ export interface PublishedDataInterface {
   "title": string;
   "url": string;
   "abstract": string;
+  "thumbnail": string;
   "resourceType": string;
   "numberOfFiles": number;
   "sizeOfArchive": number;
@@ -27,6 +28,7 @@ export class PublishedData implements PublishedDataInterface {
   "title": string;
   "url": string;
   "abstract": string;
+  "thumbnail": string;
   "resourceType": string;
   "numberOfFiles": number;
   "sizeOfArchive": number;
@@ -96,6 +98,10 @@ export class PublishedData implements PublishedDataInterface {
         },
         "abstract": {
           name: 'abstract',
+          type: 'string'
+        },
+        "thumbnail": {
+          name: 'thumbnail',
           type: 'string'
         },
         "resourceType": {
