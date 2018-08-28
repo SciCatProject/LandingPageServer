@@ -67,7 +67,12 @@ td {
 
 .e2e-trusted-url {
   text-align: left;
+  height: 30px;
   background-color: #00ee00;
+}
+
+.freeform_metadata {
+ font-size: 80%;
 }
 
 colgroup {
