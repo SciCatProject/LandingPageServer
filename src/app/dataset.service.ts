@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable, of } from "rxjs";
 
-import { catchError, map, tap } from "rxjs/operators";
+import { catchError, tap } from "rxjs/operators";
 
 import { PublishedDataApi } from "./shared/sdk/services/custom";
 import { MessageService } from "./message.service";
@@ -17,15 +17,13 @@ const httpOptions = {
 @Injectable()
 export class DatasetService {
   limit = 1000;
-  private datasetsUrl = "api/datasets"; // URL to web api
-
   detailFilter = {
     limit: this.limit
   };
-
   filter = {
     limit: this.limit
   };
+  private datasetsUrl = "api/datasets"; // URL to web api
 
   constructor(
     private rds: PublishedDataApi,
@@ -55,8 +53,7 @@ export class DatasetService {
       // if not search term, return empty dataset array.
       return of([]);
     }
-    return this.rds
-      .find();
+    return this.rds.find();
   }
 
   //////// Save methods //////////
