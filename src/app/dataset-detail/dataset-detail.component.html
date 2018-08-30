@@ -42,7 +42,7 @@
 
     </div>
 
-    <div fxFlex="40" *ngIf="dataset.thumbnail as value" >
+    <div fxFlex="40" *ngIf="dataset.thumbnail as value">
       <img src="{{ value}}" width="150" alt="data thumbnail">
     </div>
 
@@ -51,7 +51,7 @@
   <div class="freeform_metadata" fxLayout="column">
 
 
-    <b> DOI: </b> <a href="{{ dataset.doi}} "> {{doi}}</a>
+    <b> DOI: </b> <a href="{{ doi_link}} "> {{doi}}</a>
     <p>
       <b> Instructions: </b> Login with brightness username and password
     </p>

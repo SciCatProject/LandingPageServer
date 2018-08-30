@@ -15,6 +15,7 @@ export class DatasetDetailComponent implements OnInit {
   dataset: PublishedData;
   trustedUrl: SafeUrl;
   doi: string;
+  doi_link: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,14 +35,10 @@ export class DatasetDetailComponent implements OnInit {
     this.datasetService.getDataset(id).subscribe(dataset => {
       console.log("gm get dataset");
       this.doi = decodeURIComponent(dataset.doi);
+      this.doi_link = "https://doi.org/" + this.doi;
+      this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(dataset.url);
       this.dataset = dataset;
     });
-    this.datasetService
-      .getDataset(id)
-      .subscribe(
-        dataset =>
-          (this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(dataset.url))
-      );
   }
 
   goBack(): void {

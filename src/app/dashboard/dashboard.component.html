@@ -1,11 +1,12 @@
 <h3> {{subtitle }} </h3>
 <div class="grid grid-pad">
-  <a *ngFor="let dataset of datasets"
-     routerLink="/detail/{{dataset.doi}}">
-    <div class="module dataset">
-      {{dataset.doi}}
-    </div>
-  </a>
+  <ul class="heroes">
+    <li *ngFor="let dataset of doi_list">
+      <a routerLink="/detail/{{dataset.doi}}">
+        {{dataset.value}}
+      </a>
+    </li>
+  </ul>
 </div>
 
 <dataset-search></dataset-search>
