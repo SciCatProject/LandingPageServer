@@ -19,7 +19,7 @@ input {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 10px;
   font-family: Arial;
   background-color: #eee;
   border: none;
@@ -70,6 +70,13 @@ td {
   height: 30px;
   background-color: #00ee00;
 }
+
+.e2e-data-url {
+  text-align: left;
+  height: 30px;
+  background-color: #0000ee;
+}
+
 
 .freeform_metadata {
  font-size: 80%;
