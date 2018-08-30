@@ -11,7 +11,7 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = "ESS Public Data Repository";
+  title = "Public Data Repository";
   us: UserApi;
 
   constructor(

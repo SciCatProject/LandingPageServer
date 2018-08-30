@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { PublishedData } from "../shared/sdk/models";
 import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { APP_CONFIG, AppConfig } from "../app-config.module";
 
 @Component({
   selector: "app-dashboard",
@@ -10,11 +11,15 @@ import { PublishedDataApi } from "../shared/sdk/services/custom";
 })
 export class DashboardComponent implements OnInit {
   datasets: PublishedData[] = [];
+  subtitle: string;
 
   constructor(
     private datasetService: DatasetService,
-    private publishedDataApi: PublishedDataApi
+    @Inject(APP_CONFIG) private appConfig: AppConfig
   ) {
+    const facility = this.appConfig.facility;
+    this.subtitle = facility.toUpperCase() + ' Public Dataset Access';
+
   }
 
   ngOnInit() {

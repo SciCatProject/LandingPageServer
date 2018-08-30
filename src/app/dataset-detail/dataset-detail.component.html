@@ -8,33 +8,33 @@
 
 
       <table>
-        <tr>
+        <tr *ngIf="dataset.creator as value">
           <th>Creator</th>
-          <td>{{ dataset.creator}}</td>
+          <td> {{ value }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="dataset.publisher as value">
           <th>Publisher</th>
-          <td>{{ dataset.publisher}}</td>
+          <td> {{ value }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="dataset.affiliation as value">
           <th>Affiliation</th>
-          <td>{{ dataset.affiliation}}</td>
+          <td> {{ value }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="dataset.publicationYear as value">
           <th>Year</th>
-          <td>{{ dataset.publicationYear}}</td>
+          <td> {{ value }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="dataset.resourceType as value">
           <th>Resource Type</th>
-          <td> {{ dataset.resourceType }}</td>
+          <td> {{ value }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="dataset.numberOfFiles as value">
           <th>No. of datasets</th>
-          <td> {{ dataset.numberOfFiles }}</td>
+          <td> {{ value }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="dataset.sizeOfArchive as value">
           <th> Size</th>
-          <td> {{ dataset.sizeOfArchive}}</td>
+          <td> {{ value }}</td>
         </tr>
       </table>
 
@@ -42,8 +42,8 @@
 
     </div>
 
-    <div fxFlex="40">
-      <img src="/assets/example_image.png" width="150" alt="data thumbnail">
+    <div fxFlex="40" *ngIf="dataset.thumbnail as value" >
+      <img src="{{ value}}" width="150" alt="data thumbnail">
     </div>
 
 
