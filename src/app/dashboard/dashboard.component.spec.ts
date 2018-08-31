@@ -8,6 +8,7 @@ import { DatasetSearchComponent } from "../dataset-search/dataset-search.compone
 import { MockDatasetService, MockPublishedDataApi } from "../MockStubs";
 import { DatasetService } from "../dataset.service";
 import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { APP_CONFIG } from "../app-config.module";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -19,7 +20,13 @@ describe("DashboardComponent", () => {
       declarations: [DashboardComponent, DatasetSearchComponent],
       providers: [
         { provide: PublishedDataApi, useClass: MockPublishedDataApi },
-        { provide: DatasetService, useClass: MockDatasetService }
+        { provide: DatasetService, useClass: MockDatasetService },
+        {
+          provide: APP_CONFIG,
+          useValue: {
+            facility: "ESS"
+          }
+        }
       ]
     }).compileComponents();
   }));
