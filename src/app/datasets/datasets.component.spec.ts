@@ -14,6 +14,7 @@ import { DatasetService } from "../dataset.service";
 import { APP_CONFIG } from "../app-config.module";
 import { HttpClient } from "@angular/common/http";
 import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 
 describe("DatasetsComponent", () => {
   let component: DatasetsComponent;
@@ -23,6 +24,7 @@ describe("DatasetsComponent", () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        NgxDatatableModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
       declarations: [DatasetsComponent],
