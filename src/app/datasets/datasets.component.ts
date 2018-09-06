@@ -64,7 +64,8 @@ export class DatasetsComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private datasetService: DatasetService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getDatasets();
@@ -86,15 +87,6 @@ export class DatasetsComponent implements OnInit {
       });
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) {
-      return;
-    }
-    this.datasetService.addDataset(name).subscribe(dataset => {
-      this.datasets.push(dataset);
-    });
-  }
 
   delete(dataset: PublishedData): void {
     this.datasetService.deleteDataset(dataset).subscribe(() => {
@@ -102,7 +94,7 @@ export class DatasetsComponent implements OnInit {
     });
   }
 
-  onSelect(event ) {
-    this.router.navigateByUrl("/detail/" + encodeURIComponent(this.dataset.doi));
+  onSelect(event) {
+    this.router.navigateByUrl("/detail/" + encodeURIComponent(encodeURIComponent(this.dataset.doi)));
   }
 }
