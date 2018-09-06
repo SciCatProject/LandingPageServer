@@ -20,14 +20,13 @@ describe("DashboardComponent", () => {
       declarations: [DashboardComponent, DatasetSearchComponent],
       providers: [
         { provide: PublishedDataApi, useClass: MockPublishedDataApi },
+        { provide: DatasetService, useClass: MockDatasetService },
         {
           provide: APP_CONFIG,
           useValue: {
-            disabledDatasetColumns: [],
             facility: "ESS"
           }
-        },
-        { provide: DatasetService, useClass: MockDatasetService }
+        }
       ]
     }).compileComponents();
   }));
