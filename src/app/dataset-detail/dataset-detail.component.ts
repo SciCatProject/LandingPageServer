@@ -11,6 +11,12 @@ import { PublishedData } from "../shared/sdk/models";
   styleUrls: ["./dataset-detail.component.css"]
 })
 export class DatasetDetailComponent implements OnInit {
+  schema = {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    name: "angular.io",
+    url: "https://angular.io"
+  };
   @Input()
   dataset: PublishedData;
   trustedUrl: SafeUrl;
@@ -36,7 +42,9 @@ export class DatasetDetailComponent implements OnInit {
       this.doi = decodeURIComponent(dataset.doi);
       this.doi_link = "https://doi.org/" + this.doi;
       this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(dataset.url);
-      this.dataUrl = this.sanitizer.bypassSecurityTrustUrl("https://github.com/ess-dmsc/ess_file_formats/wiki");
+      this.dataUrl = this.sanitizer.bypassSecurityTrustUrl(
+        "https://github.com/ess-dmsc/ess_file_formats/wiki"
+      );
       this.dataset = dataset;
     });
   }

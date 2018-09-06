@@ -33,6 +33,7 @@
     "@angular/upgrade": "^6.1.7",
     "@nguniversal/express-engine": "^6.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.1.0",
+    "@ngx-lite/json-ld": "^0.4.2",
     "@swimlane/ngx-datatable": "^13.1.0",
     "angular-in-memory-web-api": "^0.6.1",
     "core-js": "^2.5.4",
