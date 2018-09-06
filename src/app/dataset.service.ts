@@ -11,7 +11,7 @@ import { MessageService } from "./message.service";
 import { PublishedData } from "./shared/sdk/models";
 
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
+  headers: new HttpHeaders({"Content-Type": "application/json"})
 };
 
 @Injectable()
@@ -31,7 +31,7 @@ export class DatasetService {
     private messageService: MessageService,
     @Optional()
     @Inject(APP_BASE_HREF)
-    origin: string
+      origin: string
   ) {
     this.datasetsUrl = `${origin}${this.datasetsUrl}`;
   }
@@ -39,7 +39,7 @@ export class DatasetService {
   /** GET datasets from the server */
   getDatasets(): Observable<PublishedData[]> {
     console.log("gm get datasets");
-    return this.rds.find();
+    return this.rds.find( {limit: 5});
   }
 
   /** GET dataset by id. Will 404 if id not found */
@@ -60,7 +60,7 @@ export class DatasetService {
 
   /** POST: add a new dataset to the server */
   addDataset(name: string): Observable<PublishedData> {
-    const dataset = { name };
+    const dataset = {name};
 
     return this.rds.create(dataset).pipe(
       tap((dataset1: PublishedData) =>
