@@ -39,7 +39,7 @@ export class DatasetService {
   /** GET datasets from the server */
   getDatasets(): Observable<PublishedData[]> {
     console.log("gm get datasets");
-    return this.rds.find();
+    return this.rds.find({ limit: 5 });
   }
 
   /** GET dataset by id. Will 404 if id not found */
@@ -57,18 +57,6 @@ export class DatasetService {
   }
 
   //////// Save methods //////////
-
-  /** POST: add a new dataset to the server */
-  addDataset(name: string): Observable<PublishedData> {
-    const dataset = { name };
-
-    return this.rds.create(dataset).pipe(
-      tap((dataset1: PublishedData) =>
-        this.log(`added hero w/ id=${dataset1.doi}`)
-      ),
-      catchError(this.handleError<PublishedData>("addDataset"))
-    );
-  }
 
   /** DELETE: delete the dataset from the server */
   deleteDataset(dataset: PublishedData | string): Observable<PublishedData> {
