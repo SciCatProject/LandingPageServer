@@ -3,6 +3,9 @@ import { of } from "rxjs";
 export class MockHttp {
 }
 
+export class MockNgx {
+}
+
 export class MockPublishedDataApi {
   getDataset() {
     return of([{ username: "admin" }]);
