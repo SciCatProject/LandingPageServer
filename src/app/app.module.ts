@@ -19,6 +19,7 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { SDKBrowserModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
 import { isPlatformBrowser } from "@angular/common";
+import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { isPlatformBrowser } from "@angular/common";
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    NgxJsonLdModule,
     MatCardModule,
     NgxDatatableModule,
     SDKBrowserModule.forRoot()
