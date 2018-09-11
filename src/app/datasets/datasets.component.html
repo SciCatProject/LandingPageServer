@@ -1,28 +1,6 @@
 <h2>Dataset List</h2>
 
 
-<div>
-  <ngx-datatable
-    class="bootstrap"
-    [rows]="rows"
-    [columns]="columns"
-    [columnMode]="'force'"
-    [footerHeight]="50"
-    [rowHeight]="50"
-    [limit]="30"
-    [selectionType]="'single'"
-    (select)='onSelect($event )'
-    [scrollbarH]="true">
-    <ngx-datatable-column prop="doi" [width]="300"></ngx-datatable-column>
-
-    <ngx-datatable-column prop="creator"></ngx-datatable-column>
-    <ngx-datatable-column prop="publisher"></ngx-datatable-column>
-    <ngx-datatable-column prop="affiliation"></ngx-datatable-column>
-    <ngx-datatable-column prop="publicationYear"></ngx-datatable-column>
-    <ngx-datatable-column prop="image"></ngx-datatable-column>
-
-  </ngx-datatable>
-</div>
 
 <ul class="heroes">
   <li *ngFor="let dataset of doi_list">
