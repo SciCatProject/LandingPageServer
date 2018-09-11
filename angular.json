@@ -212,6 +212,31 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
+              },
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-16x16.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-32x32.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "mstile-150x150.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "safari-pinned-tab.svg",
+                "input": "src",
+                "output": "/"
               }
             ]
           }
