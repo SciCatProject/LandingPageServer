@@ -37,6 +37,7 @@
     "@swimlane/ngx-datatable": "^13.1.0",
     "angular-in-memory-web-api": "^0.6.1",
     "core-js": "^2.5.4",
+    "filesize": "^3.6.1",
     "rxjs": "^6.3.2",
     "socket.io-client": "^2.1.1",
     "zone.js": "^0.8.24"

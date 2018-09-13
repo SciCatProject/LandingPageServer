@@ -19,6 +19,7 @@ import { SDKBrowserModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
 import { isPlatformBrowser } from "@angular/common";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
+import { FileSizePipe } from "./filesize.pipe";
 
 @NgModule({
   imports: [
@@ -40,10 +41,12 @@ import { NgxJsonLdModule } from "@ngx-lite/json-ld";
     DatasetDetailComponent,
     DatasetSearchComponent,
     DatasetsComponent,
+    FileSizePipe,
     MessagesComponent
   ],
   providers: [DatasetService, UserApi, MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FileSizePipe]
 })
 export class AppModule {
   constructor(
