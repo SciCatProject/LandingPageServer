@@ -2,7 +2,7 @@
 <div class="grid grid-pad">
   <ul class="heroes">
     <li *ngFor="let dataset of doi_list">
-      <a routerLink="/detail/{{dataset.doi}}">
+      <a href="/detail/{{ dataset.doi  }}">
         {{dataset.value}}
       </a>
     </li>

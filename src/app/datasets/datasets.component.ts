@@ -6,6 +6,24 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
 
+import { Pipe, PipeTransform } from "@angular/core";
+
+@Pipe({
+  name: "encodeURI"
+})
+export class EncodeURI implements PipeTransform {
+  public transform(uris: any, attribute: string) {
+    if (uris === undefined) {
+      return "";
+    }
+
+    for (let item of uris) {
+      item[attribute] = encodeURI(String(item[attribute]));
+    }
+    return uris;
+  }
+}
+
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
@@ -35,14 +53,12 @@ export class DatasetsComponent implements OnInit {
   doi_list: MyType[];
   dataset: PublishedDataType;
 
-
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     private http: HttpClient,
     private router: Router,
     private datasetService: DatasetService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.getDatasets();
@@ -53,6 +69,7 @@ export class DatasetsComponent implements OnInit {
       .getDatasets()
       .pipe(
         map(res => {
+          console.log(res);
           return res.map(x => ({
             doi: encodeURIComponent(x.doi),
             value: x.doi
@@ -61,9 +78,9 @@ export class DatasetsComponent implements OnInit {
       )
       .subscribe(datasets => {
         this.doi_list = datasets;
+        console.log("gm22", this.doi_list);
       });
   }
-
 
   delete(dataset: PublishedData): void {
     this.datasetService.deleteDataset(dataset).subscribe(() => {
@@ -72,6 +89,6 @@ export class DatasetsComponent implements OnInit {
   }
 
   onSelect(event) {
-    this.router.navigateByUrl("/detail/" + encodeURIComponent(encodeURIComponent(this.dataset.doi)));
+    this.router.navigateByUrl("/detail/" + this.dataset.doi);
   }
 }

@@ -44,7 +44,7 @@ export class DatasetService {
 
   /** GET dataset by id. Will 404 if id not found */
   getDataset(id: string): Observable<PublishedData> {
-    return this.rds.findById(id, this.detailFilter);
+    return this.rds.findById(encodeURIComponent(id), this.detailFilter);
   }
 
   /* GET datasets whose name contains search term */
