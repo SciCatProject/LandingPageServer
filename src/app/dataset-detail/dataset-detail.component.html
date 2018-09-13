@@ -35,7 +35,7 @@
         </tr>
         <tr *ngIf="dataset.sizeOfArchive as value">
           <th> Size</th>
-          <td> {{ value }}</td>
+          <td> {{ value | filesize  }}</td>
         </tr>
       </table>
 
