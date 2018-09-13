@@ -16,6 +16,7 @@ import { APP_CONFIG } from "../app-config.module";
 import { HttpClient } from "@angular/common/http";
 import { PublishedDataApi } from "../shared/sdk/services/custom";
 import { NgxJsonLdModule} from "@ngx-lite/json-ld";
+import { FileSizePipe} from "../filesize.pipe";
 
 describe("DatasetDetailComponent", () => {
   let component: DatasetDetailComponent;
@@ -27,7 +28,7 @@ describe("DatasetDetailComponent", () => {
         RouterTestingModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
-      declarations: [DatasetDetailComponent],
+      declarations: [DatasetDetailComponent, FileSizePipe],
       providers: [
         { provide: HttpClient, useClass: MockHttp },
         { provide: PublishedDataApi, useClass: MockPublishedDataApi },

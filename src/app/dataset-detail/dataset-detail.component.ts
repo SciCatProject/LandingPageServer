@@ -5,6 +5,7 @@ import { DatasetService } from "../dataset.service";
 import { DomSanitizer, SafeUrl, SafeHtml } from "@angular/platform-browser";
 import { PublishedData } from "../shared/sdk/models";
 import { Observable, of } from "rxjs";
+import { FileSizePipe} from "../filesize.pipe";
 
 @Component({
   selector: "app-dataset-detail",
