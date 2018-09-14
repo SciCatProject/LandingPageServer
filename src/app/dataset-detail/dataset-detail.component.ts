@@ -37,15 +37,28 @@ export class DatasetDetailComponent implements OnInit {
     console.log("gm id", id);
     this.datasetService.getDataset(id).subscribe(dataset => {
       console.log("gm get dataset", dataset.doi);
-      this.doi = dataset.doi.replace("%2F", "/");
+      this.doi = dataset.doi;
       console.log("gm get dataset", this.doi);
       this.doi_link = "https://doi.org/" + this.doi;
       this.schema$ = of({
         "@context": "http://schema.org",
         "@type": "Dataset",
         "@id": this.doi_link,
+        identifier: {
+          "@type": "PropertyValue",
+          propertyID: "doi",
+          value: this.doi_link
+        },
+        additionalType: dataset.resourceType,
         name: dataset.title,
         description: dataset.abstract,
+        keywords: "neutron",
+        datePublished: dataset.publicationYear,
+        schemaVersion: "http://datacite.org/schema/kernel-4",
+        publisher: {
+          "@type": "Organization",
+          name: dataset.publisher
+        },
         includedInDataCatalog: {
           "@type": "DataCatalog",
           name: "scicat.esss.se"
