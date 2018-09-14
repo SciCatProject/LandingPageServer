@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
       .pipe(
         map(res => {
           return res.map(x => ({
-            doi: encodeURIComponent(x.doi),
+            doi: x.doi.replace("/", "%2F").replace("/", "%2F"),
             value: x.doi
           }));
         })

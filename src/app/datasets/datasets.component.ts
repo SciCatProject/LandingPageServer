@@ -53,7 +53,7 @@ export class DatasetsComponent implements OnInit {
         map(res => {
           console.log(res);
           return res.map(x => ({
-            doi: encodeURIComponent(x.doi),
+            doi: x.doi.replace("/", "%2F").replace("/", "%2F"),
             value: x.doi
           }));
         })
