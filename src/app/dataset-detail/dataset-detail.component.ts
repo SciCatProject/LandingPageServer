@@ -79,7 +79,7 @@ export class DatasetDetailComponent implements OnInit {
       this.jsonLD = this.getSafeHTML(this.schema$);
       this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(dataset.url);
       this.dataUrl = this.sanitizer.bypassSecurityTrustUrl(
-        "https://github.com/ess-dmsc/ess_file_formats/wiki"
+        dataset.dataDescription
       );
       this.dataset = dataset;
     });
