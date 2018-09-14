@@ -2,10 +2,9 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { DatasetService } from "../dataset.service";
-import { DomSanitizer, SafeUrl, SafeHtml } from "@angular/platform-browser";
+import { DomSanitizer, SafeHtml, SafeUrl } from "@angular/platform-browser";
 import { PublishedData } from "../shared/sdk/models";
 import { Observable, of } from "rxjs";
-import { FileSizePipe} from "../filesize.pipe";
 
 @Component({
   selector: "app-dataset-detail",
@@ -35,9 +34,11 @@ export class DatasetDetailComponent implements OnInit {
 
   getDataset(): void {
     const id: string = this.route.snapshot.params.id;
+    console.log("gm id", id);
     this.datasetService.getDataset(id).subscribe(dataset => {
-      console.log("gm get dataset");
-      this.doi = decodeURIComponent(dataset.doi);
+      console.log("gm get dataset", dataset.doi);
+      this.doi = dataset.doi.replace("%2F", "/");
+      console.log("gm get dataset", this.doi);
       this.doi_link = "https://doi.org/" + this.doi;
       this.schema$ = of({
         "@context": "http://schema.org",
@@ -47,7 +48,7 @@ export class DatasetDetailComponent implements OnInit {
         description: dataset.abstract,
         includedInDataCatalog: {
           "@type": "DataCatalog",
-          "name": "scicat.esss.se"
+          name: "scicat.esss.se"
         },
         distribution: [
           {
