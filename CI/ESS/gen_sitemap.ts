@@ -1,5 +1,8 @@
 "use strict";
 
+import { range } from "rxjs";
+import { stringify } from "querystring";
+
 class GenerateSiteMap {
   header: string;
   footer: string;
@@ -10,25 +13,38 @@ class GenerateSiteMap {
   tags: string[];
   url_frag: string;
 
+  pad(num: number, size: number): string {
+    let s = num + "";
+    while (s.length < size) {
+      s = "0" + s;
+    }
+    return s;
+  }
+
   build_urls() {
-    this.tags = ["NMX0001", "NMX0002", "NMX0003", "NMX0004", "NMX0005"];
-    for (const tag of this.tags) {
-      console.log(tag);
+    this.urls = [];
+    for (let _i = 0; _i < 15; _i++) {
+      if (_i) {
+        const tag = "NMX" + this.pad(_i, 4);
+        this.urls.push(this.url_frag + tag);
+      }
     }
   }
 
   constructor() {
     this.url_frag = "https://doi.esss.se/detail/10.17199%252FBRIGHTNESS%252F";
-    this.urls = [
-      "https://doi.esss.se/detail/10.17199%252FBRIGHTNESS%252FNMX0001",
-      "https://doi.esss.se/detail/10.17199%252FBRIGHTNESS%252FNMX0002"
-    ];
+    this.build_urls();
     this.header =
       "<?xml version='1.0' encoding='UTF-8'?>\n" +
       "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'> \n";
     this.url_beginning = "  <url>\n" + "    <loc>";
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = this.pad(today.getMonth(), 2);
+    const date = this.pad(today.getDate(), 2);
+    const formatted_date = year + "-" + month + "-" + date;
     this.url_ending =
-      "</loc>\n" + "    <lastmod>2018-06-04</lastmod>\n </url>\n";
+      "</loc>\n" + "    <lastmod>" + formatted_date + "</lastmod>\n </url>\n";
     this.footer = "</urlset>";
   }
 
