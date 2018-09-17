@@ -1,11 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-
-import { Observable, Subject } from "rxjs";
-
-import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
-
 import { DatasetService } from "../dataset.service";
+import { Observable, Subject } from "rxjs";
 import { PublishedData } from "../shared/sdk/models";
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-dataset-search",
