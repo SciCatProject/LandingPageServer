@@ -23,9 +23,17 @@ class GenerateSiteMap {
 
   build_urls() {
     this.urls = [];
-    for (let _i = 0; _i < 15; _i++) {
+    this.extracted(43, "NMX");
+    this.extracted(15, "MG");
+    this.extracted(47, "MB");
+    this.extracted(15, "SONDE");
+    this.extracted(30, "V20");
+  }
+
+  private extracted(num: number, prefix: string) {
+    for (let _i = 1; _i < num; _i++) {
       if (_i) {
-        const tag = "NMX" + this.pad(_i, 4);
+        const tag = prefix + this.pad(_i, 4);
         this.urls.push(this.url_frag + tag);
       }
     }
