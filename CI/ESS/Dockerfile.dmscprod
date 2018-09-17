@@ -36,5 +36,6 @@ ARG LB_API_VERSION=''
 RUN ng build --configuration=dmscprod  && ng run LandingPageServer:server:dmscprod && npm run webpack:server
 
 WORKDIR /landing/dist/browser
+COPY CI/ESS/google43e14584df796f63.html /landing/dist/browser
 EXPOSE 8080
 CMD ["http-server"]

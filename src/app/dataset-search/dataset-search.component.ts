@@ -8,7 +8,7 @@ import { DatasetService } from "../dataset.service";
 import { PublishedData } from "../shared/sdk/models";
 
 @Component({
-  selector: "dataset-search",
+  selector: "app-dataset-search",
   templateUrl: "./dataset-search.component.html",
   styleUrls: ["./dataset-search.component.css"]
 })

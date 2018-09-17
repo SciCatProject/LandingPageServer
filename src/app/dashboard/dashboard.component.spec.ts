@@ -38,6 +38,7 @@ describe("DashboardComponent", () => {
   });
 
   it("should be created", () => {
+    console.log ("should be created");
     expect(component).toBeTruthy();
   });
 });

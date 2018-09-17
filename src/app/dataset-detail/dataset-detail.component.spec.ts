@@ -1,22 +1,20 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
+import { APP_CONFIG } from "../app-config.module";
 import { DatasetDetailComponent } from "./dataset-detail.component";
-
-import { RouterTestingModule } from "@angular/router/testing";
-import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { DatasetService } from "../dataset.service";
+import { FileSizePipe } from "../filesize.pipe";
+import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
+import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import {
   MockDatasetService,
   MockHttp,
   MockNgx,
   MockPublishedDataApi
 } from "../MockStubs";
-import { DatasetService } from "../dataset.service";
-import { APP_CONFIG } from "../app-config.module";
-import { HttpClient } from "@angular/common/http";
+import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { PublishedDataApi } from "../shared/sdk/services/custom";
-import { NgxJsonLdModule} from "@ngx-lite/json-ld";
-import { FileSizePipe} from "../filesize.pipe";
+import { RouterTestingModule } from "@angular/router/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 describe("DatasetDetailComponent", () => {
   let component: DatasetDetailComponent;
