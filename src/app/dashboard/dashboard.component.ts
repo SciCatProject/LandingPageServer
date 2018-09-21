@@ -1,3 +1,4 @@
+"use strict";
 import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { PublishedData } from "../shared/sdk/models";
