@@ -27,6 +27,6 @@ ARG LB_API_VERSION=''
 
 RUN ng build --configuration=dmsc  && ng run LandingPageServer:server:dmsc && npm run webpack:server
 
-WORKDIR /landing/dist/browser
-EXPOSE 8080
-CMD ["http-server"]
+WORKDIR /landing/
+EXPOSE 4000
+CMD ["node", "dist/server.js"]
