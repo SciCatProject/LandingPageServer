@@ -27,13 +27,21 @@ import { ngExpressEngine } from "@nguniversal/express-engine";
 // Import module map for lazy loading
 import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
 
-app.engine(
-  "html",
-  ngExpressEngine({
+app.engine("html", (_, options, callback) => {
+  const engine = ngExpressEngine({
     bootstrap: AppServerModuleNgFactory,
-    providers: [provideModuleMap(LAZY_MODULE_MAP)]
-  })
-);
+    providers: [
+      provideModuleMap(LAZY_MODULE_MAP),
+      {
+        provide: "REQUEST",
+        useFactory: () => Object.assign({ cookies: {} }, options.req),
+        deps: []
+      },
+      { provide: "RESPONSE", useFactory: () => options.req.res, deps: [] }
+    ]
+  });
+  engine(_, options, callback);
+});
 
 app.set("view engine", "html");
 app.set("views", join(DIST_FOLDER, "browser"));

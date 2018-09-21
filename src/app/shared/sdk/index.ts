@@ -43,8 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
+import { CookieNode } from './storage/cookie.node';
 import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
+import { SocketNode } from './sockets/socket.node';
 import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
@@ -122,13 +124,57 @@ export class SDKBrowserModule {
   }
 }
 /**
+* @module SDKNodeModule
+* @description
+* This module should be imported when building a Angular Universal Application.
+**/
+@NgModule({
+  imports:      [ CommonModule, HttpClientModule ],
+  declarations: [ ],
+  exports:      [ ],
+  providers:    [
+    ErrorHandler,
+    SocketConnection
+  ]
+})
+export class SDKNodeModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule  : SDKNodeModule,
+      providers : [
+        LoopBackAuth,
+        LoggerService,
+        SDKModels,
+        RealTime,
+        UserApi,
+        DatasetApi,
+        RawDatasetApi,
+        DerivedDatasetApi,
+        SampleApi,
+        ProposalApi,
+        PublishedDataApi,
+        DatasetLifecycleApi,
+        DatablockApi,
+        AccessUserApi,
+        AccessGroupApi,
+        UserCredentialApi,
+        UserIdentityApi,
+        ApplicationCredentialApi,
+        PolicyApi,
+        JobApi,
+        DatasetAttachmentApi,
+        OrigDatablockApi,
+        { provide: InternalStorage, useClass: CookieNode },
+        { provide: SocketDriver, useClass: SocketNode }
+      ]
+    };
+  }
+}
+/**
 * Have Fun!!!
 * - Jon
 **/
 export * from './models/index';
 export * from './services/index';
 export * from './lb.config';
-export * from './storage/storage.swaps';
-export { CookieBrowser } from './storage/cookie.browser';
-export { StorageBrowser } from './storage/storage.browser';
 

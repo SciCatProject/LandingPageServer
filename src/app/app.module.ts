@@ -15,7 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatButtonModule, MatCardModule } from "@angular/material";
 import { MessageService } from "./message.service";
 import { MessagesComponent } from "./messages/messages.component";
-import { SDKBrowserModule } from "./shared/sdk/index";
+import { SDKNodeModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
 import { isPlatformBrowser } from "@angular/common";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
@@ -33,7 +33,7 @@ import { FileSizePipe } from "./filesize.pipe";
     MatButtonModule,
     NgxJsonLdModule,
     MatCardModule,
-    SDKBrowserModule.forRoot()
+    SDKNodeModule.forRoot()
   ],
   declarations: [
     AppComponent,
