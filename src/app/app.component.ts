@@ -1,9 +1,10 @@
+"use strict";
+import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";
+import { Title } from "@angular/platform-browser";
 import { UserApi } from "./shared/sdk/services";
 import { environment } from "../environments/environment";
-import { APP_CONFIG, AppConfig } from "./app-config.module";
-import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-root",

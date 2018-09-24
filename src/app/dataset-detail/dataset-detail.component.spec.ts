@@ -6,12 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { MatCardModule } from "@angular/material";
-import {
-  MockDatasetService,
-  MockHttp,
-  MockNgx,
-  MockPublishedDataApi
-} from "../MockStubs";
+import { MockDatasetService, MockHttp, MockNgx } from "../MockStubs";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";

@@ -1,11 +1,11 @@
 "use strict";
+import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
-import { PublishedData } from "../shared/sdk/models";
-import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs/operators";
+import { PublishedData } from "../shared/sdk/models";
 import { Router } from "@angular/router";
+import { map } from "rxjs/operators";
 
 interface MyType {
   doi: string;

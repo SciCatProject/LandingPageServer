@@ -1,8 +1,8 @@
 "use strict";
+import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { PublishedData } from "../shared/sdk/models";
-import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { map } from "rxjs/operators";
 
 interface MyType {
