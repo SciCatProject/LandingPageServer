@@ -33,6 +33,10 @@ describe("DashboardComponent", () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    fixture.destroy();
+  });
+
   it("should be created", () => {
     console.log ("should be created");
     expect(component).toBeTruthy();

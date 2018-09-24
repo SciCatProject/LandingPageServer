@@ -5,9 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { MatCardModule } from "@angular/material";
-import { MockDatasetService, MockHttp, MockPublishedDataApi } from "../MockStubs";
-import { NgxDatatableModule } from "@swimlane/ngx-datatable";
-import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { MockDatasetService, MockHttp } from "../MockStubs";
 import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
@@ -19,14 +17,12 @@ describe("DatasetsComponent", () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        NgxDatatableModule,
         MatCardModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
       declarations: [DatasetsComponent],
       providers: [
         { provide: HttpClient, useClass: MockHttp },
-        { provide: PublishedDataApi, useClass: MockPublishedDataApi },
         { provide: DatasetService, useClass: MockDatasetService },
         { provide: APP_CONFIG }
       ]
@@ -38,6 +34,10 @@ describe("DatasetsComponent", () => {
     fixture = TestBed.createComponent(DatasetsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it("should be created", () => {

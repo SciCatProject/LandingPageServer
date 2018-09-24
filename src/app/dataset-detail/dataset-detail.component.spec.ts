@@ -13,7 +13,6 @@ import {
   MockPublishedDataApi
 } from "../MockStubs";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
-import { PublishedDataApi } from "../shared/sdk/services/custom";
 import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
@@ -31,7 +30,6 @@ describe("DatasetDetailComponent", () => {
       declarations: [DatasetDetailComponent, FileSizePipe],
       providers: [
         { provide: HttpClient, useClass: MockHttp },
-        { provide: PublishedDataApi, useClass: MockPublishedDataApi },
         { provide: DatasetService, useClass: MockDatasetService },
         { provide: NgxJsonLdModule, useClass: MockNgx },
         { provide: APP_CONFIG }
@@ -44,6 +42,10 @@ describe("DatasetDetailComponent", () => {
     fixture = TestBed.createComponent(DatasetDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it("should be created", () => {

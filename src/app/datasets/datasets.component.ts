@@ -3,13 +3,9 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { PublishedData } from "../shared/sdk/models";
 import { APP_CONFIG, AppConfig } from "../app-config.module";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
-
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
-};
 
 interface MyType {
   doi: string;
