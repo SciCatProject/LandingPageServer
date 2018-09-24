@@ -3,7 +3,7 @@
     <h2>{{ dataset.title }} </h2>
   </div>
   <br>
-  <div fxLayout="row">
+  <div fxLayout="row" fxLayout.xs="column">
     <div fxFlex="55">
 
 
@@ -46,7 +46,7 @@
 
     </div>
 
-    <div fxFlex="40" *ngIf="dataset.thumbnail as value">
+    <div fxFlex="45" *ngIf="dataset.thumbnail as value">
       <img src="{{ value}}" width="120" alt="data thumbnail">
     </div>
 

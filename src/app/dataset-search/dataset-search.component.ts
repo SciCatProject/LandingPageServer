@@ -1,4 +1,3 @@
-"use strict";
 import { Component, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { Observable, Subject } from "rxjs";
