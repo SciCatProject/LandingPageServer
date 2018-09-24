@@ -36,6 +36,7 @@
     "@ngx-lite/json-ld": "^0.4.2",
     "@swimlane/ngx-datatable": "^13.1.0",
     "angular-in-memory-web-api": "^0.6.1",
+    "compression": "^1.7.3",
     "core-js": "^2.5.4",
     "filesize": "^3.6.1",
     "rxjs": "^6.3.2",

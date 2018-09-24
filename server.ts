@@ -5,6 +5,7 @@ import "reflect-metadata";
 import { enableProdMode } from "@angular/core";
 
 import * as express from "express";
+import * as compression from "compression";
 import { join } from "path";
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -45,6 +46,7 @@ app.engine("html", (_, options, callback) => {
 
 app.set("view engine", "html");
 app.set("views", join(DIST_FOLDER, "browser"));
+app.use(compression());
 
 // TODO: implement data requests securely
 app.get("/api/*", (req, res) => {
