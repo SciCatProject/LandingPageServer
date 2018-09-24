@@ -1,18 +1,11 @@
-import { Inject, Injectable, Optional } from "@angular/core";
 import { APP_BASE_HREF } from "@angular/common";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-
-import { Observable, of } from "rxjs";
-
-import { catchError, tap } from "rxjs/operators";
-
-import { PublishedDataApi } from "./shared/sdk/services/custom";
+import { HttpClient } from "@angular/common/http";
+import { Inject, Injectable, Optional } from "@angular/core";
 import { MessageService } from "./message.service";
+import { Observable, of } from "rxjs";
 import { PublishedData } from "./shared/sdk/models";
-
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
-};
+import { PublishedDataApi } from "./shared/sdk/services/custom";
+import { catchError, tap } from "rxjs/operators";
 
 @Injectable()
 export class DatasetService {
