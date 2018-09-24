@@ -17,6 +17,8 @@ import { UserApi } from "./shared/sdk/services";
 import { isPlatformBrowser } from "@angular/common";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { FileSizePipe } from "./filesize.pipe";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import { FileSizePipe } from "./filesize.pipe";
     MatButtonModule,
     NgxJsonLdModule,
     MatCardModule,
-    SDKNodeModule.forRoot()
+    SDKNodeModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppComponent,
