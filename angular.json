@@ -47,6 +47,11 @@
                 "output": "/"
               },
               {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
                 "glob": "safari-pinned-tab.svg",
                 "input": "src",
                 "output": "/"
@@ -230,6 +235,11 @@
               },
               {
                 "glob": "mstile-150x150.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
                 "input": "src",
                 "output": "/"
               },
