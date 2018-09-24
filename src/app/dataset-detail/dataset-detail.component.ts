@@ -1,11 +1,11 @@
 "use strict";
-import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
+import { Component, Input, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { DomSanitizer, SafeHtml, SafeUrl } from "@angular/platform-browser";
-import { PublishedData } from "../shared/sdk/models";
+import { Location } from "@angular/common";
 import { Observable, of } from "rxjs";
+import { PublishedData } from "../shared/sdk/models";
 
 @Component({
   selector: "app-dataset-detail",

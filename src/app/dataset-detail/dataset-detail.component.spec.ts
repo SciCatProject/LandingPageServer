@@ -5,6 +5,7 @@ import { FileSizePipe } from "../filesize.pipe";
 import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { MatCardModule } from "@angular/material";
 import {
   MockDatasetService,
   MockHttp,
@@ -24,6 +25,7 @@ describe("DatasetDetailComponent", () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        MatCardModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
       declarations: [DatasetDetailComponent, FileSizePipe],

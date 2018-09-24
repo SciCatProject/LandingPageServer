@@ -34,7 +34,7 @@
         </tr>
         <tr *ngIf="dataset.sizeOfArchive as value">
           <th> Size</th>
-          <td> {{ value | filesize  }}</td>
+          <td> {{ value | filesize }}</td>
         </tr>
       </table>
 
@@ -47,7 +47,9 @@
     </div>
 
     <div fxFlex="45" *ngIf="dataset.thumbnail as value">
-      <img src="{{ value}}" width="120" alt="data thumbnail">
+      <mat-card style="margin: 1em">
+        <img mat-card-image src="{{ value}}" alt="data thumbnail">
+      </mat-card>
     </div>
 
 
@@ -72,7 +74,7 @@
   <button (click)="show = !show">{{show ? 'Hide MetaData' : 'Show Metadata'}}</button>
   <br>
   <div *ngIf="show">
-    <div [innerHTML]="jsonLD" ></div>
+    <div [innerHTML]="jsonLD"></div>
   </div>
 
 </div>

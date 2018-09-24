@@ -1,14 +1,10 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
-import { DashboardComponent } from "./dashboard.component";
-
-import { RouterTestingModule } from "@angular/router/testing";
-
-import { DatasetSearchComponent } from "../dataset-search/dataset-search.component";
-import { MockDatasetService, MockPublishedDataApi } from "../MockStubs";
-import { DatasetService } from "../dataset.service";
-import { PublishedDataApi } from "../shared/sdk/services/custom";
 import { APP_CONFIG } from "../app-config.module";
+import { DashboardComponent } from "./dashboard.component";
+import { DatasetService } from "../dataset.service";
+import { MockDatasetService, MockPublishedDataApi } from "../MockStubs";
+import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { RouterTestingModule } from "@angular/router/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -17,7 +13,7 @@ describe("DashboardComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [DashboardComponent, DatasetSearchComponent],
+      declarations: [DashboardComponent ],
       providers: [
         { provide: PublishedDataApi, useClass: MockPublishedDataApi },
         { provide: DatasetService, useClass: MockDatasetService },

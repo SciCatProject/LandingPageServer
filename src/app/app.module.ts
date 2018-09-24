@@ -6,15 +6,12 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DatasetDetailComponent } from "./dataset-detail/dataset-detail.component";
-import { DatasetSearchComponent } from "./dataset-search/dataset-search.component";
 import { DatasetService } from "./dataset.service";
 import { DatasetsComponent } from "./datasets/datasets.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatButtonModule, MatCardModule } from "@angular/material";
-import { MessageService } from "./message.service";
-import { MessagesComponent } from "./messages/messages.component";
 import { SDKNodeModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
 import { isPlatformBrowser } from "@angular/common";
@@ -39,12 +36,10 @@ import { FileSizePipe } from "./filesize.pipe";
     AppComponent,
     DashboardComponent,
     DatasetDetailComponent,
-    DatasetSearchComponent,
     DatasetsComponent,
-    FileSizePipe,
-    MessagesComponent
+    FileSizePipe
   ],
-  providers: [DatasetService, UserApi, MessageService],
+  providers: [DatasetService, UserApi],
   bootstrap: [AppComponent],
   exports: [FileSizePipe]
 })

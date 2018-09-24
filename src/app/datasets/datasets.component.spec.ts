@@ -1,20 +1,15 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
-import { DatasetsComponent } from "./datasets.component";
-
-import { RouterTestingModule } from "@angular/router/testing";
-import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDataService } from "../in-memory-data.service";
-import {
-  MockDatasetService,
-  MockHttp,
-  MockPublishedDataApi
-} from "../MockStubs";
-import { DatasetService } from "../dataset.service";
 import { APP_CONFIG } from "../app-config.module";
+import { DatasetService } from "../dataset.service";
+import { DatasetsComponent } from "./datasets.component";
 import { HttpClient } from "@angular/common/http";
-import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { InMemoryDataService } from "../in-memory-data.service";
+import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { MatCardModule } from "@angular/material";
+import { MockDatasetService, MockHttp, MockPublishedDataApi } from "../MockStubs";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
+import { PublishedDataApi } from "../shared/sdk/services/custom";
+import { RouterTestingModule } from "@angular/router/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 describe("DatasetsComponent", () => {
   let component: DatasetsComponent;
@@ -25,6 +20,7 @@ describe("DatasetsComponent", () => {
       imports: [
         RouterTestingModule,
         NgxDatatableModule,
+        MatCardModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
       declarations: [DatasetsComponent],

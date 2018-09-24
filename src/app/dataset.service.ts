@@ -1,7 +1,6 @@
 import { APP_BASE_HREF } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable, Optional } from "@angular/core";
-import { MessageService } from "./message.service";
 import { Observable, of } from "rxjs";
 import { PublishedData } from "./shared/sdk/models";
 import { PublishedDataApi } from "./shared/sdk/services/custom";
@@ -21,7 +20,6 @@ export class DatasetService {
   constructor(
     private rds: PublishedDataApi,
     private http: HttpClient,
-    private messageService: MessageService,
     @Optional()
     @Inject(APP_BASE_HREF)
     origin: string
@@ -49,7 +47,7 @@ export class DatasetService {
       // if not search term, return empty dataset array.
       return of([]);
     }
-    return this.rds.find();
+    return this.rds.find({ limit: 5 });
   }
 
   //////// Save methods //////////
@@ -64,7 +62,7 @@ export class DatasetService {
   /** PUT: update the dataset on the server */
   updateDataset(dataset: PublishedData): Observable<any> {
     return this.rds.patchOrCreate(dataset).pipe(
-      tap(_ => this.log(`updated hero id=${dataset.doi}`)),
+      tap(_ => console.log(`updated hero id=${dataset.doi}`)),
       catchError(this.handleError<any>("updateDataset"))
     );
   }
@@ -80,16 +78,10 @@ export class DatasetService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a DatasetService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`DatasetService: ${message}`);
-  }
 }
