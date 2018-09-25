@@ -87,7 +87,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.dmsc.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             },
             "ess": {
               "fileReplacements": [
@@ -95,7 +96,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.ess.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             },
             "maxiv-prod": {
               "optimization": true,
@@ -141,7 +143,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.dmscprod.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             },
             "production": {
               "optimization": true,
