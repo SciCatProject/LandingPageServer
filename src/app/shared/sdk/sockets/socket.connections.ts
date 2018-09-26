@@ -18,12 +18,6 @@ import { LoopBackConfig } from "../lb.config";
 @Injectable()
 export class SocketConnection {
   private socket: any;
-  public sharedObservables: {
-    sharedOnConnect?: Observable<any>;
-    sharedOnDisconnect?: Observable<any>;
-    sharedOnAuthenticated?: Observable<any>;
-    sharedOnUnAuthorized?: Observable<any>;
-  } = {};
   private subjects: {
     onConnect: Subject<any>;
     onDisconnect: Subject<any>;
@@ -35,8 +29,13 @@ export class SocketConnection {
     onAuthenticated: new Subject(),
     onUnAuthorized: new Subject()
   };
+  public sharedObservables: {
+    sharedOnConnect?: Observable<any>;
+    sharedOnDisconnect?: Observable<any>;
+    sharedOnAuthenticated?: Observable<any>;
+    sharedOnUnAuthorized?: Observable<any>;
+  } = {};
   public authenticated: boolean = false;
-
   /**
    * @method constructor
    * @param {SocketDriver} driver Socket IO Driver
