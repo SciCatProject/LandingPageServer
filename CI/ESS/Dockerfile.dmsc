@@ -34,7 +34,7 @@ ARG LB_API_VERSION=''
 
 
 
-RUN ng build --configuration=dmsc  && ng run LandingPageServer:server:dmscprod && npm run webpack:server
+RUN ng build --configuration=dmsc  && ng run LandingPageServer:server:dmsc && npm run webpack:server
 
 WORKDIR /landing/
 COPY CI/ESS/google43e14584df796f63.html /landing/dist/browser
