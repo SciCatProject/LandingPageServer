@@ -1,0 +1,40 @@
+FROM mhart/alpine-node:8
+
+RUN mkdir /usr/html
+RUN mkdir /landing
+WORKDIR /landing
+
+
+
+COPY package.json .
+
+RUN npm config set registry http://registry.npmjs.org/
+RUN npm config set strict-ssl false
+
+RUN npm install http-server -g
+RUN npm install -g @angular/cli
+
+RUN npm install
+
+COPY src src
+COPY angular.json .
+COPY tsconfig.json .
+COPY ngsw-config.json .
+COPY webpack.server.config.js .
+COPY server.ts .
+
+ARG APP_PROD='true'
+ARG LB_BASE_URL='http://localhost/api'
+ARG LB_API_VERSION=''
+
+
+
+RUN ng build --configuration=ess  && ng run LandingPageServer:server:ess && npm run webpack:server
+
+WORKDIR /landing/
+COPY CI/ESS/google43e14584df796f63.html /landing/dist/browser
+COPY CI/ESS/sitemap.xml /landing/dist/browser
+COPY CI/ESS/google43e14584df796f63.html /landing/dist/server
+COPY CI/ESS/sitemap.xml /landing/dist/server
+EXPOSE 4000
+CMD ["node", "dist/server.js"]
