@@ -12,7 +12,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatButtonModule, MatCardModule } from "@angular/material";
-import { SDKNodeModule } from "./shared/sdk/index";
+import { SDKBrowserModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
 import { isPlatformBrowser } from "@angular/common";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
@@ -32,7 +32,7 @@ import { environment } from "../environments/environment";
     MatButtonModule,
     NgxJsonLdModule,
     MatCardModule,
-    SDKNodeModule.forRoot(),
+    SDKBrowserModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
     })
