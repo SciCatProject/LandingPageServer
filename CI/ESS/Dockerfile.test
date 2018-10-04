@@ -13,6 +13,5 @@ RUN npm config set strict-ssl false
 COPY package.json /usr/src/app/package.json
 RUN npm install
 COPY . /usr/src/app
-COPY CI/ESS/karma.conf.js /project/catanie/
 WORKDIR /usr/src/app
 # RUN npm run -- ng test --watch false --single-run true
