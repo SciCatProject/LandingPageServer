@@ -21,6 +21,7 @@ node('docker') {
   }
   stage('Unit Test Landing Page Server '){
     // unit tests require mongodb container
-    sh 'docker run  -t dacat/landing:latest npm test'
+    sh "docker build --file CI/ESS/Dockerfile.hub  . --tag dacat/landing:test "
+    sh 'docker run  -t dacat/landing:test npm test'
   }
 }
