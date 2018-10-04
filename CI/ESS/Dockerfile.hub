@@ -27,6 +27,7 @@ COPY tsconfig.json .
 COPY ngsw-config.json .
 COPY webpack.server.config.js .
 COPY server.ts .
+COPY karma.conf.js .
 
 ARG APP_PROD='true'
 ARG LB_BASE_URL='http://localhost/api'
