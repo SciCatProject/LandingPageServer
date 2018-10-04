@@ -19,6 +19,7 @@ import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { FileSizePipe } from "./filesize.pipe";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
+import { WINDOW_PROVIDERS } from "./shared/services/window.service";
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { environment } from "../environments/environment";
     DatasetsComponent,
     FileSizePipe
   ],
-  providers: [DatasetService, UserApi],
+  providers: [DatasetService, UserApi, WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
   exports: [FileSizePipe]
 })
