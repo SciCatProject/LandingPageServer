@@ -16,6 +16,7 @@ RUN npm install
 COPY src src
 COPY angular.json .
 COPY tsconfig.json .
+COPY ngsw-config.json .
 COPY webpack.server.config.js .
 COPY server.ts .
 
