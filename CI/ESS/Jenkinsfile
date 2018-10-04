@@ -14,6 +14,8 @@ node('docker') {
       sh "docker build --file CI/ESS/Dockerfile.hub  . --tag dacat/landing:latest -t dacat/landing:${IMAGE_ID}dev" 
       sh "docker push dacat/landing:${IMAGE_ID}dev"
       sh "docker push dacat/landing:latest"
+      sh "docker rmi dacat/landing:${IMAGE_ID}dmscprod"
+      sh "docker rmi dacat/landing:${IMAGE_ID}dmscdev"
     }
   }
   stage('Unit Test Landing Page Server '){
