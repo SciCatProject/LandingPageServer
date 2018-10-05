@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  lbBaseURL: "https://scicat02.esss.lu.se:32223",
+  lbBaseURL: "https://scicat03.esss.lu.se:32223",
   facility: "ess"
 };
