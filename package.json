@@ -33,7 +33,7 @@
     "@angular/router": "^6.1.10",
     "@angular/service-worker": "^6.1.10",
     "@angular/upgrade": "^6.1.10",
-    "@nguniversal/express-engine": "^6.1.0",
+    "@nguniversal/express-engine": "^7.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.1.0",
     "@ngx-lite/json-ld": "^0.4.2",
     "@swimlane/ngx-datatable": "^13.1.0",
