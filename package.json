@@ -29,7 +29,7 @@
     "@angular/material": "^6.4.7",
     "@angular/platform-browser": "^6.1.10",
     "@angular/platform-browser-dynamic": "^6.1.10",
-    "@angular/pwa": "^0.8.5",
+    "@angular/pwa": "^0.10.0",
     "@angular/router": "^6.1.10",
     "@angular/service-worker": "^6.1.10",
     "@angular/upgrade": "^6.1.10",
