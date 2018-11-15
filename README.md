@@ -22,21 +22,22 @@ What things you need to install the software and how to install them
 Angular v6
 npm
 node
+catamel
+mongodb
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
-
+How to install:
 
 ```
 npm install
 npm run build:ssr
 ```
 
-And repeat
+How to run:
 
 ```
 npm run serve:ssr
@@ -52,7 +53,7 @@ npm test
 ```
 
 
-### Break down into end to end tests
+### End to end tests
 
 e2e tests check content is rendered correctly
 ```
