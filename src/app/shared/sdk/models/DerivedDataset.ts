@@ -1,6 +1,5 @@
 /* tslint:disable */
 import {
-  DatasetLifecycle,
   Datablock,
   DatasetAttachment,
   OrigDatablock
@@ -13,6 +12,7 @@ export interface DerivedDatasetInterface {
   "usedSoftware": Array<any>;
   "jobParameters"?: any;
   "jobLogData"?: string;
+  "scientificMetadata"?: any;
   "pid"?: string;
   "owner": string;
   "ownerEmail"?: string;
@@ -26,11 +26,10 @@ export interface DerivedDatasetInterface {
   "validationStatus"?: string;
   "keywords"?: Array<any>;
   "description"?: string;
-  "userTargetLocation"?: string;
+  "datasetName"?: string;
   "classification"?: string;
   "license"?: string;
   "version"?: string;
-  "doi"?: string;
   "isPublished"?: boolean;
   "ownerGroup": string;
   "accessGroups"?: Array<any>;
@@ -38,10 +37,13 @@ export interface DerivedDatasetInterface {
   "updatedBy"?: string;
   "createdAt"?: Date;
   "updatedAt"?: Date;
-  datasetlifecycle?: DatasetLifecycle;
+  "datasetlifecycle"?: any;
+  "history"?: Array<any>;
+  datasetLifecycle?: any[];
   datablocks?: Datablock[];
   datasetattachments?: DatasetAttachment[];
   origdatablocks?: OrigDatablock[];
+  historyList?: any[];
 }
 
 export class DerivedDataset implements DerivedDatasetInterface {
@@ -50,6 +52,7 @@ export class DerivedDataset implements DerivedDatasetInterface {
   "usedSoftware": Array<any>;
   "jobParameters": any;
   "jobLogData": string;
+  "scientificMetadata": any;
   "pid": string;
   "owner": string;
   "ownerEmail": string;
@@ -63,11 +66,10 @@ export class DerivedDataset implements DerivedDatasetInterface {
   "validationStatus": string;
   "keywords": Array<any>;
   "description": string;
-  "userTargetLocation": string;
+  "datasetName": string;
   "classification": string;
   "license": string;
   "version": string;
-  "doi": string;
   "isPublished": boolean;
   "ownerGroup": string;
   "accessGroups": Array<any>;
@@ -75,10 +77,13 @@ export class DerivedDataset implements DerivedDatasetInterface {
   "updatedBy": string;
   "createdAt": Date;
   "updatedAt": Date;
-  datasetlifecycle: DatasetLifecycle;
+  "datasetlifecycle": any;
+  "history": Array<any>;
+  datasetLifecycle: any[];
   datablocks: Datablock[];
   datasetattachments: DatasetAttachment[];
   origdatablocks: OrigDatablock[];
+  historyList: any[];
   constructor(data?: DerivedDatasetInterface) {
     Object.assign(this, data);
   }
@@ -132,6 +137,10 @@ export class DerivedDataset implements DerivedDatasetInterface {
           name: 'jobLogData',
           type: 'string'
         },
+        "scientificMetadata": {
+          name: 'scientificMetadata',
+          type: 'any'
+        },
         "pid": {
           name: 'pid',
           type: 'string'
@@ -184,8 +193,8 @@ export class DerivedDataset implements DerivedDatasetInterface {
           name: 'description',
           type: 'string'
         },
-        "userTargetLocation": {
-          name: 'userTargetLocation',
+        "datasetName": {
+          name: 'datasetName',
           type: 'string'
         },
         "classification": {
@@ -198,10 +207,6 @@ export class DerivedDataset implements DerivedDatasetInterface {
         },
         "version": {
           name: 'version',
-          type: 'string'
-        },
-        "doi": {
-          name: 'doi',
           type: 'string'
         },
         "isPublished": {
@@ -232,15 +237,24 @@ export class DerivedDataset implements DerivedDatasetInterface {
           name: 'updatedAt',
           type: 'Date'
         },
+        "datasetlifecycle": {
+          name: 'datasetlifecycle',
+          type: 'any'
+        },
+        "history": {
+          name: 'history',
+          type: 'Array&lt;any&gt;',
+          default: <any>[]
+        },
       },
       relations: {
-        datasetlifecycle: {
-          name: 'datasetlifecycle',
-          type: 'DatasetLifecycle',
-          model: 'DatasetLifecycle',
-          relationType: 'hasOne',
-                  keyFrom: 'pid',
-          keyTo: 'derivedDatasetId'
+        datasetLifecycle: {
+          name: 'datasetLifecycle',
+          type: 'any[]',
+          model: '',
+          relationType: 'embedsOne',
+                  keyFrom: 'datasetlifecycle',
+          keyTo: 'id'
         },
         datablocks: {
           name: 'datablocks',
@@ -265,6 +279,14 @@ export class DerivedDataset implements DerivedDatasetInterface {
           relationType: 'hasMany',
                   keyFrom: 'pid',
           keyTo: 'derivedDatasetId'
+        },
+        historyList: {
+          name: 'historyList',
+          type: 'any[]',
+          model: '',
+          relationType: 'embedsMany',
+                  keyFrom: 'history',
+          keyTo: 'id'
         },
       }
     }
