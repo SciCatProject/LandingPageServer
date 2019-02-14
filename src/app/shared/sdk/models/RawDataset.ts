@@ -2,7 +2,6 @@
 import {
   Sample,
   Proposal,
-  DatasetLifecycle,
   Datablock,
   DatasetAttachment,
   OrigDatablock
@@ -28,11 +27,10 @@ export interface RawDatasetInterface {
   "validationStatus"?: string;
   "keywords"?: Array<any>;
   "description"?: string;
-  "userTargetLocation"?: string;
+  "datasetName"?: string;
   "classification"?: string;
   "license"?: string;
   "version"?: string;
-  "doi"?: string;
   "isPublished"?: boolean;
   "ownerGroup": string;
   "accessGroups"?: Array<any>;
@@ -42,12 +40,15 @@ export interface RawDatasetInterface {
   "updatedAt"?: Date;
   "sampleId"?: string;
   "proposalId"?: string;
+  "datasetlifecycle"?: any;
+  "history"?: Array<any>;
   sample?: Sample;
   proposal?: Proposal;
-  datasetlifecycle?: DatasetLifecycle;
+  datasetLifecycle?: any[];
   datablocks?: Datablock[];
   datasetattachments?: DatasetAttachment[];
   origdatablocks?: OrigDatablock[];
+  historyList?: any[];
 }
 
 export class RawDataset implements RawDatasetInterface {
@@ -69,11 +70,10 @@ export class RawDataset implements RawDatasetInterface {
   "validationStatus": string;
   "keywords": Array<any>;
   "description": string;
-  "userTargetLocation": string;
+  "datasetName": string;
   "classification": string;
   "license": string;
   "version": string;
-  "doi": string;
   "isPublished": boolean;
   "ownerGroup": string;
   "accessGroups": Array<any>;
@@ -83,12 +83,15 @@ export class RawDataset implements RawDatasetInterface {
   "updatedAt": Date;
   "sampleId": string;
   "proposalId": string;
+  "datasetlifecycle": any;
+  "history": Array<any>;
   sample: Sample;
   proposal: Proposal;
-  datasetlifecycle: DatasetLifecycle;
+  datasetLifecycle: any[];
   datablocks: Datablock[];
   datasetattachments: DatasetAttachment[];
   origdatablocks: OrigDatablock[];
+  historyList: any[];
   constructor(data?: RawDatasetInterface) {
     Object.assign(this, data);
   }
@@ -194,8 +197,8 @@ export class RawDataset implements RawDatasetInterface {
           name: 'description',
           type: 'string'
         },
-        "userTargetLocation": {
-          name: 'userTargetLocation',
+        "datasetName": {
+          name: 'datasetName',
           type: 'string'
         },
         "classification": {
@@ -208,10 +211,6 @@ export class RawDataset implements RawDatasetInterface {
         },
         "version": {
           name: 'version',
-          type: 'string'
-        },
-        "doi": {
-          name: 'doi',
           type: 'string'
         },
         "isPublished": {
@@ -250,6 +249,15 @@ export class RawDataset implements RawDatasetInterface {
           name: 'proposalId',
           type: 'string'
         },
+        "datasetlifecycle": {
+          name: 'datasetlifecycle',
+          type: 'any'
+        },
+        "history": {
+          name: 'history',
+          type: 'Array&lt;any&gt;',
+          default: <any>[]
+        },
       },
       relations: {
         sample: {
@@ -268,13 +276,13 @@ export class RawDataset implements RawDatasetInterface {
                   keyFrom: 'proposalId',
           keyTo: 'proposalId'
         },
-        datasetlifecycle: {
-          name: 'datasetlifecycle',
-          type: 'DatasetLifecycle',
-          model: 'DatasetLifecycle',
-          relationType: 'hasOne',
-                  keyFrom: 'pid',
-          keyTo: 'rawDatasetId'
+        datasetLifecycle: {
+          name: 'datasetLifecycle',
+          type: 'any[]',
+          model: '',
+          relationType: 'embedsOne',
+                  keyFrom: 'datasetlifecycle',
+          keyTo: 'id'
         },
         datablocks: {
           name: 'datablocks',
@@ -299,6 +307,14 @@ export class RawDataset implements RawDatasetInterface {
           relationType: 'hasMany',
                   keyFrom: 'pid',
           keyTo: 'rawDatasetId'
+        },
+        historyList: {
+          name: 'historyList',
+          type: 'any[]',
+          model: '',
+          relationType: 'embedsMany',
+                  keyFrom: 'history',
+          keyTo: 'id'
         },
       }
     }

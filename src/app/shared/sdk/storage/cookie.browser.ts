@@ -1,8 +1,6 @@
 /* tslint:disable */
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 export interface CookieInterface { [key: string]: any }
-import { WINDOW} from "../../services/window.service";
-
 /**
 * @author Jonathan Casarrubias <twitter:@johncasarrubias> <github:@mean-expert-official>
 * @module CookieBrowser
@@ -24,9 +22,6 @@ export class CookieBrowser {
    * @description
    * The getter will return any type of data persisted in cookies.
    **/
-  constructor(@Inject(WINDOW) private window: Window){
-  }
-
   get(key: string): any {
     if (!this.cookies[key]) {
       let cookie = window.document
