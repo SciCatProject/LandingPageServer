@@ -84,7 +84,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Gareth Murphy** - *Initial work* - [garethcmurphy](https://github.com/garethcmurphy)
 
-See also the list of [contributors](https://github.com/garethcmurphy/landing_page_server/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/scicatproject/landing_page_server/contributors) who participated in this project.
 
 ## License
 
@@ -92,7 +92,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* ESS, PSI
 
