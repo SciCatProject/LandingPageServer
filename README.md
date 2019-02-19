@@ -84,7 +84,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Gareth Murphy** - *Initial work* - [garethcmurphy](https://github.com/garethcmurphy)
 
-See also the list of [contributors](https://github.com/scicatproject/landing_page_server/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/scicatproject/landingpageserver/contributors) who participated in this project.
 
 ## License
 
