@@ -4,7 +4,7 @@ import { DatasetsComponent } from "./datasets.component";
 import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { MatCardModule } from "@angular/material";
+import { MatCardModule } from "@angular/material/card";
 import { MockDatasetService, MockHttp } from "../MockStubs";
 import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
