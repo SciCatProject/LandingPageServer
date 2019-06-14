@@ -5,7 +5,7 @@ import { FileSizePipe } from "../filesize.pipe";
 import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { MatCardModule } from "@angular/material";
+import { MatCardModule } from "@angular/material/card";
 import { MockDatasetService, MockHttp, MockNgx } from "../MockStubs";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { RouterTestingModule } from "@angular/router/testing";
