@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8
+FROM mhart/alpine-node:12
 
 RUN mkdir /usr/html
 RUN mkdir /landing
