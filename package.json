@@ -34,7 +34,7 @@
     "@angular/service-worker": "^8.0.3",
     "@angular/upgrade": "^8.0.3",
     "@nguniversal/express-engine": "^7.1.1",
-    "@nguniversal/module-map-ngfactory-loader": "^7.1.1",
+    "@nguniversal/module-map-ngfactory-loader": "^8.1.0",
     "@ngx-lite/json-ld": "^0.6.2",
     "@swimlane/ngx-datatable": "^15.0.2",
     "angular-in-memory-web-api": "^0.8.0",
