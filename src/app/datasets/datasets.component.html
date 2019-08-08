@@ -1,0 +1,11 @@
+<h2>Dataset List</h2>
+
+
+
+<ul class="heroes">
+  <li *ngFor="let dataset of doi_list">
+    <a href="/detail/{{dataset.doi}}">
+      {{dataset.value}}
+    </a>
+  </li>
+</ul>

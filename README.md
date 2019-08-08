@@ -1,6 +1,12 @@
 # SciCat Landing Page Server
 
-![scicat logo](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
+
+[![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer) [![Greenkeeper badge](https://badges.greenkeeper.io/SciCatProject/LandingPageServer.svg)](https://greenkeeper.io/)
+[![DeepScan grade](https://deepscan.io/api/projects/3011/branches/23762/badge/grade.svg)](https://deepscan.io/dashboard#view=project&pid=3011&bid=23762)
+[![DOI](https://zenodo.org/badge/141108894.svg)](https://zenodo.org/badge/latestdoi/141108894)
+
+![scicat logo2](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
+
 
 A landing page server for publically accessible DOI datasets in SciCat
 
@@ -13,58 +19,58 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-angular v6
+Angular v6
 npm
 node
+catamel
+mongodb
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+How to install:
 
 ```
+npm install
 npm run build:ssr
 ```
 
-And repeat
+How to run:
 
 ```
 npm run serve:ssr
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
+Unit tests 
+
+```
 npm test
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
 ```
 
-### And coding style tests
 
-Explain what these tests test and why
+### End to end tests
 
+e2e tests check content is rendered correctly
 ```
-Give an example
+npm run e2e
 ```
+
+
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Deploy with Docker
 
 ## Built With
 
-* [NPM](http://npm.org) - node package manager
-* [node](https://node.org/) - node javascript runtime
-* [angular](https://angular.io) - Web framework
+* [NPM](http://npmjs.com) - node package manager
+* [Node](https://nodejs.org/) - node javascript runtime
+* [Angular](https://angular.io) - Web framework
 
 ## Contributing
 
@@ -78,7 +84,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Gareth Murphy** - *Initial work* - [garethcmurphy](https://github.com/garethcmurphy)
 
-See also the list of [contributors](https://github.com/garethcmurphy/landing_page_server/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/scicatproject/landingpageserver/contributors) who participated in this project.
 
 ## License
 
@@ -86,7 +92,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* ESS, PSI
 

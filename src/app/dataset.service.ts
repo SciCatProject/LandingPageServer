@@ -1,101 +1,69 @@
-import { Injectable, Inject, Optional } from '@angular/core';
-import { APP_BASE_HREF } from '@angular/common';
-import { HttpClient, HttpHeaders }from '@angular/common/http';
-
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
-import { Dataset } from './dataset';
-import { MessageService } from './message.service';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { APP_BASE_HREF } from "@angular/common";
+import { HttpClient } from "@angular/common/http";
+import { Inject, Injectable, Optional } from "@angular/core";
+import { Observable, of } from "rxjs";
+import { PublishedData } from "./shared/sdk/models";
+import { PublishedDataApi } from "./shared/sdk/services/custom";
+import { catchError, tap } from "rxjs/operators";
 
 @Injectable()
 export class DatasetService {
-
-  private heroesUrl = 'api/heroes';  // URL to web api
+  limit = 1000;
+  detailFilter = {
+    limit: this.limit
+  };
+  filter = {
+    limit: this.limit
+  };
+  private datasetsUrl = "api/datasets"; // URL to web api
 
   constructor(
+    private rds: PublishedDataApi,
     private http: HttpClient,
-    private messageService: MessageService,
-    @Optional() @Inject(APP_BASE_HREF) origin: string) {
-      this.heroesUrl = `${origin}${this.heroesUrl}`;
-    }
-
-  /** GET heroes from the server */
-  getHeroes (): Observable<Dataset[]> {
-    return this.http.get<Dataset[]>(this.heroesUrl)
-      .pipe(
-        tap(heroes => this.log('fetched datasets')),
-        catchError(this.handleError('getHeroes', []))
-      );
+    @Optional()
+    @Inject(APP_BASE_HREF)
+    origin: string
+  ) {
+    this.datasetsUrl = `${origin}${this.datasetsUrl}`;
   }
 
-  /** GET dataset by id. Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<Dataset> {
-    const url = `${this.heroesUrl}/?id=${id}`;
-    return this.http.get<Dataset[]>(url)
-      .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} hero id=${id}`);
-        }),
-        catchError(this.handleError<Dataset>(`getHero id=${id}`))
-      );
+  /** GET datasets from the server */
+  getDatasets(): Observable<PublishedData[]> {
+    console.log("gm get datasets");
+    return this.rds.find({ limit: 5 });
   }
 
   /** GET dataset by id. Will 404 if id not found */
-  getHero(id: number): Observable<Dataset> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Dataset>(url).pipe(
-      tap(_ => this.log(`fetched dataset id=${id}`)),
-      catchError(this.handleError<Dataset>(`getHero id=${id}`))
+  getDataset(id: string): Observable<PublishedData> {
+    return this.rds.findById(
+      id.replace("/", "%2F").replace("/", "%2F"),
+      this.detailFilter
     );
   }
 
-  /* GET heroes whose name contains search term */
-  searchHeroes(term: string): Observable<Dataset[]> {
+  /* GET datasets whose name contains search term */
+  searchDatasets(term: string): Observable<PublishedData[]> {
     if (!term.trim()) {
       // if not search term, return empty dataset array.
       return of([]);
     }
-    return this.http.get<Dataset[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-      tap(_ => this.log(`found heroes matching "${term}"`)),
-      catchError(this.handleError<Dataset[]>('searchHeroes', []))
-    );
+    return this.rds.find({ limit: 5 });
   }
 
   //////// Save methods //////////
 
-  /** POST: add a new dataset to the server */
-  addHero (name: string): Observable<Dataset> {
-    const hero = { name };
-
-    return this.http.post<Dataset>(this.heroesUrl, hero, httpOptions).pipe(
-      tap((hero: Dataset) => this.log(`added hero w/ id=${hero.id}`)),
-      catchError(this.handleError<Dataset>('addHero'))
-    );
-  }
-
   /** DELETE: delete the dataset from the server */
-  deleteHero (hero: Dataset | number): Observable<Dataset> {
-    const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+  deleteDataset(dataset: PublishedData | string): Observable<PublishedData> {
+    const id = typeof dataset === "string" ? dataset : dataset.doi;
 
-    return this.http.delete<Dataset>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Dataset>('deleteHero'))
-    );
+    return this.rds.deleteById(id);
   }
 
   /** PUT: update the dataset on the server */
-  updateHero (hero: Dataset): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+  updateDataset(dataset: PublishedData): Observable<any> {
+    return this.rds.patchOrCreate(dataset).pipe(
+      tap(_ => console.log(`updated hero id=${dataset.doi}`)),
+      catchError(this.handleError<any>("updateDataset"))
     );
   }
 
@@ -105,22 +73,15 @@ export class DatasetService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a DatasetService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`DatasetService: ${message}`);
-  }
 }

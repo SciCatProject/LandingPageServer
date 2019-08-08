@@ -1,34 +1,80 @@
 <div *ngIf="dataset">
-  <h2>{{ dataset.title  }} </h2>
-  <div><span>id: </span>{{dataset.id}}</div>
-
-  <table style="width:500">
-    <tr>
-      <th>DOI</th>
-      <td><a href="{{ dataset.url}}">{{ dataset.url}}</a></td>
-    </tr>
-    <tr>
-      <th>Creator</th>
-      <td>{{ dataset.creator}}</td>
-    </tr>
-    <tr>
-      <th>Publisher</th>
-      <td>{{ dataset.publisher}}</td>
-    </tr>
-    <tr>
-      <th>Affiliation</th>
-      <td>{{ dataset.affiliation}}</td>
-    </tr>
-    <tr>
-      <th>Year</th>
-      <td>{{ dataset.year}}</td>
-    </tr>
-    <tr>
-      <th>Resource Type</th>
-      <td>{{ dataset.resource_type}}</td>
-    </tr>
-  </table>
+  <div fxLayout="column">
+    <h2>{{ dataset.title }} </h2>
+  </div>
+  <br>
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="55">
 
 
-  <button (click)="goBack()">go back</button>
+      <table>
+        <tr *ngIf="dataset.creator as value">
+          <th>Creator</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="dataset.publisher as value">
+          <th>Publisher</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="dataset.affiliation as value">
+          <th>Affiliation</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="dataset.publicationYear as value">
+          <th>Year</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="dataset.resourceType as value">
+          <th>Resource Type</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="dataset.numberOfFiles as value">
+          <th>No. of datasets</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="dataset.sizeOfArchive as value">
+          <th> Size</th>
+          <td> {{ value | filesize }}</td>
+        </tr>
+      </table>
+
+      <br>
+      <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
+      &nbsp;
+      <a class="e2e-data-url" mat-raised-button [href]="dataUrl">Data description</a>
+      <br>
+
+    </div>
+
+    <div fxFlex="45" *ngIf="dataset.thumbnail as value">
+      <mat-card style="margin: 1em">
+        <img mat-card-image src="{{ value}}" alt="data thumbnail">
+      </mat-card>
+    </div>
+
+
+  </div>
+  <div class="freeform_metadata" fxLayout="column">
+
+
+    <b> DOI: </b> <a href="{{ doi_link}} "> {{doi}}</a>
+    <p>
+      <b> Instructions: </b> Login with brightness username and password
+    </p>
+    <div>
+      <b>
+        Abstract:
+      </b>
+      {{ dataset.abstract}}
+    </div>
+    <button (click)="goBack()" style="width:100px">go back</button>
+
+
+  </div>
+  <button (click)="show = !show">{{show ? 'Hide MetaData' : 'Show Metadata'}}</button>
+  <br>
+  <div *ngIf="show">
+    <div [innerHTML]="jsonLD"></div>
+  </div>
+
 </div>

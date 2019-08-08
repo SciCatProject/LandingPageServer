@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular.io-example": {
+    "LandingPageServer": {
       "root": "",
       "projectType": "application",
       "architect": {
@@ -25,7 +25,38 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
-              }
+              },
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-16x16.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-32x32.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "mstile-150x150.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "safari-pinned-tab.svg",
+                "input": "src",
+                "output": "/"
+              },
+              "src/manifest.json"
             ],
             "styles": [
               "src/styles.css"
@@ -33,6 +64,96 @@
             "scripts": []
           },
           "configurations": {
+            "dmscdev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dmscdev.ts"
+                }
+              ]
+            },
+            "dmsc": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dmsc.ts"
+                }
+              ],
+              "serviceWorker": true
+            },
+            "ess": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ess.ts"
+                }
+              ],
+              "serviceWorker": true
+            },
+            "maxiv-prod": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.maxiv.prod.ts"
+                },
+                {
+                  "replace": "src/assets/site_banner.png",
+                  "with": "CI/MAXIV/maxivbanner.png"
+                }
+              ]
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "dmscprod": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dmscprod.ts"
+                }
+              ],
+              "serviceWorker": true
+            },
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -47,26 +168,49 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/assets/site_banner.png",
+                  "with": "CI/PSI/psibanner.png"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular.io-example:build"
+            "browserTarget": "LandingPageServer:build"
           },
           "configurations": {
+            "dmscdev": {
+              "browserTarget": "LandingPageServer:build:dmscdev"
+            },
+            "dmsc": {
+              "browserTarget": "LandingPageServer:build:dmsc"
+            },
+            "ess": {
+              "browserTarget": "LandingPageServer:build:ess"
+            },
+            "dmscprod": {
+              "browserTarget": "LandingPageServer:build:dmscprod"
+            },
+            "maxiv-prod": {
+              "browserTarget": "LandingPageServer:build:maxiv-prod"
+            },
+            "development": {
+              "browserTarget": "LandingPageServer:build:development"
+            },
             "production": {
-              "browserTarget": "angular.io-example:build:production"
+              "browserTarget": "LandingPageServer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular.io-example:build"
+            "browserTarget": "LandingPageServer:build"
           }
         },
         "test": {
@@ -90,7 +234,38 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
-              }
+              },
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-16x16.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-32x32.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "mstile-150x150.png",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "safari-pinned-tab.svg",
+                "input": "src",
+                "output": "/"
+              },
+              "src/manifest.json"
             ]
           }
         },
@@ -112,29 +287,91 @@
             "outputPath": "dist/server",
             "main": "src/main.server.ts",
             "tsConfig": "src/tsconfig.server.json"
+          },
+          "configurations": {
+            "dmscdev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dmscdev.ts"
+                }
+              ]
+            },
+            "ess": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ess.ts"
+                }
+              ]
+            },
+            "dmsc": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dmsc.ts"
+                }
+              ]
+            },
+            "maxiv-prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.maxiv.prod.ts"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "dmscprod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dmscprod.ts"
+                }
+              ]
+            }
           }
         }
       }
     },
-    "angular.io-example-e2e": {
-      "root": "",
+    "LandingPageServer-e2e": {
+      "root": "e2e/",
       "projectType": "application",
-      "cli": {},
-      "schematics": {},
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular.io-example:serve"
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "LandingPageServer:serve"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
