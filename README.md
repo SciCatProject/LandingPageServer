@@ -5,7 +5,7 @@
 [![DeepScan grade](https://deepscan.io/api/projects/3011/branches/23762/badge/grade.svg)](https://deepscan.io/dashboard#view=project&pid=3011&bid=23762)
 [![DOI](https://zenodo.org/badge/141108894.svg)](https://zenodo.org/badge/latestdoi/141108894)
 
-![scicat logo2](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
+![scicat logo2](https://github.com/garethcmurphy/landing_page_server/blob/develop/src/assets/esslogo.png)
 
 
 A landing page server for publically accessible DOI datasets in SciCat
