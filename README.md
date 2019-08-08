@@ -1,6 +1,6 @@
 # SciCat Landing Page Server
 
-![scicat logo](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
+![scicat logo2](https://github.com/garethcmurphy/landing_page_server/blob/master/src/assets/esslogo.png)
 
 [![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer) [![Greenkeeper badge](https://badges.greenkeeper.io/SciCatProject/LandingPageServer.svg)](https://greenkeeper.io/)
 [![DeepScan grade](https://deepscan.io/api/projects/3011/branches/23762/badge/grade.svg)](https://deepscan.io/dashboard#view=project&pid=3011&bid=23762)
