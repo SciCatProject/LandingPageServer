@@ -19,9 +19,8 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Angular v6
-npm
-node
+Angular 8
+Node 10
 catamel
 mongodb
 ```
