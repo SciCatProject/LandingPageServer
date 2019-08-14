@@ -10,7 +10,7 @@ import { PublishedData } from "../shared/sdk/models";
 @Component({
   selector: "app-dataset-detail",
   templateUrl: "./dataset-detail.component.html",
-  styleUrls: ["./dataset-detail.component.css"]
+  styleUrls: ["./dataset-detail.component.scss"]
 })
 export class DatasetDetailComponent implements OnInit {
   @Input()

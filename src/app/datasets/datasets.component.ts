@@ -24,7 +24,7 @@ interface PublishedDataType {
 @Component({
   selector: "app-datasets",
   templateUrl: "./datasets.component.html",
-  styleUrls: ["./datasets.component.css"]
+  styleUrls: ["./datasets.component.scss"]
 })
 export class DatasetsComponent implements OnInit {
   datasets: PublishedData[];
