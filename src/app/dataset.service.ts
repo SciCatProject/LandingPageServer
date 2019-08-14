@@ -30,7 +30,7 @@ export class DatasetService {
   /** GET datasets from the server */
   getDatasets(): Observable<PublishedData[]> {
     console.log("gm get datasets");
-    return this.rds.find({ limit: 5 });
+    return this.rds.find({ limit: 20 });
   }
 
   /** GET dataset by id. Will 404 if id not found */

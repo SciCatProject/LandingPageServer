@@ -8,19 +8,20 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DatasetDetailComponent } from "./dataset-detail/dataset-detail.component";
 import { DatasetService } from "./dataset.service";
 import { DatasetsComponent } from "./datasets/datasets.component";
+import { FileSizePipe } from "./filesize.pipe";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { LinkyModule } from "ngx-linky";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { SDKBrowserModule } from "./shared/sdk/index";
-import { UserApi } from "./shared/sdk/services";
-import { isPlatformBrowser } from "@angular/common";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
-import { FileSizePipe } from "./filesize.pipe";
+import { SDKBrowserModule } from "./shared/sdk/index";
 import { ServiceWorkerModule } from "@angular/service-worker";
-import { environment } from "../environments/environment";
+import { UserApi } from "./shared/sdk/services";
 import { WINDOW_PROVIDERS } from "./shared/services/window.service";
+import { environment } from "../environments/environment";
+import { isPlatformBrowser } from "@angular/common";
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { WINDOW_PROVIDERS } from "./shared/services/window.service";
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
+    LinkyModule,
     MatButtonModule,
     NgxJsonLdModule,
     MatCardModule,

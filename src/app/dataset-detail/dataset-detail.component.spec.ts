@@ -10,6 +10,7 @@ import { MockDatasetService, MockHttp, MockNgx } from "../MockStubs";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { LinkyModule } from "ngx-linky";
 
 describe("DatasetDetailComponent", () => {
   let component: DatasetDetailComponent;
@@ -19,6 +20,7 @@ describe("DatasetDetailComponent", () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        LinkyModule,
         MatCardModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
       ],
