@@ -3,9 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  lbBaseURL: "http://127.0.0.1:3000",
-  facility: "ess"
+  production: true,
+  lbBaseURL: "http://127.0.0.1:3001",
+  facility: "psi",
+  oaiProviderRoute: `http://localhost:3001/scicat/Publication`,
 };
 
 /*

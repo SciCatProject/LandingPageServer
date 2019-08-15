@@ -21,6 +21,7 @@ import { FileSizePipe } from "./filesize.pipe";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { WINDOW_PROVIDERS } from "./shared/services/window.service";
+import {JsonpModule, Jsonp, Response} from "@angular/http";
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { WINDOW_PROVIDERS } from "./shared/services/window.service";
     SDKBrowserModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
-    })
+    }),
+    JsonpModule
   ],
   declarations: [
     AppComponent,
