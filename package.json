@@ -37,7 +37,7 @@
     "@nguniversal/module-map-ngfactory-loader": "^8.1.1",
     "@ngx-lite/json-ld": "^0.6.2",
     "@swimlane/ngx-datatable": "^15.0.2",
-    "angular-in-memory-web-api": "^0.8.0",
+    "angular-in-memory-web-api": "^0.9.0",
     "compression": "^1.7.4",
     "filesize": "^4.1.2",
     "rxjs": "^6.5.2",
