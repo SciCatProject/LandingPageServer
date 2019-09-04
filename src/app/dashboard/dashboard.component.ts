@@ -2,6 +2,7 @@
 import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
+import { OAIService } from "../oai.service";
 import { PublishedData } from "../shared/sdk/models";
 import { map } from "rxjs/operators";
 
@@ -18,10 +19,12 @@ interface MyType {
 export class DashboardComponent implements OnInit {
   datasets: PublishedData[] = [];
   subtitle: string;
+  // doi_list: any;
   doi_list: MyType[];
 
   constructor(
     private datasetService: DatasetService,
+    private oaiService: OAIService,
     @Inject(APP_CONFIG) private appConfig: AppConfig
   ) {
     const facility = this.appConfig.facility;
@@ -29,7 +32,21 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDatasets();
+
+    // this.getDatasets();
+  }
+
+  getPublication(): void {
+    this.oaiService
+    .getPublications(null)
+    .pipe(
+      map(res => {
+        console.log(res);
+        return res;
+      })
+    )
+    .subscribe(datasets => {
+    });
   }
 
   getDatasets(): void {
@@ -48,3 +65,12 @@ export class DashboardComponent implements OnInit {
       });
   }
 }
+
+  /*getDatasets(): void {
+    this.oaiService
+      .get()
+      .subscribe(datasets => {
+        this.doi_list = datasets;
+      });
+  }
+}*/

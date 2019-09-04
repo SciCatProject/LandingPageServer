@@ -6,6 +6,8 @@ import { HttpClient } from "@angular/common/http";
 import { PublishedData } from "../shared/sdk/models";
 import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
+import { OAIService } from "../oai.service";
+import { BaseLoopBackApi } from "../shared/sdk/services/core/base.service";
 
 interface MyType {
   doi: string;
@@ -30,17 +32,32 @@ export class DatasetsComponent implements OnInit {
   datasets: PublishedData[];
   doi: string;
   doi_list: MyType[];
+  // pubList: any;
   dataset: PublishedDataType;
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     private http: HttpClient,
     private router: Router,
-    private datasetService: DatasetService
+    private datasetService: DatasetService,
+    private oaiService: OAIService
   ) {}
 
   ngOnInit() {
-    this.getDatasets();
+    console.log("cxxxxxxxxxxxxxxxxxxxxx");
+
+    this.oaiService
+      .getPublications(null)
+      .pipe(
+        map(res => {
+          console.log(res);
+          return res;
+        })
+      )
+      .subscribe(datasets => {
+      });
+
+    // this.getDatasets();
   }
 
   getDatasets(): void {
