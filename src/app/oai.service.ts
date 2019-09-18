@@ -15,22 +15,25 @@ export class OAIService {
   ) {}
 
   requestJsonp(url, params) {
-    url = url + "/" + params;
-    return this.httpClient
-      .jsonp(url, "callback")
-      .pipe(map((response: PublishedData) => response));
+    if (params) {
+      url = url + "/" + params;
+    }
+    return this.httpClient.jsonp(url, "callback");
   }
 
   getPublications(params) {
     const OAIServerUri = this.appConfig.oaiProviderRoute;
     console.log("OAIServerUri", OAIServerUri);
-    return this.requestJsonp("http://127.0.0.1:3001/scicat/Publication", params);
+    return this.requestJsonp(OAIServerUri, params).pipe(
+      map((response: PublishedData[]) => response)
+    );
   }
 
-  getOnePublication(params) {
+  findOnePublication(params) {
     const OAIServerUri = this.appConfig.oaiProviderRoute;
     console.log("OAIServerUri", OAIServerUri);
-    return (this.requestJsonp("http://127.0.0.1:3001/scicat/Publication", params)).pipe(map((response: PublishedData) => response));
+    return this.requestJsonp(OAIServerUri, params).pipe(
+      map((response: PublishedData) => response)
+    );
   }
 }
-

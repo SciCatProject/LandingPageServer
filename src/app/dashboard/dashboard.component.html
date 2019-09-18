@@ -1,9 +1,9 @@
 <h3> {{subtitle }} </h3>
 <div class="grid grid-pad">
   <ul class="heroes">
-    <li *ngFor="let dataset of doi_list">
-      <a href="/detail/{{ dataset.doi  }}">
-        {{dataset.value}}
+    <li *ngFor="let publication of doi_list">
+      <a href="/detail/{{ publication.doi  }}">
+        {{publication.doi}}
       </a>
     </li>
   </ul>

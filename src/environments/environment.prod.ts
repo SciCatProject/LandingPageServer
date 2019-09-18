@@ -1,5 +1,6 @@
 export const environment = {
-  lbBaseURL: "http://127.0.0.1:3000",
   production: true,
-  facility: "PSI"
+  lbBaseURL: "http://127.0.0.1:3001",
+  facility: "psi",
+  oaiProviderRoute: "http://127.0.0.1:3001/scicat/Publication",
 };

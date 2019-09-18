@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   datasets: PublishedData[] = [];
   subtitle: string;
   // doi_list: any;
-  doi_list: MyType[];
+  doi_list: PublishedData[];
 
   constructor(
     private datasetService: DatasetService,
@@ -33,44 +33,20 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.getDatasets();
+    this.getPublications();
   }
 
-  getPublication(): void {
+  getPublications(): void {
     this.oaiService
-    .getPublications(null)
-    .pipe(
-      map(res => {
-        console.log(res);
-        return res;
-      })
-    )
-    .subscribe(datasets => {
-    });
-  }
-
-  getDatasets(): void {
-    this.datasetService
-      .getDatasets()
+      .getPublications(null)
       .pipe(
         map(res => {
-          return res.map(x => ({
-            doi: x.doi.replace("/", "%252F").replace("/", "%252F"),
-            value: x.doi
-          }));
+          console.log(res);
+          return res;
         })
       )
-      .subscribe(datasets => {
-        this.doi_list = datasets;
+      .subscribe(publications => {
+        this.doi_list = publications;
       });
   }
 }
-
-  /*getDatasets(): void {
-    this.oaiService
-      .get()
-      .subscribe(datasets => {
-        this.doi_list = datasets;
-      });
-  }
-}*/

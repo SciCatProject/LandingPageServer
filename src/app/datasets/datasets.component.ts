@@ -44,20 +44,6 @@ export class DatasetsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("cxxxxxxxxxxxxxxxxxxxxx");
-
-    this.oaiService
-      .getPublications(null)
-      .pipe(
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      )
-      .subscribe(datasets => {
-      });
-
-    // this.getDatasets();
   }
 
   getDatasets(): void {

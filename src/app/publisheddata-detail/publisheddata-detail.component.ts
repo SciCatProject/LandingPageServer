@@ -54,7 +54,7 @@ export class PublishedDataDetailComponent implements OnInit {
   getDataset(): void {
     const id: string = this.route.snapshot.params.id;
     console.log("gm id", id);
-    this.oaiService.getOnePublication(id).subscribe(dataset => {
+    this.oaiService.findOnePublication(id).subscribe(dataset => {
       const item = dataset;
       console.log("====================================+", dataset);
       if (!item) {
