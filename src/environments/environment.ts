@@ -4,10 +4,11 @@
 
 export const environment = {
   production: true,
-  lbBaseURL: "http://127.0.0.1:2",
+  lbBaseURL: "https://doi.psi.ch:3001",
   facility: "psi",
-  oaiProviderRoute: "http://127.0.0.1:3002/scicat/Publication",
+  oaiProviderRoute: "https://doi.psi.ch:3001/scicat/Publication",
 };
+
 
 /*
  * In development mode, to ignore zone related error stack frames such as

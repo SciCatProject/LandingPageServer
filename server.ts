@@ -18,7 +18,7 @@ enableProdMode();
 const app = express();
 //app.use(cors());
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4200;
 const DIST_FOLDER = join(process.cwd(), "dist");
 
 // fixes window is not defined
