@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   datasets: PublishedData[] = [];
   subtitle: string;
   // doi_list: any;
-  doi_list: PublishedData[];
+  doi_list: PublishedData[] = [];
 
   constructor(
     private datasetService: DatasetService,
@@ -46,7 +46,10 @@ export class DashboardComponent implements OnInit {
         })
       )
       .subscribe(publications => {
-        this.doi_list = publications;
+        publications.forEach(element => {
+          element.doi = encodeURIComponent(element.doi);
+          this.doi_list.push(element);
+        });
       });
   }
 }
