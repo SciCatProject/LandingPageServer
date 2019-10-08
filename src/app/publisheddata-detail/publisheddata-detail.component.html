@@ -1,6 +1,6 @@
-<div *ngIf="dataset">
+<div *ngIf="pub">
         <div fxLayout="column">
-          <h2>{{ dataset.title }} </h2>
+          <h2>{{ pub.title }} </h2>
         </div>
         <br>
         <div fxLayout="row" fxLayout.xs="column">
@@ -8,31 +8,31 @@
       
       
             <table>
-              <tr *ngIf="dataset.creator as value">
+              <tr *ngIf="pub.creator as value">
                 <th>Creator</th>
                 <td> {{ value }}</td>
               </tr>
-              <tr *ngIf="dataset.publisher as value">
+              <tr *ngIf="pub.publisher as value">
                 <th>Publisher</th>
                 <td> {{ value }}</td>
               </tr>
-              <tr *ngIf="dataset.affiliation as value">
+              <tr *ngIf="pub.affiliation as value">
                 <th>Affiliation</th>
                 <td> {{ value }}</td>
               </tr>
-              <tr *ngIf="dataset.publicationYear as value">
+              <tr *ngIf="pub.publicationYear as value">
                 <th>Year</th>
                 <td> {{ value }}</td>
               </tr>
-              <tr *ngIf="dataset.resourceType as value">
+              <tr *ngIf="pub.resourceType as value">
                 <th>Resource Type</th>
                 <td> {{ value }}</td>
               </tr>
-              <tr *ngIf="dataset.numberOfFiles as value">
+              <tr *ngIf="pub.numberOfFiles as value">
                 <th>No. of datasets</th>
                 <td> {{ value }}</td>
               </tr>
-              <tr *ngIf="dataset.sizeOfArchive as value">
+              <tr *ngIf="pub.sizeOfArchive as value">
                 <th> Size</th>
                 <td> {{ value | filesize }}</td>
               </tr>
@@ -46,7 +46,7 @@
       
           </div>
       
-          <div fxFlex="45" *ngIf="dataset.thumbnail as value">
+          <div fxFlex="45" *ngIf="pub.thumbnail as value">
             <mat-card style="margin: 1em">
               <img mat-card-image src="{{ value}}" alt="data thumbnail">
             </mat-card>
@@ -65,7 +65,7 @@
             <b>
               Abstract:
             </b>
-            {{ dataset.abstract}}
+            {{ pub.abstract}}
           </div>
           <button (click)="goBack()" style="width:100px">go back</button>
       

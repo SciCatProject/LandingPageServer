@@ -16,7 +16,7 @@ import { OAIService } from "../oai.service";
 })
 export class PublishedDataDetailComponent implements OnInit {
   @Input()
-  dataset: PublishedData;
+  pub: PublishedData;
   trustedUrl: SafeUrl;
   dataUrl: SafeUrl;
   doi: string;
@@ -26,100 +26,30 @@ export class PublishedDataDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private datasetService: DatasetService,
+    //private datasetService: DatasetService,
     private sanitizer: DomSanitizer,
     private location: Location,
     private oaiService: OAIService
   ) {}
 
   ngOnInit(): void {
-    this.getDataset();
-  }
-
-  getPublication(): void {
-    this.oaiService
-      .getPublications(null)
-      .pipe(
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      )
-      .subscribe(datasets => {
-        // this.doi_list = datasets;
-        // console.log("gm22", this.doi_list);
-      });
-  }
-
-  getDataset(): void {
     const id: string = this.route.snapshot.params.id;
-    console.log("gm id", id);
-    this.oaiService.findOnePublication(id).subscribe(dataset => {
-      const item = dataset;
-      console.log("====================================+", dataset);
-      if (!item) {
-        return;
-      }
-      console.log("====================================+");
-      console.log("gm get dataset", item.doi);
-      this.doi = item.doi;
-      console.log("gm get dataset", this.doi);
-      this.doi_link = "https://doi.org/" + this.doi;
-      this.schema$ = of({
-        "@context": "http://schema.org",
-        "@type": "Dataset",
-        "@id": this.doi_link,
-        identifier: {
-          "@type": "PropertyValue",
-          propertyID: "doi",
-          value: this.doi_link
-        },
-        additionalType: item.resourceType,
-        name: item.title,
-        description: item.abstract,
-        keywords: "neutron",
-        datePublished: item.publicationYear,
-        schemaVersion: "http://datacite.org/schema/kernel-4",
-        publisher: {
-          "@type": "Organization",
-          name: item.publisher
-        },
-        includedInDataCatalog: {
-          "@type": "DataCatalog",
-          name: "scicat.esss.se"
-        },
-        distribution: [
-          {
-            "@type": "DataDownload",
-            encodingFormat: "CSV",
-            contentURL: item.url
-          }
-        ],
-        url: item.url,
-        creator: item.creator
-      });
-      this.schema$["@id"] = this.doi_link;
-      this.schema$["title"] = item.title;
-      this.schema$["creator"] = item.creator;
-      this.jsonLD = this.getSafeHTML(this.schema$);
-      this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(item.url);
-      this.dataUrl = this.sanitizer.bypassSecurityTrustUrl(
-        item.dataDescription
-      );
-      this.dataset = item;
-      console.log("======================this.dataset==============+", this.dataset);
+    this.oaiService.findOnePublication(id).subscribe(pub => {
+      this.pub = pub;
+      console.log("pub", pub);
+      console.log("id", id);
     });
   }
 
-  goBack(): void {
+ /* goBack(): void {
     this.location.back();
   }
 
   save(): void {
     this.datasetService
-      .updateDataset(this.dataset)
+      .updateDataset(this.pub)
       .subscribe(() => this.goBack());
-  }
+  }*/
 
   getSafeHTML(value: {}) {
     // If value convert to JSON and escape / to prevent script tag in JSON

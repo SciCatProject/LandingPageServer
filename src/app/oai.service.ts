@@ -16,7 +16,7 @@ export class OAIService {
 
   requestJsonp(url, params) {
     if (params) {
-      url = url + "/" + params;
+      url = url + "/" + encodeURIComponent((params));
     }
     return this.httpClient.jsonp(url, "callback");
   }
@@ -32,7 +32,7 @@ export class OAIService {
   findOnePublication(params) {
     const OAIServerUri = this.appConfig.oaiProviderRoute;
     console.log("OAIServerUri", OAIServerUri);
-    return this.requestJsonp(OAIServerUri, params).pipe(
+    return this.requestJsonp(OAIServerUri + "/detail", params).pipe(
       map((response: PublishedData) => response)
     );
   }
