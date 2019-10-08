@@ -7,9 +7,8 @@ import { DatasetDetailComponent } from "./dataset-detail/dataset-detail.componen
 import { PublishedDataDetailComponent } from "./publisheddata-detail/publisheddata-detail.component";
 
 const routes: Routes = [
-  { path: "dashboard", component: DashboardComponent },
   { path: "detail/:id", component: PublishedDataDetailComponent },
-  { path: "*", component: DashboardComponent }
+  { path: "", component: DashboardComponent }
 ];
 
 @NgModule({

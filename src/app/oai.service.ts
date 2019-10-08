@@ -16,9 +16,11 @@ export class OAIService {
 
   requestJsonp(url, params) {
     if (params) {
-      url = url + "/" + encodeURIComponent((params));
+      url = url + "/" + encodeURIComponent(encodeURIComponent(params));
     }
-    return this.httpClient.jsonp(url, "callback");
+    return this.httpClient.get(url);
+
+
   }
 
   getPublications(params) {
