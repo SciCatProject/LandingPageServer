@@ -20,7 +20,7 @@ export class PublishedDataDetailComponent implements OnInit {
   trustedUrl: SafeUrl;
   dataUrl: SafeUrl;
   doi: string;
-  doi_link: string;
+  //doi_link: string;
   schema$: Observable<any>;
   jsonLD: SafeHtml;
 
@@ -30,7 +30,7 @@ export class PublishedDataDetailComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private location: Location,
     private oaiService: OAIService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params.id;
@@ -41,15 +41,15 @@ export class PublishedDataDetailComponent implements OnInit {
     });
   }
 
- /* goBack(): void {
+  goBack(): void {
     this.location.back();
   }
-
-  save(): void {
-    this.datasetService
-      .updateDataset(this.pub)
-      .subscribe(() => this.goBack());
-  }*/
+  /*
+    save(): void {
+      this.datasetService
+        .updateDataset(this.pub)
+        .subscribe(() => this.goBack());
+    }*/
 
   getSafeHTML(value: {}) {
     // If value convert to JSON and escape / to prevent script tag in JSON
