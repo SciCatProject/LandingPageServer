@@ -1,6 +1,10 @@
 <div *ngIf="pub">
   <div fxLayout="column">
     <b> DOI: {{pub.doi}}</b>
+    <br />
+    <a href={{window}}>
+      {{window}}
+    </a>
   </div>
   <br />
   <div fxLayout="row" fxLayout.xs="column">
@@ -47,7 +51,7 @@
         </tr-->
       </table>
       <br />
-      <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
+      <a class="e2e-trusted-url" mat-raised-button [href]="'https://www.psi.ch/en'">Access data</a>
       &nbsp;
       <!--a class="e2e-data-url" mat-raised-button [href]="dataUrl">Data description</a-->
       <br />
@@ -72,8 +76,8 @@
         Abstract: 
       </b>
       {{pub.abstract}}
-      <br>
-      <br>
+      <br />
+      <br />
       <details>
         <summary>Datasets (PIDs)</summary>
         <li *ngFor="let pid of pub.pidArray">
@@ -83,6 +87,5 @@
         </li>
       </details>
     </div>
-    <br>
   </div>
 </div>

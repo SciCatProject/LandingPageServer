@@ -23,6 +23,7 @@ export class PublishedDataDetailComponent implements OnInit {
   //doi_link: string;
   schema$: Observable<any>;
   jsonLD: SafeHtml;
+  window = window.location.href;
 
   constructor(
     private route: ActivatedRoute,

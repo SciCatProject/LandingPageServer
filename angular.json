@@ -173,6 +173,11 @@
                   "replace": "src/assets/site_banner.png",
                   "with": "CI/PSI/psibanner.png"
                 }
+                ,
+                {
+                  "replace": "src/assets/logo_banner.png",
+                  "with": "CI/PSI/empty.png"
+                }
               ],
               "serviceWorker": true
             }
