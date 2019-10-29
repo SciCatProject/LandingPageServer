@@ -1,14 +1,11 @@
 "use strict";
 import { ActivatedRoute } from "@angular/router";
 import { Component, Input, OnInit } from "@angular/core";
-import { DatasetService } from "../dataset.service";
 import { DomSanitizer, SafeHtml, SafeUrl } from "@angular/platform-browser";
 import { Location } from "@angular/common";
-import { Observable, of } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
 import { PublishedData } from "../shared/sdk/models";
 import { OAIService } from "../oai.service";
-import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: "app-publisheddata-detail",
