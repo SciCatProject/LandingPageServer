@@ -22,6 +22,7 @@ import { FileSizePipe } from "./filesize.pipe";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { WINDOW_PROVIDERS } from "./shared/services/window.service";
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { WINDOW_PROVIDERS } from "./shared/services/window.service";
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
     }),
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    MatChipsModule
   ],
   declarations: [
     AppComponent,

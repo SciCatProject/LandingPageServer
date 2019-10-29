@@ -1,91 +1,90 @@
 <div *ngIf="pub">
-  <div fxLayout="column">
-    <b> DOI: {{pub.doi}}</b>
-    <br />
-    <a href={{window}}>
-      {{window}}
-    </a>
-  </div>
-  <br />
-  <div fxLayout="row" fxLayout.xs="column">
-    <div fxFlex="55">
+    <div fxLayout="column">
+    </div>
 
 
-      <table>
+    <h2 *ngIf="pub.title as value" style="text-align: center; ">
+        {{ value }}
+    </h2>
+    <h3 style="text-align: center;">
+        {{ pub.creator }}; {{ pub.publisher }}
+    </h3>
+    <div class="border">
+        <b>
+      DOI
+    </b>
+        <br>
+        <img src={{badgeDoi}} />
+        <br>
+        <b>
+      URL
+    </b>
+        <br>
+        <mat-chip color="accent" selected>{{window}}</mat-chip>
+        <br>
+    </div>
+    <br>
+    <div class="border">
+        <div class="flexcontainer">
 
-        <tr *ngIf="pub.title as value">
-          <th>Title</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="pub.creator as value">
-          <th>Creator</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="pub.publisher as value">
-          <th>Publisher</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="pub.affiliation as value">
-          <th>Affiliation</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="pub.publicationYear as value">
-          <th>Year</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="pub.resourceType as value">
-          <th>Resource Type</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="pub.dataDescription as value">
-          <th>Description</th>
-          <td> {{ value }}</td>
-        </tr>
-        <!--tr *ngIf="pub.numberOfFiles as value">
+            <div *ngIf="pub.affiliation as value " style="border-left: 5px solid red">
+                <b>Affiliation</b><br>
+                <label> {{ value }}</label>
+            </div>
+            <div *ngIf="pub.publicationYear as value " style="border-left: 5px solid red">
+                <b>Year</b><br>
+                <label> {{ value }}</label>
+            </div>
+            <div *ngIf="pub.dataDescription as value " style="border-left: 5px solid red">
+                <b>Description</b><br>
+                <label> {{ value }}</label>
+            </div>
+            <div *ngIf="pub.resourceType as value " style="border-left: 5px solid red">
+                <b>Resource Type</b><br>
+                <label> {{ value }}</label>
+            </div>
+
+
+            <!--tr *ngIf="pub.numberOfFiles as value ">
           <th>No. of datasets</th>
           <td> {{ value }}</td>
         </tr>
-        <tr *ngIf="pub.sizeOfArchive as value">
+        <tr *ngIf="pub.sizeOfArchive as value ">
           <th> Size</th>
           <td> {{ value | filesize }}</td>
         </tr-->
-      </table>
-      <br />
-      <a class="e2e-trusted-url" mat-raised-button [href]="'https://www.psi.ch/en/photon-science-data-services/slsswissfel-data-transfer'">Access data</a>
-      &nbsp;
-      <!--a class="e2e-data-url" mat-raised-button [href]="dataUrl">Data description</a-->
-      <br />
 
+
+
+
+
+
+        </div>
     </div>
-
-    <div fxFlex="45" *ngIf="pub.thumbnail as value">
-      <mat-card style="margin: 1em">
-        <img mat-card-image src="{{ value}}" alt="data thumbnail">
-      </mat-card>
+    <div fxFlex="45 " *ngIf="pub.thumbnail as value ">
+        <mat-card style="margin: 1em ">
+            <img mat-card-image src="{{ value}} " alt="data thumbnail ">
+        </mat-card>
     </div>
+    <br>
+    <a class="ngbutton " mat-raised-button [href]=" 'https://www.psi.ch/en/photon-science-data-services/slsswissfel-data-transfer' ">Access data</a>
 
-
-  </div>
-  <div class="freeform_metadata" fxLayout="column">
-
-
-  
-    <div>
-      <br />
-      <b>
-        Abstract: 
-      </b>
-      {{pub.abstract}}
-      <br />
-      <br />
-      <details>
+    <br>
+    <br>
+    <div fxLayout="row ">
+        <div style="border-left: 5px solid red">
+            <b>
+        Abstract:
+      </b> <br>{{pub.abstract}}
+        </div>
+    </div>
+    <br>
+    <details>
         <summary>Datasets (PIDs)</summary>
-        <li *ngFor="let pid of pub.pidArray">
-          <a>
-            {{pid}}
-          </a>
+        <li *ngFor="let pid of pub.pidArray ">
+            <a>
+        {{pid}}
+      </a>
         </li>
-      </details>
-    </div>
-  </div>
+    </details>
 </div>

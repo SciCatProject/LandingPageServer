@@ -8,6 +8,7 @@ import { Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
 import { PublishedData } from "../shared/sdk/models";
 import { OAIService } from "../oai.service";
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: "app-publisheddata-detail",
@@ -24,6 +25,7 @@ export class PublishedDataDetailComponent implements OnInit {
   schema$: Observable<any>;
   jsonLD: SafeHtml;
   window = window.location.href;
+  badgeDoi: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,9 +39,14 @@ export class PublishedDataDetailComponent implements OnInit {
     const id: string = this.route.snapshot.params.id;
     this.oaiService.findOnePublication(id).subscribe(pub => {
       this.pub = pub;
+      document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
+      this.badgeDoi = "https://img.shields.io/static/v1?label=DOI&message=" + pub.doi + "&color=green";
       console.log("pub", pub);
       console.log("id", id);
     });
+
+    
+
   }
 
   goBack(): void {

@@ -4,7 +4,8 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false,
-  lbBaseURL: "https://dacat-development.psi.ch",
-  facility: "PSI"
+  production: true,
+  lbBaseURL: "https://doi2.psi.ch:3001",
+  facility: "psi",
+  oaiProviderRoute: "https://doi2.psi.ch/oaipmh/Publication",
 };
