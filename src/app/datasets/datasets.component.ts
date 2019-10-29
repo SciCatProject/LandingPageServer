@@ -7,7 +7,6 @@ import { PublishedData } from "../shared/sdk/models";
 import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
 import { OAIService } from "../oai.service";
-import { BaseLoopBackApi } from "../shared/sdk/services/core/base.service";
 
 interface MyType {
   doi: string;
