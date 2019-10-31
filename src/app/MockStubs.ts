@@ -1,5 +1,4 @@
-import { of, observable, Subscription, Observable } from "rxjs";
-import { PublishedData } from "./shared/sdk";
+import { of } from "rxjs";
 
 export class MockHttp { }
 

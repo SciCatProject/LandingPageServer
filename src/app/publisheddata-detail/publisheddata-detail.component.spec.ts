@@ -1,5 +1,4 @@
 import { APP_CONFIG } from "../app-config.module";
-// import { PublishedDataDetailService } from "../dataset.service";
  import { PublishedDataDetailComponent } from "./publisheddata-detail.component";
 import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
@@ -10,7 +9,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { LinkyModule } from "ngx-linky";
 import { OAIService } from "../oai.service";
-import { NO_ERRORS_SCHEMA, inject } from "@angular/core";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 
 describe("PublishedDataDetailComponent", () => {
   let component: PublishedDataDetailComponent;
@@ -29,7 +28,6 @@ describe("PublishedDataDetailComponent", () => {
       providers: [
         { provide: OAIService, useClass: MockOAIervice},
         { provide: HttpClient, useClass: MockHttp },
-      //  { provide: PublishedDataDetailService, useClass: MockPublishedDataDetailService },
         { provide: APP_CONFIG }
       ]
     });
