@@ -1,8 +1,9 @@
-import { of } from "rxjs";
+import { of, observable, Subscription, Observable } from "rxjs";
+import { PublishedData } from "./shared/sdk";
 
-export class MockHttp {}
+export class MockHttp { }
 
-export class MockNgx {}
+export class MockNgx { }
 
 export class MockPublishedDataApi {
   getDataset() {
@@ -96,7 +97,7 @@ export class MockDatasetService {
   }
 
   searchDatasets() {
-    console.log ("mock search");
+    console.log("mock search");
     const dataset = {
       doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
       affiliation: "ESS DG",
@@ -136,5 +137,16 @@ export class MockMessageService {
 
   clear() {
     return of([{ username: "admin" }]);
+  }
+}
+
+export class MockOAIervice {
+
+  getPublications() {
+    return of([]);
+  }
+
+  findOnePublication() {
+    return of();
   }
 }
