@@ -31,7 +31,6 @@ export class DatasetsComponent implements OnInit {
   datasets: PublishedData[];
   doi: string;
   doi_list: MyType[];
-  // pubList: any;
   dataset: PublishedDataType;
 
   constructor(

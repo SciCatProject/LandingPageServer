@@ -18,7 +18,6 @@ export class PublishedDataDetailComponent implements OnInit {
   trustedUrl: SafeUrl;
   dataUrl: SafeUrl;
   doi: string;
-  //doi_link: string;
   schema$: Observable<any>;
   jsonLD: SafeHtml;
   window = window.location.href;
@@ -26,7 +25,6 @@ export class PublishedDataDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    //private datasetService: DatasetService,
     private sanitizer: DomSanitizer,
     private location: Location,
     private oaiService: OAIService
@@ -41,20 +39,11 @@ export class PublishedDataDetailComponent implements OnInit {
       console.log("pub", pub);
       console.log("id", id);
     });
-
-    
-
   }
 
   goBack(): void {
     this.location.back();
   }
-  /*
-    save(): void {
-      this.datasetService
-        .updateDataset(this.pub)
-        .subscribe(() => this.goBack());
-    }*/
 
   getSafeHTML(value: {}) {
     // If value convert to JSON and escape / to prevent script tag in JSON

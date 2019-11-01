@@ -6,11 +6,6 @@ import { OAIService } from "../oai.service";
 import { PublishedData } from "../shared/sdk/models";
 import { map } from "rxjs/operators";
 
-interface MyType {
-  doi: string;
-  value: string;
-}
-
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -19,7 +14,6 @@ interface MyType {
 export class DashboardComponent implements OnInit {
   datasets: PublishedData[] = [];
   subtitle: string;
-  // doi_list: any;
   doi_list: PublishedData[] = [];
 
   constructor(

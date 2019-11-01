@@ -5,7 +5,6 @@ import "reflect-metadata";
 import { enableProdMode } from "@angular/core";
 
 import * as express from "express";
-//import * as cors from "cors";
 import * as compression from "compression";
 import { join } from "path";
 
@@ -16,7 +15,6 @@ enableProdMode();
 
 // Express server
 const app = express();
-//app.use(cors());
 
 const PORT = process.env.PORT || 4200;
 const DIST_FOLDER = join(process.cwd(), "dist");
@@ -70,7 +68,6 @@ app.get("/api/*", (req, res) => {
 });
 
 
-
 // Server static files from /browser
 app.get("*.*", express.static(join(DIST_FOLDER, "browser")));
 
@@ -79,9 +76,6 @@ app.get("*", (req, res) => {
   res.render("index", { req });
 });
 
-/*app.use((request, response, next) => {
-  response.header("Access-Control-Allow-Origin", "localhost");
-});*/
 // Start up the Node server
 app.listen(PORT, () => {
   console.log(`Node server listening on http://localhost:${PORT}`);
