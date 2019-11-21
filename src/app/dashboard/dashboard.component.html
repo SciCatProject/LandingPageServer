@@ -1,11 +1,14 @@
 <h3> {{subtitle }} </h3>
 <div class="grid grid-pad">
-  <ul >
-    <li *ngFor="let publication of doi_list">
-      <a href="/detail/{{ publication.doi  }}">
-        {{publication.doi}}
-      </a>
-    </li>
-  </ul>
+    <table style="width:100%">
+        <li *ngFor="let publication of doi_list">
+        <tr>
+          <th>DOI</th>
+          <td>      <a href="/detail/{{ publication.doi  }}">
+            {{publication.doi}}
+          </a></td>
+        </tr>
+      </li>
+      </table> 
 </div>
 
