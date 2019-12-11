@@ -1,5 +1,5 @@
 <div *ngIf="pub">
-    <div fxLayout="column">
+    <div fxLayout="row">
     </div>
 
 
@@ -63,7 +63,7 @@
     </div>
     <div fxFlex="45 " *ngIf="pub.thumbnail as value ">
         <mat-card style="margin: 1em ">
-            <img mat-card-image src="{{ value}} " alt="data thumbnail ">
+            <img mat-card-image src="{{value}} " alt="data thumbnail ">
         </mat-card>
     </div>
     <br>
