@@ -1,32 +1,35 @@
 /* tslint:disable */
+import {
+  Attachment
+} from '../index';
 
 declare var Object: any;
 export interface SampleInterface {
-  "samplelId"?: string;
+  "sampleId"?: string;
   "owner"?: string;
   "description"?: string;
   "createdAt"?: Date;
   "sampleCharacteristics"?: any;
-  "attachments"?: Array<any>;
   "ownerGroup": string;
   "accessGroups"?: Array<any>;
   "createdBy"?: string;
   "updatedBy"?: string;
   "updatedAt"?: Date;
+  attachments?: Attachment[];
 }
 
 export class Sample implements SampleInterface {
-  "samplelId": string;
+  "sampleId": string;
   "owner": string;
   "description": string;
   "createdAt": Date;
   "sampleCharacteristics": any;
-  "attachments": Array<any>;
   "ownerGroup": string;
   "accessGroups": Array<any>;
   "createdBy": string;
   "updatedBy": string;
   "updatedAt": Date;
+  attachments: Attachment[];
   constructor(data?: SampleInterface) {
     Object.assign(this, data);
   }
@@ -58,10 +61,10 @@ export class Sample implements SampleInterface {
       name: 'Sample',
       plural: 'Samples',
       path: 'Samples',
-      idName: 'samplelId',
+      idName: 'sampleId',
       properties: {
-        "samplelId": {
-          name: 'samplelId',
+        "sampleId": {
+          name: 'sampleId',
           type: 'string'
         },
         "owner": {
@@ -79,10 +82,6 @@ export class Sample implements SampleInterface {
         "sampleCharacteristics": {
           name: 'sampleCharacteristics',
           type: 'any'
-        },
-        "attachments": {
-          name: 'attachments',
-          type: 'Array&lt;any&gt;'
         },
         "ownerGroup": {
           name: 'ownerGroup',
@@ -106,6 +105,14 @@ export class Sample implements SampleInterface {
         },
       },
       relations: {
+        attachments: {
+          name: 'attachments',
+          type: 'Attachment[]',
+          model: 'Attachment',
+          relationType: 'hasMany',
+                  keyFrom: 'sampleId',
+          keyTo: 'sampleId'
+        },
       }
     }
   }

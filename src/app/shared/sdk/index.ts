@@ -56,15 +56,15 @@ import { SampleApi } from './services/custom/Sample';
 import { ProposalApi } from './services/custom/Proposal';
 import { PublishedDataApi } from './services/custom/PublishedData';
 import { DatablockApi } from './services/custom/Datablock';
-import { AccessUserApi } from './services/custom/AccessUser';
-import { AccessGroupApi } from './services/custom/AccessGroup';
 import { UserCredentialApi } from './services/custom/UserCredential';
 import { UserIdentityApi } from './services/custom/UserIdentity';
 import { ApplicationCredentialApi } from './services/custom/ApplicationCredential';
 import { PolicyApi } from './services/custom/Policy';
 import { JobApi } from './services/custom/Job';
-import { DatasetAttachmentApi } from './services/custom/DatasetAttachment';
+import { ShareGroupApi } from './services/custom/ShareGroup';
 import { OrigDatablockApi } from './services/custom/OrigDatablock';
+import { LogbookApi } from './services/custom/Logbook';
+import { AttachmentApi } from './services/custom/Attachment';
 /**
 * @module SDKBrowserModule
 * @description
@@ -103,15 +103,15 @@ export class SDKBrowserModule {
         ProposalApi,
         PublishedDataApi,
         DatablockApi,
-        AccessUserApi,
-        AccessGroupApi,
         UserCredentialApi,
         UserIdentityApi,
         ApplicationCredentialApi,
         PolicyApi,
         JobApi,
-        DatasetAttachmentApi,
+        ShareGroupApi,
         OrigDatablockApi,
+        LogbookApi,
+        AttachmentApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

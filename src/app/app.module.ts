@@ -23,6 +23,7 @@ import { FileSizePipe } from "./filesize.pipe";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { WINDOW_PROVIDERS } from "./shared/services/window.service";
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { WINDOW_PROVIDERS } from "./shared/services/window.service";
     HttpClientModule,
     LinkyModule,
     MatButtonModule,
+    MatGridListModule,
     NgxJsonLdModule,
     MatCardModule,
     SDKBrowserModule.forRoot(),

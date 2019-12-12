@@ -91,5 +91,12 @@
  }
  
  .ngbutton {
-     background-color: #00ee00;
+ }
+
+ .mat-grid-tile {
+    text-align: left;
+ }
+
+ .mat-card{
+    margin: 1em
  }

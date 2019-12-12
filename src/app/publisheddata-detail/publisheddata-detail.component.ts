@@ -7,11 +7,20 @@ import { Observable } from "rxjs";
 import { PublishedData } from "../shared/sdk/models";
 import { OAIService } from "../oai.service";
 
+
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 @Component({
   selector: "app-publisheddata-detail",
   templateUrl: "./publisheddata-detail.component.html",
   styleUrls: ["./publisheddata-detail.component.css"]
 })
+
+
 export class PublishedDataDetailComponent implements OnInit {
   @Input()
   pub: PublishedData;
@@ -22,6 +31,15 @@ export class PublishedDataDetailComponent implements OnInit {
   jsonLD: SafeHtml;
   window = window.location.href;
   badgeDoi: string;
+  thumbnail: any;
+  tiles: Tile[] = [
+    {text: '', cols: 1, rows: 1, color: 'lightblue'},
+    {text: '', cols: 2, rows: 1, color: 'lightgreen'},
+    {text: '', cols: 1, rows: 1, color: 'lightpink'},
+    {text: '', cols: 1, rows: 1, color: '#DDBDF1'},
+    {text: '', cols: 1, rows: 1, color: '#DDBDF1'},
+    {text: '', cols: 1, rows: 1, color: '#DDBDF1'},
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +47,7 @@ export class PublishedDataDetailComponent implements OnInit {
     private location: Location,
     private oaiService: OAIService
   ) { }
+  
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params.id;
@@ -36,6 +55,7 @@ export class PublishedDataDetailComponent implements OnInit {
       this.pub = pub;
       document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
       this.badgeDoi = "https://img.shields.io/static/v1?label=DOI&message=" + pub.doi + "&color=green";
+      this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(pub.thumbnail);
       console.log("pub", pub);
       console.log("id", id);
     });
