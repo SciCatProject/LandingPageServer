@@ -7,7 +7,7 @@ export const environment = {
   lbBaseURL: "http://127.0.0.1:3000",
   facility: "ess",
   oaiProviderRoute: "http://127.0.0.1:3001",
-  directMongoAccess: "false",
+  directMongoAccess: true,
 };
 
 
