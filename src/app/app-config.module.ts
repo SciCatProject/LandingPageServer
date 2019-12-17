@@ -7,12 +7,14 @@ export class AppConfig {
   production: boolean;
   facility: string;
   oaiProviderRoute: string;
+  directMongoAccess: boolean;
 }
 
 export const APP_DI_CONFIG: AppConfig = {
   production: environment.production,
   facility: environment["facility"] || null,
   oaiProviderRoute: environment["oaiProviderRoute"] || null,
+  directMongoAccess: environment["directMongoAccess"] || false,
 };
 
 @NgModule({

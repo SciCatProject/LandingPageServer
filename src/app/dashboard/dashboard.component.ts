@@ -4,7 +4,6 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { OAIService } from "../oai.service";
 import { PublishedData } from "../shared/sdk/models";
-import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-dashboard",
@@ -26,24 +25,21 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.getPublications();
   }
 
   getPublications(): void {
-    this.oaiService
-      .getPublications(null)
-      .pipe(
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      )
-      .subscribe(publications => {
-        publications.forEach(element => {
-          element.doi = encodeURIComponent(element.doi);
-          this.doi_list.push(element);
-        });
+    let dataObs$ = null;
+    if (this.appConfig.directMongoAccess) {
+      dataObs$ = this.datasetService.getDatasets();
+    } else {
+      dataObs$ = this.oaiService.getPublications(null);
+    }
+    dataObs$.subscribe(publications => {
+      publications.forEach(element => {
+        element.doi = encodeURIComponent(element.doi);
+        this.doi_list.push(element);
       });
+    });
   }
 }

@@ -1,12 +1,13 @@
 "use strict";
+import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { ActivatedRoute } from "@angular/router";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Inject, Input, OnInit } from "@angular/core";
 import { DomSanitizer, SafeHtml, SafeUrl } from "@angular/platform-browser";
+import { DatasetService } from "../dataset.service";
 import { Location } from "@angular/common";
 import { Observable } from "rxjs";
 import { PublishedData } from "../shared/sdk/models";
 import { OAIService } from "../oai.service";
-
 
 export interface Tile {
   color: string;
@@ -19,8 +20,6 @@ export interface Tile {
   templateUrl: "./publisheddata-detail.component.html",
   styleUrls: ["./publisheddata-detail.component.css"]
 })
-
-
 export class PublishedDataDetailComponent implements OnInit {
   @Input()
   pub: PublishedData;
@@ -33,28 +32,39 @@ export class PublishedDataDetailComponent implements OnInit {
   badgeDoi: string;
   thumbnail: any;
   tiles: Tile[] = [
-    {text: '', cols: 1, rows: 1, color: 'lightblue'},
-    {text: '', cols: 2, rows: 1, color: 'lightgreen'},
-    {text: '', cols: 1, rows: 1, color: 'lightpink'},
-    {text: '', cols: 1, rows: 1, color: '#DDBDF1'},
-    {text: '', cols: 1, rows: 1, color: '#DDBDF1'},
-    {text: '', cols: 1, rows: 1, color: '#DDBDF1'},
+    { text: "", cols: 1, rows: 1, color: "lightblue" },
+    { text: "", cols: 2, rows: 1, color: "lightgreen" },
+    { text: "", cols: 1, rows: 1, color: "lightpink" },
+    { text: "", cols: 1, rows: 1, color: "#DDBDF1" },
+    { text: "", cols: 1, rows: 1, color: "#DDBDF1" },
+    { text: "", cols: 1, rows: 1, color: "#DDBDF1" }
   ];
 
   constructor(
     private route: ActivatedRoute,
+    private datasetService: DatasetService,
     private sanitizer: DomSanitizer,
     private location: Location,
-    private oaiService: OAIService
-  ) { }
-  
+    private oaiService: OAIService,
+    @Inject(APP_CONFIG) private appConfig: AppConfig
+  ) {}
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params.id;
-    this.oaiService.findOnePublication(id).subscribe(pub => {
+    let dataObs$ = null;
+    if (this.appConfig.directMongoAccess) {
+      dataObs$ = this.datasetService.getDataset(id);
+    } else {
+      dataObs$ = this.oaiService.findOnePublication(id);
+    }
+
+    dataObs$.subscribe(pub => {
       this.pub = pub;
       document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
-      this.badgeDoi = "https://img.shields.io/static/v1?label=DOI&message=" + pub.doi + "&color=green";
+      this.badgeDoi =
+        "https://img.shields.io/static/v1?label=DOI&message=" +
+        pub.doi +
+        "&color=green";
       this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(pub.thumbnail);
       console.log("pub", pub);
       console.log("id", id);
