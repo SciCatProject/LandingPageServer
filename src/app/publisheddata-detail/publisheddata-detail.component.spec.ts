@@ -1,14 +1,15 @@
 import { APP_CONFIG } from "../app-config.module";
- import { PublishedDataDetailComponent } from "./publisheddata-detail.component";
+import { PublishedDataDetailComponent } from "./publisheddata-detail.component";
 import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { MatCardModule } from "@angular/material/card";
- import { MockHttp, MockOAIervice } from "../MockStubs";
+import { MockHttp, MockOAIervice, MockDatasetService } from "../MockStubs";
 import { RouterTestingModule } from "@angular/router/testing";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { LinkyModule } from "ngx-linky";
 import { OAIService } from "../oai.service";
+import { DatasetService } from "../dataset.service";
 import { NO_ERRORS_SCHEMA } from "@angular/core";
 
 describe("PublishedDataDetailComponent", () => {
@@ -26,7 +27,8 @@ describe("PublishedDataDetailComponent", () => {
       ],
       declarations: [PublishedDataDetailComponent],
       providers: [
-        { provide: OAIService, useClass: MockOAIervice},
+        { provide: OAIService, useClass: MockOAIervice },
+        { provide: DatasetService, useClass: MockDatasetService },
         { provide: HttpClient, useClass: MockHttp },
         { provide: APP_CONFIG }
       ]
