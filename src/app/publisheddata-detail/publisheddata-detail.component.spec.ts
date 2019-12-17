@@ -1,4 +1,4 @@
-import { APP_CONFIG } from "../app-config.module";
+import { APP_CONFIG, AppConfigModule } from "../app-config.module";
 import { PublishedDataDetailComponent } from "./publisheddata-detail.component";
 import { HttpClient } from "@angular/common/http";
 import { InMemoryDataService } from "../in-memory-data.service";
@@ -23,14 +23,15 @@ describe("PublishedDataDetailComponent", () => {
         RouterTestingModule,
         MatCardModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService),
-        LinkyModule
+        LinkyModule,
+        AppConfigModule
       ],
       declarations: [PublishedDataDetailComponent],
       providers: [
         { provide: OAIService, useClass: MockOAIervice },
         { provide: DatasetService, useClass: MockDatasetService },
         { provide: HttpClient, useClass: MockHttp },
-        { provide: APP_CONFIG }
+        { provide: APP_CONFIG, useValue: {directMongoAccess: false} }
       ]
     });
     TestBed.compileComponents();
