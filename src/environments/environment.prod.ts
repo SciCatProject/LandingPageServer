@@ -1,5 +1,6 @@
 export const environment = {
-  lbBaseURL: "http://127.0.0.1:3000",
   production: true,
-  facility: "PSI"
+  lbBaseURL: "https://doi.psi.ch:3001",
+  facility: "psi",
+  oaiProviderRoute: "https://doi.psi.ch/oaipmh/Publication",
 };

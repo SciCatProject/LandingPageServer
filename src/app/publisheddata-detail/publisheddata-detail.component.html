@@ -1,0 +1,114 @@
+<div *ngIf="pub">
+    <div fxLayout="column">
+        <h2 *ngIf="pub.title as value" style="text-align: center; ">
+            {{ value }}
+        </h2>
+        <h3 style="text-align: center;">
+            {{ pub.creator }}; {{ pub.publisher }}
+        </h3>
+        <div fxLayout="row">
+            <!--b>
+                    DOI
+                </b>
+                <br>
+                <img src={{badgeDoi}} />
+                <br-->
+            <mat-card style="margin: 1em ">
+                <b>
+                    URL
+                </b>
+                <br>
+                <span [innerHTML]="window | linky"></span>
+            </mat-card>
+            <br>
+            <div fxFlex="45 " *ngIf="thumbnail">
+                <mat-card style="margin: 1em ">
+                    <img mat-card-image [src]="thumbnail" alt="data thumbnail">
+                </mat-card>
+            </div>
+            <br>
+        </div>
+        <mat-card>
+            <div class="flexcontainer">
+
+                <div *ngIf="pub.affiliation as value " style="border-left: 5px solid red">
+                    <b>Affiliation</b><br>
+                    <label> {{ value }}</label>
+                </div>
+                <div *ngIf="pub.publicationYear as value " style="border-left: 5px solid red">
+                    <b>Year</b><br>
+                    <label> {{ value }}</label>
+                </div>
+                <div *ngIf="pub.dataDescription as value " style="border-left: 5px solid red">
+                    <b>Description</b><br>
+                    <label> {{ value }}</label>
+                </div>
+                <div *ngIf="pub.resourceType as value " style="border-left: 5px solid red">
+                    <b>Resource Type</b><br>
+                    <label> {{ value }}</label>
+                </div>
+
+
+                <!--tr *ngIf="pub.numberOfFiles as value ">
+          <th>No. of datasets</th>
+          <td> {{ value }}</td>
+        </tr>
+        <tr *ngIf="pub.sizeOfArchive as value ">
+          <th> Size</th>
+          <td> {{ value | filesize }}</td>
+        </tr-->
+
+
+            </div>
+        </mat-card>
+        <br>
+        <a class="ngbutton " mat-raised-button
+            [href]=" 'https://www.psi.ch/en/photon-science-data-services/slsswissfel-data-transfer' ">Access data</a>
+
+        <mat-card>
+            <div style="border-left: 5px solid red">
+                <b>
+                    Abstract:
+                </b> <br>{{pub.abstract}}
+            </div>
+        </mat-card>
+        <br>
+        <mat-card>
+            <details>
+                <summary>Datasets (PIDs)</summary>
+                <li *ngFor="let pid of pub.pidArray ">
+                    <a>
+                        {{pid}}
+                    </a>
+                </li>
+            </details>
+        </mat-card>
+    </div>
+
+    <!--mat-grid-list cols="3" rowHeight="100px">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <div class="border">
+                <b>
+                    DOI
+                </b>
+                <br>
+                <img src={{badgeDoi}} />
+                <br>
+                <b>
+                    URL
+                </b>
+                <br>
+                <span [innerHTML]="window | linky"></span>
+                <br>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div *ngIf="thumbnail">
+                <mat-card style="margin: 1em ">
+                    <img mat-card-image [src]="thumbnail" alt="data thumbnail">
+                </mat-card>
+            </div>
+
+        </mat-grid-tile>
+    </mat-grid-list-->
+</div>

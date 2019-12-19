@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { PublishedData } from "../shared/sdk/models";
 import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
+import { OAIService } from "../oai.service";
 
 interface MyType {
   doi: string;
@@ -36,11 +37,11 @@ export class DatasetsComponent implements OnInit {
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     private http: HttpClient,
     private router: Router,
-    private datasetService: DatasetService
+    private datasetService: DatasetService,
+    private oaiService: OAIService
   ) {}
 
   ngOnInit() {
-    this.getDatasets();
   }
 
   getDatasets(): void {

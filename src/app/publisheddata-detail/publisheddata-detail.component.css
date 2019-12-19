@@ -1,0 +1,102 @@
+ /* Style the button that is used to open and close the collapsible content */
+ 
+ .collapsible {
+     background-color: #eee;
+     color: #444;
+     cursor: pointer;
+     padding: 18px;
+     width: 100%;
+     border: none;
+     text-align: left;
+     outline: none;
+     font-size: 15px;
+ }
+ /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+ 
+ .active,
+ .collapsible:hover {
+     background-color: #ccc;
+ }
+ /* Style the collapsible content. Note: hidden by default */
+ 
+ .content {
+     padding: 0 18px;
+     background-color: white;
+     max-height: 0;
+     overflow: hidden;
+     transition: max-height 0.2s ease-out;
+ }
+ 
+ .collapsible:after {
+     content: '\02795';
+     /* Unicode character for "plus" sign (+) */
+     font-size: 13px;
+     color: white;
+     float: right;
+     margin-left: 5px;
+ }
+ 
+ .active:after {
+     content: "\2796";
+     /* Unicode character for "minus" sign (-) */
+ }
+ 
+ .container {
+     margin: 0 auto;
+     margin-top: 50px;
+     ;
+     height: 80vh;
+     background: #F2F2F2;
+     border: 1px solid #ccc;
+     box-shadow: 1px 1px 2px #fff inset, -1px -1px 2px #fff inset;
+     border-radius: 3px/6px;
+ }
+ 
+ .flexcontainer {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap-reverse;
+     justify-content: space-between;
+ }
+ 
+ * {
+     box-sizing: border-box;
+ }
+ 
+ .card {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+     /* this adds the "card" effect */
+     padding: 16px;
+     text-align: center;
+     background-color: #f1f1f1;
+ }
+ /* Responsive columns - one column layout (vertical) on small screens */
+ 
+ @media screen and (max-width: 600px) {
+     .column {
+         width: 100%;
+         display: block;
+         margin-bottom: 20px;
+     }
+ }
+ 
+ .border {
+     border-bottom-width: 2px;
+     border-top-width: 2px;
+     padding: 15px;
+     border-top-style: solid;
+     border-top-color: rgb(179, 179, 179);
+     border-bottom-style: solid;
+     border-bottom-color: rgb(179, 179, 179);
+ }
+ 
+ .ngbutton {
+ }
+
+ .mat-grid-tile {
+    text-align: left;
+ }
+
+ .mat-card{
+    margin: 1em
+ }
