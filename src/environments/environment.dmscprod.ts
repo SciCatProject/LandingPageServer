@@ -6,5 +6,6 @@
 export const environment = {
   production: true,
   lbBaseURL: "https://scicatapi.esss.dk",
-  facility: "ess"
+  facility: "ess",
+  directMongoAccess: true
 };
