@@ -42,5 +42,6 @@ COPY CI/ESS/google43e14584df796f63.html /landing/dist/browser
 COPY CI/ESS/sitemap.xml /landing/dist/browser
 COPY CI/ESS/google43e14584df796f63.html /landing/dist/server
 COPY CI/ESS/sitemap.xml /landing/dist/server
+ENV PORT 4000
 EXPOSE 4000
 CMD ["node", "dist/server.js"]
