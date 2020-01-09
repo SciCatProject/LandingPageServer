@@ -36,7 +36,7 @@
     "@nguniversal/express-engine": "^8.1.1",
     "@nguniversal/module-map-ngfactory-loader": "^8.1.1",
     "@ngx-lite/json-ld": "^0.6.2",
-    "@swimlane/ngx-datatable": "^15.0.2",
+    "@swimlane/ngx-datatable": "^16.0.0",
     "angular-in-memory-web-api": "^0.9.0",
     "autolinker": "^3.11.1",
     "compression": "^1.7.4",
