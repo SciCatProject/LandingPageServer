@@ -8,4 +8,5 @@ export const environment = {
   lbBaseURL: "https://scicat03.esss.lu.se:32223",
   facility: "ess",
   directMongoAccess: true,
+  useMaterialView: true
 };

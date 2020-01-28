@@ -1,87 +1,62 @@
 /* DatasetDetailComponent's private CSS styles */
-h2 {
-  text-align: right;
-  margin-left: 1px;
+
+mat-card {
+  margin: 1em;
 }
 
-label {
-  display: inline-block;
-  width: 3em;
-  margin: .5em 0;
-  color: #607D8B;
-  font-weight: bold;
+.title-card {
+  margin-top: 5em;
 }
 
-input {
-  height: 2em;
-  font-size: 1em;
-  padding-left: .4em;
+.title {
+  text-align: center;
+  color: #666666;
 }
 
-button {
-  margin-top: 10px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
+.creators {
+  text-align: center;
 }
 
-button:hover {
-  background-color: #cfd8dc;
+.first-header {
+  background: #99d6e9;
 }
 
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
+.second-header {
+  background: #99adc1;
 }
 
-table   {
-  table-layout: fixed;
-  border: 1px solid black;
-  border-collapse: collapse;
-  font-size: 100%;
+.third-header {
+  background: #d6e599;
+}
+
+.fourth-header {
+  background: #99c1b5;
+}
+
+.text-content {
+  padding-top: 1em;
 }
 
 th {
-  width: 100px;
   text-align: left;
-  background-color: #d3d3d3;
-  border: 1px solid black;
-  border-collapse: collapse;
-  font-size: 80%;
+  padding-right: 0.5em;
 }
 
 td {
-  width: 200px;
-  text-align: left;
-  border: 1px solid black;
-  border-collapse: collapse;
-  font-size: 80%;
-
+  padding: 0.3em;
 }
 
-.e2e-trusted-url {
-  text-align: left;
-  height: 30px;
-  background-color: #00ee00;
+.access-button {
+  margin-right: 1em;
+  background-color: #0099c8;
+  color: #ffffff;
 }
 
-.e2e-data-url {
-  text-align: left;
-  height: 30px;
-  background-color: #ADD8E6;
+.description-button {
+  background-color: #99be00;
+  color: #ffffff;
 }
 
-
-.freeform_metadata {
- font-size: 80%;
+.json-container {
+  margin-top: 1em;
 }
-
-colgroup {
-  display: table-column-group;
-}
-

@@ -1,8 +1,9 @@
 import { of } from "rxjs";
+import { convertToParamMap } from "@angular/router";
 
-export class MockHttp { }
+export class MockHttp {}
 
-export class MockNgx { }
+export class MockNgx {}
 
 export class MockPublishedDataApi {
   getDataset() {
@@ -140,7 +141,6 @@ export class MockMessageService {
 }
 
 export class MockOAIervice {
-
   getPublications() {
     return of([]);
   }
@@ -148,4 +148,10 @@ export class MockOAIervice {
   findOnePublication() {
     return of();
   }
+}
+
+export class MockActivatedRoute {
+  snapshot = {
+    params: { id: "string" }
+  };
 }
