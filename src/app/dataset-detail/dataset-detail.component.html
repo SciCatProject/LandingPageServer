@@ -131,14 +131,16 @@
         </mat-card>
       </ng-template>
 
-      <mat-card *ngIf="datasetJson$ | async as json">
-        <button mat-stroked-button (click)="show = !show">
-          {{ show ? "Hide MetaData" : "Show Metadata" }}
-        </button>
-        <div class="json-container" *ngIf="show">
-          <div [innerHTML]="json"></div>
-        </div>
-      </mat-card>
+      <ng-container *ngIf="!productionMode">
+        <mat-card *ngIf="datasetJson$ | async as json">
+          <button mat-stroked-button (click)="show = !show">
+            {{ show ? "Hide MetaData" : "Show Metadata" }}
+          </button>
+          <div class="json-container" *ngIf="show">
+            <div [innerHTML]="json"></div>
+          </div>
+        </mat-card>
+      </ng-container>
     </div>
     <div fxFlex="30">
       <ng-container *ngIf="dataset.thumbnail as thumbnail; else noThumbnail">

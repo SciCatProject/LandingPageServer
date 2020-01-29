@@ -1,9 +1,10 @@
 import { ActivatedRoute } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { Observable } from "rxjs";
 import { PublishedData } from "../shared/sdk/models";
 import { map } from "rxjs/operators";
+import { APP_CONFIG, AppConfig } from "../app-config.module";
 
 @Component({
   selector: "app-dataset-detail",
@@ -15,8 +16,10 @@ export class DatasetDetailComponent implements OnInit {
   datasetJson$: Observable<string>;
 
   doiBaseUrl = "https://doi.org/";
+  productionMode = this.config.production;
 
   constructor(
+    @Inject(APP_CONFIG) private config: AppConfig,
     private datasetService: DatasetService,
     private route: ActivatedRoute
   ) {}

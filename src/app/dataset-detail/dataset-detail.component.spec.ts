@@ -6,6 +6,7 @@ import { MockDatasetService, MockActivatedRoute } from "../MockStubs";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { MatListModule } from "@angular/material/list";
 import { ActivatedRoute } from "@angular/router";
+import { APP_CONFIG } from "../app-config.module";
 
 describe("DatasetDetailComponent", () => {
   let component: DatasetDetailComponent;
@@ -17,7 +18,13 @@ describe("DatasetDetailComponent", () => {
       declarations: [DatasetDetailComponent, FileSizePipe],
       providers: [
         { provide: DatasetService, useClass: MockDatasetService },
-        { provide: ActivatedRoute, useClass: MockActivatedRoute }
+        { provide: ActivatedRoute, useClass: MockActivatedRoute },
+        {
+          provide: APP_CONFIG,
+          useValue: {
+            production: false
+          }
+        }
       ]
     });
     TestBed.compileComponents();
