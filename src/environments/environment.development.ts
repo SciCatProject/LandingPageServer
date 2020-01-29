@@ -8,4 +8,5 @@ export const environment = {
   lbBaseURL: "https://doi2.psi.ch:3001",
   facility: "psi",
   oaiProviderRoute: "https://doi2.psi.ch/oaipmh/Publication",
+  doiBaseUrl: "https://doi.org/"
 };

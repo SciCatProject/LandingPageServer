@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   lbBaseURL: "https://catamelservice.esss.dk:30003",
+  doiBaseUrl: "https://doi.org/",
   facility: "ess",
-  directMongoAccess: true,
-  useMaterialView: true
+  directMongoAccess: true
 };

@@ -6,9 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DatasetDetailComponent } from "./dataset-detail/dataset-detail.component";
-import { PublishedDataDetailComponent } from "./publisheddata-detail/publisheddata-detail.component";
 import { DatasetService } from "./dataset.service";
-import { DatasetsComponent } from "./datasets/datasets.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
@@ -55,8 +53,6 @@ import { MatIconModule } from "@angular/material/icon";
     AppComponent,
     DashboardComponent,
     DatasetDetailComponent,
-    PublishedDataDetailComponent,
-    DatasetsComponent,
     FileSizePipe
   ],
   providers: [DatasetService, UserApi, WINDOW_PROVIDERS],

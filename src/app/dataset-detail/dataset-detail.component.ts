@@ -15,7 +15,7 @@ export class DatasetDetailComponent implements OnInit {
   dataset$: Observable<PublishedData>;
   datasetJson$: Observable<string>;
 
-  doiBaseUrl = "https://doi.org/";
+  doiBaseUrl = this.config.doiBaseUrl;
   productionMode = this.config.production;
 
   constructor(

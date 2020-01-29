@@ -7,10 +7,9 @@ export const environment = {
   lbBaseURL: "http://127.0.0.1:3000",
   facility: "ess",
   oaiProviderRoute: "http://127.0.0.1:3001",
-  directMongoAccess: true,
-  useMaterialView: true
+  doiBaseUrl: "https://doi.org/",
+  directMongoAccess: true
 };
-
 
 /*
  * In development mode, to ignore zone related error stack frames such as
