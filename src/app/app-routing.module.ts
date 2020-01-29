@@ -15,8 +15,8 @@ const getComponent = () => {
 };
 
 const routes: Routes = [
-  { path: "^/detail/:id(.*//.*)", component: getComponent() },
-  { path: "detail/:id", component: getComponent() },
+  { path: "detail/:id1/:id2", component: PublishedDataDetailComponent },
+  { path: "detail/:id", component: PublishedDataDetailComponent },
   { path: "", component: DashboardComponent }
 ];
 

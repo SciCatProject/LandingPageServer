@@ -50,7 +50,14 @@ export class PublishedDataDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id: string = this.route.snapshot.params.id;
+    const params = this.route.snapshot.params;
+    let id: string;
+    if (Object.keys(params).length === 2) {
+      // for case where doi string is not url encoded
+      id = (params.id1 + "/" + params.id2);
+    } else {
+      id = this.route.snapshot.params.id;
+    }
     let dataObs$ = null;
     if (this.appConfig.directMongoAccess) {
       dataObs$ = this.datasetService.getDataset(id);
