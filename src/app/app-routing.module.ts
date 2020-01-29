@@ -5,7 +5,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PublishedDataDetailComponent } from "./publisheddata-detail/publisheddata-detail.component";
 
 const routes: Routes = [
-  { path: "^/detail/:id(.*//.*)", component: PublishedDataDetailComponent },
+  { path: "detail/:id1/:id2", component: PublishedDataDetailComponent },
   { path: "detail/:id", component: PublishedDataDetailComponent },
   { path: "", component: DashboardComponent }
 ];
