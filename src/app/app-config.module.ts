@@ -9,6 +9,8 @@ export class AppConfig {
   oaiProviderRoute: string;
   doiBaseUrl: string;
   directMongoAccess: boolean;
+  accessDataHref: string;
+  accessInstructions: string;
 }
 
 export const APP_DI_CONFIG: AppConfig = {
@@ -16,7 +18,9 @@ export const APP_DI_CONFIG: AppConfig = {
   facility: environment["facility"] || null,
   oaiProviderRoute: environment["oaiProviderRoute"] || null,
   doiBaseUrl: environment["doiBaseUrl"] || null,
-  directMongoAccess: environment["directMongoAccess"] || false
+  directMongoAccess: environment["directMongoAccess"] || false,
+  accessDataHref: environment["accessDataHref"] || null,
+  accessInstructions: environment["accessInstructions"] || null
 };
 
 @NgModule({

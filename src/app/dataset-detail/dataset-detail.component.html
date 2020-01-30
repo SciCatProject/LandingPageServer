@@ -7,7 +7,9 @@
           {{ dataset.title }}
         </h1>
         <h3 class="creators">
-          {{ dataset.creator }} ({{ dataset.publicationYear }})
+          {{ dataset.creator }}; {{ dataset.publisher }} ({{
+            dataset.publicationYear
+          }})
         </h3>
       </mat-card>
     </div>
@@ -82,6 +84,12 @@
             Datasets
           </mat-card-header>
           <mat-card-content>
+            <table class="text-content">
+              <tr *ngIf="config.facility==='psi' && dataset.dataDescription as description">
+                <th>Description</th>
+                <td>{{ description }}</td>
+              </tr>
+            </table>
             <mat-list role="list">
               <mat-list-item
                 role="listitem"
@@ -101,10 +109,12 @@
           </mat-card-header>
           <mat-card-content>
             <p class="text-content">
-              Instructions: Login with brightness username and password
+              {{ config.accessInstructions }}
             </p>
 
-            <ng-container *ngIf="dataset.url as url">
+            <ng-container
+              *ngIf="config.facility != 'psi' && dataset.url as url"
+            >
               <a
                 mat-raised-button
                 target="_blank"
@@ -116,7 +126,23 @@
               </a>
             </ng-container>
 
-            <ng-container *ngIf="dataset.dataDescription as url">
+            <ng-container
+              *ngIf="config.facility === 'psi' && config.accessDataHref as url"
+            >
+              <a
+                mat-raised-button
+                target="_blank"
+                rel="noopener noreferrer"
+                href="{{ url }}"
+                class="description-button"
+              >
+                Access Data
+              </a>
+            </ng-container>
+
+            <ng-container
+              *ngIf="config.facility != 'psi' && dataset.dataDescription as url"
+            >
               <a
                 mat-raised-button
                 target="_blank"
