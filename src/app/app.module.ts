@@ -7,10 +7,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DatasetDetailComponent } from "./dataset-detail/dataset-detail.component";
 import { DatasetService } from "./dataset.service";
-import { DatasetsComponent } from "./datasets/datasets.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
+import { LinkyModule } from "ngx-linky";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { SDKBrowserModule } from "./shared/sdk/index";
@@ -21,6 +21,10 @@ import { FileSizePipe } from "./filesize.pipe";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { WINDOW_PROVIDERS } from "./shared/services/window.service";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   imports: [
@@ -31,9 +35,15 @@ import { WINDOW_PROVIDERS } from "./shared/services/window.service";
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
+    LinkyModule,
     MatButtonModule,
-    NgxJsonLdModule,
     MatCardModule,
+    MatGridListModule,
+    MatIconModule,
+    MatListModule,
+    MatToolbarModule,
+    NgxJsonLdModule,
     SDKBrowserModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
@@ -43,7 +53,6 @@ import { WINDOW_PROVIDERS } from "./shared/services/window.service";
     AppComponent,
     DashboardComponent,
     DatasetDetailComponent,
-    DatasetsComponent,
     FileSizePipe
   ],
   providers: [DatasetService, UserApi, WINDOW_PROVIDERS],

@@ -1,3 +1,12 @@
-<h1 style="text-align:left">{{title}}</h1>
+<mat-toolbar class="header mat-elevation-z1">
+    <mat-toolbar-row>
+  <span class="spacer">{{ title }}</span>
+  <span  id="doiValue"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet></router-outlet>
-<a routerLink="/datasets">Datasets</a>
+
+<mat-toolbar class="footer" *ngIf="appConfig.facility != 'psi'">
+  <img src="../assets/logo_banner.png" width="412" alt="logo_banner" />
+</mat-toolbar>

@@ -1,4 +1,3 @@
-"use strict";
 import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";
@@ -17,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    @Inject(APP_CONFIG) private appConfig: AppConfig
+    @Inject(APP_CONFIG) public appConfig: AppConfig
   ) {
     const facility = this.appConfig.facility;
     let status = "test";

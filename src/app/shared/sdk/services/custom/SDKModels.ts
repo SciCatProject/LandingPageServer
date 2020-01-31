@@ -8,15 +8,15 @@ import { Sample } from '../../models/Sample';
 import { Proposal } from '../../models/Proposal';
 import { PublishedData } from '../../models/PublishedData';
 import { Datablock } from '../../models/Datablock';
-import { AccessUser } from '../../models/AccessUser';
-import { AccessGroup } from '../../models/AccessGroup';
 import { UserCredential } from '../../models/UserCredential';
 import { UserIdentity } from '../../models/UserIdentity';
 import { ApplicationCredential } from '../../models/ApplicationCredential';
 import { Policy } from '../../models/Policy';
 import { Job } from '../../models/Job';
-import { DatasetAttachment } from '../../models/DatasetAttachment';
+import { ShareGroup } from '../../models/ShareGroup';
 import { OrigDatablock } from '../../models/OrigDatablock';
+import { Logbook } from '../../models/Logbook';
+import { Attachment } from '../../models/Attachment';
 
 export interface Models { [name: string]: any }
 
@@ -32,15 +32,15 @@ export class SDKModels {
     Proposal: Proposal,
     PublishedData: PublishedData,
     Datablock: Datablock,
-    AccessUser: AccessUser,
-    AccessGroup: AccessGroup,
     UserCredential: UserCredential,
     UserIdentity: UserIdentity,
     ApplicationCredential: ApplicationCredential,
     Policy: Policy,
     Job: Job,
-    DatasetAttachment: DatasetAttachment,
+    ShareGroup: ShareGroup,
     OrigDatablock: OrigDatablock,
+    Logbook: Logbook,
+    Attachment: Attachment,
     
   };
 

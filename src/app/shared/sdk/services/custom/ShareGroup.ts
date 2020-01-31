@@ -9,19 +9,19 @@ import { LoopBackFilter,  } from '../../models/BaseModels';
 import { ErrorHandler } from '../core/error.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Job } from '../../models/Job';
+import { ShareGroup } from '../../models/ShareGroup';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `Job` model.
+ * Api services for the `ShareGroup` model.
  *
  * **Details**
  *
- * This collection keeps information about jobs to be excuted in external systems. In particular it keeps information about the jobs submitted for archiving or retrieving datasets stored inside an archive system. It can also be used to keep track of analysis jobs e.g. for automated analysis workflows.
+ * Definition of groups to share datasets between scicat users
  */
 @Injectable()
-export class JobApi extends BaseLoopBackApi {
+export class ShareGroupApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
@@ -46,13 +46,13 @@ export class JobApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Job` object.)
+   * This usually means the response is a `ShareGroup` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PUT";
+    let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Jobs";
+    "/ShareGroups";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -65,7 +65,7 @@ export class JobApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id Job id
+   * @param {any} id ShareGroup id
    *
    * @param {object} data Request data.
    *
@@ -77,13 +77,13 @@ export class JobApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Job` object.)
+   * This usually means the response is a `ShareGroup` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PUT";
+    let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Jobs/:id";
+    "/ShareGroups/:id";
     let _routeParams: any = {
       id: id
     };
@@ -96,44 +96,40 @@ export class JobApi extends BaseLoopBackApi {
   }
 
   /**
-   * Returns for all linked datasets the details as defined in the fields array. Useful to avoid URL size limititations for large dataset queries
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
-   * @param {string} jobId 
+   * @param {object} data Request data.
    *
-   * @param {object} datasetFields 
-   *
-   * @param {object} include 
-   *
-   * @param {object} options 
+   *  - `id` – `{string}` - 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `Job` object.)
-   * </em>
+   * Data properties:
+   *
+   *  - `groups` – `{Object}` - 
    */
-  public datasetDetails(jobId: any = {}, datasetFields: any = {}, include: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public getGroups(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Jobs/datasetDetails";
-    let _routeParams: any = {};
+    "/ShareGroups/:id/register";
+    let _routeParams: any = {
+      id: id
+    };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof jobId !== 'undefined' && jobId !== null) _urlParams.jobId = jobId;
-    if (typeof datasetFields !== 'undefined' && datasetFields !== null) _urlParams.datasetFields = datasetFields;
-    if (typeof include !== 'undefined' && include !== null) _urlParams.include = include;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Job`.
+   * i.e. `ShareGroup`.
    */
   public getModelName() {
-    return "Job";
+    return "ShareGroup";
   }
 }

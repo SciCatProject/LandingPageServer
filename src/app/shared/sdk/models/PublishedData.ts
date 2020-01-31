@@ -3,27 +3,30 @@
 declare var Object: any;
 export interface PublishedDataInterface {
   "doi"?: string;
-  "affiliation": string;
-  "creator": string;
+  "affiliation"?: string;
+  "creator": Array<any>;
   "publisher": string;
   "publicationYear": number;
   "title": string;
-  "url": string;
+  "url"?: string;
   "abstract": string;
   "dataDescription": string;
-  "thumbnail": string;
+  "thumbnail"?: string;
   "resourceType": string;
-  "numberOfFiles": number;
-  "sizeOfArchive": number;
+  "numberOfFiles"?: number;
+  "sizeOfArchive"?: number;
   "pidArray": Array<any>;
-  "authors": Array<any>;
+  "authors"?: Array<any>;
   "doiRegisteredSuccessfullyTime"?: Date;
+  "creationTime"?: Date;
+  "status"?: string;
+  "scicatUser"?: string;
 }
 
 export class PublishedData implements PublishedDataInterface {
   "doi": string;
   "affiliation": string;
-  "creator": string;
+  "creator": Array<any>;
   "publisher": string;
   "publicationYear": number;
   "title": string;
@@ -37,6 +40,9 @@ export class PublishedData implements PublishedDataInterface {
   "pidArray": Array<any>;
   "authors": Array<any>;
   "doiRegisteredSuccessfullyTime": Date;
+  "creationTime": Date;
+  "status": string;
+  "scicatUser": string;
   constructor(data?: PublishedDataInterface) {
     Object.assign(this, data);
   }
@@ -80,7 +86,7 @@ export class PublishedData implements PublishedDataInterface {
         },
         "creator": {
           name: 'creator',
-          type: 'string'
+          type: 'Array&lt;any&gt;'
         },
         "publisher": {
           name: 'publisher',
@@ -133,6 +139,18 @@ export class PublishedData implements PublishedDataInterface {
         "doiRegisteredSuccessfullyTime": {
           name: 'doiRegisteredSuccessfullyTime',
           type: 'Date'
+        },
+        "creationTime": {
+          name: 'creationTime',
+          type: 'Date'
+        },
+        "status": {
+          name: 'status',
+          type: 'string'
+        },
+        "scicatUser": {
+          name: 'scicatUser',
+          type: 'string'
         },
       },
       relations: {

@@ -96,7 +96,7 @@ export class MockDatasetService {
   }
 
   searchDatasets() {
-    console.log ("mock search");
+    console.log("mock search");
     const dataset = {
       doi: "https://doi.org/10.17199/BRIGHTNESS.NMX0001",
       affiliation: "ESS DG",
@@ -137,4 +137,20 @@ export class MockMessageService {
   clear() {
     return of([{ username: "admin" }]);
   }
+}
+
+export class MockOAIervice {
+  getPublications() {
+    return of([]);
+  }
+
+  findOnePublication() {
+    return of();
+  }
+}
+
+export class MockActivatedRoute {
+  snapshot = {
+    params: { id: "string" }
+  };
 }

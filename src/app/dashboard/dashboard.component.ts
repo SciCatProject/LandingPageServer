@@ -1,14 +1,10 @@
-"use strict";
 import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
-import { PublishedData } from "../shared/sdk/models";
-import { map } from "rxjs/operators";
-
-interface MyType {
-  doi: string;
-  value: string;
-}
+import { OAIService } from "../oai.service";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { PublishedData } from "../shared/sdk";
 
 @Component({
   selector: "app-dashboard",
@@ -16,35 +12,28 @@ interface MyType {
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  datasets: PublishedData[] = [];
   subtitle: string;
-  doi_list: MyType[];
+  publications$: Observable<PublishedData[]>;
+
+  onClick(doi: string): void {
+    this.router.navigateByUrl("/detail/" + encodeURIComponent(doi));
+  }
 
   constructor(
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
     private datasetService: DatasetService,
-    @Inject(APP_CONFIG) private appConfig: AppConfig
+    private oaiService: OAIService,
+    private router: Router
   ) {
     const facility = this.appConfig.facility;
     this.subtitle = facility.toUpperCase() + " Public Dataset Access";
   }
 
   ngOnInit() {
-    this.getDatasets();
-  }
-
-  getDatasets(): void {
-    this.datasetService
-      .getDatasets()
-      .pipe(
-        map(res => {
-          return res.map(x => ({
-            doi: x.doi.replace("/", "%252F").replace("/", "%252F"),
-            value: x.doi
-          }));
-        })
-      )
-      .subscribe(datasets => {
-        this.doi_list = datasets;
-      });
+    if (this.appConfig.directMongoAccess) {
+      this.publications$ = this.datasetService.getDatasets();
+    } else {
+      this.publications$ = this.oaiService.getPublications(null);
+    }
   }
 }

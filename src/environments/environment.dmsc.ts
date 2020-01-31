@@ -6,5 +6,7 @@
 export const environment = {
   production: false,
   lbBaseURL: "https://kubetest02.dm.esss.dk:32223",
-  facility: "ess"
+  doiBaseUrl: "https://doi.org/",
+  facility: "ess",
+  directMongoAccess: true
 };
