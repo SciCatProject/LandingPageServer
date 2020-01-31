@@ -1,14 +1,9 @@
-<h3> {{subtitle }} </h3>
-<div class="grid grid-pad">
-    <table style="width:100%">
-        <li *ngFor="let publication of doi_list">
-        <tr>
-          <th>DOI</th>
-          <td>      <a href="/detail/{{ publication.doi  }}">
-            {{publication.doi}}
-          </a></td>
-        </tr>
-      </li>
-      </table> 
-</div>
-
+<mat-list *ngIf="publications$ | async as publications">
+  <h3 mat-subheader>{{ subtitle }}</h3>
+  <mat-list-item *ngFor="let publication of publications">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h4 mat-line>
+      <a (click)="onClick(publication.doi)">{{ publication.title }}</a>
+    </h4>
+  </mat-list-item>
+</mat-list>

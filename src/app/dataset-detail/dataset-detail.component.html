@@ -1,80 +1,187 @@
-<div *ngIf="dataset">
-  <div fxLayout="column">
-    <h2>{{ dataset.title }} </h2>
-  </div>
-  <br>
-  <div fxLayout="row" fxLayout.xs="column">
-    <div fxFlex="55">
-
-
-      <table>
-        <tr *ngIf="dataset.creator as value">
-          <th>Creator</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="dataset.publisher as value">
-          <th>Publisher</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="dataset.affiliation as value">
-          <th>Affiliation</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="dataset.publicationYear as value">
-          <th>Year</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="dataset.resourceType as value">
-          <th>Resource Type</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="dataset.numberOfFiles as value">
-          <th>No. of datasets</th>
-          <td> {{ value }}</td>
-        </tr>
-        <tr *ngIf="dataset.sizeOfArchive as value">
-          <th> Size</th>
-          <td> {{ value | filesize }}</td>
-        </tr>
-      </table>
-
-      <br>
-      <a class="e2e-trusted-url" mat-raised-button [href]="trustedUrl">Access data</a>
-      &nbsp;
-      <a class="e2e-data-url" mat-raised-button [href]="dataUrl">Data description</a>
-      <br>
-
-    </div>
-
-    <div fxFlex="45" *ngIf="dataset.thumbnail as value">
-      <mat-card style="margin: 1em">
-        <img mat-card-image src="{{ value}}" alt="data thumbnail">
+<ng-container *ngIf="dataset$ | async as dataset">
+  <div fxLayout="row" class="title-card">
+    <div fxFlex="15"></div>
+    <div fxFlex="70">
+      <mat-card>
+        <h1 class="title">
+          {{ dataset.title }}
+        </h1>
+        <h3 class="creators">
+          {{ dataset.creator }}; {{ dataset.publisher }} ({{
+            dataset.publicationYear
+          }})
+        </h3>
       </mat-card>
     </div>
-
-
+    <div fxFlex="15"></div>
   </div>
-  <div class="freeform_metadata" fxLayout="column">
 
+  <div fxLayout="row">
+    <div fxFlex="15"></div>
+    <div fxFlex="40">
+      <mat-card>
+        <mat-card-header class="first-header">
+          Abstract
+        </mat-card-header>
+        <mat-card-content>
+          <p class="text-content">
+            {{ dataset.abstract }}
+          </p>
+        </mat-card-content>
+      </mat-card>
 
-    <b> DOI: </b> <a href="{{ doi_link}} "> {{doi}}</a>
-    <p>
-      <b> Instructions: </b> Login with brightness username and password
-    </p>
-    <div>
-      <b>
-        Abstract:
-      </b>
-      {{ dataset.abstract}}
+      <mat-card>
+        <mat-card-header class="second-header">
+          Publication details
+        </mat-card-header>
+        <mat-card-content>
+          <table class="text-content">
+            <tr *ngIf="dataset.doi as doi">
+              <th>DOI</th>
+              <td>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="{{ doiBaseUrl + doi }}"
+                  >{{ doiBaseUrl + doi }}</a
+                >
+              </td>
+            </tr>
+            <tr *ngIf="dataset.affiliation as affiliation">
+              <th>Affiliation</th>
+              <td>{{ affiliation }}</td>
+            </tr>
+            <tr *ngIf="dataset.resourceType as resourceType">
+              <th>Resource Type</th>
+              <td>{{ resourceType }}</td>
+            </tr>
+            <tr *ngIf="dataset.numberOfFiles as numberOfFiles">
+              <th>Number of Datasets</th>
+              <td>
+                {{ numberOfFiles }}
+              </td>
+            </tr>
+            <tr *ngIf="dataset.sizeOfArchive as sizeOfArchive">
+              <th>Size</th>
+              <td>{{ sizeOfArchive | filesize }}</td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+
+      <ng-container *ngIf="dataset.thumbnail">
+        <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
+        <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+      </ng-container>
+
+      <ng-template #datasetsCard>
+        <mat-card>
+          <mat-card-header class="third-header">
+            Datasets
+          </mat-card-header>
+          <mat-card-content>
+            <table class="text-content">
+              <tr
+                *ngIf="
+                  config.facility === 'psi' &&
+                  dataset.dataDescription as description
+                "
+              >
+                <th>Description</th>
+                <td>{{ description }}</td>
+              </tr>
+            </table>
+
+            <mat-list role="list">
+              <mat-list-item
+                role="listitem"
+                *ngFor="let pid of dataset.pidArray"
+              >
+                {{ pid }}
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <ng-template #actionsCard>
+        <mat-card>
+          <mat-card-header class="fourth-header">
+            Actions
+          </mat-card-header>
+          <mat-card-content>
+            <p class="text-content">
+              {{ config.accessInstructions }}
+            </p>
+
+            <ng-container
+              *ngIf="config.facility != 'psi' && dataset.url as url"
+            >
+              <a
+                mat-raised-button
+                target="_blank"
+                rel="noopener noreferrer"
+                href="{{ url }}"
+                class="access-button"
+              >
+                Access Data
+              </a>
+            </ng-container>
+
+            <ng-container
+              *ngIf="config.facility === 'psi' && config.accessDataHref as url"
+            >
+              <a
+                mat-raised-button
+                target="_blank"
+                rel="noopener noreferrer"
+                href="{{ url }}"
+                class="description-button"
+              >
+                Access Data
+              </a>
+            </ng-container>
+
+            <ng-container
+              *ngIf="config.facility != 'psi' && dataset.dataDescription as url"
+            >
+              <a
+                mat-raised-button
+                target="_blank"
+                rel="noopener noreferrer"
+                href="{{ url }}"
+                class="description-button"
+              >
+                Data Description
+              </a>
+            </ng-container>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <ng-container *ngIf="!productionMode">
+        <mat-card *ngIf="datasetJson$ | async as json">
+          <button mat-stroked-button (click)="show = !show">
+            {{ show ? "Hide MetaData" : "Show Metadata" }}
+          </button>
+          <div class="json-container" *ngIf="show">
+            <div [innerHTML]="json"></div>
+          </div>
+        </mat-card>
+      </ng-container>
     </div>
-    <button (click)="goBack()" style="width:100px">go back</button>
+    <div fxFlex="30">
+      <ng-container *ngIf="dataset.thumbnail as thumbnail; else noThumbnail">
+        <mat-card>
+          <img mat-card-image src="{{ thumbnail }}" alt="data thumbnail" />
+        </mat-card>
+      </ng-container>
 
-
+      <ng-template #noThumbnail>
+        <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
+        <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+      </ng-template>
+    </div>
+    <div fxFlex="15"></div>
   </div>
-  <button (click)="show = !show">{{show ? 'Hide MetaData' : 'Show Metadata'}}</button>
-  <br>
-  <div *ngIf="show">
-    <div [innerHTML]="jsonLD"></div>
-  </div>
-
-</div>
+</ng-container>

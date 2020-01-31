@@ -6,6 +6,7 @@
 export const environment = {
   production: true,
   lbBaseURL: "https://scicat03.esss.lu.se:32223",
+  doiBaseUrl: "https://doi.org/",
   facility: "ess",
-  directMongoAccess: true,
+  directMongoAccess: true
 };

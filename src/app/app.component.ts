@@ -1,4 +1,3 @@
-"use strict";
 import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";

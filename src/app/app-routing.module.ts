@@ -2,11 +2,11 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { PublishedDataDetailComponent } from "./publisheddata-detail/publisheddata-detail.component";
+import { DatasetDetailComponent } from "./dataset-detail/dataset-detail.component";
 
 const routes: Routes = [
-  { path: "detail/:id1/:id2", component: PublishedDataDetailComponent },
-  { path: "detail/:id", component: PublishedDataDetailComponent },
+  { path: "detail/:id1/:id2", component: DatasetDetailComponent },
+  { path: "detail/:id", component: DatasetDetailComponent },
   { path: "", component: DashboardComponent }
 ];
 

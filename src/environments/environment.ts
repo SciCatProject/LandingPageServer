@@ -7,9 +7,10 @@ export const environment = {
   lbBaseURL: "http://127.0.0.1:3000",
   facility: "ess",
   oaiProviderRoute: "http://127.0.0.1:3001",
+  doiBaseUrl: "https://doi.org/",
   directMongoAccess: true,
+  accessInstructions: "Instructions: Login with brightness username and password"
 };
-
 
 /*
  * In development mode, to ignore zone related error stack frames such as
