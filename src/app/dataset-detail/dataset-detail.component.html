@@ -47,10 +47,6 @@
                 >
               </td>
             </tr>
-            <tr *ngIf="dataset.publisher as publisher">
-              <th>Publisher</th>
-              <td>{{ publisher }}</td>
-            </tr>
             <tr *ngIf="dataset.affiliation as affiliation">
               <th>Affiliation</th>
               <td>{{ affiliation }}</td>
@@ -85,11 +81,17 @@
           </mat-card-header>
           <mat-card-content>
             <table class="text-content">
-              <tr *ngIf="config.facility==='psi' && dataset.dataDescription as description">
+              <tr
+                *ngIf="
+                  config.facility === 'psi' &&
+                  dataset.dataDescription as description
+                "
+              >
                 <th>Description</th>
                 <td>{{ description }}</td>
               </tr>
             </table>
+
             <mat-list role="list">
               <mat-list-item
                 role="listitem"
