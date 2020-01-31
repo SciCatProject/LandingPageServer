@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    @Inject(APP_CONFIG) private appConfig: AppConfig
+    @Inject(APP_CONFIG) public appConfig: AppConfig
   ) {
     const facility = this.appConfig.facility;
     let status = "test";
