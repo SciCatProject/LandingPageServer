@@ -32,6 +32,7 @@
     "@angular/router": "^8.2.14",
     "@angular/service-worker": "^8.2.14",
     "@angular/upgrade": "^8.2.14",
+    "@ngrx/store": "^8.6.0",
     "@nguniversal/express-engine": "^8.2.6",
     "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
     "@ngx-lite/json-ld": "^0.6.2",
@@ -41,7 +42,9 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "filesize": "^6.0.1",
+    "ngx-file-helpers": "^2.0.0",
     "ngx-linky": "^2.2.0",
+    "rison": "^0.1.1",
     "rxjs": "^6.5.4",
     "socket.io-client": "^2.3.0",
     "zone.js": "^0.9.1"

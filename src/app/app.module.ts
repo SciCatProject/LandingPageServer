@@ -25,7 +25,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
-
+import { SharedCatanieModule } from "./shared/shared.module";
 @NgModule({
   imports: [
     AppConfigModule,
@@ -47,7 +47,8 @@ import { MatIconModule } from "@angular/material/icon";
     SDKBrowserModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
-    })
+    }),
+    SharedCatanieModule
   ],
   declarations: [
     AppComponent,
