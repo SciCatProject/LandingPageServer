@@ -14,7 +14,7 @@ import {
   MatCheckboxChange,
   MatCheckbox
 } from "@angular/material";
-import { PipesModule } from "shared/pipes/pipes.module";
+import { PipesModule } from "../../pipes/pipes.module";
 
 describe("TableComponent", () => {
   let component: TableComponent;

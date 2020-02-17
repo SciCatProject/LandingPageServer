@@ -7,6 +7,11 @@ import { OAIService } from "../oai.service";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { Router } from "@angular/router";
+import {
+  TableColumn,
+  PageChangeEvent,
+  SortChangeEvent
+} from "../shared/modules/table/table.component";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -49,11 +54,11 @@ describe("DashboardComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  describe("#onClick()", () => {
+  describe("#onRowClick()", () => {
     it("should navigate to publication details of the provided doi", () => {
       const doi = "testDOI";
 
-      component.onClick(doi);
+      component.onRowClick(doi);
 
       expect(router.navigateByUrl).toHaveBeenCalledTimes(1);
       expect(router.navigateByUrl).toHaveBeenCalledWith(
