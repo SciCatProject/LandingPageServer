@@ -19,15 +19,6 @@ const app = express();
 const PORT = process.env.PORT || 4200;
 const DIST_FOLDER = join(process.cwd(), "dist");
 
-// fixes window is not defined
-/*const domino = require('domino');
-const fs = require('fs');
-const path = require('path');
-const template = fs.readFileSync(path.join(DIST_FOLDER, 'browser', 'index.html')).toString();
-const win = domino.createWindow(template);
-global['window'] = win;
-global['document'] = win.document;*/
-
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const {
   AppServerModuleNgFactory,
