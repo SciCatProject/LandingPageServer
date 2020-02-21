@@ -15,7 +15,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { SDKBrowserModule } from "./shared/sdk/index";
 import { UserApi } from "./shared/sdk/services";
-import { isPlatformBrowser } from "@angular/common";
+import { isPlatformBrowser, DatePipe } from "@angular/common";
 import { NgxJsonLdModule } from "@ngx-lite/json-ld";
 import { FileSizePipe } from "./filesize.pipe";
 import { ServiceWorkerModule } from "@angular/service-worker";
@@ -26,6 +26,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { SharedCatanieModule } from "./shared/shared.module";
+
 @NgModule({
   imports: [
     AppConfigModule,
@@ -56,7 +57,7 @@ import { SharedCatanieModule } from "./shared/shared.module";
     DatasetDetailComponent,
     FileSizePipe
   ],
-  providers: [DatasetService, UserApi, WINDOW_PROVIDERS],
+  providers: [DatasetService, UserApi, WINDOW_PROVIDERS, DatePipe],
   bootstrap: [AppComponent],
   exports: [FileSizePipe]
 })

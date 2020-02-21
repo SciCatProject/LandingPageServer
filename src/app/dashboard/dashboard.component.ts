@@ -1,11 +1,10 @@
 import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { DatasetService } from "../dataset.service";
-import { OAIService } from "../oai.service";
+import { OAIService, Count } from "../oai.service";
 import { Router } from "@angular/router";
 import { Observable, Subscription } from "rxjs";
 import { PublishedData } from "../shared/sdk";
-
 import {
   TableColumn,
   PageChangeEvent,
@@ -18,34 +17,56 @@ import {
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
+  itemsPerPage = 5;
+  currentPage = 0;
+  sortColumn = "doiRegisteredSuccessfullyTime";
+  defaultSort = "doiRegisteredSuccessfullyTime";
+  sortDirection = "desc";
+  get: any;
+  params: any;
 
   tableColumns: TableColumn[] = [
     {
-      name: "doi",
-      icon: "mail",
+      name: "title",
+      icon: "bubble_chart",
       sort: true,
       inList: true
     },
-    { name: "title", icon: "bubble_chart", sort: true, inList: true },
-    { name: "publisher", icon: "bubble_chart", sort: true, inList: true },
-
+    {
+      name: "doiRegisteredSuccessfullyTime",
+      icon: "bubble_chart",
+      sort: true,
+      inList: true,
+      dateFormat: "yyyy-MM-dd HH:mm"
+    },
+    { name: "publisher", icon: "bubble_chart", sort: true, inList: true }
   ];
   subtitle: string;
   publications$: Observable<PublishedData[]>;
   subscriptions: Subscription[] = [];
   publications: PublishedData[];
+  count: number;
+  count$: Observable<Count>;
 
-  onClick(doi: string): void {
-    this.router.navigateByUrl("/detail/" + encodeURIComponent(doi));
+  onRowClick(event: any): void {
+    this.router.navigateByUrl("/detail/" + encodeURIComponent(event.doi));
   }
 
   onPageChange(event: PageChangeEvent) {
-  }
-
-  onRowClick() {
+    this.itemsPerPage = event.pageSize;
+    this.currentPage = event.pageIndex;
+    this.get(this.params()).subscribe(publications => {
+      this.publications = publications;
+    });
   }
 
   onSortChange(event: SortChangeEvent) {
+    const { active: column, direction } = event;
+    this.sortColumn = direction ? column : this.defaultSort;
+    this.sortDirection = direction ? direction : "asc";
+    this.get(this.params()).subscribe(publications => {
+      this.publications = publications;
+    });
   }
 
   constructor(
@@ -58,19 +79,58 @@ export class DashboardComponent implements OnInit {
     this.subtitle = facility.toUpperCase() + " Public Dataset Access";
   }
 
+  queryParamsJSON() {
+    return {
+      order: this.sortColumn + " " + this.sortDirection,
+      skip: this.itemsPerPage * this.currentPage,
+      limit: this.itemsPerPage
+    };
+  }
+
+  queryParamsString() {
+    return (
+      "(" +
+      "skip=" +
+      this.itemsPerPage * this.currentPage +
+      ",limit=" +
+      this.itemsPerPage +
+      ",sortField=" +
+      this.sortColumn +
+      ",sortDirection=" +
+      this.sortDirection +
+      ")"
+    );
+  }
+
   ngOnInit() {
     if (this.appConfig.directMongoAccess) {
-      this.publications$ = this.datasetService.getDatasets();
+      this.get = function(params: any) {
+        return this.datasetService.getDatasets(params);
+      };
+      this.params = function() {
+        return this.queryParamsJSON();
+      };
+      this.count$ = this.datasetService.count();
     } else {
-      this.publications$ = this.oaiService.getPublications(null);
-
-      this.subscriptions.push(
-        this.publications$.subscribe(publications => {
-          this.publications = publications;
-        })
-      );
-
+      this.get = function(params: any) {
+        return this.oaiService.getPublications(params);
+      };
+      this.params = function() {
+        return this.queryParamsString();
+      };
+      this.count$ = this.oaiService.countPublications();
     }
+    this.publications$ = this
+      .get(this.params());
+
+    this.subscriptions.push(
+      this.count$.subscribe(res => {
+        this.count = res.count;
+      }),
+      this.publications$.subscribe(publications => {
+        this.publications = publications;
+      })
+    );
   }
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
