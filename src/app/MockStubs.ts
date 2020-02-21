@@ -127,58 +127,6 @@ export class MockActivatedRoute {
   children = [];
 }
 
-export class MockUserApi {
-  getCurrentId() {
-    return 123;
-  }
-
-  getCurrent() {
-    return of([{ username: "admin" }]);
-  }
-
-  getCurrentToken() {
-    return { user: { username: "admin" } };
-  }
-
-  getCachedCurrent() {
-    return { username: "admin" };
-  }
-
-  jwt() {
-    return of("");
-  }
-}
-
-export class MockDatasetApi {
-  getDatasets() {
-    return of([]);
-  }
-
-  getDatablocks() {
-    return of([]);
-  }
-
-  find() {
-    return of([]);
-  }
-
-  findById() {
-    return of([]);
-  }
-
-  count(data?: any) {
-    return of(0);
-  }
-}
-
-export class MockAttachmentApi {}
-
-export class MockMatDialogRef {
-  close() {}
-}
-
-export class MockMatDialogData {}
-
 export class MockRouter {
   events = new Observable(observer => {
     observer.next();
@@ -198,31 +146,5 @@ export class MockRouter {
 export class MockConfigService {
   getConfigFile() {
     return of([undefined]);
-  }
-}
-
-export class MockStore {
-  public dispatch(obj) {}
-
-  public select(obj) {
-    return of([]);
-  }
-
-  public pipe(obj) {
-    return of(null);
-  }
-}
-
-export class MockArchivingService {
-  public dispatch(obj) {}
-
-  public select(obj) {
-    return of([]);
-  }
-}
-
-export class MockShareGroupApi {
-  upsert(obj) {
-    return of({});
   }
 }
