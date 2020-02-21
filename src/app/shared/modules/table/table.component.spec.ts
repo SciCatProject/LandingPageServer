@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
+import { DatePipe } from "@angular/common";
 import {
   TableComponent,
   PageChangeEvent,
@@ -12,7 +12,6 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatCheckboxChange,
-  MatCheckbox
 } from "@angular/material";
 import { PipesModule } from "../../pipes/pipes.module";
 
@@ -24,7 +23,8 @@ describe("TableComponent", () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [TableComponent],
-      imports: [MatListModule, MatPaginatorModule, MatTableModule, PipesModule]
+      imports: [MatListModule, MatPaginatorModule, MatTableModule, PipesModule],
+      providers: [DatePipe]
     });
     TestBed.compileComponents();
   }));

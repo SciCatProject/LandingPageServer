@@ -26,7 +26,8 @@ describe("DatasetDetailComponent", () => {
         {
           provide: APP_CONFIG,
           useValue: {
-            production: false
+            production: false,
+            directMongoAccess: true
           }
         }
       ]

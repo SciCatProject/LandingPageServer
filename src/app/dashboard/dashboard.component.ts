@@ -120,8 +120,7 @@ export class DashboardComponent implements OnInit {
       };
       this.count$ = this.oaiService.countPublications();
     }
-    this.publications$ = this
-      .get(this.params());
+    this.publications$ = this.get(this.params());
 
     this.subscriptions.push(
       this.count$.subscribe(res => {
