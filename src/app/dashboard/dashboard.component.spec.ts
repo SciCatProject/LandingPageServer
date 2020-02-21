@@ -10,9 +10,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { Router } from "@angular/router";
 import { MatCardModule } from "@angular/material";
 import { SharedCatanieModule } from "../shared/shared.module";
-import { Dataset, PublishedDataApi } from "../shared/sdk";
-import { Observable } from "rxjs";
-
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;

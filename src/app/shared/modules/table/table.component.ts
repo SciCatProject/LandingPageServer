@@ -4,7 +4,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  AfterViewInit
 } from "@angular/core";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatCheckboxChange } from "@angular/material";

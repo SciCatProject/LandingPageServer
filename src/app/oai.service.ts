@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { map } from "rxjs/operators";
 import { PublishedData } from "./shared/sdk/models";
-import { Observable } from "rxjs";
 import { DatePipe } from "@angular/common";
 
 export interface Count {
