@@ -18,12 +18,13 @@ export class DatasetDetailComponent implements OnInit {
 
   doiBaseUrl = this.config.doiBaseUrl;
   productionMode = this.config.production;
+  accessDataHref = this.config.accessDataHref;
 
   constructor(
     @Inject(APP_CONFIG) private config: AppConfig,
     private datasetService: DatasetService,
     private route: ActivatedRoute,
-    private oaiService: OAIService,
+    private oaiService: OAIService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class DatasetDetailComponent implements OnInit {
     let id: string;
     if (Object.keys(params).length === 2) {
       // for case where doi string is not url encoded
-      id = (params.id1 + "/" + params.id2);
+      id = params.id1 + "/" + params.id2;
     } else {
       id = this.route.snapshot.params.id;
     }
@@ -41,13 +42,14 @@ export class DatasetDetailComponent implements OnInit {
       this.datasetJson$ = this.dataset$.pipe(
         map(({ thumbnail, ...dataset }) => JSON.stringify(dataset, null, 2))
       );
-    } else {
+    } else { 
+      if (id === "10.16907/7eb141d3-11f1-47a6-9d0e-76f8832ed1b2") {
+        this.accessDataHref = "https://doi2.psi.ch/datasets/das/work/p16/p16628/20181012_lungs/large_volume_360/R2-6/stitching/fileexportTools/";
+      }
       this.dataset$ = this.oaiService.findOnePublication(id);
       this.dataset$.subscribe(pub => {
         document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
       });
     }
-
-
   }
 }
