@@ -33,6 +33,8 @@ How to install:
 
 ```
 npm install
+set $env to one of the environment file e.g. 
+export env=development
 npm run build:ssr
 ```
 
