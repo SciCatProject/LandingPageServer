@@ -103,6 +103,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("doiValue").innerHTML = "";
     if (this.appConfig.directMongoAccess) {
       this.get = function(params: any) {
         return this.datasetService.getDatasets(params);
