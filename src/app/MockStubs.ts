@@ -24,7 +24,7 @@ export class MockDatasetService {
       numberOfFiles: 26,
       pidArray: ["x", "x"],
       authors: ["x", "x"],
-      doiRegisteredSuccessfullyTime: new Date()
+      registeredTime: new Date()
     };
     return of(dataset);
   }
@@ -46,7 +46,7 @@ export class MockDatasetService {
       numberOfFiles: 26,
       pidArray: ["x", "x"],
       authors: ["x", "x"],
-      doiRegisteredSuccessfullyTime: new Date()
+      registeredTime: new Date()
     };
     return of(dataset);
   }
@@ -69,7 +69,7 @@ export class MockDatasetService {
       numberOfFiles: 26,
       pidArray: ["x", "x"],
       authors: ["x", "x"],
-      doiRegisteredSuccessfullyTime: new Date()
+      registeredTime: new Date()
     };
     return of(dataset);
   }

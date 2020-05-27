@@ -42,9 +42,9 @@ export class OAIService {
       map((response: PublishedData[]) => {
         if (response) {
           return response.map((pub: PublishedData) => {
-            pub.doiRegisteredSuccessfullyTime = new Date(
+            pub.registeredTime = new Date(
               this.datePipe.transform(
-                pub.doiRegisteredSuccessfullyTime,
+                pub.registeredTime,
                 "yyyy-MM-dd HH:mm"
               )
             );
