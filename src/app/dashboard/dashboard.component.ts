@@ -19,8 +19,8 @@ import {
 export class DashboardComponent implements OnInit {
   itemsPerPage = 5;
   currentPage = 0;
-  sortColumn = "doiRegisteredSuccessfullyTime";
-  defaultSort = "doiRegisteredSuccessfullyTime";
+  sortColumn = "registeredTime";
+  defaultSort = "registeredTime";
   sortDirection = "desc";
   get: any;
   params: any;
@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
       inList: true
     },
     {
-      name: "doiRegisteredSuccessfullyTime",
+      name: "registeredTime",
       icon: "bubble_chart",
       sort: true,
       inList: true,
