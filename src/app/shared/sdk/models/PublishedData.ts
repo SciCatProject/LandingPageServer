@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  Dataset
+} from '../index';
 
 declare var Object: any;
 export interface PublishedDataInterface {
@@ -11,16 +14,22 @@ export interface PublishedDataInterface {
   "url"?: string;
   "abstract": string;
   "dataDescription": string;
-  "thumbnail"?: string;
   "resourceType": string;
   "numberOfFiles"?: number;
   "sizeOfArchive"?: number;
   "pidArray": Array<any>;
   "authors"?: Array<any>;
-  "doiRegisteredSuccessfullyTime"?: Date;
-  "creationTime"?: Date;
+  "registeredTime"?: Date;
   "status"?: string;
   "scicatUser"?: string;
+  "thumbnail"?: string;
+  "relatedPublications"?: Array<any>;
+  "downloadLink"?: string;
+  "createdBy"?: string;
+  "updatedBy"?: string;
+  "createdAt"?: Date;
+  "updatedAt"?: Date;
+  datasets?: Dataset[];
 }
 
 export class PublishedData implements PublishedDataInterface {
@@ -33,16 +42,22 @@ export class PublishedData implements PublishedDataInterface {
   "url": string;
   "abstract": string;
   "dataDescription": string;
-  "thumbnail": string;
   "resourceType": string;
   "numberOfFiles": number;
   "sizeOfArchive": number;
   "pidArray": Array<any>;
   "authors": Array<any>;
-  "doiRegisteredSuccessfullyTime": Date;
-  "creationTime": Date;
+  "registeredTime": Date;
   "status": string;
   "scicatUser": string;
+  "thumbnail": string;
+  "relatedPublications": Array<any>;
+  "downloadLink": string;
+  "createdBy": string;
+  "updatedBy": string;
+  "createdAt": Date;
+  "updatedAt": Date;
+  datasets: Dataset[];
   constructor(data?: PublishedDataInterface) {
     Object.assign(this, data);
   }
@@ -112,10 +127,6 @@ export class PublishedData implements PublishedDataInterface {
           name: 'dataDescription',
           type: 'string'
         },
-        "thumbnail": {
-          name: 'thumbnail',
-          type: 'string'
-        },
         "resourceType": {
           name: 'resourceType',
           type: 'string'
@@ -136,12 +147,8 @@ export class PublishedData implements PublishedDataInterface {
           name: 'authors',
           type: 'Array&lt;any&gt;'
         },
-        "doiRegisteredSuccessfullyTime": {
-          name: 'doiRegisteredSuccessfullyTime',
-          type: 'Date'
-        },
-        "creationTime": {
-          name: 'creationTime',
+        "registeredTime": {
+          name: 'registeredTime',
           type: 'Date'
         },
         "status": {
@@ -152,8 +159,44 @@ export class PublishedData implements PublishedDataInterface {
           name: 'scicatUser',
           type: 'string'
         },
+        "thumbnail": {
+          name: 'thumbnail',
+          type: 'string'
+        },
+        "relatedPublications": {
+          name: 'relatedPublications',
+          type: 'Array&lt;any&gt;'
+        },
+        "downloadLink": {
+          name: 'downloadLink',
+          type: 'string'
+        },
+        "createdBy": {
+          name: 'createdBy',
+          type: 'string'
+        },
+        "updatedBy": {
+          name: 'updatedBy',
+          type: 'string'
+        },
+        "createdAt": {
+          name: 'createdAt',
+          type: 'Date'
+        },
+        "updatedAt": {
+          name: 'updatedAt',
+          type: 'Date'
+        },
       },
       relations: {
+        datasets: {
+          name: 'datasets',
+          type: 'Dataset[]',
+          model: 'Dataset',
+          relationType: 'hasMany',
+                  keyFrom: 'doi',
+          keyTo: 'publishedDataId'
+        },
       }
     }
   }

@@ -9,20 +9,20 @@ import { LoopBackFilter,  } from '../../models/BaseModels';
 import { ErrorHandler } from '../core/error.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DatasetAttachment } from '../../models/DatasetAttachment';
+import { UserSetting } from '../../models/UserSetting';
 import { SocketConnection } from '../../sockets/socket.connections';
-import { Dataset } from '../../models/Dataset';
+import { User } from '../../models/User';
 
 
 /**
- * Api services for the `DatasetAttachment` model.
+ * Api services for the `UserSetting` model.
  *
  * **Details**
  *
- * Small less than 16 MB attachments for datasets, envisaged for png/jpeg previews
+ * User settings such as job count and dataset count
  */
 @Injectable()
-export class DatasetAttachmentApi extends BaseLoopBackApi {
+export class UserSettingApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
@@ -35,9 +35,9 @@ export class DatasetAttachmentApi extends BaseLoopBackApi {
   }
 
   /**
-   * Fetches belongsTo relation dataset.
+   * Fetches belongsTo relation user.
    *
-   * @param {any} id DatasetAttachment id
+   * @param {any} id UserSetting id
    *
    * @param {boolean} refresh 
    *
@@ -47,13 +47,13 @@ export class DatasetAttachmentApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `DatasetAttachment` object.)
+   * This usually means the response is a `UserSetting` object.)
    * </em>
    */
-  public getDataset(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+  public getUser(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/DatasetAttachments/:id/dataset";
+    "/UserSettings/:id/user";
     let _routeParams: any = {
       id: id
     };
@@ -77,13 +77,13 @@ export class DatasetAttachmentApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `DatasetAttachment` object.)
+   * This usually means the response is a `UserSetting` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/DatasetAttachments";
+    "/UserSettings";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -96,7 +96,7 @@ export class DatasetAttachmentApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id DatasetAttachment id
+   * @param {any} id UserSetting id
    *
    * @param {object} data Request data.
    *
@@ -108,13 +108,13 @@ export class DatasetAttachmentApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `DatasetAttachment` object.)
+   * This usually means the response is a `UserSetting` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/DatasetAttachments/:id";
+    "/UserSettings/:id";
     let _routeParams: any = {
       id: id
     };
@@ -128,9 +128,9 @@ export class DatasetAttachmentApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `DatasetAttachment`.
+   * i.e. `UserSetting`.
    */
   public getModelName() {
-    return "DatasetAttachment";
+    return "UserSetting";
   }
 }

@@ -16,5 +16,7 @@ export * from './ShareGroup';
 export * from './OrigDatablock';
 export * from './Logbook';
 export * from './Attachment';
+export * from './UserSetting';
+export * from './Instrument';
 export * from './BaseModels';
 export * from './FireLoopRef';
