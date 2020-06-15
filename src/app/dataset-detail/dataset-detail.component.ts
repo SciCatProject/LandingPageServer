@@ -43,13 +43,6 @@ export class DatasetDetailComponent implements OnInit {
         map(({ thumbnail, ...dataset }) => JSON.stringify(dataset, null, 2))
       );
     } else {
-      if (id === "10.16907/7eb141d3-11f1-47a6-9d0e-76f8832ed1b2") {
-        this.accessDataHref =
-          "https://doi2.psi.ch/datasets/das/work/p16/p16628/20181012_lungs/large_volume_360/R2-6/stitching/fileexportTools/";
-      } else if (id === "10.16907/05a50450-767f-421d-9832-342b57c201af") {
-        this.accessDataHref =
-          "https://doi2.psi.ch/datasets/das/work/p15/p15869/compression/";
-      }
       this.dataset$ = this.oaiService.findOnePublication(id);
       this.dataset$.subscribe((pub) => {
         document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
