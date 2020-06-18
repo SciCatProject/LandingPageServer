@@ -115,7 +115,7 @@
             </p>
 
             <ng-container
-              *ngIf="config.facility != 'psi' && dataset.url as url"
+              *ngIf="config.facility !== 'psi' && dataset.url as url"
             >
               <a
                 mat-raised-button

@@ -44,6 +44,7 @@ export class DatasetDetailComponent implements OnInit {
         map(({ thumbnail, ...dataset }) => JSON.stringify(dataset, null, 2))
       );
     } else {
+      console.log("access via oai-service");
       this.dataset$ = this.oaiService.findOnePublication(id);
       this.dataset$.subscribe((pub) => {
         document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
