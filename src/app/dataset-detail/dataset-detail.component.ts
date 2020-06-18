@@ -19,6 +19,7 @@ export class DatasetDetailComponent implements OnInit {
   doiBaseUrl = this.config.doiBaseUrl;
   productionMode = this.config.production;
   accessDataHref = this.config.accessDataHref;
+  downloadLink = "";
 
   constructor(
     @Inject(APP_CONFIG) private config: AppConfig,
@@ -46,6 +47,8 @@ export class DatasetDetailComponent implements OnInit {
       this.dataset$ = this.oaiService.findOnePublication(id);
       this.dataset$.subscribe((pub) => {
         document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
+        this.downloadLink = pub.downloadLink ? pub.downloadLink : this.accessDataHref;
+
       });
     }
   }
