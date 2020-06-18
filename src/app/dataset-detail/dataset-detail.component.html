@@ -129,13 +129,13 @@
             </ng-container>
 
             <ng-container
-              *ngIf="config.facility === 'psi' && (dataset.downloadLink || accessDataHref) as url"
+              *ngIf="config.facility === 'psi' && (dataset.downloadLink) as url"
             >
               <a
                 mat-raised-button
                 target="_blank"
                 rel="noopener noreferrer"
-                href="{{ url }}"
+                href="{{ url || accessDataHref }}"
                 class="description-button"
               >
                 Access Data
