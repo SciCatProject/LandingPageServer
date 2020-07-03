@@ -65,6 +65,10 @@
               <th>Size</th>
               <td>{{ sizeOfArchive | filesize }}</td>
             </tr>
+            <tr *ngIf="dataset.relatedPublications as relatedPublications">
+              <th>Size</th>
+              <td>{{ relatedPublications }}</td>
+            </tr>
           </table>
         </mat-card-content>
       </mat-card>
@@ -135,7 +139,7 @@
                 mat-raised-button
                 target="_blank"
                 rel="noopener noreferrer"
-                href="{{ downloadLink }}"
+                [href]="downloadLink"
                 class="description-button"
               >
                 Access Data
