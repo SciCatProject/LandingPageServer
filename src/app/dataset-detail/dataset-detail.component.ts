@@ -47,7 +47,6 @@ export class DatasetDetailComponent implements OnInit {
       console.log("access via oai-service");
       this.dataset$ = this.oaiService.findOnePublication(id);
       this.dataset$.subscribe((pub) => {
-        document.getElementById("doiValue").innerHTML = "DOI: " + pub.doi;
         this.downloadLink = pub.downloadLink ? pub.downloadLink : this.accessDataHref;
 
       });

@@ -1,5 +1,5 @@
 import { APP_CONFIG, AppConfig } from "../app-config.module";
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit, OnDestroy } from "@angular/core";
 import { DatasetService } from "../dataset.service";
 import { OAIService, Count } from "../oai.service";
 import { Router } from "@angular/router";
@@ -16,7 +16,7 @@ import {
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.css"]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   itemsPerPage = 5;
   currentPage = 0;
   sortColumn = "registeredTime";
@@ -103,7 +103,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById("doiValue").innerHTML = "";
     if (this.appConfig.directMongoAccess) {
       this.get = function(params: any) {
         return this.datasetService.getDatasets(params);
