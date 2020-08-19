@@ -1,5 +1,5 @@
 {
-    "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
@@ -61,7 +61,7 @@
                         "styles": [
                             "src/styles.css"
                         ],
-                        "scripts": []
+                        "scripts": ["node_modules/hammerjs/hammer.min.js"]
                     },
                     "configurations": {
                         "dmscdev": {
@@ -232,7 +232,7 @@
                         "karmaConfig": "./karma.conf.js",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.spec.json",
-                        "scripts": [],
+                        "scripts": ["node_modules/hammerjs/hammer.min.js"],
                         "styles": [
                             "src/styles.css"
                         ],
