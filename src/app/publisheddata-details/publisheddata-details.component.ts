@@ -13,8 +13,8 @@ import { OAIService } from '../oai.service';
   styleUrls: ['./publisheddata-details.component.scss'],
 })
 export class PublisheddataDetailsComponent implements OnInit {
-  dataset$: Observable<PublishedData>;
-  datasetJson$: Observable<string>;
+  publication$: Observable<PublishedData>;
+  publicationJson$: Observable<string>;
 
   doiBaseUrl = this.appConfig.doiBaseUrl;
   productionMode = this.appConfig.production;
@@ -40,14 +40,14 @@ export class PublisheddataDetailsComponent implements OnInit {
     }
 
     if (this.appConfig.directMongoAccess) {
-      this.dataset$ = this.publishedDataService.getPublication(id);
-      this.datasetJson$ = this.dataset$.pipe(
+      this.publication$ = this.publishedDataService.getPublication(id);
+      this.publicationJson$ = this.publication$.pipe(
         map(({ thumbnail, ...dataset }) => JSON.stringify(dataset, null, 2))
       );
     } else {
       console.log('access via oai-service');
-      this.dataset$ = this.oaiService.findOnePublication(id);
-      this.dataset$.subscribe((pub) => {
+      this.publication$ = this.oaiService.findOnePublication(id);
+      this.publication$.subscribe((pub) => {
         this.downloadLink = pub.downloadLink
           ? pub.downloadLink
           : this.accessDataHref;
