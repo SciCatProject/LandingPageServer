@@ -1,7 +1,7 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "titleCase"
+  name: 'titleCase',
 })
 export class TitleCasePipe implements PipeTransform {
   transform(value: any, args?: any): any {
@@ -11,6 +11,6 @@ export class TitleCasePipe implements PipeTransform {
         components[i].charAt(0).toUpperCase() +
         components[i].slice(1).toLowerCase();
     }
-    return components.join(" ");
+    return components.join(' ');
   }
 }

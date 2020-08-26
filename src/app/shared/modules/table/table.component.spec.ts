@@ -1,21 +1,19 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { DatePipe } from "@angular/common";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 import {
   TableComponent,
   PageChangeEvent,
   SortChangeEvent,
-  CheckboxEvent
-} from "./table.component";
-import { NO_ERRORS_SCHEMA } from "@angular/core";
-import {
-  MatListModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatCheckboxChange,
-} from "@angular/material";
-import { PipesModule } from "../../pipes/pipes.module";
+  CheckboxEvent,
+} from './table.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { PipesModule } from '../../pipes/pipes.module';
 
-describe("TableComponent", () => {
+describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
 
@@ -24,7 +22,7 @@ describe("TableComponent", () => {
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [TableComponent],
       imports: [MatListModule, MatPaginatorModule, MatTableModule, PipesModule],
-      providers: [DatePipe]
+      providers: [DatePipe],
     });
     TestBed.compileComponents();
   }));
@@ -35,18 +33,18 @@ describe("TableComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  describe("#onPageChange()", () => {
-    it("should emit a PageChangeEvent", () => {
-      spyOn(component.pageChange, "emit");
+  describe('#onPageChange()', () => {
+    it('should emit a PageChangeEvent', () => {
+      spyOn(component.pageChange, 'emit');
 
       const event: PageChangeEvent = {
         pageIndex: 0,
         pageSize: 25,
-        length: 25
+        length: 25,
       };
       component.onPageChange(event);
 
@@ -55,13 +53,13 @@ describe("TableComponent", () => {
     });
   });
 
-  describe("#onSortChange()", () => {
-    it("should emit a SortChangeEvent", () => {
-      spyOn(component.sortChange, "emit");
+  describe('#onSortChange()', () => {
+    it('should emit a SortChangeEvent', () => {
+      spyOn(component.sortChange, 'emit');
 
       const event: SortChangeEvent = {
-        active: "test",
-        direction: ""
+        active: 'test',
+        direction: '',
       };
       component.onSortChange(event);
 
@@ -70,13 +68,13 @@ describe("TableComponent", () => {
     });
   });
 
-  describe("#onRowClick()", () => {
-    it("should emit the data in the selected row", () => {
-      spyOn(component.rowClick, "emit");
+  describe('#onRowClick()', () => {
+    it('should emit the data in the selected row', () => {
+      spyOn(component.rowClick, 'emit');
 
       const data = {
-        id: "123",
-        name: "test"
+        id: '123',
+        name: 'test',
       };
       component.onRowClick(data);
 
@@ -85,9 +83,9 @@ describe("TableComponent", () => {
     });
   });
 
-  describe("#onSelectAll()", () => {
-    it("should emit a MatCheckboxChange event", () => {
-      spyOn(component.selectAll, "emit");
+  describe('#onSelectAll()', () => {
+    it('should emit a MatCheckboxChange event', () => {
+      spyOn(component.selectAll, 'emit');
 
       const event = new MatCheckboxChange();
       component.onSelectAll(event);
@@ -97,13 +95,13 @@ describe("TableComponent", () => {
     });
   });
 
-  describe("#onSelectOne()", () => {
-    it("should emit a CheckboxEvent", () => {
-      spyOn(component.selectOne, "emit");
+  describe('#onSelectOne()', () => {
+    it('should emit a CheckboxEvent', () => {
+      spyOn(component.selectOne, 'emit');
 
       const selectEvent: CheckboxEvent = {
         event: new MatCheckboxChange(),
-        row: {}
+        row: {},
       };
       component.onSelectOne(selectEvent.event, selectEvent.row);
 
@@ -112,16 +110,16 @@ describe("TableComponent", () => {
     });
   });
 
-  describe("#isAllSelected()", () => {
-    it("should return false if length of data array and length of selected array are not equal", () => {
-      component.data = ["test1", "test2"];
+  describe('#isAllSelected()', () => {
+    it('should return false if length of data array and length of selected array are not equal', () => {
+      component.data = ['test1', 'test2'];
 
       const allSelected = component.isAllSelected();
 
       expect(allSelected).toEqual(false);
     });
 
-    it("should return true if length of data array and length of selected array are equal", () => {
+    it('should return true if length of data array and length of selected array are equal', () => {
       const allSelected = component.isAllSelected();
 
       expect(allSelected).toEqual(true);

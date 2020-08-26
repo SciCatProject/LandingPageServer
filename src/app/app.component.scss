@@ -1,0 +1,20 @@
+/* AppComponent's private CSS styles */
+@import "src/styles.scss";
+
+.header {
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 1000;
+  color: mat-color($primary, default-contrast);
+}
+
+.footer {
+  height: 77px;
+  background-color: mat-color($primary, default-contrast);
+  justify-content: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+  text-align: left;
+}

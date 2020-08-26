@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  lbBaseURL: "http://127.0.0.1:3000",
-  doiBaseUrl: "https://doi.org/",
-  facility: "ess",
-  directMongoAccess: true
+  lbBaseURL: 'http://127.0.0.1:3000',
+  doiBaseUrl: 'https://doi.org/',
+  facility: 'ess',
+  directMongoAccess: true,
 };

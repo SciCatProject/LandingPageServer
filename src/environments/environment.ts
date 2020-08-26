@@ -4,18 +4,22 @@
 
 export const environment = {
   production: false,
-  lbBaseURL: "http://127.0.0.1:3000",
-  facility: "ess",
-  oaiProviderRoute: "http://127.0.0.1:3001",
-  doiBaseUrl: "https://doi.org/",
+  lbBaseURL: 'http://localhost:3000',
+  facility: 'ess',
+  oaiProviderRoute: 'http://127.0.0.1:3001',
+  doiBaseUrl: 'https://doi.org/',
   directMongoAccess: true,
-  accessInstructions: "Instructions: Login with brightness username and password"
+  accessDataHref: null,
+  lbApiVersion: null,
+  accessInstructions:
+    'Instructions: Login with brightness username and password',
 };
 
 /*
- * In development mode, to ignore zone related error stack frames such as
- * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
- * import the following file, but please comment it out in production mode
- * because it will have performance impact when throw error
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.

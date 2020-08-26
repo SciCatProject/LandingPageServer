@@ -1,26 +1,25 @@
 <ng-container *ngIf="publications$">
-  <mat-card>
-    <h1 class="title">
-      Public Data Repository Dashboard
-    </h1>
-  </mat-card>
-  <mat-card>
-    <div fxLayout="row" fxLayout.lt-lg="column">
-      <div fxFlex="14" fxFlex.lt-xl="10"></div>
-      <div fxFlex="60" fxFlex.lt-xl="80">
-        <app-table
-          [data]="publications"
-          [columns]="tableColumns"
-          [paginate]="true"
-          [currentPage]="currentPage"
-          [dataCount]="count"
-          [dataPerPage]="itemsPerPage"
-          (pageChange)="onPageChange($event)"
-          (sortChange)="onSortChange($event)"
-          (rowClick)="onRowClick($event)"
-        ></app-table>
-      </div>
-      <div fxFlex="26" fxFlex.lt-xl="10"></div>
+  <div fxLayout="row" fxLayout.lt-lg="column">
+    <div fxFlex="14" fxFlex.lt-xl="10"></div>
+    <div fxFlex="60" fxFlex.lt-xl="80">
+      <mat-card>
+        <h1 class="title">
+          Public Data Repository Dashboard
+        </h1>
+      </mat-card>
+
+      <app-table
+        [data]="publications"
+        [columns]="tableColumns"
+        [paginate]="true"
+        [currentPage]="currentPage"
+        [dataCount]="count"
+        [dataPerPage]="itemsPerPage"
+        (pageChange)="onPageChange($event)"
+        (sortChange)="onSortChange($event)"
+        (rowClick)="onRowClick($event)"
+      ></app-table>
     </div>
-  </mat-card>
+    <div fxFlex="26" fxFlex.lt-xl="10"></div>
+  </div>
 </ng-container>

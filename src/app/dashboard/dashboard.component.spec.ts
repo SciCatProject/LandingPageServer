@@ -1,41 +1,40 @@
-import { APP_CONFIG, AppConfigModule } from "../app-config.module";
-import { DashboardComponent } from "./dashboard.component";
-import { DatasetService } from "../dataset.service";
-import { DatePipe } from "@angular/common";
-import { MockDatasetService, MockOAIervice } from "../MockStubs";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { OAIService } from "../oai.service";
-import { MatListModule } from "@angular/material/list";
-import { MatIconModule } from "@angular/material/icon";
-import { Router } from "@angular/router";
-import { MatCardModule } from "@angular/material";
-import { SharedCatanieModule } from "../shared/shared.module";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-describe("DashboardComponent", () => {
+import { DashboardComponent } from './dashboard.component';
+import { APP_CONFIG } from '../app-config.module';
+import { Router } from '@angular/router';
+import { PublishedDataService } from '../published-data.service';
+import { MockPublishedDataService, MockOAIService } from '../shared/MockStubs';
+import { OAIService } from '../oai.service';
+import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../shared/shared.module';
+import { DatePipe } from '@angular/common';
+
+describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
   const router = {
-    navigateByUrl: jasmine.createSpy("navigateByUrl")
+    navigateByUrl: jasmine.createSpy('navigateByUrl'),
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppConfigModule, MatIconModule, MatListModule, MatCardModule, SharedCatanieModule],
       declarations: [DashboardComponent],
+      imports: [MatCardModule, SharedModule],
       providers: [
         DatePipe,
-        { provide: OAIService, useClass: MockOAIervice },
-        { provide: DatasetService, useClass: MockDatasetService },
         {
           provide: APP_CONFIG,
           useValue: {
-            facility: "ESS",
-            directMongoAccess: true
-          }
+            facility: 'ess',
+            directMongoAccess: true,
+          },
         },
-        { provide: Router, useValue: router }
-      ]
+        { provide: Router, useValue: router },
+        { provide: OAIService, useClass: MockOAIService },
+        { provide: PublishedDataService, useClass: MockPublishedDataService },
+      ],
     }).compileComponents();
   }));
 
@@ -49,18 +48,17 @@ describe("DashboardComponent", () => {
     fixture.destroy();
   });
 
-  it("should be created", () => {
-    console.log("should be created");
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  describe("#onRowClick()", () => {
-    it("should navigate to publication details of the provided doi", () => {
-      const param = {doi: "testDOI"};
+  describe('#onRowClick()', () => {
+    it('should navigate to publication details of the provided doi', () => {
+      const param = { doi: 'testDOI' };
       component.onRowClick(param);
       expect(router.navigateByUrl).toHaveBeenCalledTimes(1);
       expect(router.navigateByUrl).toHaveBeenCalledWith(
-        "/detail/" + encodeURIComponent(param.doi)
+        '/detail/' + encodeURIComponent(param.doi)
       );
     });
   });
