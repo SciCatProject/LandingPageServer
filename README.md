@@ -1,7 +1,7 @@
 # SciCat Landing Page Server
 
 
-[![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer) [![Greenkeeper badge](https://badges.greenkeeper.io/SciCatProject/LandingPageServer.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer)
 [![DeepScan grade](https://deepscan.io/api/projects/3011/branches/23762/badge/grade.svg)](https://deepscan.io/dashboard#view=project&pid=3011&bid=23762)
 [![DOI](https://zenodo.org/badge/141108894.svg)](https://zenodo.org/badge/latestdoi/141108894)
 
@@ -35,13 +35,13 @@ How to install:
 npm install
 set $env to one of the environment file e.g. 
 export env=development
-npm run build:ssr
+npm run build
 ```
 
 How to run:
 
 ```
-npm run serve:ssr
+npm start
 ```
 
 
