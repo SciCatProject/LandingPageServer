@@ -1,34 +1,26 @@
-FROM mhart/alpine-node:12
+FROM node:12.6.0-alpine AS builder
 
-RUN mkdir /usr/html
-RUN mkdir /landing
+LABEL maintainer="henrik.johansson@ess.eu"
+RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
+RUN npm config set registry http://registry.npmjs.org/
+RUN npm config set strict-ssl false
+
+ARG env=ess
 WORKDIR /landing
+COPY package*.json /landing/
+RUN npm ci
+COPY . /landing
+RUN npx ng build --configuration=${env}
 
+FROM nginx:alpine
 
+RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /landing/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY CI/ESS/google43e14584df796f63.html /usr/share/nginx/html
 
-COPY package.json .
-
-RUN npm install http-server -g
-RUN npm install -g @angular/cli
-
-RUN npm install
-
-COPY src src
-COPY angular.json .
-COPY tsconfig.json .
-COPY ngsw-config.json .
-COPY webpack.server.config.js .
-COPY server.ts .
-COPY karma.conf.js .
-
-ARG APP_PROD='true'
-ARG LB_BASE_URL='http://localhost/api'
-ARG LB_API_VERSION=''
-
-
-
-RUN ng build --configuration=dmsc  && ng run LandingPageServer:server:dmsc && npm run webpack:server
-
-WORKDIR /landing/
-EXPOSE 4000
-CMD ["node", "dist/server.js"]
+EXPOSE 80
