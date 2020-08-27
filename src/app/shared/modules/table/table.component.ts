@@ -1,13 +1,7 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-} from "@angular/core";
-import { SelectionModel } from "@angular/cdk/collections";
-import { MatCheckboxChange } from "@angular/material";
-import { DatePipe } from "@angular/common";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { DatePipe } from '@angular/common';
 
 export interface TableColumn {
   name: string;
@@ -25,7 +19,7 @@ export interface PageChangeEvent {
 
 export interface SortChangeEvent {
   active: string;
-  direction: "asc" | "desc" | "";
+  direction: 'asc' | 'desc' | '';
 }
 
 export interface CheckboxEvent {
@@ -34,9 +28,9 @@ export interface CheckboxEvent {
 }
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"]
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
   @Input() data: any[];
@@ -79,7 +73,7 @@ export class TableComponent implements OnInit {
     if (this.isAllSelected()) {
       this.selection.clear();
     } else {
-      this.data.forEach(row => this.selection.select(row));
+      this.data.forEach((row) => this.selection.select(row));
     }
     this.selectAll.emit(event);
   }
@@ -87,8 +81,8 @@ export class TableComponent implements OnInit {
   onSelectOne(event: MatCheckboxChange, row: any) {
     this.selection.toggle(row);
     const selectEvent: CheckboxEvent = {
-      event: event,
-      row: row
+      event,
+      row,
     };
     this.selectOne.emit(selectEvent);
   }
@@ -103,21 +97,21 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     if (this.columns) {
-      this.displayedColumns = this.columns.map(column => {
+      this.displayedColumns = this.columns.map((column) => {
         return column.name;
       });
 
       this.listItems = this.columns
-        .filter(column => {
+        .filter((column) => {
           return column.inList;
         })
-        .map(listItem => {
+        .map((listItem) => {
           return listItem.name;
         });
     }
 
     if (this.select) {
-      this.displayedColumns.splice(0, 0, "select");
+      this.displayedColumns.splice(0, 0, 'select');
     }
   }
 }

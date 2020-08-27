@@ -45,7 +45,7 @@
           mat-sort-header
           [disabled]="!column.sort"
         >
-          <div fxLayout="column" style="align-items: center">
+          <div fxLayout="column" style="align-items: center;">
             <div>
               <mat-icon>{{ column.icon }}</mat-icon>
             </div>
@@ -56,7 +56,8 @@
         </mat-header-cell>
         <div *ngIf="column.dateFormat">
           <mat-cell *matCellDef="let data">
-            {{ data[column.name] | date: column.dateFormat }}</mat-cell>
+            {{ data[column.name] | date: column.dateFormat }}</mat-cell
+          >
         </div>
         <div *ngIf="!column.dateFormat">
           <mat-cell *matCellDef="let data"> {{ data[column.name] }}</mat-cell>

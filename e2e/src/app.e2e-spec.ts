@@ -1,15 +1,23 @@
-import { AppPage } from "./app.po";
+import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
 
-describe("landing page App", () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     page = new AppPage();
-    await page.navigateTo();
   });
 
-  it("should display message saying ESS Public Data Repository", async () => {
-    console.log(page.getParagraphText());
-    expect(page.getParagraphText()).toEqual("ESS Public Data Repository");
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getTitleText()).toEqual('NewLandingPageServer app is running!');
+  });
+
+  afterEach(async () => {
+    // Assert that there are no errors emitted from the browser
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    expect(logs).not.toContain(jasmine.objectContaining({
+      level: logging.Level.SEVERE,
+    } as logging.Entry));
   });
 });

@@ -1,40 +1,33 @@
-FROM node:12.4.0-alpine
+FROM node:12.6.0-alpine AS builder
 
-RUN mkdir /usr/html
-RUN mkdir /landing
-WORKDIR /landing
-
-
-
-COPY package.json .
-
+LABEL maintainer="henrik.johansson@ess.eu"
+RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
 ENV http_proxy "http://192.168.1.1:8123"
-ENV https_proxy $http_proxy
+ENV https_proxy "http://192.168.1.1:8123"
 ENV no_proxy "localhost, 127.0.0.1"
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
 RUN npm config set proxy  $http_proxy
 RUN npm config set https-proxy  $http_proxy
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm config set strict-ssl false
 
-RUN npm install
+WORKDIR /landing
+COPY package*.json /landing/
+RUN npm ci
+COPY . /landing
+RUN npx ng build
 
-COPY src src
-COPY angular.json .
-COPY tsconfig.json .
-COPY ngsw-config.json .
-COPY webpack.server.config.js .
-COPY server.ts .
-COPY karma.conf.js .
+FROM nginx:alpine
 
-ARG APP_PROD='true'
-ARG LB_BASE_URL='http://localhost/api'
-ARG LB_API_VERSION=''
+RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /landing/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY CI/ESS/google43e14584df796f63.html /usr/share/nginx/html
 
-RUN npm install http-server -g
-
-
-RUN npm run build:ssr
-
-WORKDIR /landing/dist/browser
-EXPOSE 8080
-CMD ["http-server"]
+ENV http_proxy "http://192.168.1.1:8123"
+ENV https_proxy "http://192.168.1.1:8123"
+ENV no_proxy "localhost, 127.0.0.1"
+EXPOSE 80

@@ -4,9 +4,14 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
+  accessDataHref: null,
+  accessInstructions:
+    'Instructions: Login with brightness username and password',
+  directMongoAccess: true,
+  doiBaseUrl: 'https://doi.org/',
+  facility: 'ess',
+  lbApiVersion: null,
+  lbBaseURL: 'https://kubetest02.dm.esss.dk:32223',
+  oaiProviderRoute: null,
   production: false,
-  lbBaseURL: "https://kubetest02.dm.esss.dk:32223",
-  doiBaseUrl: "https://doi.org/",
-  facility: "ess",
-  directMongoAccess: true
 };
