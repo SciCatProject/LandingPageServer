@@ -2,26 +2,28 @@ node('docker') {
   stage('Checkout'){
     checkout scm
   }
-  stage('Build Docker'){
-    withCredentials([ usernamePassword(credentialsId: 'dockerhubess',usernameVariable: 'docker_user',passwordVariable: 'docker_password' )]) {
-      sh 'docker login -u essdmscdm -p $docker_password '
-      def IMAGE_ID = sh ( script: 'git rev-parse HEAD',returnStdout: true).trim()
-      sh "docker build --file CI/ESS/Dockerfile.dmscprod  . --tag dacat/landing:latest -t dacat/landing:${IMAGE_ID}dmscprod" 
-      echo "Git image id : ${IMAGE_ID}"
-      sh "docker push dacat/landing:${IMAGE_ID}dmscprod"
-      sh "docker build --file CI/ESS/Dockerfile.dmscprod  .  -t dacat/landing:${IMAGE_ID}dmscdev --build-arg env=dmscdev" 
-      sh "docker push dacat/landing:${IMAGE_ID}dmscdev"
-      sh "docker build --file CI/ESS/Dockerfile.hub  . --tag dacat/landing:latest -t dacat/landing:${IMAGE_ID}dev" 
-      sh "docker push dacat/landing:${IMAGE_ID}dev"
-      sh "docker push dacat/landing:latest"
-      sh "docker rmi dacat/landing:${IMAGE_ID}dmscprod"
-      sh "docker rmi dacat/landing:${IMAGE_ID}dmscdev"
-      sh "docker rmi dacat/landing:${IMAGE_ID}dev"
-    }
-  }
   stage('Unit Test Landing Page Server '){
     // unit tests require mongodb container
     sh "docker build --file CI/ESS/Dockerfile.test  . --tag dacat/landing:test "
     sh 'docker run  -t dacat/landing:test ng test --watch=false --browsers=ChromeHeadless'
+  }
+  stage('Build Docker'){
+    if (env.BRANCH_NAME === "master") {
+      withCredentials([ usernamePassword(credentialsId: 'dockerhubess',usernameVariable: 'docker_user',passwordVariable: 'docker_password' )]) {
+        sh 'docker login -u essdmscdm -p $docker_password '
+        def IMAGE_ID = sh ( script: 'git rev-parse HEAD',returnStdout: true).trim()
+        sh "docker build --file CI/ESS/Dockerfile.dmscprod  . --tag dacat/landing:latest -t dacat/landing:${IMAGE_ID}dmscprod" 
+        echo "Git image id : ${IMAGE_ID}"
+        sh "docker push dacat/landing:${IMAGE_ID}dmscprod"
+        sh "docker build --file CI/ESS/Dockerfile.dmscprod  .  -t dacat/landing:${IMAGE_ID}dmscdev --build-arg env=dmscdev" 
+        sh "docker push dacat/landing:${IMAGE_ID}dmscdev"
+        sh "docker build --file CI/ESS/Dockerfile.hub  . --tag dacat/landing:latest -t dacat/landing:${IMAGE_ID}dev" 
+        sh "docker push dacat/landing:${IMAGE_ID}dev"
+        sh "docker push dacat/landing:latest"
+        sh "docker rmi dacat/landing:${IMAGE_ID}dmscprod"
+        sh "docker rmi dacat/landing:${IMAGE_ID}dmscdev"
+        sh "docker rmi dacat/landing:${IMAGE_ID}dev"
+      }
+    }
   }
 }
