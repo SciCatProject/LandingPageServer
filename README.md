@@ -3,6 +3,7 @@
 
 [![Build Status](https://travis-ci.org/SciCatProject/LandingPageServer.svg?branch=develop)](https://travis-ci.org/SciCatProject/LandingPageServer)
 [![DeepScan grade](https://deepscan.io/api/projects/3011/branches/23762/badge/grade.svg)](https://deepscan.io/dashboard#view=project&pid=3011&bid=23762)
+[![Known Vulnerabilities](https://snyk.io/test/github/SciCatProject/LandingPageServer/develop/badge.svg)](https://snyk.io/test/github/SciCatProject/LandingPageServer/develop)
 [![DOI](https://zenodo.org/badge/141108894.svg)](https://zenodo.org/badge/latestdoi/141108894)
 
 ![scicat logo2](https://github.com/garethcmurphy/landing_page_server/blob/develop/src/assets/esslogo.png)
