@@ -7,8 +7,6 @@ import { PublisheddataDetailsComponent } from './publisheddata-details/published
 const routes: Routes = [
   { path: 'detail/:id1/:id2', component: PublisheddataDetailsComponent },
   { path: 'detail/:id', component: PublisheddataDetailsComponent },
-  { path: 'details/:id1/:id2', component: PublisheddataDetailsComponent },
-  { path: 'details/:id', component: PublisheddataDetailsComponent },
   { path: '', component: DashboardComponent },
 ];
 
