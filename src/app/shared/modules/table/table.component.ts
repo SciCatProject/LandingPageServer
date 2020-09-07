@@ -47,7 +47,7 @@ export class TableComponent implements OnInit {
   @Input() currentPage?: number;
   @Input() dataCount?: number;
   @Input() dataPerPage?: number;
-  pageSizeOptions = [10, 25, 50, 100, 500, 1000];
+  pageSizeOptions = [5, 10, 25, 50, 100, 500, 1000];
 
   @Output() pageChange = new EventEmitter<PageChangeEvent>();
   @Output() sortChange = new EventEmitter<SortChangeEvent>();
