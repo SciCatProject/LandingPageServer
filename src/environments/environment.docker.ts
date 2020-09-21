@@ -14,4 +14,5 @@ export const environment = {
   lbBaseURL: 'http://127.0.0.1:3000',
   oaiProviderRoute: null,
   production: false,
+  scicatBaseUrl: 'https://scicat.esss.se'
 };

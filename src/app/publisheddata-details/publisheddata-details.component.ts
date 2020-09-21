@@ -22,6 +22,14 @@ export class PublisheddataDetailsComponent implements OnInit {
   downloadLink = '';
   show = false;
 
+  onPidClick(pid: string): void {
+    const encodedPid = encodeURIComponent(pid);
+    window.open(
+      this.appConfig.scicatBaseUrl + '/anonymous/datasets/' + encodedPid,
+      '_blank'
+    );
+  }
+
   constructor(
     @Inject(APP_CONFIG) public appConfig: AppConfig,
     private publishedDataService: PublishedDataService,

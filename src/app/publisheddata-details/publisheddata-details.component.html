@@ -20,9 +20,7 @@
     <div fxFlex="15"></div>
     <div fxFlex="40">
       <mat-card>
-        <mat-card-header class="first-header">
-          Abstract
-        </mat-card-header>
+        <mat-card-header class="first-header"> Abstract </mat-card-header>
         <mat-card-content>
           <p class="text-content">
             {{ publication.abstract }}
@@ -80,9 +78,7 @@
 
       <ng-template #datasetsCard>
         <mat-card>
-          <mat-card-header class="third-header">
-            Datasets
-          </mat-card-header>
+          <mat-card-header class="third-header"> Datasets </mat-card-header>
           <mat-card-content>
             <table class="text-content">
               <tr
@@ -101,7 +97,15 @@
                 role="listitem"
                 *ngFor="let pid of publication.pidArray"
               >
-                {{ pid }}
+                <a
+                  (click)="onPidClick(pid)"
+                  target="_blank"
+                  rel="noopener"
+                  *ngIf="appConfig.scicatBaseUrl; else noLink"
+                >
+                  {{ pid }}
+                </a>
+                <ng-template #noLink>{{ pid }}</ng-template>
               </mat-list-item>
             </mat-list>
           </mat-card-content>
@@ -110,9 +114,7 @@
 
       <ng-template #actionsCard>
         <mat-card>
-          <mat-card-header class="fourth-header">
-            Actions
-          </mat-card-header>
+          <mat-card-header class="fourth-header"> Actions </mat-card-header>
           <mat-card-content>
             <p class="text-content">
               {{ appConfig.accessInstructions }}
@@ -149,7 +151,7 @@
                 href="http://creativecommons.org/licenses/by-sa/4.0/"
                 ><img
                   alt="Creative Commons License"
-                  style="border-width: 0;"
+                  style="border-width: 0"
                   src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a
               ><br />This work is licensed under a
               <a

@@ -17,6 +17,8 @@ describe('PublisheddataDetailsComponent', () => {
   let component: PublisheddataDetailsComponent;
   let fixture: ComponentFixture<PublisheddataDetailsComponent>;
 
+  const scicatBaseUrl = 'https://scicat.esss.se';
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PublisheddataDetailsComponent],
@@ -32,6 +34,7 @@ describe('PublisheddataDetailsComponent', () => {
             facility: 'ess',
             accessInstructions:
               'Instructions: Login with brightness username and password',
+            scicatBaseUrl,
           },
         },
         { provide: ActivatedRoute, useClass: MockActivatedRoute },
@@ -53,5 +56,22 @@ describe('PublisheddataDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('#onPidClick()', () => {
+    it('should call window.open', () => {
+      const openSpy = spyOn(window, 'open');
+
+      const testPid = '20.500.12269/TEST-PID';
+      const encodedPid = encodeURIComponent(testPid);
+
+      component.onPidClick(testPid);
+
+      expect(openSpy).toHaveBeenCalledTimes(1);
+      expect(openSpy).toHaveBeenCalledWith(
+        scicatBaseUrl + '/anonymous/datasets/' + encodedPid,
+        '_blank'
+      );
+    });
   });
 });

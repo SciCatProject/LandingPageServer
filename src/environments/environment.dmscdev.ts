@@ -14,4 +14,5 @@ export const environment = {
   lbBaseURL: 'https://catamelservice.esss.dk:30003',
   oaiProviderRoute: null,
   production: false,
+  scicatBaseUrl: 'https://scicat.esss.se'
 };

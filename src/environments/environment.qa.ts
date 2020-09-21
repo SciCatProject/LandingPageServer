@@ -8,4 +8,5 @@ export const environment = {
   lbBaseURL: 'https://dacat-qa.psi.ch',
   oaiProviderRoute: null,
   production: true,
+  scicatBaseUrl: null
 };

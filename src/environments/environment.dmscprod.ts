@@ -14,4 +14,5 @@ export const environment = {
   lbBaseURL: 'https://scicatapi.esss.dk',
   oaiProviderRoute: null,
   production: true,
+  scicatBaseUrl: 'https://scicat.esss.se'
 };

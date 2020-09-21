@@ -14,4 +14,5 @@ export const environment = {
   lbBaseURL: 'https://kubetest02.dm.esss.dk:32223',
   oaiProviderRoute: null,
   production: false,
+  scicatBaseUrl: 'https://scicat.esss.se'
 };
