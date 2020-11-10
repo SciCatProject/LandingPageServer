@@ -54,7 +54,7 @@
                 }
               ]
             },
-            "ess": {
+            "essdev": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -63,10 +63,28 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
+              "buildOptimizer": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.ess.ts"
+                  "with": "src/environments/environment.essdev.ts"
+                }
+              ]
+            },
+            "essprod": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.essprod.ts"
                 }
               ]
             },
@@ -151,8 +169,11 @@
             "dmsc": {
               "browserTarget": "LandingPageServer:build:dmsc"
             },
-            "ess": {
-              "browserTarget": "LandingPageServer:build:ess"
+            "essdev": {
+              "browserTarget": "LandingPageServer:build:essdev"
+            },
+            "essprod": {
+              "browserTarget": "LandingPageServer:build:essprod"
             },
             "dmscprod": {
               "browserTarget": "LandingPageServer:build:dmscprod"
