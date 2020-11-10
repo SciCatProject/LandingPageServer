@@ -8,7 +8,7 @@ RUN apk update && apk upgrade && \
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm config set strict-ssl false
 
-ARG env=ess
+ARG env=essprod
 WORKDIR /landing
 COPY package*.json /landing/
 RUN npm ci
