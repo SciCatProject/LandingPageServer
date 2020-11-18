@@ -11,8 +11,8 @@ export const environment = {
   doiBaseUrl: 'https://doi.org/',
   facility: 'ess',
   lbApiVersion: null,
-  lbBaseURL: 'https://scicat08.esss.lu.se:32223',
+  lbBaseURL: 'https://scicat.ess.eu',
   oaiProviderRoute: null,
   production: true,
-  scicatBaseUrl: 'https://scicat.esss.se'
+  scicatBaseUrl: 'https://scicat.ess.eu'
 };
