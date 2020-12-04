@@ -25,9 +25,13 @@ export class PublisheddataDetailsComponent implements OnInit {
   onPidClick(pid: string): void {
     const encodedPid = encodeURIComponent(pid);
     window.open(
-      this.appConfig.scicatBaseUrl + '/anonymous/datasets/' + encodedPid,
+      this.appConfig.scicatBaseUrl + '/datasets/' + encodedPid,
       '_blank'
     );
+  }
+
+  isUrl(dataDescription: string): boolean {
+    return dataDescription.includes('http');
   }
 
   constructor(

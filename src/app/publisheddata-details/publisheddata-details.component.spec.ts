@@ -69,9 +69,27 @@ describe('PublisheddataDetailsComponent', () => {
 
       expect(openSpy).toHaveBeenCalledTimes(1);
       expect(openSpy).toHaveBeenCalledWith(
-        scicatBaseUrl + '/anonymous/datasets/' + encodedPid,
+        scicatBaseUrl + '/datasets/' + encodedPid,
         '_blank'
       );
+    });
+  });
+
+  describe('#isUrl()', () => {
+    it('should return false if dataDescription is not URL', () => {
+      const dataDescription = 'Not URL';
+
+      const isUrl = component.isUrl(dataDescription);
+
+      expect(isUrl).toEqual(false);
+    });
+
+    it('should return true if dataDescription is URL', () => {
+      const dataDescription = 'https://github.com/ess-dmsc/ess_file_formats/wiki/NeXus';
+
+      const isUrl = component.isUrl(dataDescription);
+
+      expect(isUrl).toEqual(true);
     });
   });
 });
