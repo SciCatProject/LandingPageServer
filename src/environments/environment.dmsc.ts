@@ -5,8 +5,7 @@
 
 export const environment = {
   accessDataHref: null,
-  accessInstructions:
-    'Instructions: Login with brightness username and password',
+  accessInstructions: null,
   directMongoAccess: true,
   doiBaseUrl: 'https://doi.org/',
   facility: 'ess',
