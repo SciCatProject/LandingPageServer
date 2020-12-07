@@ -104,22 +104,21 @@
               </tr>
             </table>
 
-            <mat-list role="list">
-              <mat-list-item
-                role="listitem"
-                *ngFor="let pid of publication.pidArray"
-              >
-                <a
-                  (click)="onPidClick(pid)"
-                  target="_blank"
-                  rel="noopener"
-                  *ngIf="appConfig.scicatBaseUrl; else noLink"
-                >
-                  {{ pid }}
-                </a>
-                <ng-template #noLink>{{ pid }}</ng-template>
-              </mat-list-item>
-            </mat-list>
+            <table>
+              <tr *ngFor="let pid of publication.pidArray">
+                <td>
+                  <a
+                    (click)="onPidClick(pid)"
+                    target="_blank"
+                    rel="noopener"
+                    *ngIf="appConfig.scicatBaseUrl; else noLink"
+                  >
+                    {{ pid }}
+                  </a>
+                  <ng-template #noLink>{{ pid }}</ng-template>
+                </td>
+              </tr>
+            </table>
           </mat-card-content>
         </mat-card>
       </ng-template>
