@@ -2,16 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PublisheddataDetailsComponent } from './publisheddata-details.component';
 import { APP_CONFIG } from '../app-config.module';
-import { OAIService } from '../oai.service';
-import {
-  MockOAIService,
-  MockPublishedDataService,
-  MockActivatedRoute,
-} from '../shared/MockStubs';
-import { PublishedDataService } from '../published-data.service';
+import { MockActivatedRoute, MockDatasourceService } from '../shared/MockStubs';
 import { ActivatedRoute } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { DatasourceService } from '../datasource.service';
 
 describe('PublisheddataDetailsComponent', () => {
   let component: PublisheddataDetailsComponent;
@@ -38,8 +33,7 @@ describe('PublisheddataDetailsComponent', () => {
           },
         },
         { provide: ActivatedRoute, useClass: MockActivatedRoute },
-        { provide: OAIService, useClass: MockOAIService },
-        { provide: PublishedDataService, useClass: MockPublishedDataService },
+        { provide: DatasourceService, useClass: MockDatasourceService },
       ],
     }).compileComponents();
   }));
@@ -85,7 +79,8 @@ describe('PublisheddataDetailsComponent', () => {
     });
 
     it('should return true if dataDescription is URL', () => {
-      const dataDescription = 'https://github.com/ess-dmsc/ess_file_formats/wiki/NeXus';
+      const dataDescription =
+        'https://github.com/ess-dmsc/ess_file_formats/wiki/NeXus';
 
       const isUrl = component.isUrl(dataDescription);
 

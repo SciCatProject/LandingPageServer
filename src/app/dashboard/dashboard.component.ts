@@ -1,30 +1,28 @@
 import { APP_CONFIG, AppConfig } from '../app-config.module';
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
-import { PublishedDataService } from '../published-data.service';
-import { OAIService, Count } from '../oai.service';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PublishedData } from '../shared/sdk';
 import {
   TableColumn,
   PageChangeEvent,
   SortChangeEvent,
 } from '../shared/modules/table/table.component';
+import { DatasourceService } from '../datasource.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent {
+  subtitle: string;
+
   itemsPerPage = 5;
   currentPage = 0;
   sortColumn = 'registeredTime';
   defaultSort = 'registeredTime';
   sortDirection = 'desc';
-  get: any;
-  params: any;
-
   tableColumns: TableColumn[] = [
     {
       name: 'title',
@@ -41,12 +39,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
     },
     { name: 'publisher', icon: 'account_balance', sort: true, inList: true },
   ];
-  subtitle: string;
-  publications$: Observable<PublishedData[]>;
-  subscriptions: Subscription[] = [];
-  publications: PublishedData[];
-  count: number;
-  count$: Observable<Count>;
+
+  params: any = this.datasourceService.queryParams(
+    this.itemsPerPage,
+    this.currentPage,
+    this.sortColumn,
+    this.sortDirection
+  );
+  publications$: Observable<
+    PublishedData[]
+  > = this.datasourceService.getPublications(this.params);
+  count$: Observable<number> = this.datasourceService.countPublications();
 
   onRowClick(event: any): void {
     this.router.navigateByUrl('/detail/' + encodeURIComponent(event.doi));
@@ -55,84 +58,34 @@ export class DashboardComponent implements OnInit, OnDestroy {
   onPageChange(event: PageChangeEvent) {
     this.itemsPerPage = event.pageSize;
     this.currentPage = event.pageIndex;
-    this.get(this.params()).subscribe((publications) => {
-      this.publications = publications;
-    });
+    this.params = this.datasourceService.queryParams(
+      this.itemsPerPage,
+      this.currentPage,
+      this.sortColumn,
+      this.sortDirection
+    );
+    this.publications$ = this.datasourceService.getPublications(this.params);
   }
 
   onSortChange(event: SortChangeEvent) {
     const { active: column, direction } = event;
     this.sortColumn = direction ? column : this.defaultSort;
     this.sortDirection = direction ? direction : 'asc';
-    this.get(this.params()).subscribe((publications) => {
-      this.publications = publications;
-    });
-  }
-
-  queryParamsJSON() {
-    return {
-      order: this.sortColumn + ' ' + this.sortDirection,
-      skip: this.itemsPerPage * this.currentPage,
-      limit: this.itemsPerPage,
-    };
-  }
-
-  queryParamsString() {
-    return (
-      '(' +
-      'skip=' +
-      this.itemsPerPage * this.currentPage +
-      ',limit=' +
-      this.itemsPerPage +
-      ',sortField=' +
-      this.sortColumn +
-      ',sortDirection=' +
-      this.sortDirection +
-      ')'
+    this.params = this.datasourceService.queryParams(
+      this.itemsPerPage,
+      this.currentPage,
+      this.sortColumn,
+      this.sortDirection
     );
+    this.publications$ = this.datasourceService.getPublications(this.params);
   }
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private publishedDataService: PublishedDataService,
-    private oaiService: OAIService,
+    private datasourceService: DatasourceService,
     private router: Router
   ) {
     const facility = this.appConfig.facility;
     this.subtitle = facility.toUpperCase() + ' Public Dataset Access';
-  }
-
-  ngOnInit() {
-    if (this.appConfig.directMongoAccess) {
-      this.get = (params: any) => {
-        return this.publishedDataService.getPublications(params);
-      };
-      this.params = () => {
-        return this.queryParamsJSON();
-      };
-      this.count$ = this.publishedDataService.count();
-    } else {
-      this.get = (params: any) => {
-        return this.oaiService.getPublications(params);
-      };
-      this.params = () => {
-        return this.queryParamsString();
-      };
-      this.count$ = this.oaiService.countPublications();
-    }
-    this.publications$ = this.get(this.params());
-
-    this.subscriptions.push(
-      this.count$.subscribe((res) => {
-        this.count = res.count;
-      }),
-      this.publications$.subscribe((publications) => {
-        this.publications = publications;
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

@@ -135,7 +135,7 @@
               mat-raised-button
               target="_blank"
               rel="noopener noreferrer"
-              [href]="downloadLink"
+              [href]="downloadLink$ | async"
               class="description-button"
             >
               Access Data
