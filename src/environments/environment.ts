@@ -13,6 +13,7 @@ export const environment = {
   lbBaseURL: 'http://localhost:3000',
   oaiProviderRoute: 'http://127.0.0.1:3001',
   production: false,
+  scicatBaseUrl: 'https://scicat.esss.se'
 };
 
 /*

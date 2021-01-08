@@ -20,9 +20,7 @@
     <div fxFlex="15"></div>
     <div fxFlex="40">
       <mat-card>
-        <mat-card-header class="first-header">
-          Abstract
-        </mat-card-header>
+        <mat-card-header class="first-header"> Abstract </mat-card-header>
         <mat-card-content>
           <p class="text-content">
             {{ publication.abstract }}
@@ -75,107 +73,89 @@
 
       <ng-container *ngIf="publication.thumbnail">
         <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
-        <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+        <ng-container *ngIf="appConfig.facility === 'psi'">
+          <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+        </ng-container>
       </ng-container>
 
       <ng-template #datasetsCard>
         <mat-card>
-          <mat-card-header class="third-header">
-            Datasets
-          </mat-card-header>
+          <mat-card-header class="third-header"> Datasets </mat-card-header>
           <mat-card-content>
             <table class="text-content">
-              <tr
-                *ngIf="
-                  appConfig.facility === 'psi' &&
-                  publication.dataDescription as description
-                "
-              >
-                <th>Description</th>
-                <td>{{ description }}</td>
+              <tr *ngIf="publication.dataDescription as description">
+                <th>Data Description</th>
+                <td *ngIf="appConfig.facility === 'psi'; else notPsi">
+                  {{ description }}
+                </td>
+                <ng-template #notPsi>
+                  <td *ngIf="isUrl(description); else notUrl">
+                    <a
+                      href="{{ description }}"
+                      target="_blank"
+                      rel="noopener"
+                      >{{ description | descriptionTitle }}</a
+                    >
+                  </td>
+                  <ng-template #notUrl>
+                    <td>{{ description }}</td>
+                  </ng-template>
+                </ng-template>
               </tr>
             </table>
 
-            <mat-list role="list">
-              <mat-list-item
-                role="listitem"
-                *ngFor="let pid of publication.pidArray"
-              >
-                {{ pid }}
-              </mat-list-item>
-            </mat-list>
+            <table>
+              <tr *ngFor="let pid of publication.pidArray">
+                <td>
+                  <a
+                    (click)="onPidClick(pid)"
+                    target="_blank"
+                    rel="noopener"
+                    *ngIf="appConfig.scicatBaseUrl; else noLink"
+                  >
+                    {{ pid }}
+                  </a>
+                  <ng-template #noLink>{{ pid }}</ng-template>
+                </td>
+              </tr>
+            </table>
           </mat-card-content>
         </mat-card>
       </ng-template>
 
       <ng-template #actionsCard>
         <mat-card>
-          <mat-card-header class="fourth-header">
-            Actions
-          </mat-card-header>
+          <mat-card-header class="fourth-header"> Actions </mat-card-header>
           <mat-card-content>
             <p class="text-content">
               {{ appConfig.accessInstructions }}
             </p>
 
-            <ng-container
-              *ngIf="appConfig.facility !== 'psi' && publication.url as url"
+            <a
+              mat-raised-button
+              target="_blank"
+              rel="noopener noreferrer"
+              [href]="downloadLink$ | async"
+              class="description-button"
             >
-              <a
-                mat-raised-button
-                target="_blank"
-                rel="noopener noreferrer"
-                href="{{ url }}"
-                class="access-button"
-              >
-                Access Data
-              </a>
-            </ng-container>
-
-            <ng-container *ngIf="appConfig.facility === 'psi'">
-              <a
-                mat-raised-button
-                target="_blank"
-                rel="noopener noreferrer"
-                [href]="downloadLink"
-                class="description-button"
-              >
-                Access Data
-              </a>
-              <br />
-              <br />
-              <a
-                rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/"
-                ><img
-                  alt="Creative Commons License"
-                  style="border-width: 0;"
-                  src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a
-              ><br />This work is licensed under a
-              <a
-                rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/"
-                >Creative Commons Attribution-ShareAlike 4.0 International
-                License</a
-              >
-            </ng-container>
-
-            <ng-container
-              *ngIf="
-                appConfig.facility !== 'psi' &&
-                publication.dataDescription as url
-              "
+              Access Data
+            </a>
+            <br />
+            <br />
+            <a
+              rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/"
+              ><img
+                alt="Creative Commons License"
+                style="border-width: 0"
+                src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a
+            ><br />This work is licensed under a
+            <a
+              rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/"
+              >Creative Commons Attribution-ShareAlike 4.0 International
+              License</a
             >
-              <a
-                mat-raised-button
-                target="_blank"
-                rel="noopener noreferrer"
-                href="{{ url }}"
-                class="description-button"
-              >
-                Data Description
-              </a>
-            </ng-container>
           </mat-card-content>
         </mat-card>
       </ng-template>
@@ -202,7 +182,9 @@
 
       <ng-template #noThumbnail>
         <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
-        <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+        <ng-container *ngIf="appConfig.facility === 'psi'">
+          <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+        </ng-container>
       </ng-template>
     </div>
     <div fxFlex="15"></div>

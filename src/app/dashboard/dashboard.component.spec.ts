@@ -3,12 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { APP_CONFIG } from '../app-config.module';
 import { Router } from '@angular/router';
-import { PublishedDataService } from '../published-data.service';
-import { MockPublishedDataService, MockOAIService } from '../shared/MockStubs';
-import { OAIService } from '../oai.service';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from '../shared/shared.module';
 import { DatePipe } from '@angular/common';
+import { DatasourceService } from '../datasource.service';
+import { MockDatasourceService } from '../shared/MockStubs';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -32,8 +31,7 @@ describe('DashboardComponent', () => {
           },
         },
         { provide: Router, useValue: router },
-        { provide: OAIService, useClass: MockOAIService },
-        { provide: PublishedDataService, useClass: MockPublishedDataService },
+        { provide: DatasourceService, useClass: MockDatasourceService },
       ],
     }).compileComponents();
   }));

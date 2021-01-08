@@ -54,23 +54,7 @@
                 }
               ]
             },
-            "ess": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.ess.ts"
-                }
-              ]
-            },
-            "maxiv-prod": {
+            "essdev": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -83,7 +67,41 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.maxiv.prod.ts"
+                  "with": "src/environments/environment.essdev.ts"
+                }
+              ]
+            },
+            "essprod": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.essprod.ts"
+                }
+              ]
+            },
+            "maxivprod": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.maxivprod.ts"
                 }
               ]
             },
@@ -151,8 +169,11 @@
             "dmsc": {
               "browserTarget": "LandingPageServer:build:dmsc"
             },
-            "ess": {
-              "browserTarget": "LandingPageServer:build:ess"
+            "essdev": {
+              "browserTarget": "LandingPageServer:build:essdev"
+            },
+            "essprod": {
+              "browserTarget": "LandingPageServer:build:essprod"
             },
             "dmscprod": {
               "browserTarget": "LandingPageServer:build:dmscprod"

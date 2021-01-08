@@ -42,3 +42,21 @@ export class MockPublishedDataService {
     return of({});
   }
 }
+
+export class MockDatasourceService {
+  getPublications() {
+    return of([]);
+  }
+
+  countPublications() {
+    return of(0);
+  }
+
+  getPublication() {
+    return of({});
+  }
+
+  queryParams() {
+    return {};
+  }
+}

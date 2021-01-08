@@ -5,8 +5,7 @@
 
 export const environment = {
   accessDataHref: null,
-  accessInstructions:
-    'Instructions: Login with brightness username and password',
+  accessInstructions: null,
   directMongoAccess: true,
   doiBaseUrl: 'https://doi.org/',
   facility: 'ess',
@@ -14,4 +13,5 @@ export const environment = {
   lbBaseURL: 'https://catamelservice.esss.dk:30003',
   oaiProviderRoute: null,
   production: false,
+  scicatBaseUrl: 'https://scicat.esss.se'
 };

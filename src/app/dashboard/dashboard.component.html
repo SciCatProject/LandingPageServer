@@ -9,11 +9,11 @@
       </mat-card>
 
       <app-table
-        [data]="publications"
+        [data]="publications$ | async"
         [columns]="tableColumns"
         [paginate]="true"
         [currentPage]="currentPage"
-        [dataCount]="count"
+        [dataCount]="count$ | async"
         [dataPerPage]="itemsPerPage"
         (pageChange)="onPageChange($event)"
         (sortChange)="onSortChange($event)"

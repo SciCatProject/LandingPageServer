@@ -11,6 +11,7 @@ export class AppConfig {
   directMongoAccess: boolean;
   accessDataHref: string;
   accessInstructions: string;
+  scicatBaseUrl: string;
 }
 
 export const APP_DI_CONFIG: AppConfig = {
@@ -21,6 +22,7 @@ export const APP_DI_CONFIG: AppConfig = {
   directMongoAccess: environment.directMongoAccess || false,
   accessDataHref: environment.accessDataHref || null,
   accessInstructions: environment.accessInstructions || null,
+  scicatBaseUrl: environment.scicatBaseUrl || null,
 };
 
 @NgModule({

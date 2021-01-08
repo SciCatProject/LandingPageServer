@@ -10,4 +10,5 @@ export const environment = {
   lbBaseURL: 'https://doi.psi.ch:3001',
   oaiProviderRoute: 'https://doi.psi.ch/oaipmh/Publication',
   production: true,
+  scicatBaseUrl: null
 };
