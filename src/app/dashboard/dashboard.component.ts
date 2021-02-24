@@ -18,7 +18,7 @@ import { DatasourceService } from '../datasource.service';
 export class DashboardComponent {
   subtitle: string;
 
-  itemsPerPage = 5;
+  itemsPerPage = 20;
   currentPage = 0;
   sortColumn = 'registeredTime';
   defaultSort = 'registeredTime';
@@ -26,7 +26,7 @@ export class DashboardComponent {
   tableColumns: TableColumn[] = [
     {
       name: 'title',
-      icon: 'label',
+      icon: 'title',
       sort: true,
       inList: true,
     },
@@ -37,7 +37,8 @@ export class DashboardComponent {
       inList: true,
       dateFormat: 'yyyy-MM-dd HH:mm',
     },
-    { name: 'publisher', icon: 'account_balance', sort: true, inList: true },
+    { name: 'creator', icon: 'group', sort: true, inList: true },
+    { name: 'doi', icon: 'label', sort: true, inList: true },
   ];
 
   params: any = this.datasourceService.queryParams(
