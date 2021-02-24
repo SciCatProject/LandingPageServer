@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "postinstall": "ngcc",
     "build": "ng build",
     "test": "ng test --watch=false --source-map=false",
     "lint": "ng lint ./src/**/*.ts -t verbose",
