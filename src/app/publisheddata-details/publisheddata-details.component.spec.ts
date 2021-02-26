@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PublisheddataDetailsComponent } from './publisheddata-details.component';
 import { APP_CONFIG } from '../app-config.module';
@@ -14,7 +14,7 @@ describe('PublisheddataDetailsComponent', () => {
 
   const scicatBaseUrl = 'https://scicat.esss.se';
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [PublisheddataDetailsComponent],
       imports: [MatCardModule, MatListModule],

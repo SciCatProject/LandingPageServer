@@ -27,7 +27,6 @@ export class PublishedDataService {
 
   /** GET datasets from the server */
   getPublications(params): Observable<PublishedData[]> {
-    console.log('getPublications', params);
     return this.rds.find(params);
   }
 
