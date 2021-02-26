@@ -9,7 +9,8 @@
     "postinstall": "ngcc",
     "build": "ng build",
     "test": "ng test --watch=false --source-map=false",
-    "lint": "ng lint ./src/**/*.ts -t verbose",
+    "posttest": "ng lint",
+    "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "keywords": [],
