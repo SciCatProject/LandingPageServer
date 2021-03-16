@@ -7,11 +7,11 @@ export const environment = {
   accessDataHref: null,
   accessInstructions: null,
   directMongoAccess: true,
-  doiBaseUrl: 'https://doi.org/',
-  facility: 'ess',
+  doiBaseUrl: "https://doi.org/",
+  facility: "ess",
   lbApiVersion: null,
-  lbBaseURL: 'https://kubetest02.dm.esss.dk:32223',
+  lbBaseURL: "https://kubetest02.dm.esss.dk:32223",
   oaiProviderRoute: null,
   production: false,
-  scicatBaseUrl: 'https://scicat.esss.se'
+  scicatBaseUrl: "https://scicat.esss.se",
 };

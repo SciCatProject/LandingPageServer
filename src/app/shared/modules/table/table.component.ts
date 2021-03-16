@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { SelectionModel } from "@angular/cdk/collections";
+import { MatCheckboxChange } from "@angular/material/checkbox";
 
 export interface TableColumn {
   name: string;
@@ -18,7 +18,7 @@ export interface PageChangeEvent {
 
 export interface SortChangeEvent {
   active: string;
-  direction: 'asc' | 'desc' | '';
+  direction: "asc" | "desc" | "";
 }
 
 export interface CheckboxEvent {
@@ -27,9 +27,9 @@ export interface CheckboxEvent {
 }
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  selector: "app-table",
+  templateUrl: "./table.component.html",
+  styleUrls: ["./table.component.scss"],
 })
 export class TableComponent implements OnInit {
   @Input() data: any[];
@@ -94,21 +94,15 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     if (this.columns) {
-      this.displayedColumns = this.columns.map((column) => {
-        return column.name;
-      });
+      this.displayedColumns = this.columns.map((column) => column.name);
 
       this.listItems = this.columns
-        .filter((column) => {
-          return column.inList;
-        })
-        .map((listItem) => {
-          return listItem.name;
-        });
+        .filter((column) => column.inList)
+        .map((listItem) => listItem.name);
     }
 
     if (this.select) {
-      this.displayedColumns.splice(0, 0, 'select');
+      this.displayedColumns.splice(0, 0, "select");
     }
   }
 }

@@ -1,10 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: 'descriptionTitle',
+  name: "descriptionTitle",
 })
 export class DescriptionTitlePipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): unknown {
-    return value.split('/').pop().replace('-', ' ');
+    return value.split("/").pop().replace("-", " ");
   }
 }

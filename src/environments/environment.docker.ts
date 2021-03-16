@@ -6,13 +6,13 @@
 export const environment = {
   accessDataHref: null,
   accessInstructions:
-    'Instructions: Login with brightness username and password',
+    "Instructions: Login with brightness username and password",
   directMongoAccess: true,
-  doiBaseUrl: 'https://doi.org/',
-  facility: 'ess',
+  doiBaseUrl: "https://doi.org/",
+  facility: "ess",
   lbApiVersion: null,
-  lbBaseURL: 'http://127.0.0.1:3000',
+  lbBaseURL: "http://127.0.0.1:3000",
   oaiProviderRoute: null,
   production: false,
-  scicatBaseUrl: 'https://scicat.esss.se'
+  scicatBaseUrl: "https://scicat.esss.se",
 };

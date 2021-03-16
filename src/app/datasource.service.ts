@@ -1,13 +1,13 @@
-import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AppConfig, APP_CONFIG } from './app-config.module';
-import { OAIService } from './oai.service';
-import { PublishedDataService } from './published-data.service';
-import { PublishedData } from './shared/sdk';
+import { Inject, Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { AppConfig, APP_CONFIG } from "./app-config.module";
+import { OAIService } from "./oai.service";
+import { PublishedDataService } from "./published-data.service";
+import { PublishedData } from "./shared/sdk";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class DatasourceService {
   constructor(
@@ -42,19 +42,19 @@ export class DatasourceService {
   ): any {
     return this.appConfig.directMongoAccess
       ? {
-          order: sortColumn + ' ' + sortDirection,
+          order: sortColumn + " " + sortDirection,
           skip: itemsPerPage * currentPage,
           limit: itemsPerPage,
         }
-      : '(' +
-          'skip=' +
+      : "(" +
+          "skip=" +
           itemsPerPage * currentPage +
-          ',limit=' +
+          ",limit=" +
           itemsPerPage +
-          ',sortField=' +
+          ",sortField=" +
           sortColumn +
-          ',sortDirection=' +
+          ",sortDirection=" +
           sortDirection +
-          ')';
+          ")";
   }
 }

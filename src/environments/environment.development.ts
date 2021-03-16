@@ -5,15 +5,15 @@
 
 export const environment = {
   accessDataHref:
-    'https://www.psi.ch/en/photon-science-data-services/slsswissfel-data-transfer',
+    "https://www.psi.ch/en/photon-science-data-services/slsswissfel-data-transfer",
   accessInstructions:
-    'To access the data associated with this DOI click below and follow the instructions',
+    "To access the data associated with this DOI click below and follow the instructions",
   directMongoAccess: false,
-  doiBaseUrl: 'https://doi.org/',
-  facility: 'psi',
+  doiBaseUrl: "https://doi.org/",
+  facility: "psi",
   lbApiVersion: null,
-  lbBaseURL: 'https://doi2.psi.ch:3001',
-  oaiProviderRoute: 'https://doi2.psi.ch/oaipmh/Publication',
+  lbBaseURL: "https://doi2.psi.ch:3001",
+  oaiProviderRoute: "https://doi2.psi.ch/oaipmh/Publication",
   production: true,
-  scicatBaseUrl: null
+  scicatBaseUrl: null,
 };

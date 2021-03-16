@@ -1,44 +1,44 @@
-import { APP_CONFIG, AppConfig } from '../app-config.module';
-import { Component, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { PublishedData } from '../shared/sdk';
+import { APP_CONFIG, AppConfig } from "../app-config.module";
+import { Component, Inject } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { PublishedData } from "../shared/sdk";
 import {
   TableColumn,
   PageChangeEvent,
   SortChangeEvent,
-} from '../shared/modules/table/table.component';
-import { DatasourceService } from '../datasource.service';
+} from "../shared/modules/table/table.component";
+import { DatasourceService } from "../datasource.service";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent {
   subtitle: string;
 
   itemsPerPage = 20;
   currentPage = 0;
-  sortColumn = 'registeredTime';
-  defaultSort = 'registeredTime';
-  sortDirection = 'desc';
+  sortColumn = "registeredTime";
+  defaultSort = "registeredTime";
+  sortDirection = "desc";
   tableColumns: TableColumn[] = [
     {
-      name: 'title',
-      icon: 'title',
+      name: "title",
+      icon: "title",
       sort: true,
       inList: true,
     },
     {
-      name: 'registeredTime',
-      icon: 'calendar_today',
+      name: "registeredTime",
+      icon: "calendar_today",
       sort: true,
       inList: true,
-      dateFormat: 'yyyy-MM-dd HH:mm',
+      dateFormat: "yyyy-MM-dd HH:mm",
     },
-    { name: 'creator', icon: 'group', sort: true, inList: true },
-    { name: 'doi', icon: 'label', sort: true, inList: true },
+    { name: "creator", icon: "group", sort: true, inList: true },
+    { name: "doi", icon: "label", sort: true, inList: true },
   ];
 
   params: any = this.datasourceService.queryParams(
@@ -52,8 +52,17 @@ export class DashboardComponent {
   > = this.datasourceService.getPublications(this.params);
   count$: Observable<number> = this.datasourceService.countPublications();
 
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private datasourceService: DatasourceService,
+    private router: Router
+  ) {
+    const facility = this.appConfig.facility;
+    this.subtitle = facility.toUpperCase() + " Public Dataset Access";
+  }
+
   onRowClick(event: any): void {
-    this.router.navigateByUrl('/detail/' + encodeURIComponent(event.doi));
+    this.router.navigateByUrl("/detail/" + encodeURIComponent(event.doi));
   }
 
   onPageChange(event: PageChangeEvent) {
@@ -71,7 +80,7 @@ export class DashboardComponent {
   onSortChange(event: SortChangeEvent) {
     const { active: column, direction } = event;
     this.sortColumn = direction ? column : this.defaultSort;
-    this.sortDirection = direction ? direction : 'asc';
+    this.sortDirection = direction ? direction : "asc";
     this.params = this.datasourceService.queryParams(
       this.itemsPerPage,
       this.currentPage,
@@ -79,14 +88,5 @@ export class DashboardComponent {
       this.sortDirection
     );
     this.publications$ = this.datasourceService.getPublications(this.params);
-  }
-
-  constructor(
-    @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private datasourceService: DatasourceService,
-    private router: Router
-  ) {
-    const facility = this.appConfig.facility;
-    this.subtitle = facility.toUpperCase() + ' Public Dataset Access';
   }
 }

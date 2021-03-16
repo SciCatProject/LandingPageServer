@@ -1,11 +1,11 @@
-import { of } from 'rxjs';
-import { convertToParamMap } from '@angular/router';
+import { of } from "rxjs";
+import { convertToParamMap } from "@angular/router";
 
 export class MockActivatedRoute {
   // stub detail goes here
   snapshot = {
-    queryParams: { returnUrl: '/' },
-    paramMap: convertToParamMap({ name: 'string' }),
+    queryParams: { returnUrl: "/" },
+    paramMap: convertToParamMap({ name: "string" }),
     // url: [{ path: "logbooks" }],
     params: of([{ id: 1 }]),
   };

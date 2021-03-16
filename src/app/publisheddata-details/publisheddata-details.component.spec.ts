@@ -1,42 +1,44 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { PublisheddataDetailsComponent } from './publisheddata-details.component';
-import { APP_CONFIG } from '../app-config.module';
-import { MockActivatedRoute, MockDatasourceService } from '../shared/MockStubs';
-import { ActivatedRoute } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { DatasourceService } from '../datasource.service';
+import { PublisheddataDetailsComponent } from "./publisheddata-details.component";
+import { APP_CONFIG } from "../app-config.module";
+import { MockActivatedRoute, MockDatasourceService } from "../shared/MockStubs";
+import { ActivatedRoute } from "@angular/router";
+import { MatCardModule } from "@angular/material/card";
+import { MatListModule } from "@angular/material/list";
+import { DatasourceService } from "../datasource.service";
 
-describe('PublisheddataDetailsComponent', () => {
+describe("PublisheddataDetailsComponent", () => {
   let component: PublisheddataDetailsComponent;
   let fixture: ComponentFixture<PublisheddataDetailsComponent>;
 
-  const scicatBaseUrl = 'https://scicat.esss.se';
+  const scicatBaseUrl = "https://scicat.esss.se";
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [PublisheddataDetailsComponent],
-      imports: [MatCardModule, MatListModule],
-      providers: [
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            doiBaseUrl: 'https://doi.org/',
-            production: false,
-            accessDataHref: null,
-            directMongoAccess: true,
-            facility: 'ess',
-            accessInstructions:
-              'Instructions: Login with brightness username and password',
-            scicatBaseUrl,
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [PublisheddataDetailsComponent],
+        imports: [MatCardModule, MatListModule],
+        providers: [
+          {
+            provide: APP_CONFIG,
+            useValue: {
+              doiBaseUrl: "https://doi.org/",
+              production: false,
+              accessDataHref: null,
+              directMongoAccess: true,
+              facility: "ess",
+              accessInstructions:
+                "Instructions: Login with brightness username and password",
+              scicatBaseUrl,
+            },
           },
-        },
-        { provide: ActivatedRoute, useClass: MockActivatedRoute },
-        { provide: DatasourceService, useClass: MockDatasourceService },
-      ],
-    }).compileComponents();
-  }));
+          { provide: ActivatedRoute, useClass: MockActivatedRoute },
+          { provide: DatasourceService, useClass: MockDatasourceService },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PublisheddataDetailsComponent);
@@ -48,39 +50,39 @@ describe('PublisheddataDetailsComponent', () => {
     fixture.destroy();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  describe('#onPidClick()', () => {
-    it('should call window.open', () => {
-      const openSpy = spyOn(window, 'open');
+  describe("#onPidClick()", () => {
+    it("should call window.open", () => {
+      const openSpy = spyOn(window, "open");
 
-      const testPid = '20.500.12269/TEST-PID';
+      const testPid = "20.500.12269/TEST-PID";
       const encodedPid = encodeURIComponent(testPid);
 
       component.onPidClick(testPid);
 
       expect(openSpy).toHaveBeenCalledTimes(1);
       expect(openSpy).toHaveBeenCalledWith(
-        scicatBaseUrl + '/datasets/' + encodedPid,
-        '_blank'
+        scicatBaseUrl + "/datasets/" + encodedPid,
+        "_blank"
       );
     });
   });
 
-  describe('#isUrl()', () => {
-    it('should return false if dataDescription is not URL', () => {
-      const dataDescription = 'Not URL';
+  describe("#isUrl()", () => {
+    it("should return false if dataDescription is not URL", () => {
+      const dataDescription = "Not URL";
 
       const isUrl = component.isUrl(dataDescription);
 
       expect(isUrl).toEqual(false);
     });
 
-    it('should return true if dataDescription is URL', () => {
+    it("should return true if dataDescription is URL", () => {
       const dataDescription =
-        'https://github.com/ess-dmsc/ess_file_formats/wiki/NeXus';
+        "https://github.com/ess-dmsc/ess_file_formats/wiki/NeXus";
 
       const isUrl = component.isUrl(dataDescription);
 

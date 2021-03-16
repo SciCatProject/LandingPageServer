@@ -1,34 +1,34 @@
-import { APP_CONFIG, AppConfig } from './app-config.module';
-import { Component, Inject, OnInit } from '@angular/core';
-import { LoopBackConfig } from './shared/sdk';
-import { Title } from '@angular/platform-browser';
-import { environment } from '../environments/environment';
+import { APP_CONFIG, AppConfig } from "./app-config.module";
+import { Component, Inject, OnInit } from "@angular/core";
+import { LoopBackConfig } from "./shared/sdk";
+import { Title } from "@angular/platform-browser";
+import { environment } from "../environments/environment";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  title = 'Public Data Repository';
+  title = "Public Data Repository";
 
   constructor(
     private titleService: Title,
     @Inject(APP_CONFIG) public appConfig: AppConfig
   ) {
     const facility = this.appConfig.facility;
-    let status = 'test';
+    let status = "test";
     if (this.appConfig.production === true) {
-      status = '';
+      status = "";
     }
-    this.title = facility.toUpperCase() + ' Public Data Repository ' + status;
+    this.title = facility.toUpperCase() + " Public Data Repository " + status;
     this.titleService.setTitle(this.title);
   }
 
   ngOnInit() {
     LoopBackConfig.setBaseURL(environment.lbBaseURL);
-    console.log('gm lb config get path ', LoopBackConfig.getPath());
-    console.log('gm lb config get api  ', LoopBackConfig.getApiVersion());
+    console.log("gm lb config get path ", LoopBackConfig.getPath());
+    console.log("gm lb config get api  ", LoopBackConfig.getApiVersion());
     if (environment.lbApiVersion) {
       const lbApiVersion = environment.lbApiVersion;
       LoopBackConfig.setApiVersion(lbApiVersion);
