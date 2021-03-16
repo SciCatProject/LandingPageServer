@@ -5,14 +5,13 @@
 
 export const environment = {
   accessDataHref: null,
-  accessInstructions:
-    '',
+  accessInstructions: "",
   directMongoAccess: true,
-  doiBaseUrl: 'https://doi.org/',
-  facility: 'maxiv',
+  doiBaseUrl: "https://doi.org/",
+  facility: "maxiv",
   lbApiVersion: null,
-  lbBaseURL: 'https://scicat-test.maxiv.lu.se',
+  lbBaseURL: "https://scicat-test.maxiv.lu.se",
   oaiProviderRoute: null,
   production: true,
-  scicatBaseUrl: 'https://scicat-test.maxiv.lu.se'
+  scicatBaseUrl: "https://scicat-test.maxiv.lu.se",
 };
