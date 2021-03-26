@@ -1,8 +1,5 @@
 "use strict";
 
-import { range } from "rxjs";
-import { stringify } from "querystring";
-
 class GenerateSiteMap {
   header: string;
   footer: string;
@@ -12,32 +9,6 @@ class GenerateSiteMap {
   urls: string[];
   tags: string[];
   url_frag: string;
-
-  pad(num: number, size: number): string {
-    let s = num + "";
-    while (s.length < size) {
-      s = "0" + s;
-    }
-    return s;
-  }
-
-  build_urls() {
-    this.urls = [];
-    this.extracted(43, "NMX");
-    this.extracted(15, "MG");
-    this.extracted(47, "MB");
-    this.extracted(15, "SONDE");
-    this.extracted(30, "V20");
-  }
-
-  private extracted(num: number, prefix: string) {
-    for (let _i = 1; _i < num; _i++) {
-      if (_i) {
-        const tag = prefix + this.pad(_i, 4);
-        this.urls.push(this.url_frag + tag);
-      }
-    }
-  }
 
   constructor() {
     this.url_frag = "https://doi.esss.se/detail/10.17199%252FBRIGHTNESS%252F";
@@ -54,6 +25,32 @@ class GenerateSiteMap {
     this.url_ending =
       "</loc>\n" + "    <lastmod>" + formatted_date + "</lastmod>\n </url>\n";
     this.footer = "</urlset>";
+  }
+
+  private extracted(num: number, prefix: string) {
+    for (let i = 1; i < num; i++) {
+      if (i) {
+        const tag = prefix + this.pad(i, 4);
+        this.urls.push(this.url_frag + tag);
+      }
+    }
+  }
+
+  pad(num: number, size: number): string {
+    let s = num + "";
+    while (s.length < size) {
+      s = "0" + s;
+    }
+    return s;
+  }
+
+  build_urls() {
+    this.urls = [];
+    this.extracted(43, "NMX");
+    this.extracted(15, "MG");
+    this.extracted(47, "MB");
+    this.extracted(15, "SONDE");
+    this.extracted(30, "V20");
   }
 
   main_loop() {
