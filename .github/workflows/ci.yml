@@ -1,0 +1,40 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  unittest:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: test
+        run: |
+          npm ci
+          npx ng test --watch=false --browsers=ChromeHeadless
+
+  gitlab:
+    name: Build and deploy
+    needs: [unittest]
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger ESS pipeline
+        uses: appleboy/gitlab-ci-action@master
+        with:
+          token: ${{ secrets.TOKEN }}
+          project_id: 3367
+          ref: "master"
+          host: "https://gitlab.esss.lu.se"
+          debug: true
+
+      - name: Trigger  MAXIV pipeline
+        uses: appleboy/gitlab-ci-action@master
+        with:
+          token: ${{ secrets.MAXIV_TOKEN }}
+          project_id: 22690704
+          ref: "master"
+          host: "https://gitlab.com"
+          debug: true

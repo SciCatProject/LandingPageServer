@@ -1,7 +1,7 @@
 # SciCat Landing Page Server
 
 
-[![Build Status](https://github.com/SciCatProject/LandingPageServer/actions/workflows/test.yml/badge.svg?branch=develop)](https://github.com/SciCatProject/LandingPageServer/actions)
+[![Build Status](https://github.com/SciCatProject/LandingPageServer/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/SciCatProject/LandingPageServer/actions)
 [![DeepScan grade](https://deepscan.io/api/projects/3011/branches/23762/badge/grade.svg)](https://deepscan.io/dashboard#view=project&pid=3011&bid=23762)
 [![Known Vulnerabilities](https://snyk.io/test/github/SciCatProject/LandingPageServer/develop/badge.svg)](https://snyk.io/test/github/SciCatProject/LandingPageServer/develop)
 [![DOI](https://zenodo.org/badge/141108894.svg)](https://zenodo.org/badge/latestdoi/141108894)
