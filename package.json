@@ -28,7 +28,7 @@
     "@angular/platform-browser": "~11.2.5",
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
-    "filesize": "^6.1.0",
+    "filesize": "^6.2.2",
     "rxjs": "~6.6.6",
     "socket.io-client": "^4.0.1",
     "tslib": "^2.0.0",
