@@ -14,4 +14,5 @@ export const environment = {
   oaiProviderRoute: null,
   production: false,
   scicatBaseUrl: "https://scitest.esss.lu.se",
+  showLogoBanner: false
 };

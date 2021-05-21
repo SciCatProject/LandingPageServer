@@ -12,6 +12,7 @@ export class AppConfig {
   accessDataHref: string;
   accessInstructions: string;
   scicatBaseUrl: string;
+  showLogoBanner: boolean;
 }
 
 export const APP_DI_CONFIG: AppConfig = {
@@ -23,6 +24,7 @@ export const APP_DI_CONFIG: AppConfig = {
   accessDataHref: environment.accessDataHref || null,
   accessInstructions: environment.accessInstructions || null,
   scicatBaseUrl: environment.scicatBaseUrl || null,
+  showLogoBanner: environment.showLogoBanner || false
 };
 
 @NgModule({

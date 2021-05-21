@@ -14,6 +14,7 @@ export const environment = {
   oaiProviderRoute: "http://127.0.0.1:3001",
   production: false,
   scicatBaseUrl: "https://scicat.esss.se",
+  showLogoBanner: true
 };
 
 /*

@@ -16,4 +16,5 @@ export const environment = {
   oaiProviderRoute: "https://doi2.psi.ch/oaipmh/Publication",
   production: true,
   scicatBaseUrl: null,
+  showLogoBanner: false
 };
