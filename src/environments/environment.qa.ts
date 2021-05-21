@@ -9,4 +9,5 @@ export const environment = {
   oaiProviderRoute: null,
   production: true,
   scicatBaseUrl: null,
+  showLogoBanner: false
 };
