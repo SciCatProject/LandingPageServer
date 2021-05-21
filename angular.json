@@ -230,10 +230,10 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "NewLandingPageServer:serve:production"
+              "devServerTarget": "LandingPageServer:serve:production"
             },
             "development": {
-              "devServerTarget": "NewLandingPageServer:serve:development"
+              "devServerTarget": "LandingPageServer:serve:development"
             }
           },
           "defaultConfiguration": "development"
