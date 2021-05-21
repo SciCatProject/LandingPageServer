@@ -226,14 +226,17 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "NewLandingPageServer:serve"
+            "protractorConfig": "e2e/protractor.conf.js"
           },
           "configurations": {
             "production": {
               "devServerTarget": "NewLandingPageServer:serve:production"
+            },
+            "development": {
+              "devServerTarget": "NewLandingPageServer:serve:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         }
       }
     },
@@ -246,7 +249,8 @@
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "LandingPageServer:serve"
-          }
+          },
+          "configurations": {}
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
