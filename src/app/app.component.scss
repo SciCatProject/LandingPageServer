@@ -1,16 +1,17 @@
 /* AppComponent's private CSS styles */
+@use '~@angular/material' as mat;
 @import "src/styles.scss";
 
 .header {
   position: sticky;
   position: -webkit-sticky;
   z-index: 1000;
-  color: mat-color($primary, default-contrast);
+  color: mat.get-color-from-palette($primary, default-contrast);
 }
 
 .footer {
   height: 77px;
-  background-color: mat-color($primary, default-contrast);
+  background-color: mat.get-color-from-palette($primary, default-contrast);
   justify-content: center;
 }
 
