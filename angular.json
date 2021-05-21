@@ -112,10 +112,6 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
-                },
-                {
-                  "replace": "src/assets/logo_banner.png",
-                  "with": "CI/PSI/empty.png"
                 }
               ]
             },
@@ -145,10 +141,6 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "src/assets/logo_banner.png",
-                  "with": "CI/PSI/empty.png"
                 }
               ]
             }
