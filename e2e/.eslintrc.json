@@ -9,7 +9,9 @@
         "*.ts"
       ],
       "parserOptions": {
-        "project": ["e2e/tsconfig.e2e.json"],
+        "project": [
+          "e2e/tsconfig.e2e.json"
+        ],
         "createDefaultProgram": true
       },
       "rules": {
