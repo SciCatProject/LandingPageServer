@@ -12,9 +12,9 @@ import { DatasourceService } from "../datasource.service";
   styleUrls: ["./publisheddata-details.component.scss"],
 })
 export class PublisheddataDetailsComponent implements OnInit {
-  publication$: Observable<PublishedData>;
-  publicationJson$: Observable<string>;
-  downloadLink$: Observable<string>;
+  publication$ = new Observable<PublishedData>();
+  publicationJson$ = new Observable<string>();
+  downloadLink$ = new Observable<string>();
 
   doiBaseUrl = this.appConfig.doiBaseUrl;
   productionMode = this.appConfig.production;
