@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "~@angular/material" as mat;
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $header-1: map.get($color-config, "header-1");
+  $accent: map.get($color-config, "accent");
+  $header-2: map.get($color-config, "header-2");
+
+  .first-header {
+    background-color: mat.get-color-from-palette($primary, "lighter");
+  }
+
+  .second-header {
+    background-color: mat.get-color-from-palette($header-1, "lighter");
+  }
+
+  .third-header {
+    background-color: mat.get-color-from-palette($accent, "lighter");
+  }
+
+  .fourth-header {
+    background-color: mat.get-color-from-palette($header-2, "lighter");
+  }
+
+  .description-button {
+    background-color: mat.get-color-from-palette($accent, "default");
+    color: mat.get-color-from-palette($accent, "default-contrast");
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+}
