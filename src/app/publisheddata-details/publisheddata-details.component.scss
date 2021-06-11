@@ -1,22 +1,24 @@
 /* DatasetDetailComponent's private CSS styles */
+@use '~@angular/material' as mat;
+@import "../../../theme.scss";
 
 mat-card {
   margin: 1em;
 
   .first-header {
-    background: #99d6e9;
+    background-color: mat.get-color-from-palette($primary, lighter);
   }
 
   .second-header {
-    background: #99adc1;
+    background-color: mat.get-color-from-palette($navy, 400);
   }
 
   .third-header {
-    background: #d6e599;
+    background-color: mat.get-color-from-palette($accent, lighter);
   }
 
   .fourth-header {
-    background: #99c1b5;
+    background-color: mat.get-color-from-palette($forest, 400);
   }
 
   .text-content {
@@ -34,13 +36,13 @@ mat-card {
 
   .access-button {
     margin-right: 1em;
-    background-color: #0099c8;
-    color: #ffffff;
+    background-color: mat.get-color-from-palette($primary);
+    color: mat.get-color-from-palette($primary, default-contrast);
   }
 
   .description-button {
-    background-color: #99be00;
-    color: #ffffff;
+    background-color: mat.get-color-from-palette($accent);
+    color: mat.get-color-from-palette($accent, default-contrast);
   }
 
   .json-container {
