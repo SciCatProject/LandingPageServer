@@ -4,7 +4,6 @@ export const environment = {
   directMongoAccess: false,
   doiBaseUrl: "https://doi.org/",
   facility: "PSI",
-  lbApiVersion: null,
   lbBaseURL: "https://dacat-qa.psi.ch",
   oaiProviderRoute: null,
   production: true,

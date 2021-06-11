@@ -5,6 +5,10 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class DescriptionTitlePipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): unknown {
-    return value.split("/").pop().replace("-", " ");
+    const rawDescriptionTitle = value.split("/").pop();
+    const descriptionTitle = rawDescriptionTitle
+      ? rawDescriptionTitle.replace("-", " ")
+      : value;
+    return descriptionTitle;
   }
 }

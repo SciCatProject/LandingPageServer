@@ -9,7 +9,6 @@ export const environment = {
   directMongoAccess: true,
   doiBaseUrl: "https://doi.org/",
   facility: "ess",
-  lbApiVersion: null,
   lbBaseURL: "https://kubetest02.dm.esss.dk:32223",
   oaiProviderRoute: null,
   production: false,

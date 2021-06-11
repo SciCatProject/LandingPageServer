@@ -32,10 +32,10 @@ export interface CheckboxEvent {
   styleUrls: ["./table.component.scss"],
 })
 export class TableComponent implements OnInit {
-  @Input() data: any[];
-  @Input() columns: TableColumn[];
-  displayedColumns: string[];
-  listItems: string[];
+  @Input() data: any[] = [];
+  @Input() columns: TableColumn[] = [];
+  displayedColumns: string[] = [];
+  listItems: string[] = [];
 
   @Input() select?: boolean;
   @Input() allChecked?: boolean;
