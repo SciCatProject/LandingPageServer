@@ -6,9 +6,7 @@ import { PublishedData } from "./shared/sdk/models";
 import { DatePipe } from "@angular/common";
 import { Observable } from "rxjs";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class OAIService {
   private oaiServerUri = this.appConfig.oaiProviderRoute;
 

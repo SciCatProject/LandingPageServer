@@ -6,9 +6,7 @@ import { OAIService } from "./oai.service";
 import { PublishedDataService } from "./published-data.service";
 import { PublishedData } from "./shared/sdk";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class DatasourceService {
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,

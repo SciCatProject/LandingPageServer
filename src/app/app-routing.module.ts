@@ -1,13 +1,26 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { PublisheddataDetailsComponent } from "./publisheddata-details/publisheddata-details.component";
-
 const routes: Routes = [
-  { path: "detail/:id1/:id2", component: PublisheddataDetailsComponent },
-  { path: "detail/:id", component: PublisheddataDetailsComponent },
-  { path: "", component: DashboardComponent },
+  {
+    path: "detail/:id1/:id2",
+    loadChildren: () =>
+      import("./publisheddata-details/publisheddata-details.module").then(
+        (m) => m.PublisheddataDetailsModule
+      ),
+  },
+  {
+    path: "detail/:id",
+    loadChildren: () =>
+      import("./publisheddata-details/publisheddata-details.module").then(
+        (m) => m.PublisheddataDetailsModule
+      ),
+  },
+  {
+    path: "",
+    loadChildren: () =>
+      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+  },
 ];
 
 @NgModule({
