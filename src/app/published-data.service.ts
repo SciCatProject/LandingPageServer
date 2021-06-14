@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { LoopBackFilter, PublishedData } from "./shared/sdk/models";
 import { PublishedDataApi } from "./shared/sdk/services/custom";
 
