@@ -13,7 +13,7 @@ jobs:
       - name: test
         run: |
           npm ci
-          npx ng test --watch=false --browsers=ChromeHeadless
+          npm test
 
   gitlab:
     name: Build and deploy
