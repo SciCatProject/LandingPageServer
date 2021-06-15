@@ -12,6 +12,7 @@
         [data]="publications$ | async"
         [columns]="tableColumns"
         [paginate]="true"
+        [select]="true"
         [currentPage]="currentPage"
         [dataCount]="count$ | async"
         [dataPerPage]="itemsPerPage"

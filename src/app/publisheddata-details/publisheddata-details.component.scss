@@ -3,22 +3,6 @@
 mat-card {
   margin: 1em;
 
-  .first-header {
-    background: #99d6e9;
-  }
-
-  .second-header {
-    background: #99adc1;
-  }
-
-  .third-header {
-    background: #d6e599;
-  }
-
-  .fourth-header {
-    background: #99c1b5;
-  }
-
   .text-content {
     padding-top: 1em;
 
@@ -30,17 +14,6 @@ mat-card {
     td {
       padding: 0.3em;
     }
-  }
-
-  .access-button {
-    margin-right: 1em;
-    background-color: #0099c8;
-    color: #ffffff;
-  }
-
-  .description-button {
-    background-color: #99be00;
-    color: #ffffff;
   }
 
   .json-container {

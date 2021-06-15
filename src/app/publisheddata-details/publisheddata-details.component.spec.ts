@@ -5,7 +5,6 @@ import { APP_CONFIG } from "../app-config.module";
 import { MockActivatedRoute, MockDatasourceService } from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
-import { MatListModule } from "@angular/material/list";
 import { DatasourceService } from "../datasource.service";
 
 describe("PublisheddataDetailsComponent", () => {
@@ -18,7 +17,7 @@ describe("PublisheddataDetailsComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [PublisheddataDetailsComponent],
-        imports: [MatCardModule, MatListModule],
+        imports: [MatCardModule],
         providers: [
           {
             provide: APP_CONFIG,

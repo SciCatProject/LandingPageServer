@@ -6,9 +6,7 @@ import { OAIService } from "./oai.service";
 import { PublishedDataService } from "./published-data.service";
 import { PublishedData } from "./shared/sdk";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class DatasourceService {
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
@@ -16,7 +14,7 @@ export class DatasourceService {
     private publishedDataService: PublishedDataService
   ) {}
 
-  getPublications(params): Observable<PublishedData[]> {
+  getPublications(params: string): Observable<PublishedData[]> {
     return this.appConfig.directMongoAccess
       ? this.publishedDataService.getPublications(params)
       : this.oaiService.getPublications(params);
@@ -39,13 +37,13 @@ export class DatasourceService {
     currentPage: number,
     sortColumn: string,
     sortDirection: string
-  ): any {
+  ): string {
     return this.appConfig.directMongoAccess
-      ? {
+      ? JSON.stringify({
           order: sortColumn + " " + sortDirection,
           skip: itemsPerPage * currentPage,
           limit: itemsPerPage,
-        }
+        })
       : "(" +
           "skip=" +
           itemsPerPage * currentPage +

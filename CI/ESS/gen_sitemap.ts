@@ -11,6 +11,9 @@ class GenerateSiteMap {
   url_frag: string;
 
   constructor() {
+    this.main_body = "";
+    this.urls = [];
+    this.tags = [];
     this.url_frag = "https://doi.esss.se/detail/10.17199%252FBRIGHTNESS%252F";
     this.build_urls();
     this.header =

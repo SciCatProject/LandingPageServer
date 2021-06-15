@@ -4,27 +4,27 @@ import { environment } from "../environments/environment";
 export const APP_CONFIG = new InjectionToken<AppConfig>("app.config");
 
 export class AppConfig {
-  production: boolean;
-  facility: string;
-  oaiProviderRoute: string;
-  doiBaseUrl: string;
-  directMongoAccess: boolean;
-  accessDataHref: string;
-  accessInstructions: string;
-  scicatBaseUrl: string;
-  showLogoBanner: boolean;
+  production = true;
+  facility = "";
+  oaiProviderRoute = "";
+  doiBaseUrl = "";
+  directMongoAccess = true;
+  accessDataHref = "";
+  accessInstructions = "";
+  scicatBaseUrl = "";
+  showLogoBanner = true;
 }
 
 export const APP_DI_CONFIG: AppConfig = {
   production: environment.production,
-  facility: environment.facility || null,
-  oaiProviderRoute: environment.oaiProviderRoute || null,
-  doiBaseUrl: environment.doiBaseUrl || null,
-  directMongoAccess: environment.directMongoAccess || false,
-  accessDataHref: environment.accessDataHref || null,
-  accessInstructions: environment.accessInstructions || null,
-  scicatBaseUrl: environment.scicatBaseUrl || null,
-  showLogoBanner: environment.showLogoBanner || false
+  facility: environment.facility ?? "",
+  oaiProviderRoute: environment.oaiProviderRoute ?? "",
+  doiBaseUrl: environment.doiBaseUrl ?? "",
+  directMongoAccess: environment.directMongoAccess ?? false,
+  accessDataHref: environment.accessDataHref ?? "",
+  accessInstructions: environment.accessInstructions ?? "",
+  scicatBaseUrl: environment.scicatBaseUrl ?? "",
+  showLogoBanner: environment.showLogoBanner ?? false
 };
 
 @NgModule({

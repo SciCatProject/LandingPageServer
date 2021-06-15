@@ -9,7 +9,6 @@ export const environment = {
   directMongoAccess: true,
   doiBaseUrl: "https://doi.org/",
   facility: "ess",
-  lbApiVersion: null,
   lbBaseURL: "https://scicatapi.esss.dk",
   oaiProviderRoute: null,
   production: true,

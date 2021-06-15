@@ -4,10 +4,10 @@ import { DashboardComponent } from "./dashboard.component";
 import { APP_CONFIG } from "../app-config.module";
 import { Router } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
-import { SharedModule } from "../shared/shared.module";
 import { DatePipe } from "@angular/common";
 import { DatasourceService } from "../datasource.service";
 import { MockDatasourceService } from "../shared/MockStubs";
+import { TableModule } from "../shared/modules/table/table.module";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -21,7 +21,7 @@ describe("DashboardComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [DashboardComponent],
-        imports: [MatCardModule, SharedModule],
+        imports: [MatCardModule, TableModule],
         providers: [
           DatePipe,
           {

@@ -1,44 +1,37 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { map } from "rxjs/operators";
 import { PublishedData } from "./shared/sdk/models";
 import { DatePipe } from "@angular/common";
+import { Observable } from "rxjs";
 
-export interface Count {
-  count: number;
-}
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class OAIService {
+  private oaiServerUri = this.appConfig.oaiProviderRoute;
+
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     private httpClient: HttpClient,
     private datePipe: DatePipe
   ) {}
 
-  request(url, params) {
+  request<T>(url: string, params: string | null): Observable<T> {
     if (params) {
       url = url + "/" + encodeURIComponent(encodeURIComponent(params));
     }
-    return this.httpClient.get(url);
+    return this.httpClient.get(url) as Observable<T>;
   }
 
-  countPublications() {
-    const OAIServerUri = this.appConfig.oaiProviderRoute;
-    console.log("OAIServerUri", OAIServerUri);
-    return this.request(OAIServerUri + "/count", null).pipe(
-      map((response: Count) => response)
-    );
+  countPublications(): Observable<{ count: number }> {
+    console.log("OAIServerUri", this.oaiServerUri);
+    return this.request<{ count: number }>(this.oaiServerUri + "/count", null);
   }
 
   // dont need to format date now?
-  getPublications(params) {
-    const OAIServerUri = this.appConfig.oaiProviderRoute;
-    console.log("OAIServerUri", OAIServerUri);
-    return this.request(OAIServerUri, params).pipe(
+  getPublications(params: string): Observable<PublishedData[]> {
+    console.log("OAIServerUri", this.oaiServerUri);
+    return this.request<PublishedData[]>(this.oaiServerUri, params).pipe(
       map((response: PublishedData[]) => {
         if (response) {
           return response.map((pub: PublishedData) => {
@@ -48,16 +41,13 @@ export class OAIService {
             return pub;
           });
         }
-        return null;
+        return [];
       })
     );
   }
 
-  findOnePublication(params) {
-    const OAIServerUri = this.appConfig.oaiProviderRoute;
-    console.log("OAIServerUri", OAIServerUri);
-    return this.request(OAIServerUri + "/detail", params).pipe(
-      map((response: PublishedData) => response)
-    );
+  findOnePublication(params: string): Observable<PublishedData> {
+    console.log("OAIServerUri", this.oaiServerUri);
+    return this.request<PublishedData>(this.oaiServerUri + "/detail", params);
   }
 }
