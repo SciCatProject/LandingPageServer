@@ -10,10 +10,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: test
+      - name: Test
         run: |
           npm ci
           npm test
+
+  testbuild:
+    name: Test Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build --configuration=essprod
 
   gitlab:
     name: Build and deploy
