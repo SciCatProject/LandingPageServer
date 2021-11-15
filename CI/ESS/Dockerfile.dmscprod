@@ -1,4 +1,4 @@
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 
 LABEL maintainer="henrik.johansson@ess.eu"
 RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
