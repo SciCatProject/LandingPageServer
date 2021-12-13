@@ -19,12 +19,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-Angular 13
-Node 14
-SciCat Backend
-MongoDB
-```
+
+- Angular 13
+- Node 14
+- [SciCat Backend](https://github.com/SciCatProject/backend)
+- MongoDB
+
 
 ### Installing
 
