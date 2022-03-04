@@ -6,6 +6,8 @@ import { MockActivatedRoute, MockDatasourceService } from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { DatasourceService } from "../datasource.service";
+import { PublishedData } from "../shared/sdk";
+import { DomSanitizer } from "@angular/platform-browser";
 
 describe("PublisheddataDetailsComponent", () => {
   let component: PublisheddataDetailsComponent;
@@ -34,6 +36,12 @@ describe("PublisheddataDetailsComponent", () => {
           },
           { provide: ActivatedRoute, useClass: MockActivatedRoute },
           { provide: DatasourceService, useClass: MockDatasourceService },
+          {
+            provide: DomSanitizer,
+            useValue: {
+              bypassSecurityTrustHtml: (val: string) => val,
+            },
+          }          
         ],
       }).compileComponents();
     })
@@ -87,5 +95,52 @@ describe("PublisheddataDetailsComponent", () => {
 
       expect(isUrl).toEqual(true);
     });
+  });
+
+  describe("#getSafeHTML()", () => {
+    it("should call sanitize and return script tag and json content", () => {
+      const value = {key: "value", key1: "value"};
+      const safeHTML = component.getSafeHTML(value);
+      expect(safeHTML).toEqual(
+        `<script type="application/ld+json">${JSON.stringify(value, null, 2)}</script>`);
+    });
+
+  });
+
+  describe("#schemaDotOrg()", () => {
+    it("should call sanitize and return script tag and json content", () => {
+      const publication = new PublishedData({
+        doi: "123", 
+        creator: ["John Smith"], 
+        title: "aTitle", 
+        dataDescription: "aDescription", 
+        publicationYear: 2021, 
+        publisher: "aPublisher", 
+        abstract: "",
+        resourceType: "",
+        pidArray: []
+      });
+      const safeHTML = component.schemaDotOrg(publication);
+      expect(safeHTML).toEqual({
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "@id": "https://doi.org/123",
+        "name": "aTitle",
+        "creator": {
+          "name": "John Smith",
+          "givenName": "John",
+          "familyName": "Smith",
+          "@type": "Person"
+        },
+        "description": "aDescription",
+        "datePublished": "2021",
+        "publisher": {
+          "@type": "Organization",
+          "name": "aPublisher"
+        },
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+      });
+    });
+
   });
 });
