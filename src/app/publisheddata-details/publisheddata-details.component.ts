@@ -5,6 +5,8 @@ import { PublishedData } from "../shared/sdk/models";
 import { map } from "rxjs/operators";
 import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { DatasourceService } from "../datasource.service";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import {Dataset, Organization, Person, WithContext} from "schema-dts";
 
 @Component({
   selector: "app-publisheddata-details",
@@ -24,7 +26,8 @@ export class PublisheddataDetailsComponent implements OnInit {
   constructor(
     @Inject(APP_CONFIG) public appConfig: AppConfig,
     private datasourceService: DatasourceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {}
 
   onPidClick(pid: string): void {
@@ -37,6 +40,40 @@ export class PublisheddataDetailsComponent implements OnInit {
 
   isUrl(dataDescription: string): boolean {
     return dataDescription.includes("http");
+  }
+
+  getSafeHTML(value: {}): SafeHtml {
+    const json = value ? JSON.stringify(value, null, 2) : "";
+    const html = `<script type="application/ld+json">${json}</script>`;
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  schemaDotOrg(publication: PublishedData): WithContext<Dataset> {
+    const name = publication.creator ? publication.creator.slice(-1)[0]: "";
+    const nameSplit = name ? name.split(" "): [];
+    const familyName = nameSplit.pop();
+    const creator: Person =  {
+      "name": name,
+      "givenName": nameSplit.join(" "),
+      "familyName": familyName,
+      "@type": "Person"
+    };
+    const organization: Organization = {
+      "@type": "Organization",
+      "name": publication.publisher
+    };
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "@id": this.doiBaseUrl + publication.doi,
+      "name": publication.title,
+      "creator": creator,
+      "description": publication.dataDescription,
+      "datePublished": `${publication.publicationYear}`,
+      "publisher": organization,
+      "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+    };
   }
 
   ngOnInit(): void {
