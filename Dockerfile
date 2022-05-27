@@ -25,7 +25,7 @@ COPY --chown=node:node . /home/node/app/
 # Build app
 RUN npx ng build --configuration=${env}
 
-FROM nginx:1.20-alpine
+FROM nginx:1.22.0-alpine
 
 RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /usr/share/nginx/html/*
