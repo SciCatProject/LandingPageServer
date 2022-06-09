@@ -171,6 +171,27 @@
               ],
               "outputHashing": "all"
             },
+            "maxivdemo": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "650kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.maxivdemo.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "dmscprod": {
               "budgets": [
                 {
