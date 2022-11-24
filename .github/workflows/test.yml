@@ -7,7 +7,7 @@ on:
       - develop
 jobs:
   unittest:
-    name: Unit Tests
+    name: Run unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,7 +18,7 @@ jobs:
           npm ci
           npm test
   testbuild:
-    name: Test Build
+    name: Run build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
