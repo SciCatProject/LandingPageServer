@@ -5,7 +5,7 @@ on:
     branches: 
     - master
     - develop
-    - uniform-deploy-scripts
+    - uniform-deployment-scripts
 
 jobs:
   deploy:
