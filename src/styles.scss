@@ -235,6 +235,9 @@ $theme: custom-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
+@import 'assets/styles/roboto';
+@import 'assets/styles/material-icons';
+
 html,
 body,
 app-root {
