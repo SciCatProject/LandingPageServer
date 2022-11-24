@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/scicatproject/LandingPageServer:${{ steps.extract_branch.outputs.branch }}
+          tags: ghcr.io/scicatproject/landingpageserver:${{ steps.extract_branch.outputs.branch }}
         
       - name: Trigger ESS pipeline
         uses: swapActions/trigger-swap-deployment@v1
