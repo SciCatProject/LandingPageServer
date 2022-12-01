@@ -3,7 +3,6 @@ name: Test
 on:
   pull_request:
     branches: 
-      - master
       - develop
 jobs:
   unittest:
@@ -17,7 +16,7 @@ jobs:
         run: |
           npm ci
           npm test
-  testbuild:
+  build:
     name: Run build
     runs-on: ubuntu-latest
     steps:
