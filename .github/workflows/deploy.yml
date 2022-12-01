@@ -38,7 +38,7 @@ jobs:
       - name: Trigger ESS pipeline
         uses: swapActions/trigger-swap-deployment@v1
         with:
-          repository: ${{ github.repository }}
+          repository: ${{ github.event.repository.name }}
           environment: develop
           gh-trigger-url: ${{ secrets.GITLAB_TRIGGER_URL }}
           gh-token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
