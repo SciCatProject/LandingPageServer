@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log node version 
-        run: ${{ github.event }} # Temporary add deployment while setting up the script!
+        run: ${{ toJSON(github.event) }} # Temporary add deployment while setting up the script!
           
       - name: Checkout
         uses: actions/checkout@v3
