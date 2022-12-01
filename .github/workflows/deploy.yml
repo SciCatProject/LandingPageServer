@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     - develop
-    - uniform-deployment-scripts # Temporary add deployment while setting up the script
+    - uniform-deployment-scripts # Temporary add deployment while setting up the script!
 
 jobs:
   deploy:
