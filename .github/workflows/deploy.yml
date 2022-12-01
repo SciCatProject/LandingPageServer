@@ -13,9 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - id: extract_branch
-        uses: swapActions/get-branch-name@v1
-        
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -33,7 +30,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/scicatproject/landingpageserver:${{ steps.extract_branch.outputs.branch }}
+          tags: |
+            ghcr.io/scicatproject/landingpageserver:latest
+            ghcr.io/scicatproject/landingpageserver:${{ github.sha }}
         
       - name: Trigger ESS pipeline
         uses: swapActions/trigger-swap-deployment@v1
@@ -42,7 +41,7 @@ jobs:
           environment: ${{ steps.extract_branch.outputs.branch }}
           gh-trigger-url: ${{ secrets.GITLAB_TRIGGER_URL }}
           gh-token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
-          image-tag: ${{ steps.extract_branch.outputs.branch }}
+          image-tag: ${{ github.sha }}
 
       - name: Trigger  MAXIV pipeline
         uses: appleboy/gitlab-ci-action@master
