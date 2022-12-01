@@ -5,7 +5,7 @@ on:
     branches: 
       - develop
 jobs:
-  unittest:
+  unit_tests:
     name: Run unit Tests
     runs-on: ubuntu-latest
     steps:
