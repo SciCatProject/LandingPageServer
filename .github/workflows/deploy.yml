@@ -16,7 +16,7 @@ jobs:
         run: echo ${{ github.event.repository.full_name }}
         
       - name: Echo repo
-        run: echo ghcr.io/${{ github.event.repository.full_name.lowercase }}:${{ github.sha }}
+        run: echo ghcr.io/${{ github.event.repository.full_name }}:${{ github.sha }}
         
       - name: Checkout
         uses: actions/checkout@v3
@@ -47,8 +47,8 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/${{ github.event.repository.full_name.lowercase }}:latest
-            ghcr.io/${{ github.event.repository.full_name.lowercase }}:${{ github.sha }}
+            ghcr.io/${{ github.event.repository.full_name }}:latest
+            ghcr.io/${{ github.event.repository.full_name }}:${{ github.sha }}
         
       - name: Trigger ESS pipeline
         uses: swapActions/trigger-swap-deployment@v1
