@@ -50,6 +50,4 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: |
-          npm ci
-          npm run build --configuration=essprod
+        run: npm run build --configuration=essprod
