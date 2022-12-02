@@ -8,10 +8,7 @@ jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
-    steps:
-      - name: Echo event
-        run: echo ${{ github.event.repository.full_name }}
-        
+    steps:  
       - name: Checkout code
         uses: actions/checkout@v2
         
