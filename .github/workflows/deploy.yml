@@ -31,7 +31,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           flavor: latest=true # adds :latest tag to outputs
-          tags: type=sha,format=long # adds :<sha> output to tags
+          tags: type=sha,format=long,prefix= # adds :<sha> output to tags
       
       - name: Cache node_modules
         id: cache-node-modules
