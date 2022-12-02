@@ -3,8 +3,7 @@ name: Deploy
 on:
   push:
     branches: 
-    - github.event.repository.default_branch
-    - uniform-deployment-scripts # Temporary add deployment while setting up the script!!
+    - ${{ github.event.repository.default_branch }}
 
 jobs:
   deploy:
