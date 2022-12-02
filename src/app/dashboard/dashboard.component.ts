@@ -10,8 +10,6 @@ import {
 } from "../shared/modules/table/table.component";
 import { DatasourceService } from "../datasource.service";
 
-const missingSemi:string
-
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
