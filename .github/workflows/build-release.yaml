@@ -25,4 +25,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/scicatproject/landingpageserver:${{ github.event.release.tag_name }}
+          tags: ghcr.io/${{ github.event.repository.full_name.lowercase }}:${{ github.event.release.tag_name }}
