@@ -3,7 +3,7 @@ name: Test
 on:
   pull_request:
     branches: 
-      - ${ github.event.repository.default_branch }
+      - ${{ github.event.repository.default_branch }}
 jobs:
   test:
     name: Run tests
