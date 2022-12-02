@@ -5,7 +5,7 @@ on:
     branches: 
       - develop
 jobs:
-  unit_tests:
+  test:
     name: Run unit tests
     runs-on: ubuntu-latest
     steps:
@@ -24,30 +24,7 @@ jobs:
         run: npm ci
 
       - name: Test
-        run: npm test
-          
-  build:
-    name: Run build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-        
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-          
-      - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - name: Build
-        run: npm run build --configuration=essprod
+        run: |
+          npm lint
+          npm test
+          npm run build --configuration=essprod
