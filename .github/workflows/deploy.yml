@@ -23,17 +23,15 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
+      
+      # Used for generating tags when pusing the image
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: ghcr.io/${{ github.repository }}
-          flavor: latest=true
-          tags: type=sha
-          
-      - name: Echo tags
-        run: echo ${{ steps.meta.outputs.tags }}
+          flavor: latest=true # adds :latest tag to outputs
+          tags: type=sha,format=long # adds :<sha> output to tags
       
       - name: Cache node_modules
         id: cache-node-modules
@@ -46,16 +44,12 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
         
-
-        
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: |
-            ghcr.io/${{ github.event.repository.full_name }}:latest
-            ghcr.io/${{ github.event.repository.full_name }}:${{ github.sha }}
-        
+          tags: ${{ steps.meta.outputs.tags }}
+            
       - name: Trigger ESS pipeline
         uses: swapActions/trigger-swap-deployment@v1
         with:
