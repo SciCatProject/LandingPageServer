@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo event
-        run: echo ${{ toJSON(github.event) }}
+        run: echo ${{ github.event.repository.full_name }}
         
       - name: Checkout code
         uses: actions/checkout@v2
