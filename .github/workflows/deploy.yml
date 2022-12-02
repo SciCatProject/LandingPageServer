@@ -11,13 +11,6 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-    
-      - name: Echo full_name
-        run: echo ${{ github.event.repository.full_name }}
-        
-      - name: Echo repo
-        run: echo ghcr.io/${{ github.event.repository.full_name }}:${{ github.sha }}
-        
       - name: Checkout
         uses: actions/checkout@v3
         
@@ -30,6 +23,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/${{ github.repository }}
+          flavor: latest=auto
+          tags: type=sha
+          
+      - name: Echo tags
+        run: echo ${{ steps.meta.outputs.tags }}
       
       - name: Cache node_modules
         id: cache-node-modules
@@ -41,6 +45,8 @@ jobs:
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
+        
+
         
       - name: Build and push
         uses: docker/build-push-action@v3
