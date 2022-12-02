@@ -11,6 +11,13 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Echo full_name
+        run: echo ${{ github.event.repository.full_name }}
+        
+      - name: Echo repo
+        run: echo ghcr.io/${{ github.event.repository.full_name.lowercase }}:${{ github.sha }}
+        
       - name: Checkout
         uses: actions/checkout@v3
         
