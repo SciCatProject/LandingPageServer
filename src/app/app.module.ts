@@ -21,6 +21,4 @@ import { SDKBrowserModule } from "./shared/sdk";
   bootstrap: [AppComponent],
 })
 
-var unused:string
-
 export class AppModule {}
