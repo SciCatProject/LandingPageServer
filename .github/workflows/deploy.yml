@@ -59,7 +59,6 @@ jobs:
 
       - name: Trigger MAXIV pipeline
         uses: appleboy/gitlab-ci-action@master
-        if: ${{ steps.extract_branch.outputs.branch == 'develop' }} # Temporary prevent deployment while setting up the script
         with:
           token: ${{ secrets.MAXIV_TOKEN }}
           project_id: 22690704
