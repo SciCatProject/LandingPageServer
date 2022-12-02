@@ -29,7 +29,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ghcr.io/${{ github.repository }}
-          flavor: latest=auto
+          flavor: latest=true
           tags: type=sha
           
       - name: Echo tags
