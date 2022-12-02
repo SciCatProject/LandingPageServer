@@ -24,14 +24,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
-      # Used for generating tags when pusing the image
+      # Used for generating tags when pushing the image
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: ghcr.io/${{ github.repository }}
-          flavor: latest=true # adds :latest tag to outputs
-          tags: type=sha,format=long,prefix= # adds :<sha> output to tags
+          flavor: latest=true # adds :latest tag to outputs.tags
+          tags: type=sha,format=long,prefix= # adds :<sha> tag to outputs.tags
       
       - name: Cache node_modules
         id: cache-node-modules
