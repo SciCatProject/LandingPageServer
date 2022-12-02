@@ -20,7 +20,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           
-      # Used for generating tags when pusing the image
+      # Used for generating tags when pushing the image
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
