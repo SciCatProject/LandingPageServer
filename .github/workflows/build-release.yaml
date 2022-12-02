@@ -19,10 +19,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          
+      # Used for generating tags when pusing the image
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/${{ github.repository }}
+          flavor: latest=true # adds :latest tag to outputs.tags
+          tags: type=sha,format=long,prefix= # adds :<sha> output to outputs.tags
 
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.event.repository.full_name.lowercase }}:${{ github.event.release.tag_name }}
+          tags: ${{ steps.meta.outputs.tags }}
