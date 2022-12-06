@@ -4,6 +4,7 @@ on:
   push:
     branches: 
     - develop
+    - uniform-deployment-scripts
 
 jobs:
   deploy:
