@@ -40,12 +40,14 @@ export class DashboardComponent {
     { name: "creator", icon: "group", sort: true, inList: true },
     { name: "doi", icon: "label", sort: true, inList: true },
   ];
+  itemFields = {thumbnail: false};
 
   params: any = this.datasourceService.queryParams(
     this.itemsPerPage,
     this.currentPage,
     this.sortColumn,
-    this.sortDirection
+    this.sortDirection,
+    this.itemFields,
   );
   publications$: Observable<
     PublishedData[]
@@ -72,7 +74,8 @@ export class DashboardComponent {
       this.itemsPerPage,
       this.currentPage,
       this.sortColumn,
-      this.sortDirection
+      this.sortDirection,
+      this.itemFields,
     );
     this.publications$ = this.datasourceService.getPublications(this.params);
   }
@@ -85,7 +88,8 @@ export class DashboardComponent {
       this.itemsPerPage,
       this.currentPage,
       this.sortColumn,
-      this.sortDirection
+      this.sortDirection,
+      this.itemFields,
     );
     this.publications$ = this.datasourceService.getPublications(this.params);
   }

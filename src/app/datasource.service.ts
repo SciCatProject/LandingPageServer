@@ -36,13 +36,15 @@ export class DatasourceService {
     itemsPerPage: number,
     currentPage: number,
     sortColumn: string,
-    sortDirection: string
+    sortDirection: string,
+    itemFields: Partial<{[key in keyof PublishedData]: boolean}>
   ): string {
     return this.appConfig.directMongoAccess
       ? JSON.stringify({
           order: sortColumn + " " + sortDirection,
           skip: itemsPerPage * currentPage,
           limit: itemsPerPage,
+          fields: itemFields,
         })
       : "(" +
           "skip=" +
@@ -53,6 +55,8 @@ export class DatasourceService {
           sortColumn +
           ",sortDirection=" +
           sortDirection +
+          ",excludeFields=" +
+          Object.keys(itemFields).filter(k => !itemFields[k]).join("|") +
           ")";
   }
 }
