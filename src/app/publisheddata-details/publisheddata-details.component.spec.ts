@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { PublisheddataDetailsComponent } from "./publisheddata-details.component";
-import { AppConfigModule, APP_CONFIG } from "../app-config.module";
+import { APP_CONFIG } from "../app-config.module";
 import { MockActivatedRoute, MockDatasourceService, MockDialog, MockRetriveService } from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
@@ -11,11 +11,6 @@ import { PublishedData } from "../shared/sdk";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogModule } from "../shared/modules/dialog/dialog.module";
-import { CommonModule } from "@angular/common";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { MatButtonModule } from "@angular/material/button";
-import { PipesModule } from "../shared/pipes/pipes.module";
-import { PublisheddataDetailsRoutingModule } from "./publisheddata-details-routing.module";
 
 describe("PublisheddataDetailsComponent", () => {
   let component: PublisheddataDetailsComponent;
