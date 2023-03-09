@@ -59,4 +59,24 @@ export class MockDatasourceService {
   queryParams() {
     return {};
   }
+
+  postJob() {
+    return of({});
+  }
 }
+
+export class MockRetriveService {
+  retrieve() {
+    return of({});
+  }
+
+  retriveDialogOptions() {
+    return {};
+  }
+}
+
+export class MockMatDialogRef {
+  close() {}
+}
+
+export class MockMatDialogData {}

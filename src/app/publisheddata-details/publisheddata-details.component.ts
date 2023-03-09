@@ -7,6 +7,9 @@ import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { DatasourceService } from "../datasource.service";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import {Dataset, Organization, Person, WithContext} from "schema-dts";
+import { DialogComponent } from "../shared/modules/dialog/dialog.component";
+import { MatDialog } from "@angular/material/dialog";
+import { RetrieveService } from "../retrieve.service";
 
 @Component({
   selector: "app-publisheddata-details",
@@ -16,7 +19,6 @@ import {Dataset, Organization, Person, WithContext} from "schema-dts";
 export class PublisheddataDetailsComponent implements OnInit {
   publication$ = new Observable<PublishedData>();
   publicationJson$ = new Observable<string>();
-  downloadLink$ = new Observable<string>();
 
   doiBaseUrl = this.appConfig.doiBaseUrl;
   productionMode = this.appConfig.production;
@@ -27,7 +29,9 @@ export class PublisheddataDetailsComponent implements OnInit {
     @Inject(APP_CONFIG) public appConfig: AppConfig,
     private datasourceService: DatasourceService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public dialog: MatDialog,
+    private retrieveSrc: RetrieveService,
   ) {}
 
   onPidClick(pid: string): void {
@@ -89,12 +93,23 @@ export class PublisheddataDetailsComponent implements OnInit {
         JSON.stringify(publication, null, 2)
       )
     );
-    this.downloadLink$ = this.publication$.pipe(
-      map((publication) =>
-        publication.downloadLink
-          ? publication.downloadLink
-          : this.accessDataHref
-      )
-    );
   }
+
+  accessData(publication: PublishedData): void {
+    if (publication.downloadLink) {
+      window.open(publication.downloadLink);
+    }
+    else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess){ 
+      let dialogOptions = this.retrieveSrc.retriveDialogOptions();
+      const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result)
+          this.retrieveSrc.retrieve(result.email, publication.pidArray).subscribe();
+      });
+    }
+    else {
+      window.open(this.accessDataHref);
+    }
+  }
+
 }

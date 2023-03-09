@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { OAIService } from "./oai.service";
 import { PublishedDataService } from "./published-data.service";
-import { PublishedData } from "./shared/sdk";
+import { Job, PublishedData } from "./shared/sdk";
 
 @Injectable()
 export class DatasourceService {
@@ -30,6 +30,10 @@ export class DatasourceService {
     return this.appConfig.directMongoAccess
       ? this.publishedDataService.getPublication(id)
       : this.oaiService.findOnePublication(id);
+  }
+
+  postJob(data: Job): Observable<Job> {
+    return this.publishedDataService.postJob(data)
   }
 
   queryParams(

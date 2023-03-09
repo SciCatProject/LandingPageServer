@@ -10,6 +10,8 @@ import { DatasourceService } from "../datasource.service";
 import { OAIService } from "../oai.service";
 import { PublishedDataService } from "../published-data.service";
 import { AppConfigModule } from "../app-config.module";
+import { DialogModule } from "../shared/modules/dialog/dialog.module";
+import { RetrieveService } from "../retrieve.service";
 
 @NgModule({
   declarations: [PublisheddataDetailsComponent],
@@ -21,7 +23,8 @@ import { AppConfigModule } from "../app-config.module";
     MatCardModule,
     PipesModule,
     PublisheddataDetailsRoutingModule,
+    DialogModule
   ],
-  providers: [DatasourceService, DatePipe, OAIService, PublishedDataService],
+  providers: [DatasourceService, DatePipe, OAIService, PublishedDataService, RetrieveService],
 })
 export class PublisheddataDetailsModule {}
