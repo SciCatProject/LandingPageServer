@@ -30,7 +30,7 @@ export const APP_DI_CONFIG: AppConfig = {
   accessInstructions: environment.accessInstructions ?? "",
   scicatBaseUrl: environment.scicatBaseUrl ?? "",
   showLogoBanner: environment.showLogoBanner ?? false,
-  retrieveToEmail: environment.retrieveToEmail,
+  retrieveToEmail: environment.retrieveToEmail?? undefined,
 };
 
 @NgModule({
