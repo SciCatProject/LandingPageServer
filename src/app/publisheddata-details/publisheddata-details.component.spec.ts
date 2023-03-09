@@ -27,16 +27,7 @@ describe("PublisheddataDetailsComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [PublisheddataDetailsComponent],
-        imports: [
-          AppConfigModule,
-          CommonModule,
-          FlexLayoutModule,
-          MatButtonModule,
-          MatCardModule,
-          PipesModule,
-          PublisheddataDetailsRoutingModule,
-          DialogModule
-      ],
+        imports: [MatCardModule, DialogModule],
         providers: [
           {
             provide: APP_CONFIG,
@@ -181,11 +172,10 @@ describe("PublisheddataDetailsComponent", () => {
       expect(openSpy).toHaveBeenCalledTimes(1);
       expect(openSpy).toHaveBeenCalledWith("someLink");
     });
-  });
-    describe("#accessData2()", () => {
 
     it("should open dialog and start a retrieve", () => {
-      const retrieveSpy = spyOn(component["retrieveSrc"], "retrieve");   
+      spyOn(component.dialog, "open").and.callThrough();
+      const retrieveSpy = spyOn(component["retrieveSrc"], "retrieve").and.callThrough();
       const publication = new PublishedData({
         doi: "123", 
         creator: ["John Smith"], 
