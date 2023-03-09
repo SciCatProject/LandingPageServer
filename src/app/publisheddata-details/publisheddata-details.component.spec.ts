@@ -1,17 +1,21 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { PublisheddataDetailsComponent } from "./publisheddata-details.component";
-import { APP_CONFIG } from "../app-config.module";
-import { MockActivatedRoute, MockDatasourceService, MockRetriveService } from "../shared/MockStubs";
+import { AppConfigModule, APP_CONFIG } from "../app-config.module";
+import { MockActivatedRoute, MockDatasourceService, MockDialog, MockRetriveService } from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { DatasourceService } from "../datasource.service";
 import { RetrieveService } from "../retrieve.service";
 import { PublishedData } from "../shared/sdk";
 import { DomSanitizer } from "@angular/platform-browser";
-import { of } from "rxjs";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { DialogModule } from "../shared/modules/dialog/dialog.module";
+import { CommonModule } from "@angular/common";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatButtonModule } from "@angular/material/button";
+import { PipesModule } from "../shared/pipes/pipes.module";
+import { PublisheddataDetailsRoutingModule } from "./publisheddata-details-routing.module";
 
 describe("PublisheddataDetailsComponent", () => {
   let component: PublisheddataDetailsComponent;
@@ -23,7 +27,16 @@ describe("PublisheddataDetailsComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [PublisheddataDetailsComponent],
-        imports: [MatCardModule, DialogModule],
+        imports: [
+          AppConfigModule,
+          CommonModule,
+          FlexLayoutModule,
+          MatButtonModule,
+          MatCardModule,
+          PipesModule,
+          PublisheddataDetailsRoutingModule,
+          DialogModule
+      ],
         providers: [
           {
             provide: APP_CONFIG,
@@ -42,6 +55,7 @@ describe("PublisheddataDetailsComponent", () => {
           { provide: ActivatedRoute, useClass: MockActivatedRoute },
           { provide: DatasourceService, useClass: MockDatasourceService },
           { provide: RetrieveService, useClass: MockRetriveService },
+          { provide: MatDialog, useClass: MockDialog },
           {
             provide: DomSanitizer,
             useValue: {
@@ -167,13 +181,10 @@ describe("PublisheddataDetailsComponent", () => {
       expect(openSpy).toHaveBeenCalledTimes(1);
       expect(openSpy).toHaveBeenCalledWith("someLink");
     });
+  });
+    describe("#accessData2()", () => {
 
     it("should open dialog and start a retrieve", () => {
-      spyOn(component.dialog, "open")
-      .and
-      .returnValue({
-          afterClosed: () => of({email:"test@email.com"})
-      } as MatDialogRef<typeof component>);
       const retrieveSpy = spyOn(component["retrieveSrc"], "retrieve");   
       const publication = new PublishedData({
         doi: "123", 

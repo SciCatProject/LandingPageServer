@@ -75,6 +75,14 @@ export class MockRetriveService {
   }
 }
 
+export class MockDialog {
+  open() {
+    return {
+      afterClosed: () => (of({email:"test@email.com"}))
+    };
+  };
+}
+
 export class MockMatDialogRef {
   close() {}
 }

@@ -2,7 +2,7 @@ import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
-import { Dataset, Job } from "./shared/sdk/models";
+import { Job } from "./shared/sdk/models";
 
 @Injectable()
 export class RetrieveService {
