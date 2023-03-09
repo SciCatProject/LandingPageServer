@@ -98,16 +98,14 @@ export class PublisheddataDetailsComponent implements OnInit {
   accessData(publication: PublishedData): void {
     if (publication.downloadLink) {
       window.open(publication.downloadLink);
-    }
-    else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess){ 
+    } else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess){ 
       let dialogOptions = this.retrieveSrc.retriveDialogOptions();
       const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
       dialogRef.afterClosed().subscribe((result) => {
         if (result)
           this.retrieveSrc.retrieve(result.email, publication.pidArray).subscribe();
       });
-    }
-    else {
+    } else {
       window.open(this.accessDataHref);
     }
   }

@@ -13,7 +13,11 @@ export class AppConfig {
   accessInstructions = "";
   scicatBaseUrl = "";
   showLogoBanner = true;
-  retrieveToEmail: {title: string, option: string, username: string} | undefined = undefined;
+  retrieveToEmail: {
+    title: string; 
+    option: string; 
+    username: string;
+  } | undefined = undefined;
 }
 
 export const APP_DI_CONFIG: AppConfig = {

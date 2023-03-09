@@ -146,7 +146,7 @@ describe("PublisheddataDetailsComponent", () => {
         "license": "http://creativecommons.org/licenses/by-sa/4.0/"
       });
     });
-  })
+  });
 
   describe("#accessData()", () => {
     it("should call window open", () => {
@@ -169,7 +169,7 @@ describe("PublisheddataDetailsComponent", () => {
     });
 
     it("should open dialog and start a retrieve", () => {
-      spyOn(component.dialog, 'open')
+      spyOn(component.dialog, "open")
       .and
       .returnValue({
           afterClosed: () => of({email:"test@email.com"})
@@ -190,7 +190,7 @@ describe("PublisheddataDetailsComponent", () => {
         resourceType: "",
       });
       component.accessData(publication);
-      expect(retrieveSpy).toHaveBeenCalledWith("test@email.com", ["pid1", "pid2"])
+      expect(retrieveSpy).toHaveBeenCalledWith("test@email.com", ["pid1", "pid2"]);
     });
   });
 });

@@ -27,7 +27,7 @@ export class RetrieveService {
         files: [],
       })),
       type: "public",
-    }
+    };
     return this.datasourceService.postJob(new Job(job));
   }
 

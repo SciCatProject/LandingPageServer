@@ -29,7 +29,7 @@ describe("ArchivingService", () => {
   }));
 
   afterEach(() => {
-    jasmine.clock().uninstall()
+    jasmine.clock().uninstall();
   });
 
   it("should be created", () => {
@@ -43,16 +43,16 @@ describe("ArchivingService", () => {
         data: {
           title: "An email",
         },
-      })
+      });
     });
   });
 
   describe("#retrieve()", () => {
     it("should return dialog options based on config", () => {
       jasmine.clock().install();
-      jasmine.clock().mockDate(new Date('2023-01-01'));
-      const postJobSpy = spyOn(service["datasourceService"], "postJob")
-      service.retrieve("test@email.com", ["pid1", "pid2"])
+      jasmine.clock().mockDate(new Date("2023-01-01"));
+      const postJobSpy = spyOn(service["datasourceService"], "postJob");
+      service.retrieve("test@email.com", ["pid1", "pid2"]);
       expect(postJobSpy).toHaveBeenCalledOnceWith(
         new Job({
           jobParams: {
@@ -60,14 +60,14 @@ describe("ArchivingService", () => {
             option: "URLs"
           },
           emailJobInitiator: "test@email.com",
-          creationTime: new Date('2023-01-01'),
+          creationTime: new Date("2023-01-01"),
           datasetList: [
             {pid: "pid1", files: []},
             {pid: "pid2", files: []}
           ],
           type: "public",
         })
-      )
+      );
     });
   });
 

@@ -33,7 +33,7 @@ export class DatasourceService {
   }
 
   postJob(data: Job): Observable<Job> {
-    return this.publishedDataService.postJob(data)
+    return this.publishedDataService.postJob(data);
   }
 
   queryParams(
