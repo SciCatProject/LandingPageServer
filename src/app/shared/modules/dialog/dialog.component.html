@@ -1,11 +1,19 @@
 <h1 mat-dialog-title>{{data.title}}</h1>
 
-<mat-form-field>
-    <input matInput type="email" email [(ngModel)]="data.email">
-</mat-form-field>
-
+<form #form="ngForm">
+  <mat-form-field>
+    <input matInput type="email" name="email" placeholder="Email address" [(ngModel)]="data.email" #email="ngModel"
+      email="true" [errorStateMatcher]="matcher" required>
+    <mat-error *ngIf="email.errors?.email">
+      Email is invalid.
+    </mat-error>
+    <mat-error *ngIf="email.errors?.required">
+      Email is required.
+    </mat-error>
+  </mat-form-field>
+</form>
 
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+  <button mat-button [mat-dialog-close]="data" tabindex="2" [disabled]="form.invalid">Ok</button>
   <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
 </div>
