@@ -101,6 +101,10 @@ export class PublisheddataDetailsComponent implements OnInit {
     } else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess) {
       const dialogOptions = this.retrieveSrc.retriveDialogOptions();
       const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
+      if (this.appConfig.retrieveToEmail?.confirmMessage){
+        const size = publication.sizeOfArchive? `You are about to submit a data request for ${publication.sizeOfArchive}<br>`: "";
+        dialogRef.componentInstance.data.confirmMessage = `${size}${this.appConfig.retrieveToEmail.confirmMessage}`;
+      }
       dialogRef.afterClosed().subscribe((result) => {
         if (result)
           this.retrieveSrc.retrieve(result.email, publication.pidArray).subscribe();

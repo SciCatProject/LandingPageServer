@@ -32,7 +32,7 @@ export class DialogComponent {
       this.dialogRef.updateSize("0", "0");
       const dialogRefConf = this.confirmationDialog.open(ConfirmationDialogComponent, 
         {width: "auto", disableClose: true});
-      dialogRefConf.componentInstance.confirmMessage = `${data.confirmMessage}<br>${data.email}`;
+      dialogRefConf.componentInstance.confirmMessage = `Recipient email: ${data.email}<br>${data.confirmMessage}`;
       dialogRefConf.afterClosed().subscribe((result) => {
         if (result)
           this.dialogRef.close(data);
