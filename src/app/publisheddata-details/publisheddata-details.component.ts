@@ -6,7 +6,7 @@ import { map } from "rxjs/operators";
 import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { DatasourceService } from "../datasource.service";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import {Dataset, Organization, Person, WithContext} from "schema-dts";
+import { Dataset, Organization, Person, WithContext } from "schema-dts";
 import { DialogComponent } from "../shared/modules/dialog/dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { RetrieveService } from "../retrieve.service";
@@ -98,8 +98,8 @@ export class PublisheddataDetailsComponent implements OnInit {
   accessData(publication: PublishedData): void {
     if (publication.downloadLink) {
       window.open(publication.downloadLink);
-    } else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess){ 
-      let dialogOptions = this.retrieveSrc.retriveDialogOptions();
+    } else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess) {
+      const dialogOptions = this.retrieveSrc.retriveDialogOptions();
       const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
       dialogRef.afterClosed().subscribe((result) => {
         if (result)

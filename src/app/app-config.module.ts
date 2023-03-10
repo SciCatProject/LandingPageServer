@@ -17,6 +17,7 @@ export class AppConfig {
     title: string; 
     option: string; 
     username: string;
+    confirmMessage?: string;
   } | undefined = undefined;
 }
 

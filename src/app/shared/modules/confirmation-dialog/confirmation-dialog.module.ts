@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { DialogComponent } from "./dialog.component";
+import { ConfirmationDialogComponent } from "./confirmation-dialog.component";
 import { FormsModule } from "@angular/forms";
 
 import { MatButtonModule } from "@angular/material/button";
@@ -9,7 +9,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { ConfirmationDialogModule } from "../confirmation-dialog/confirmation-dialog.module";
 
 @NgModule({
   imports: [
@@ -21,9 +20,8 @@ import { ConfirmationDialogModule } from "../confirmation-dialog/confirmation-di
     MatFormFieldModule,
     MatTooltipModule,
     FormsModule,
-    ConfirmationDialogModule
   ],
-  declarations: [DialogComponent],
-  exports: [DialogComponent],
+  declarations: [ConfirmationDialogComponent],
+  exports: [ConfirmationDialogComponent],
 })
-export class DialogModule {}
+export class ConfirmationDialogModule { }

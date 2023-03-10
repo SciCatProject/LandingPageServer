@@ -42,6 +42,7 @@ describe("ArchivingService", () => {
         width: "auto",
         data: {
           title: "An email",
+          confirmMessage: undefined
         },
       });
     });

@@ -35,7 +35,8 @@ export class RetrieveService {
     return {
       width: "auto",
       data: {
-        title: this.appConfig.retrieveToEmail?.title
+        title: this.appConfig.retrieveToEmail?.title,
+        confirmMessage: this.appConfig.retrieveToEmail?.confirmMessage
       },
     };
   }
