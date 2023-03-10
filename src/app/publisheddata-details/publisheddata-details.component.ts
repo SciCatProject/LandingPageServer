@@ -10,6 +10,7 @@ import { Dataset, Organization, Person, WithContext } from "schema-dts";
 import { DialogComponent } from "../shared/modules/dialog/dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { RetrieveService } from "../retrieve.service";
+import * as fileSize from "filesize";
 
 @Component({
   selector: "app-publisheddata-details",
@@ -102,7 +103,7 @@ export class PublisheddataDetailsComponent implements OnInit {
       const dialogOptions = this.retrieveSrc.retriveDialogOptions();
       const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
       if (this.appConfig.retrieveToEmail?.confirmMessage){
-        const size = publication.sizeOfArchive? `You are about to submit a data request for ${publication.sizeOfArchive}<br>`: "";
+        const size = publication.sizeOfArchive? `You are about to submit a data request for ${fileSize(publication.sizeOfArchive)}<br>`: ""; 
         dialogRef.componentInstance.data.confirmMessage = `${size}${this.appConfig.retrieveToEmail.confirmMessage}`;
       }
       dialogRef.afterClosed().subscribe((result) => {
