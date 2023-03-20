@@ -20,5 +20,4 @@ import { SDKBrowserModule } from "./shared/sdk";
   ],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}
