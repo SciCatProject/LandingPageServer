@@ -13,6 +13,12 @@ export class AppConfig {
   accessInstructions = "";
   scicatBaseUrl = "";
   showLogoBanner = true;
+  retrieveToEmail: {
+    title: string; 
+    option: string; 
+    username: string;
+    confirmMessage?: string;
+  } | undefined = undefined;
 }
 
 export const APP_DI_CONFIG: AppConfig = {
@@ -24,7 +30,8 @@ export const APP_DI_CONFIG: AppConfig = {
   accessDataHref: environment.accessDataHref ?? "",
   accessInstructions: environment.accessInstructions ?? "",
   scicatBaseUrl: environment.scicatBaseUrl ?? "",
-  showLogoBanner: environment.showLogoBanner ?? false
+  showLogoBanner: environment.showLogoBanner ?? false,
+  retrieveToEmail: environment["retrieveToEmail"] ?? undefined,
 };
 
 @NgModule({

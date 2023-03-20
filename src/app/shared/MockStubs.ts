@@ -59,4 +59,35 @@ export class MockDatasourceService {
   queryParams() {
     return {};
   }
+
+  postJob() {
+    return of({});
+  }
 }
+
+export class MockRetriveService {
+  retrieve() {
+    return of({});
+  }
+
+  retriveDialogOptions() {
+    return {};
+  }
+}
+
+export class MockDialog {
+  open() {
+    return {
+      afterClosed: () => (of({email:"test@email.com"})),
+      componentInstance: {}
+    };
+  };
+}
+
+export class MockMatDialogRef {
+  close() {}
+
+  updateSize() {}
+}
+
+export class MockMatDialogData {}

@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { LoopBackFilter, PublishedData } from "./shared/sdk/models";
-import { PublishedDataApi } from "./shared/sdk/services/custom";
+import { LoopBackFilter, PublishedData, Job } from "./shared/sdk/models";
+import { PublishedDataApi, JobApi } from "./shared/sdk/services/custom";
 
 @Injectable()
 export class PublishedDataService {
-  constructor(private rds: PublishedDataApi) {}
+  constructor(
+    private rds: PublishedDataApi,
+    private job: JobApi) {}
 
   /** GET datasets from the server */
   getPublications(params: string): Observable<PublishedData[]> {
@@ -22,4 +24,9 @@ export class PublishedDataService {
     const encodedId = encodeURIComponent(id);
     return this.rds.findById(encodedId);
   }
+
+  postJob(data: Job): Observable<Job> {
+    return this.job.create(data);
+  }
+
 }

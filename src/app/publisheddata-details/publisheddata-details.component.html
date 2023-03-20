@@ -136,8 +136,8 @@
               mat-raised-button
               target="_blank"
               rel="noopener noreferrer"
-              [href]="downloadLink$ | async"
               class="description-button"
+              (click)="accessData(publication)"
             >
               Access Data
             </a>
