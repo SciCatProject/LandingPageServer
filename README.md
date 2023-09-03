@@ -21,7 +21,7 @@ What things you need to install the software and how to install them
 
 
 - Angular 13
-- Node 14
+- Node 18
 - [SciCat Backend](https://github.com/SciCatProject/backend)
 - MongoDB
 
