@@ -1,11 +1,11 @@
 import { Component, Inject } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { UntypedFormControl } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 class ErrorStateMatcherOnUpdate implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null): boolean {
+  isErrorState(control: UntypedFormControl | null): boolean {
     return !!(control && control.invalid && (control.dirty || control.touched));
   }
 }
