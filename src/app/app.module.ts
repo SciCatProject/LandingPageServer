@@ -8,7 +8,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppConfigModule } from "./app-config.module";
 import { SDKBrowserModule } from "./shared/sdk";
 import { AppConfigService } from "./app-config.service";
-
+import { HttpClientModule } from "@angular/common/http";
 
 
 const appConfigInitializerFn = (appConfig: AppConfigService) => {
@@ -25,6 +25,7 @@ const appConfigInitializerFn = (appConfig: AppConfigService) => {
     BrowserModule,
     MatToolbarModule,
     SDKBrowserModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -35,6 +36,7 @@ const appConfigInitializerFn = (appConfig: AppConfigService) => {
       multi: true,
       deps: [AppConfigService],
     },
+    HttpClientModule
 
   ]
 })
