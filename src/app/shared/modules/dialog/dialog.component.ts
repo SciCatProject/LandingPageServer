@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { UntypedFormControl } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from "@angular/material/legacy-dialog";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 class ErrorStateMatcherOnUpdate implements ErrorStateMatcher {

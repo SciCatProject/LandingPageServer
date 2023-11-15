@@ -3,7 +3,7 @@ import { CommonModule, DatePipe } from "@angular/common";
 import { DashboardComponent } from "./dashboard.component";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MatCardModule } from "@angular/material/card";
+import { MatLegacyCardModule as MatCardModule } from "@angular/material/legacy-card";
 import { TableModule } from "../shared/modules/table/table.module";
 import { DatasourceService } from "../datasource.service";
 import { OAIService } from "../oai.service";

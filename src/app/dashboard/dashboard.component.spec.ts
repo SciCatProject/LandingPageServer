@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { DashboardComponent } from "./dashboard.component";
 import { APP_CONFIG } from "../app-config.module";
 import { Router } from "@angular/router";
-import { MatCardModule } from "@angular/material/card";
+import { MatLegacyCardModule as MatCardModule } from "@angular/material/legacy-card";
 import { DatePipe } from "@angular/common";
 import { DatasourceService } from "../datasource.service";
 import { MockDatasourceService } from "../shared/MockStubs";

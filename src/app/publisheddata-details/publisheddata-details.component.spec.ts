@@ -4,12 +4,12 @@ import { PublisheddataDetailsComponent } from "./publisheddata-details.component
 import { APP_CONFIG } from "../app-config.module";
 import { MockActivatedRoute, MockDatasourceService, MockDialog, MockRetriveService } from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
-import { MatCardModule } from "@angular/material/card";
+import { MatLegacyCardModule as MatCardModule } from "@angular/material/legacy-card";
 import { DatasourceService } from "../datasource.service";
 import { RetrieveService } from "../retrieve.service";
 import { PublishedData } from "../shared/sdk";
 import { DomSanitizer } from "@angular/platform-browser";
-import { MatDialog } from "@angular/material/dialog";
+import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
 import { DialogModule } from "../shared/modules/dialog/dialog.module";
 
 describe("PublisheddataDetailsComponent", () => {
