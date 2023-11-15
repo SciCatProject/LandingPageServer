@@ -5,7 +5,7 @@
 @use "./app/publisheddata-details/publisheddata-details-theme" as publisheddata-details;
 @use "./app/shared/modules/table/table-theme" as table;
 
-$custom-typography: mat.define-legacy-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: '"Titillium Web", Calibri, sans-serif;',
 );
 // Include the common styles for Angular Material. We include this here so that you only
@@ -19,8 +19,8 @@ $custom-typography: mat.define-legacy-typography-config(
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($custom-typography);`
-@include mat.all-legacy-component-typographies($custom-typography);
-@include mat.legacy-core();
+@include mat.all-component-typographies($custom-typography);
+@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -237,7 +237,7 @@ $theme: custom-light-theme(
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-legacy-component-themes($theme);
+@include mat.all-component-themes($theme);
 @include app.theme($theme);
 @include publisheddata-details.theme($theme);
 @include table.theme($theme);

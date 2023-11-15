@@ -7,10 +7,10 @@ import {
   CheckboxEvent,
 } from "./table.component";
 import { NO_ERRORS_SCHEMA } from "@angular/core";
-import { MatLegacyListModule as MatListModule } from "@angular/material/legacy-list";
-import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
-import { MatLegacyPaginatorModule as MatPaginatorModule } from "@angular/material/legacy-paginator";
-import { MatLegacyCheckboxChange as MatCheckboxChange } from "@angular/material/legacy-checkbox";
+import { MatListModule } from "@angular/material/list";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatCheckboxChange } from "@angular/material/checkbox";
 import { PipesModule } from "../../pipes/pipes.module";
 
 describe("TableComponent", () => {
