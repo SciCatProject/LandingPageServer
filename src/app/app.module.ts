@@ -9,10 +9,14 @@ import { AppConfigModule } from "./app-config.module";
 import { SDKBrowserModule } from "./shared/sdk";
 import { AppConfigService } from "./app-config.service";
 import { HttpClientModule } from "@angular/common/http";
-
+import { AppThemeService } from "./app-theme.service";
 
 const appConfigInitializerFn = (appConfig: AppConfigService) => {
   return () => appConfig.loadAppConfig();
+};
+
+const appThemeInitializerFn = (appTheme: AppThemeService) => {
+  return () => appTheme.loadTheme();
 };
 
 
@@ -36,6 +40,13 @@ const appConfigInitializerFn = (appConfig: AppConfigService) => {
       multi: true,
       deps: [AppConfigService],
     },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appThemeInitializerFn,
+      multi: true,
+      deps: [AppThemeService],
+    },
+    AppThemeService,
     HttpClientModule
 
   ]

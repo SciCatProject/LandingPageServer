@@ -5,261 +5,309 @@
 @use "./app/publisheddata-details/publisheddata-details-theme" as publisheddata-details;
 @use "./app/shared/modules/table/table-theme" as table;
 
+
+
+$my-custom-button-level: mat.define-typography-level(
+  $font-weight: 400,
+  $font-size: 14px,
+  $line-height: 36px,
+  $letter-spacing: normal,
+);
+
 $custom-typography: mat.define-typography-config(
-  $font-family: '"Titillium Web", Calibri, sans-serif;',
+  $font-family: '"Titillium Web", Calibri, sans-serif',
+  $button: $my-custom-button-level,
 );
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy($custom-typography);`
-@include mat.all-component-typographies($custom-typography);
+@include mat.typography-hierarchy($custom-typography);
 @include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
-$cyan: (
-  50: #f2f9fc,
-  100: #e5f4f9,
-  200: #cceaf4,
-  300: #b2e0ee,
-  400: #99d5e9,
-  500: #7fcbe3,
-  600: #66c1de,
-  700: #4cb6d8,
-  800: #32acd3,
-  900: #19a2cd,
-  1000: #0099c8,
+$theme-primary: (
+  default: var(--theme-primary-default),
+  lighter: var(--theme-primary-lighter),
+  darker: var(--theme-primary-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    1000: #ffffff,
+    default: var(--theme-primary-default-contrast),
+    lighter: var(--theme-primary-lighter-contrast),
+    darker: var(--theme-primary-darker-contrast),
   ),
 );
 
-$navy: (
-  50: #f2f4f7,
-  100: #e5eaef,
-  200: #ccd6e0,
-  400: #99adc1,
-  600: #6684a3,
-  800: #325b84,
-  1000: #003366,
+$theme-accent: (
+  default: var(--theme-accent-default),
+  lighter: var(--theme-accent-lighter),
+  darker: var(--theme-accent-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    400: #000000,
-    600: #ffffff,
-    800: #ffffff,
-    1000: #ffffff,
+    default: var(--theme-accent-default-contrast),
+    lighter: var(--theme-accent-lighter-contrast),
+    darker: var
+      (
+        --theme-accent-darker-contrast,
+      ),
   ),
 );
 
-$grass: (
-  50: #f9fbf2,
-  100: #f4f8e5,
-  200: #eaf2cc,
-  400: #d6e599,
-  600: #c1d866,
-  800: #adcb32,
-  1000: #99be00,
+$theme-warn: (
+  default: var(--theme-warn-default),
+  lighter: var(--theme-warn-lighter),
+  darker: var(--theme-warn-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    400: #000000,
-    600: #ffffff,
-    800: #ffffff,
-    1000: #ffffff,
+    default: var(--theme-warn-default-contrast),
+    lighter: var(--theme-warn-lighter-contrast),
+    darker: var(--theme-warn-darker-contrast),
   ),
 );
 
-$forest: (
-  50: #f2f7f5,
-  100: #e5efec,
-  200: #cce0da,
-  400: #99c1b5,
-  600: #66a390,
-  800: #32846a,
-  1000: #006646,
+$theme-warn-2: (
+  default: var(--theme-warn-2-default),
+  lighter: var(--theme-warn-2-lighter),
+  darker: var(--theme-warn-2-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    400: #000000,
-    600: #ffffff,
-    800: #ffffff,
-    1000: #ffffff,
+    default: var(--theme-warn-2-default-contrast),
+    lighter: var(--theme-warn-2-lighter-contrast),
+    darker: var(--theme-warn-2-darker-contrast),
   ),
 );
 
-$orange: (
-  50: #fff8f2,
-  100: #fff2e5,
-  200: #ffe5cc,
-  400: #ffcb99,
-  600: #ffb166,
-  800: #ff9732,
-  1000: #ff7d00,
+$theme-header-1: (
+  default: var(--theme-header-1-default),
+  lighter: var(--theme-header-1-lighter),
+  darker: var(--theme-header-1-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    400: #000000,
-    600: #ffffff,
-    800: #ffffff,
-    1000: #ffffff,
+    default: var(--theme-header-1-default-contrast),
+    lighter: var(--theme-header-1-lighter-contrast),
+    darker: var(--theme-header-1-darker-contrast),
   ),
 );
 
-$purple: (
-  50: #f8f3f8,
-  100: #f2e7f2,
-  200: #e6d0e6,
-  400: #cda1cd,
-  600: #b472b4,
-  800: #9b429b,
-  1000: #821482,
+$theme-header-2: (
+  default: var(--theme-header-2-default),
+  lighter: var(--theme-header-2-lighter),
+  darker: var(--theme-header-2-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    400: #000000,
-    600: #ffffff,
-    800: #ffffff,
-    1000: #ffffff,
+    default: var(--theme-header-2-default-contrast),
+    lighter: var(--theme-header-2-lighter-contrast),
+    darker: var(--theme-header-2-darker-contrast),
   ),
 );
 
-$grey: (
-  50: #f2f2f2,
-  100: #e5e5e5,
-  200: #cccccc,
-  300: #b2b2b2,
-  400: #999999,
-  500: #7f7f7f,
+$theme-header-3: (
+  default: var(--theme-header-3-default),
+  lighter: var(--theme-header-3-lighter),
+  darker: var(--theme-header-3-darker),
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
+    default: var(--theme-header-3-default-contrast),
+    lighter: var(--theme-header-3-lighter-contrast),
+    darker: var(--theme-header-3-darker-contrast),
   ),
 );
 
-$yellow: (
-  50: #e1dc7d,
-  100: #ffbe00,
-  200: #d28c14,
+$theme-header-4: (
+  default: var(--theme-header-4-default),
+  lighter: var(--theme-header-4-lighter),
+  darker: var(--theme-header-4-darker),
   contrast: (
-    50: #000000,
-    100: #ffffff,
-    200: #ffffff,
+    default: var(--theme-header-4-default-contrast),
+    lighter: var(--theme-header-4-lighter-contrast),
+    darker: var(--theme-header-4-darker-contrast),
   ),
 );
 
-$red: (
-  50: #ff6e6e,
-  100: #c81919,
-  200: #820019,
+$theme-hover: (
+  default: var(--theme-hover-default),
+  lighter: var(--theme-hover-lighter),
+  darker: var(--theme-hover-darker),
   contrast: (
-    50: #000000,
-    100: #ffffff,
-    200: #ffffff,
+    default: var(--theme-hover-default-contrast),
+    lighter: var(--theme-hover-lighter-contrast),
+    darker: var(--theme-hover-darker-contrast),
   ),
 );
 
-$primary: mat.define-palette($cyan, 1000, 400, 800);
-$accent: mat.define-palette($grass, 1000, 400, 800);
-$warn: mat.define-palette($red, 100, 50, 200);
-$warn-2: mat.define-palette($yellow, 100, 50, 200);
-$header-1: mat.define-palette($navy, 1000, 400, 800);
-$header-2: mat.define-palette($forest, 1000, 400, 800);
-$header-3: mat.define-palette($orange, 1000, 400, 800);
-$header-4: mat.define-palette($purple, 1000, 400, 800);
-$hover: mat.define-palette($grey, 500, 200, 400);
+$primary: mat.define-palette($theme-primary, "default", "lighter", "darker");
+$accent: mat.define-palette($theme-accent, "default", "lighter", "darker");
+$warn: mat.define-palette($theme-warn, "default", "lighter", "darker");
+$warn-2: mat.define-palette($theme-warn-2, "default", "lighter", "darker");
+$header-1: mat.define-palette($theme-header-1, "default", "lighter", "darker");
+$header-2: mat.define-palette($theme-header-2, "default", "lighter", "darker");
+$header-3: mat.define-palette($theme-header-3, "default", "lighter", "darker");
+$header-4: mat.define-palette($theme-header-4, "default", "lighter", "darker");
+$hover: mat.define-palette($theme-hover, "default", "lighter", "darker");
 
-@function custom-light-theme(
-  $primary,
-  $accent,
-  $warn,
-  $warn-2,
-  $header-1,
-  $header-2,
-  $header-3,
-  $header-4,
-  $hover
-) {
-  @return map-merge(
-    mat.define-light-theme($primary, $accent, $warn),
-    (
-      warn-2: $warn-2,
-      header-1: $header-1,
-      header-2: $header-2,
-      header-3: $header-4,
-      header-4: $header-4,
-      hover: $hover,
-    )
-  );
-}
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$theme: custom-light-theme(
-  $primary,
-  $accent,
-  $warn,
-  $warn-2,
-  $header-1,
-  $header-2,
-  $header-3,
-  $header-4,
-  $hover
+$basetheme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: $custom-typography,
+    density: -1,
+  )
 );
+
+$newcolor: map-merge(
+  map-get($basetheme, "color"),
+  (
+    warn-2: $warn-2,
+    header-1: $header-1,
+    header-2: $header-2,
+    header-3: $header-4,
+    header-4: $header-4,
+    hover: $hover,
+  )
+);
+
+$theme: map-merge(
+  $basetheme,
+  (
+    color: $newcolor,
+  )
+);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($theme);
 @include app.theme($theme);
 @include publisheddata-details.theme($theme);
-@include table.theme($theme);
+@include mat.button-density(0);
+@include mat.icon-button-density(0);
 
 /* You can add global styles to this file, and also import other style files */
-
-@import 'assets/styles/roboto';
-@import 'assets/styles/material-icons';
+@import "assets/styles/titillium-web.scss";
+@import "assets/styles/material-icons.scss";
 
 html,
-body,
-app-root {
-  padding: 0;
-  border: 0;
+body {
+  height: 100vh;
   margin: 0;
-  height: 100%;
-
-  font-family: Arial, Helvetica, sans-serif;
+  border: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
-  cursor: pointer;
-  color: #0099c8;
 }
+
+a:hover {
+  cursor: pointer;
+}
+
+.no-hover-effect.mat-mdc-button .mat-button-focus-overlay {
+  background-color: transparent;
+}
+
+.snackbar-success {
+  background-color: mat.get-color-from-palette($primary, "default");
+
+  button {
+    color: white;
+  }
+}
+
+.snackbar-error {
+  background-color: mat.get-color-from-palette($warn, "default");
+
+  button {
+    color: white;
+  }
+}
+
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-label-text-color: var(--theme-primary-default-contrast);
+}
+
+.mat-mdc-unelevated-button.mat-accent {
+  --mdc-filled-button-label-text-color: var(--theme-accent-default-contrast);
+}
+
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-label-text-color: var(
+    --theme-primary-default-contrast
+  );
+}
+
+.mat-mdc-raised-button.mat-warn {
+  --mdc-protected-button-label-text-color: var(
+    --theme-primary-default-contrast
+  );
+}
+
+.mat-mdc-raised-button.mat-accent {
+  --mdc-protected-button-label-text-color: var(--theme-accent-default-contrast);
+}
+
+// Manipulate initial background color
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white !important;
+}
+
+// Manipulate background color on hover and focus
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mdc-text-field--filled {
+  padding: 0 !important;
+
+  input.mat-mdc-chip-input {
+    margin-left: 0;
+  }
+}
+
+.mat-mdc-form-field {
+  font-size: 14px !important;
+
+  .mat-mdc-form-field-subscript-dynamic-size {
+    min-height: 0.6666666667em;
+  }
+}
+
+.mat-datepicker-toggle {
+  [mat-icon-button] {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .mat-mdc-button-touch-target {
+      width: 32px !important;
+      height: 32px !important;
+    }
+  }
+}
+
+.mat-mdc-slide-toggle {
+  --mdc-switch-selected-handle-color: var(--theme-accent-default);
+  --mdc-switch-selected-pressed-handle-color: var(--theme-accent-default);
+  --mdc-switch-selected-pressed-state-layer-color: var(--theme-accent-default);
+  --mdc-switch-selected-hover-state-layer-color: var(--theme-accent-default);
+  --mdc-switch-selected-hover-handle-color: var(--theme-accent-default);
+  --mdc-switch-selected-focus-state-layer-color: var(--theme-accent-default);
+  --mdc-switch-selected-focus-handle-color: var(--theme-accent-default);
+  --mdc-switch-selected-track-color: var(--theme-accent-default);
+  --mdc-switch-selected-pressed-track-color: var(--theme-accent-default);
+  --mdc-switch-selected-hover-track-color: var(--theme-accent-default);
+  --mdc-switch-selected-focus-track-color: var(--theme-accent-default);
+}
+
+.mat-mdc-tab-nav-bar,
+.mat-mdc-tab-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+

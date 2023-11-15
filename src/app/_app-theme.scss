@@ -5,12 +5,12 @@
   $color-config: mat.get-color-config($theme);
   $primary: map.get($color-config, "primary");
 
-  .header {
-    color: mat.get-color-from-palette($primary, "default-contrast");
+  a {
+    color: mat.get-color-from-palette($primary, "default");
   }
 
-  .footer {
-    background-color: mat.get-color-from-palette($primary, "default-contrast");
+  .mat-mdc-snack-bar-container {
+    background-color: mat.get-color-from-palette($primary, "default");
   }
 }
 
