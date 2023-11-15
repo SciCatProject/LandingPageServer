@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER,NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -7,6 +7,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppConfigModule } from "./app-config.module";
 import { SDKBrowserModule } from "./shared/sdk";
+import { AppConfigService } from "./app-config.service";
+
+
+
+const appConfigInitializerFn = (appConfig: AppConfigService) => {
+  return () => appConfig.loadAppConfig();
+};
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,5 +27,16 @@ import { SDKBrowserModule } from "./shared/sdk";
     SDKBrowserModule.forRoot(),
   ],
   bootstrap: [AppComponent],
+  providers: [
+    { provide: AppConfigService, useClass: AppConfigService},
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appConfigInitializerFn,
+      multi: true,
+      deps: [AppConfigService],
+    },
+
+  ]
 })
+
 export class AppModule {}

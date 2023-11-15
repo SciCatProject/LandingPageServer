@@ -5,16 +5,22 @@ import { map } from "rxjs/operators";
 import { PublishedData } from "./shared/sdk/models";
 import { DatePipe } from "@angular/common";
 import { Observable } from "rxjs";
+import { AppConfigService, AppConfig as Config } from "./app-config.service";
 
 @Injectable()
 export class OAIService {
-  private oaiServerUri = this.appConfig.oaiProviderRoute;
+  private oaiServerUri: string;
+  private config: Config;
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private appConfigService: AppConfigService,
     private httpClient: HttpClient,
     private datePipe: DatePipe
-  ) {}
+  ) {
+    this.config = this.appConfigService.getConfig();
+    this.oaiServerUri = this.config.oaiProviderRoute;
+  }
 
   request<T>(url: string, params: string | null): Observable<T> {
     if (params) {
