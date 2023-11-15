@@ -8,7 +8,7 @@ import { DatasourceService } from "../datasource.service";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { Dataset, Organization, Person, WithContext } from "schema-dts";
 import { DialogComponent } from "../shared/modules/dialog/dialog.component";
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { RetrieveService } from "../retrieve.service";
 import * as fileSize from "filesize";
 

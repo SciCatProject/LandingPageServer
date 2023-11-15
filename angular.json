@@ -249,28 +249,28 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "dmscdev": {
-              "browserTarget": "LandingPageServer:build:dmscdev"
+              "buildTarget": "LandingPageServer:build:dmscdev"
             },
             "dmsc": {
-              "browserTarget": "LandingPageServer:build:dmsc"
+              "buildTarget": "LandingPageServer:build:dmsc"
             },
             "essdev": {
-              "browserTarget": "LandingPageServer:build:essdev"
+              "buildTarget": "LandingPageServer:build:essdev"
             },
             "essprod": {
-              "browserTarget": "LandingPageServer:build:essprod"
+              "buildTarget": "LandingPageServer:build:essprod"
             },
             "dmscprod": {
-              "browserTarget": "LandingPageServer:build:dmscprod"
+              "buildTarget": "LandingPageServer:build:dmscprod"
             },
             "maxiv-prod": {
-              "browserTarget": "LandingPageServer:build:maxiv-prod"
+              "buildTarget": "LandingPageServer:build:maxiv-prod"
             },
             "production": {
-              "browserTarget": "LandingPageServer:build:production"
+              "buildTarget": "LandingPageServer:build:production"
             },
             "development": {
-              "browserTarget": "LandingPageServer:build:development"
+              "buildTarget": "LandingPageServer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -278,7 +278,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LandingPageServer:build"
+            "buildTarget": "LandingPageServer:build"
           }
         },
         "test": {
@@ -357,7 +357,8 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": false
   },
   "schematics": {
     "@angular-eslint/schematics:application": {
