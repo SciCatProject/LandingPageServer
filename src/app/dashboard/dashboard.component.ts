@@ -9,11 +9,14 @@ import {
   SortChangeEvent,
 } from "../shared/modules/table/table.component";
 import { DatasourceService } from "../datasource.service";
+import { AppConfigService, AppConfig as Config } from "../app-config.service";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
+  providers: [AppConfigService],
+
 })
 export class DashboardComponent {
   subtitle: string;
@@ -53,13 +56,16 @@ export class DashboardComponent {
     PublishedData[]
   > = this.datasourceService.getPublications(this.params);
   count$: Observable<number> = this.datasourceService.countPublications();
+    config: Config;
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
     private router: Router
   ) {
-    const facility = this.appConfig.facility;
+    this.config = this.appConfigService.getConfig();
+    const facility:string = this.config.facility ?? "";
     this.subtitle = facility.toUpperCase() + " Public Dataset Access";
   }
 

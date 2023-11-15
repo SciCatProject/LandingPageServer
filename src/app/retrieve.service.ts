@@ -3,13 +3,19 @@ import { Observable } from "rxjs";
 import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
 import { Job } from "./shared/sdk/models";
+import { AppConfigService, RetrieveDestinations , AppConfig as Config} from "./app-config.service";
 
 @Injectable()
 export class RetrieveService {
-  
+  private retrieveToEmail: RetrieveDestinations| undefined;
+  private config: Config;
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private datasourceService: DatasourceService){}
+    private appConfigService: AppConfigService,
+    private datasourceService: DatasourceService){
+      this.config = this.appConfigService.getConfig();
+      this.retrieveToEmail = this.config.retrieveToEmail ;
+    }
 
   public retrieve(
     email: string,
@@ -17,8 +23,8 @@ export class RetrieveService {
   ): Observable<Job> {
     const job = {
       jobParams: {
-        username: this.appConfig.retrieveToEmail?.username,
-        option: this.appConfig.retrieveToEmail?.option
+        username: this.retrieveToEmail?.username,
+        option: this.retrieveToEmail?.option
       },
       emailJobInitiator: email,
       creationTime: new Date(),
@@ -35,8 +41,8 @@ export class RetrieveService {
     return {
       width: "auto",
       data: {
-        title: this.appConfig.retrieveToEmail?.title,
-        confirmMessage: this.appConfig.retrieveToEmail?.confirmMessage
+        title: this.retrieveToEmail?.title,
+        confirmMessage: this.retrieveToEmail?.confirmMessage
       },
     };
   }

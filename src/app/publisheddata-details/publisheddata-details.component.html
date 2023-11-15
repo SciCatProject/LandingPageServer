@@ -74,7 +74,7 @@
 
       <ng-container *ngIf="publication.thumbnail">
         <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
-        <ng-container *ngIf="appConfig.facility === 'psi'">
+        <ng-container *ngIf="config.facility === 'psi'">
           <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
         </ng-container>
       </ng-container>
@@ -86,7 +86,7 @@
             <table class="text-content">
               <tr *ngIf="publication.dataDescription as description">
                 <th>Data Description</th>
-                <td *ngIf="appConfig.facility === 'psi'; else notPsi">
+                <td *ngIf="config.facility === 'psi'; else notPsi">
                   {{ description }}
                 </td>
                 <ng-template #notPsi>
@@ -112,7 +112,7 @@
                     (click)="onPidClick(pid)"
                     target="_blank"
                     rel="noopener"
-                    *ngIf="appConfig.scicatBaseUrl; else noLink"
+                    *ngIf="config.scicatBaseUrl; else noLink"
                   >
                     {{ pid }}
                   </a>
@@ -129,7 +129,7 @@
           <mat-card-header class="fourth-header"> Actions </mat-card-header>
           <mat-card-content>
             <p class="text-content">
-              {{ appConfig.accessInstructions }}
+              {{ config.accessInstructions }}
             </p>
 
             <a
@@ -183,7 +183,7 @@
 
       <ng-template #noThumbnail>
         <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
-        <ng-container *ngIf="appConfig.facility === 'psi'">
+        <ng-container *ngIf="config.facility === 'psi'">
           <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
         </ng-container>
       </ng-template>

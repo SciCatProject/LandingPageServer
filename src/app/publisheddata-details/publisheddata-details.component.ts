@@ -11,34 +11,42 @@ import { DialogComponent } from "../shared/modules/dialog/dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { RetrieveService } from "../retrieve.service";
 import * as fileSize from "filesize";
+import { AppConfigService, AppConfig as Config } from "../app-config.service";
 
 @Component({
   selector: "app-publisheddata-details",
   templateUrl: "./publisheddata-details.component.html",
   styleUrls: ["./publisheddata-details.component.scss"],
+  providers: [AppConfigService],
 })
 export class PublisheddataDetailsComponent implements OnInit {
   publication$ = new Observable<PublishedData>();
   publicationJson$ = new Observable<string>();
 
-  doiBaseUrl = this.appConfig.doiBaseUrl;
+  doiBaseUrl: string;
   productionMode = this.appConfig.production;
-  accessDataHref = this.appConfig.accessDataHref;
+  accessDataHref: string;
   show = false;
 
+  config: Config;
   constructor(
     @Inject(APP_CONFIG) public appConfig: AppConfig,
+    private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     public dialog: MatDialog,
     private retrieveSrc: RetrieveService,
-  ) {}
+  ) {
+    this.config = this.appConfigService.getConfig();
+    this.accessDataHref = this.config.accessDataHref;
+    this.doiBaseUrl = this.config.doiBaseUrl;
+  }
 
   onPidClick(pid: string): void {
     const encodedPid = encodeURIComponent(pid);
     window.open(
-      this.appConfig.scicatBaseUrl + "/datasets/" + encodedPid,
+      this.config.scicatBaseUrl + "/datasets/" + encodedPid,
       "_blank"
     );
   }
@@ -99,12 +107,12 @@ export class PublisheddataDetailsComponent implements OnInit {
   accessData(publication: PublishedData): void {
     if (publication.downloadLink) {
       window.open(publication.downloadLink);
-    } else if (this.appConfig.retrieveToEmail && this.appConfig.directMongoAccess) {
+    } else if (this.config.retrieveToEmail && this.config.directMongoAccess) {
       const dialogOptions = this.retrieveSrc.retriveDialogOptions();
       const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
-      if (this.appConfig.retrieveToEmail.confirmMessage){
-        const size = publication.sizeOfArchive? `You are about to submit a data request for ${fileSize(publication.sizeOfArchive)}<br>`: ""; 
-        dialogRef.componentInstance.data.confirmMessage = `${size}${this.appConfig.retrieveToEmail.confirmMessage}`;
+      if (this.config.retrieveToEmail.confirmMessage){
+        const size = publication.sizeOfArchive? `You are about to submit a data request for ${fileSize(publication.sizeOfArchive)}<br>`: "";
+        dialogRef.componentInstance.data.confirmMessage = `${size}${this.config.retrieveToEmail.confirmMessage}`;
       }
       dialogRef.afterClosed().subscribe((result) => {
         if (result)
