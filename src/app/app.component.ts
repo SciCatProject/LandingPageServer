@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";
 import { Title } from "@angular/platform-browser";
 import { environment } from "../environments/environment";
-import { AppConfigService ,  AppConfig as Config } from "./app-config.service";
+import { APP_DYN_CONFIG, AppConfigService ,  AppConfig as Config } from "./app-config.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
   constructor(
     private titleService: Title,
     @Inject(APP_CONFIG) public appConfig: AppConfig,
-    private appConfigService: AppConfigService,
-
+    @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
   ) {
     this.config = this.appConfigService.getConfig();
     const facility = this.config.facility  ?? "";

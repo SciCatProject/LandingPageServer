@@ -11,13 +11,12 @@ import { DialogComponent } from "../shared/modules/dialog/dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { RetrieveService } from "../retrieve.service";
 import * as fileSize from "filesize";
-import { AppConfigService, AppConfig as Config } from "../app-config.service";
+import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "../app-config.service";
 
 @Component({
   selector: "app-publisheddata-details",
   templateUrl: "./publisheddata-details.component.html",
   styleUrls: ["./publisheddata-details.component.scss"],
-  providers: [AppConfigService],
 })
 export class PublisheddataDetailsComponent implements OnInit {
   publication$ = new Observable<PublishedData>();
@@ -31,7 +30,7 @@ export class PublisheddataDetailsComponent implements OnInit {
   config: Config;
   constructor(
     @Inject(APP_CONFIG) public appConfig: AppConfig,
-    private appConfigService: AppConfigService,
+    @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
@@ -41,6 +40,7 @@ export class PublisheddataDetailsComponent implements OnInit {
     this.config = this.appConfigService.getConfig();
     this.accessDataHref = this.config.accessDataHref;
     this.doiBaseUrl = this.config.doiBaseUrl;
+
   }
 
   onPidClick(pid: string): void {
@@ -109,11 +109,11 @@ export class PublisheddataDetailsComponent implements OnInit {
       window.open(publication.downloadLink);
     } else if (this.config.retrieveToEmail && this.config.directMongoAccess) {
       const dialogOptions = this.retrieveSrc.retriveDialogOptions();
-      const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
       if (this.config.retrieveToEmail.confirmMessage){
         const size = publication.sizeOfArchive? `You are about to submit a data request for ${fileSize(publication.sizeOfArchive)}<br>`: "";
-        dialogRef.componentInstance.data.confirmMessage = `${size}${this.config.retrieveToEmail.confirmMessage}`;
+        dialogOptions.data.confirmMessage = `${size}${this.config.retrieveToEmail.confirmMessage}`;
       }
+      const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
       dialogRef.afterClosed().subscribe((result) => {
         if (result)
           this.retrieveSrc.retrieve(result.email, publication.pidArray).subscribe();

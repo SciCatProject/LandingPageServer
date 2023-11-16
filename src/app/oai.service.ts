@@ -5,7 +5,7 @@ import { map } from "rxjs/operators";
 import { PublishedData } from "./shared/sdk/models";
 import { DatePipe } from "@angular/common";
 import { Observable } from "rxjs";
-import { AppConfigService, AppConfig as Config } from "./app-config.service";
+import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "./app-config.service";
 
 @Injectable()
 export class OAIService {
@@ -14,7 +14,7 @@ export class OAIService {
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private appConfigService: AppConfigService,
+    @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private httpClient: HttpClient,
     private datePipe: DatePipe
   ) {

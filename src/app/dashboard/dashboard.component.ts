@@ -9,7 +9,7 @@ import {
   SortChangeEvent,
 } from "../shared/modules/table/table.component";
 import { DatasourceService } from "../datasource.service";
-import { AppConfigService, AppConfig as Config } from "../app-config.service";
+import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "../app-config.service";
 
 @Component({
   selector: "app-dashboard",
@@ -60,7 +60,7 @@ export class DashboardComponent {
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private appConfigService: AppConfigService,
+     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
     private router: Router
   ) {

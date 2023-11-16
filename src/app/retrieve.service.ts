@@ -3,28 +3,31 @@ import { Observable } from "rxjs";
 import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
 import { Job } from "./shared/sdk/models";
-import { AppConfigService, RetrieveDestinations , AppConfig as Config} from "./app-config.service";
+import {
+  AppConfigService,
+  RetrieveDestinations,
+  AppConfig as Config,
+  APP_DYN_CONFIG,
+} from "./app-config.service";
 
 @Injectable()
 export class RetrieveService {
-  private retrieveToEmail: RetrieveDestinations| undefined;
+  private retrieveToEmail: RetrieveDestinations | undefined;
   private config: Config;
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private appConfigService: AppConfigService,
-    private datasourceService: DatasourceService){
-      this.config = this.appConfigService.getConfig();
-      this.retrieveToEmail = this.config.retrieveToEmail ;
-    }
+    @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
+    private datasourceService: DatasourceService
+  ) {
+    this.config = this.appConfigService.getConfig();
+    this.retrieveToEmail = this.config.retrieveToEmail;
+  }
 
-  public retrieve(
-    email: string,
-    datasets: string[]
-  ): Observable<Job> {
+  public retrieve(email: string, datasets: string[]): Observable<Job> {
     const job = {
       jobParams: {
-        username: this.retrieveToEmail?.username,
-        option: this.retrieveToEmail?.option
+        username: this.retrieveToEmail.username,
+        option: this.retrieveToEmail.option,
       },
       emailJobInitiator: email,
       creationTime: new Date(),
@@ -37,12 +40,12 @@ export class RetrieveService {
     return this.datasourceService.postJob(new Job(job));
   }
 
-  public retriveDialogOptions(): object {
+  public retriveDialogOptions(): any {
     return {
       width: "auto",
       data: {
         title: this.retrieveToEmail?.title,
-        confirmMessage: this.retrieveToEmail?.confirmMessage
+        confirmMessage: this.retrieveToEmail?.confirmMessage,
       },
     };
   }

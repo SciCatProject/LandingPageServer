@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppConfigModule } from "./app-config.module";
 import { SDKBrowserModule } from "./shared/sdk";
-import { AppConfigService } from "./app-config.service";
+import { APP_DYN_CONFIG, AppConfigService } from "./app-config.service";
 import { HttpClientModule } from "@angular/common/http";
 import { AppThemeService } from "./app-theme.service";
 
@@ -33,13 +33,13 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: AppConfigService, useClass: AppConfigService},
     {
       provide: APP_INITIALIZER,
       useFactory: appConfigInitializerFn,
       multi: true,
-      deps: [AppConfigService],
+      deps: [APP_DYN_CONFIG],
     },
+    { provide: APP_DYN_CONFIG, useClass: AppConfigService},
     {
       provide: APP_INITIALIZER,
       useFactory: appThemeInitializerFn,
