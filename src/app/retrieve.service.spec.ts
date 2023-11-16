@@ -1,26 +1,26 @@
 import { TestBed, waitForAsync } from "@angular/core/testing";
-import { APP_CONFIG } from "./app-config.module";
+import { APP_CONFIG, AppConfigModule } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
 import { RetrieveService } from "./retrieve.service";
-import { MockDatasourceService } from "./shared/MockStubs";
+import { MockAppConfigService, MockDatasourceService } from "./shared/MockStubs";
 import { Job } from "./shared/sdk";
+import { HttpClientModule } from "@angular/common/http";
+import { APP_DYN_CONFIG, AppConfigService } from "./app-config.service";
 
 describe("ArchivingService", () => {
   let service: RetrieveService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule, AppConfigModule],
       providers: [
+        {provide: APP_DYN_CONFIG, useClass: MockAppConfigService},
         RetrieveService,
         { provide: DatasourceService, useClass: MockDatasourceService },
         {
           provide: APP_CONFIG,
           useValue: {
-            retrieveToEmail: {
-              option: "URLs", 
-              username: "lp_service", 
-              title: "An email"
-            },
+            production: false,
           }
         }
       ],
@@ -42,7 +42,7 @@ describe("ArchivingService", () => {
         width: "auto",
         data: {
           title: "An email",
-          confirmMessage: undefined
+          confirmMessage: "aMessage"
         },
       });
     });

@@ -1,5 +1,7 @@
 import { of } from "rxjs";
 import { convertToParamMap } from "@angular/router";
+import { AppConfigService, AppConfig } from "../app-config.service";
+import { Injectable } from "@angular/core";
 
 export class MockActivatedRoute {
   // stub detail goes here
@@ -70,8 +72,14 @@ export class MockRetriveService {
     return of({});
   }
 
-  retriveDialogOptions() {
-    return {};
+  retriveDialogOptions():object {
+    return {
+      width: "auto",
+      data: {
+        title: "",
+        confirmMessage: "",
+      },
+    };
   }
 }
 
@@ -91,3 +99,41 @@ export class MockMatDialogRef {
 }
 
 export class MockMatDialogData {}
+
+@Injectable()
+export class MockAppConfigService extends AppConfigService {
+
+
+  private testConfig ={
+    doiBaseUrl: "https://doi.org/",
+    production: false,
+    accessDataHref: "someurl",
+    directMongoAccess: true,
+    facility: "ess",
+    accessInstructions:
+      "Instructions: Login with brightness username and password",
+    scicatBaseUrl:"https://scicat.esss.se",
+    lbBaseUrl: "https://scicat.esss.se",
+    retrieveToEmail: {
+      option: "URLs",
+      username: "lp_service",
+      title: "An email",
+      confirmMessage:"aMessage"
+      },
+      showLogoBanner: true,
+      oaiProviderRoute: null,
+      logoBanner: "",
+  };
+
+  async loadAppConfig(): Promise<void> {
+
+    };
+
+    getConfig(): AppConfig {
+      return this.testConfig as AppConfig
+
+    };
+};
+
+
+

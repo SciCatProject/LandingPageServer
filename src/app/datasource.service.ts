@@ -5,7 +5,7 @@ import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { OAIService } from "./oai.service";
 import { PublishedDataService } from "./published-data.service";
 import { Job, PublishedData } from "./shared/sdk";
-import { AppConfigService, AppConfig as Config } from "./app-config.service";
+import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "./app-config.service";
 
 @Injectable()
 export class DatasourceService {
@@ -13,7 +13,7 @@ export class DatasourceService {
   private config: Config;
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private appConfigService: AppConfigService,
+    @Inject(APP_DYN_CONFIG)private appConfigService: AppConfigService,
     private oaiService: OAIService,
     private publishedDataService: PublishedDataService
   ) {

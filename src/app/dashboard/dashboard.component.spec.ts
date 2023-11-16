@@ -6,8 +6,10 @@ import { Router } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { DatePipe } from "@angular/common";
 import { DatasourceService } from "../datasource.service";
-import { MockDatasourceService } from "../shared/MockStubs";
+import { MockAppConfigService, MockDatasourceService } from "../shared/MockStubs";
 import { TableModule } from "../shared/modules/table/table.module";
+import { HttpClientModule } from "@angular/common/http";
+import { APP_DYN_CONFIG } from "../app-config.service";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -21,7 +23,7 @@ describe("DashboardComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [DashboardComponent],
-        imports: [MatCardModule, TableModule],
+        imports: [MatCardModule, TableModule, HttpClientModule],
         providers: [
           DatePipe,
           {
@@ -31,6 +33,7 @@ describe("DashboardComponent", () => {
               directMongoAccess: true,
             },
           },
+          {provide: APP_DYN_CONFIG, useClass: MockAppConfigService},
           { provide: Router, useValue: router },
           { provide: DatasourceService, useClass: MockDatasourceService },
         ],

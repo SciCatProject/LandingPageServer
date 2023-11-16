@@ -9,6 +9,7 @@ import { DatasourceService } from "../datasource.service";
 import { OAIService } from "../oai.service";
 import { PublishedDataService } from "../published-data.service";
 import { AppConfigModule } from "../app-config.module";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -19,7 +20,15 @@ import { AppConfigModule } from "../app-config.module";
     DashboardRoutingModule,
     MatCardModule,
     TableModule,
+    HttpClientModule,
   ],
-  providers: [DatasourceService, DatePipe, OAIService, PublishedDataService],
+  providers: [
+    AppConfigModule,
+    DatasourceService,
+    DatePipe,
+    OAIService,
+    PublishedDataService,
+    HttpClientModule,
+  ],
 })
 export class DashboardModule {}

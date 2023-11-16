@@ -2,6 +2,11 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { timeout } from "rxjs/operators";
 import { environment } from "../environments/environment";
+import { InjectionToken } from '@angular/core';
+
+export const APP_DYN_CONFIG = new InjectionToken<AppConfig>('app.dyn.config');
+
+
 export interface AppConfig {
     production: boolean;
     facility:string;
@@ -20,10 +25,10 @@ export class RetrieveDestinations {
     title: string;
     option: string;
     username: string;
-    confirmMessage?: string;
+    confirmMessage: string| undefined;
  }
 
-@Injectable( { providedIn: "root"})
+@Injectable({ providedIn: "root"})
 export class AppConfigService {
   private appConfig: object = {};
 

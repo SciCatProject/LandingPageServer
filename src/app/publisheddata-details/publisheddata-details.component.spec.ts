@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { PublisheddataDetailsComponent } from "./publisheddata-details.component";
-import { APP_CONFIG } from "../app-config.module";
-import { MockActivatedRoute, MockDatasourceService, MockDialog, MockRetriveService } from "../shared/MockStubs";
+import { APP_CONFIG, AppConfigModule } from "../app-config.module";
+import { MockActivatedRoute, MockAppConfigService, MockDatasourceService, MockDialog, MockRetriveService } from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { DatasourceService } from "../datasource.service";
@@ -11,6 +11,9 @@ import { PublishedData } from "../shared/sdk";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogModule } from "../shared/modules/dialog/dialog.module";
+import { HttpClientModule } from "@angular/common/http";
+import { APP_DYN_CONFIG, AppConfigService } from "../app-config.service";
+import { AppModule } from "../app.module";
 
 describe("PublisheddataDetailsComponent", () => {
   let component: PublisheddataDetailsComponent;
@@ -22,22 +25,15 @@ describe("PublisheddataDetailsComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [PublisheddataDetailsComponent],
-        imports: [MatCardModule, DialogModule],
+        imports: [MatCardModule, DialogModule,HttpClientModule,AppConfigModule ,AppModule],
         providers: [
           {
             provide: APP_CONFIG,
             useValue: {
-              doiBaseUrl: "https://doi.org/",
               production: false,
-              accessDataHref: null,
-              directMongoAccess: true,
-              facility: "ess",
-              accessInstructions:
-                "Instructions: Login with brightness username and password",
-              scicatBaseUrl,
-              retrieveToEmail: true
             },
           },
+          { provide: APP_DYN_CONFIG, useClass: MockAppConfigService},
           { provide: ActivatedRoute, useClass: MockActivatedRoute },
           { provide: DatasourceService, useClass: MockDatasourceService },
           { provide: RetrieveService, useClass: MockRetriveService },
@@ -47,7 +43,7 @@ describe("PublisheddataDetailsComponent", () => {
             useValue: {
               bypassSecurityTrustHtml: (val: string) => val,
             },
-          }          
+          }
         ],
       }).compileComponents();
     })
@@ -115,12 +111,12 @@ describe("PublisheddataDetailsComponent", () => {
   describe("#schemaDotOrg()", () => {
     it("should call sanitize and return script tag and json content", () => {
       const publication = new PublishedData({
-        doi: "123", 
-        creator: ["John Smith"], 
-        title: "aTitle", 
-        dataDescription: "aDescription", 
-        publicationYear: 2021, 
-        publisher: "aPublisher", 
+        doi: "123",
+        creator: ["John Smith"],
+        title: "aTitle",
+        dataDescription: "aDescription",
+        publicationYear: 2021,
+        publisher: "aPublisher",
         abstract: "",
         resourceType: "",
         pidArray: []
@@ -151,12 +147,12 @@ describe("PublisheddataDetailsComponent", () => {
   describe("#accessData()", () => {
     it("should call window open", () => {
       const publication = new PublishedData({
-        doi: "123", 
-        creator: ["John Smith"], 
-        title: "aTitle", 
-        dataDescription: "aDescription", 
-        publicationYear: 2021, 
-        publisher: "aPublisher", 
+        doi: "123",
+        creator: ["John Smith"],
+        title: "aTitle",
+        dataDescription: "aDescription",
+        publicationYear: 2021,
+        publisher: "aPublisher",
         abstract: "",
         resourceType: "",
         pidArray: [],
@@ -172,12 +168,12 @@ describe("PublisheddataDetailsComponent", () => {
       spyOn(component.dialog, "open").and.callThrough();
       const retrieveSpy = spyOn(component["retrieveSrc"], "retrieve").and.callThrough();
       const publication = new PublishedData({
-        doi: "123", 
-        creator: ["John Smith"], 
-        title: "aTitle", 
-        dataDescription: "aDescription", 
-        publicationYear: 2021, 
-        publisher: "aPublisher", 
+        doi: "123",
+        creator: ["John Smith"],
+        title: "aTitle",
+        dataDescription: "aDescription",
+        publicationYear: 2021,
+        publisher: "aPublisher",
         abstract: "",
         pidArray: [
           "pid1",
