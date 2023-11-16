@@ -50,7 +50,8 @@ export class AppConfigService {
       }
     }
     // Use old default if not provided
-    this.appConfig.logoWidth = this.appConfig.logoWidth ?? "412";
+
+    (this.appConfig as AppConfig).logoWidth = (this.appConfig as AppConfig).logoWidth ?? "412";
   }
 
   getConfig(): AppConfig {
