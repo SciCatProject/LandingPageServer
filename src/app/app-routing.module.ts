@@ -6,14 +6,14 @@ const routes: Routes = [
     path: "detail/:id1/:id2",
     loadChildren: () =>
       import("./publisheddata-details/publisheddata-details.module").then(
-        (m) => m.PublisheddataDetailsModule
+        (m) => m.PublisheddataDetailsModule,
       ),
   },
   {
     path: "detail/:id",
     loadChildren: () =>
       import("./publisheddata-details/publisheddata-details.module").then(
-        (m) => m.PublisheddataDetailsModule
+        (m) => m.PublisheddataDetailsModule,
       ),
   },
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { })],
+  imports: [RouterModule.forRoot(routes, {})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

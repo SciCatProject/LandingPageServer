@@ -21,7 +21,7 @@ import { ConfirmationDialogModule } from "../confirmation-dialog/confirmation-di
     MatFormFieldModule,
     MatTooltipModule,
     FormsModule,
-    ConfirmationDialogModule
+    ConfirmationDialogModule,
   ],
   declarations: [DialogComponent],
   exports: [DialogComponent],

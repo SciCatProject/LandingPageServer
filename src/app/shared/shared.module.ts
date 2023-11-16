@@ -7,7 +7,13 @@ import { ConfirmationDialogModule } from "./modules/confirmation-dialog/confirma
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, PipesModule, TableModule, DialogModule, ConfirmationDialogModule],
+  imports: [
+    CommonModule,
+    PipesModule,
+    TableModule,
+    DialogModule,
+    ConfirmationDialogModule,
+  ],
   exports: [PipesModule, TableModule, DialogModule, ConfirmationDialogModule],
 })
 export class SharedModule {}

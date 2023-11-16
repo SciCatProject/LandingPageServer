@@ -11,7 +11,11 @@ import { DialogComponent } from "../shared/modules/dialog/dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { RetrieveService } from "../retrieve.service";
 import * as fileSize from "filesize";
-import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "../app-config.service";
+import {
+  APP_DYN_CONFIG,
+  AppConfigService,
+  AppConfig as Config,
+} from "../app-config.service";
 
 @Component({
   selector: "app-publisheddata-details",
@@ -40,14 +44,13 @@ export class PublisheddataDetailsComponent implements OnInit {
     this.config = this.appConfigService.getConfig();
     this.accessDataHref = this.config.accessDataHref;
     this.doiBaseUrl = this.config.doiBaseUrl;
-
   }
 
   onPidClick(pid: string): void {
     const encodedPid = encodeURIComponent(pid);
     window.open(
       this.config.scicatBaseUrl + "/datasets/" + encodedPid,
-      "_blank"
+      "_blank",
     );
   }
 
@@ -55,37 +58,37 @@ export class PublisheddataDetailsComponent implements OnInit {
     return dataDescription.includes("http");
   }
 
-  getSafeHTML(value: {}): SafeHtml {
+  getSafeHTML(value: unknown): SafeHtml {
     const json = value ? JSON.stringify(value, null, 2) : "";
     const html = `<script type="application/ld+json">${json}</script>`;
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   schemaDotOrg(publication: PublishedData): WithContext<Dataset> {
-    const name = publication.creator ? publication.creator.slice(-1)[0]: "";
-    const nameSplit = name ? name.split(" "): [];
+    const name = publication.creator ? publication.creator.slice(-1)[0] : "";
+    const nameSplit = name ? name.split(" ") : [];
     const familyName = nameSplit.pop();
-    const creator: Person =  {
-      "name": name,
-      "givenName": nameSplit.join(" "),
-      "familyName": familyName,
-      "@type": "Person"
+    const creator: Person = {
+      name: name,
+      givenName: nameSplit.join(" "),
+      familyName: familyName,
+      "@type": "Person",
     };
     const organization: Organization = {
       "@type": "Organization",
-      "name": publication.publisher
+      name: publication.publisher,
     };
 
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
       "@id": this.doiBaseUrl + publication.doi,
-      "name": publication.title,
-      "creator": creator,
-      "description": publication.dataDescription,
-      "datePublished": `${publication.publicationYear}`,
-      "publisher": organization,
-      "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+      name: publication.title,
+      creator: creator,
+      description: publication.dataDescription,
+      datePublished: `${publication.publicationYear}`,
+      publisher: organization,
+      license: "http://creativecommons.org/licenses/by-sa/4.0/",
     };
   }
 
@@ -99,8 +102,8 @@ export class PublisheddataDetailsComponent implements OnInit {
     this.publication$ = this.datasourceService.getPublication(id);
     this.publicationJson$ = this.publication$.pipe(
       map(({ thumbnail, ...publication }) =>
-        JSON.stringify(publication, null, 2)
-      )
+        JSON.stringify(publication, null, 2),
+      ),
     );
   }
 
@@ -109,18 +112,23 @@ export class PublisheddataDetailsComponent implements OnInit {
       window.open(publication.downloadLink);
     } else if (this.config.retrieveToEmail && this.config.directMongoAccess) {
       const dialogOptions = this.retrieveSrc.retriveDialogOptions();
-      if (this.config.retrieveToEmail.confirmMessage){
-        const size = publication.sizeOfArchive? `You are about to submit a data request for ${fileSize(publication.sizeOfArchive)}<br>`: "";
+      if (this.config.retrieveToEmail.confirmMessage) {
+        const size = publication.sizeOfArchive
+          ? `You are about to submit a data request for ${fileSize(
+              publication.sizeOfArchive,
+            )}<br>`
+          : "";
         dialogOptions.data.confirmMessage = `${size}${this.config.retrieveToEmail.confirmMessage}`;
       }
       const dialogRef = this.dialog.open(DialogComponent, dialogOptions);
       dialogRef.afterClosed().subscribe((result) => {
         if (result)
-          this.retrieveSrc.retrieve(result.email, publication.pidArray).subscribe();
+          this.retrieveSrc
+            .retrieve(result.email, publication.pidArray)
+            .subscribe();
       });
     } else {
       window.open(this.accessDataHref);
     }
   }
-
 }

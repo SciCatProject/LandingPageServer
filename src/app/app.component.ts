@@ -2,8 +2,11 @@ import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";
 import { Title } from "@angular/platform-browser";
-import { environment } from "../environments/environment";
-import { APP_DYN_CONFIG, AppConfigService ,  AppConfig as Config } from "./app-config.service";
+import {
+  APP_DYN_CONFIG,
+  AppConfigService,
+  AppConfig as Config,
+} from "./app-config.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -20,7 +23,7 @@ export class AppComponent implements OnInit {
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
   ) {
     this.config = this.appConfigService.getConfig();
-    const facility = this.config.facility  ?? "";
+    const facility = this.config.facility ?? "";
     let status = "test";
     if (this.appConfig.production === true) {
       status = "";

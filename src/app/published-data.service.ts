@@ -7,7 +7,8 @@ import { PublishedDataApi, JobApi } from "./shared/sdk/services/custom";
 export class PublishedDataService {
   constructor(
     private rds: PublishedDataApi,
-    private job: JobApi) {}
+    private job: JobApi,
+  ) {}
 
   /** GET datasets from the server */
   getPublications(params: string): Observable<PublishedData[]> {
@@ -28,5 +29,4 @@ export class PublishedDataService {
   postJob(data: Job): Observable<Job> {
     return this.job.create(data);
   }
-
 }

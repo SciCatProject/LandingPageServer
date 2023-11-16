@@ -9,14 +9,17 @@ import {
   SortChangeEvent,
 } from "../shared/modules/table/table.component";
 import { DatasourceService } from "../datasource.service";
-import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "../app-config.service";
+import {
+  APP_DYN_CONFIG,
+  AppConfigService,
+  AppConfig as Config,
+} from "../app-config.service";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
   providers: [AppConfigService],
-
 })
 export class DashboardComponent {
   subtitle: string;
@@ -43,7 +46,7 @@ export class DashboardComponent {
     { name: "creator", icon: "group", sort: true, inList: true },
     { name: "doi", icon: "label", sort: true, inList: true },
   ];
-  itemFields = {thumbnail: false};
+  itemFields = { thumbnail: false };
 
   params: any = this.datasourceService.queryParams(
     this.itemsPerPage,
@@ -52,20 +55,19 @@ export class DashboardComponent {
     this.sortDirection,
     this.itemFields,
   );
-  publications$: Observable<
-    PublishedData[]
-  > = this.datasourceService.getPublications(this.params);
+  publications$: Observable<PublishedData[]> =
+    this.datasourceService.getPublications(this.params);
   count$: Observable<number> = this.datasourceService.countPublications();
-    config: Config;
+  config: Config;
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
+    @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
-    private router: Router
+    private router: Router,
   ) {
     this.config = this.appConfigService.getConfig();
-    const facility:string = this.config.facility ?? "";
+    const facility: string = this.config.facility ?? "";
     this.subtitle = facility.toUpperCase() + " Public Dataset Access";
   }
 

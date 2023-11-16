@@ -24,4 +24,4 @@ import { MatTooltipModule } from "@angular/material/tooltip";
   declarations: [ConfirmationDialogComponent],
   exports: [ConfirmationDialogComponent],
 })
-export class ConfirmationDialogModule { }
+export class ConfirmationDialogModule {}

@@ -72,7 +72,7 @@ export class MockRetriveService {
     return of({});
   }
 
-  retriveDialogOptions():object {
+  retriveDialogOptions(): object {
     return {
       width: "auto",
       data: {
@@ -86,10 +86,10 @@ export class MockRetriveService {
 export class MockDialog {
   open() {
     return {
-      afterClosed: () => (of({email:"test@email.com"})),
-      componentInstance: {}
+      afterClosed: () => of({ email: "test@email.com" }),
+      componentInstance: {},
     };
-  };
+  }
 }
 
 export class MockMatDialogRef {
@@ -102,9 +102,7 @@ export class MockMatDialogData {}
 
 @Injectable()
 export class MockAppConfigService extends AppConfigService {
-
-
-  private testConfig ={
+  private testConfig = {
     doiBaseUrl: "https://doi.org/",
     production: false,
     accessDataHref: "someurl",
@@ -112,28 +110,22 @@ export class MockAppConfigService extends AppConfigService {
     facility: "ess",
     accessInstructions:
       "Instructions: Login with brightness username and password",
-    scicatBaseUrl:"https://scicat.esss.se",
+    scicatBaseUrl: "https://scicat.esss.se",
     lbBaseUrl: "https://scicat.esss.se",
     retrieveToEmail: {
       option: "URLs",
       username: "lp_service",
       title: "An email",
-      confirmMessage:"aMessage"
-      },
-      showLogoBanner: true,
-      oaiProviderRoute: null,
-      logoBanner: "",
+      confirmMessage: "aMessage",
+    },
+    showLogoBanner: true,
+    oaiProviderRoute: null,
+    logoBanner: "",
   };
 
-  async loadAppConfig(): Promise<void> {
+  async loadAppConfig(): Promise<void> {}
 
-    };
-
-    getConfig(): AppConfig {
-      return this.testConfig as AppConfig
-
-    };
-};
-
-
-
+  getConfig(): AppConfig {
+    return this.testConfig as AppConfig;
+  }
+}
