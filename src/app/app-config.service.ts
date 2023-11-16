@@ -17,7 +17,7 @@ export interface AppConfig {
   scicatBaseUrl: string;
   showLogoBanner: boolean;
   logoBanner: string | null;
-  logoWidth: string;
+  logoWidth?: string;
   retrieveToEmail: RetrieveDestinations | undefined;
 }
 
@@ -51,7 +51,8 @@ export class AppConfigService {
     }
     // Use old default if not provided
 
-    (this.appConfig as AppConfig).logoWidth = (this.appConfig as AppConfig).logoWidth ?? "412";
+    (this.appConfig as AppConfig).logoWidth =
+      (this.appConfig as AppConfig)?.logoWidth ?? "412";
   }
 
   getConfig(): AppConfig {
