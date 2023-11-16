@@ -1,34 +1,31 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
+  "plugins": ["@typescript-eslint/eslint-plugin"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "@angular-eslint/component-selector": "off",
-        "@typescript-eslint/consistent-type-definitions": "error",
-        "@typescript-eslint/dot-notation": "off",
-        "@typescript-eslint/explicit-member-accessibility": [
-          "off",
+        "@angular-eslint/directive-selector": [
+          "error",
           {
-            "accessibility": "explicit"
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
           }
         ],
+        "@angular-eslint/component-selector": "off",
         "@typescript-eslint/member-delimiter-style": [
           "error",
           {
@@ -69,18 +66,14 @@
         "@typescript-eslint/naming-convention": [
           "error",
           {
-            "format": [
-              "camelCase",
-              "snake_case",
-              "UPPER_CASE"
-            ],
-            "selector": [
-              "variable",
-              "function"
-            ]
+            "format": ["camelCase", "snake_case", "UPPER_CASE"],
+            "selector": ["variable", "function"]
           }
         ],
         "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+	"@typescript-eslint/no-unsafe-declaration-merging": "warn",
         "@typescript-eslint/quotes": [
           "error",
           "double",
@@ -88,34 +81,17 @@
             "allowTemplateLiterals": true
           }
         ],
-        "@typescript-eslint/semi": [
-          "error",
-          "always"
-        ],
-        "brace-style": [
-          "error",
-          "1tbs"
-        ],
-        "default-case": "error",
-        "id-blacklist": "off",
-        "id-match": "off",
-        "jsdoc/newline-after-description": "off",
-        "jsdoc/no-types": "off",
-        "no-duplicate-case": "error",
-        "no-duplicate-imports": "error",
-        "no-fallthrough": "off",
-        "no-redeclare": "error",
-        "no-underscore-dangle": "off"
+        "@typescript-eslint/semi": ["error", "always"]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:ngrx/recommended"]
     }
   ]
 }

@@ -2,7 +2,13 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { PublisheddataDetailsComponent } from "./publisheddata-details.component";
 import { APP_CONFIG, AppConfigModule } from "../app-config.module";
-import { MockActivatedRoute, MockAppConfigService, MockDatasourceService, MockDialog, MockRetriveService } from "../shared/MockStubs";
+import {
+  MockActivatedRoute,
+  MockAppConfigService,
+  MockDatasourceService,
+  MockDialog,
+  MockRetriveService,
+} from "../shared/MockStubs";
 import { ActivatedRoute } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { DatasourceService } from "../datasource.service";
@@ -12,7 +18,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogModule } from "../shared/modules/dialog/dialog.module";
 import { HttpClientModule } from "@angular/common/http";
-import { APP_DYN_CONFIG, AppConfigService } from "../app-config.service";
+import { APP_DYN_CONFIG } from "../app-config.service";
 import { AppModule } from "../app.module";
 
 describe("PublisheddataDetailsComponent", () => {
@@ -21,33 +27,37 @@ describe("PublisheddataDetailsComponent", () => {
 
   const scicatBaseUrl = "https://scicat.esss.se";
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [PublisheddataDetailsComponent],
-        imports: [MatCardModule, DialogModule,HttpClientModule,AppConfigModule ,AppModule],
-        providers: [
-          {
-            provide: APP_CONFIG,
-            useValue: {
-              production: false,
-            },
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [PublisheddataDetailsComponent],
+      imports: [
+        MatCardModule,
+        DialogModule,
+        HttpClientModule,
+        AppConfigModule,
+        AppModule,
+      ],
+      providers: [
+        {
+          provide: APP_CONFIG,
+          useValue: {
+            production: false,
           },
-          { provide: APP_DYN_CONFIG, useClass: MockAppConfigService},
-          { provide: ActivatedRoute, useClass: MockActivatedRoute },
-          { provide: DatasourceService, useClass: MockDatasourceService },
-          { provide: RetrieveService, useClass: MockRetriveService },
-          { provide: MatDialog, useClass: MockDialog },
-          {
-            provide: DomSanitizer,
-            useValue: {
-              bypassSecurityTrustHtml: (val: string) => val,
-            },
-          }
-        ],
-      }).compileComponents();
-    })
-  );
+        },
+        { provide: APP_DYN_CONFIG, useClass: MockAppConfigService },
+        { provide: ActivatedRoute, useClass: MockActivatedRoute },
+        { provide: DatasourceService, useClass: MockDatasourceService },
+        { provide: RetrieveService, useClass: MockRetriveService },
+        { provide: MatDialog, useClass: MockDialog },
+        {
+          provide: DomSanitizer,
+          useValue: {
+            bypassSecurityTrustHtml: (val: string) => val,
+          },
+        },
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PublisheddataDetailsComponent);
@@ -75,7 +85,7 @@ describe("PublisheddataDetailsComponent", () => {
       expect(openSpy).toHaveBeenCalledTimes(1);
       expect(openSpy).toHaveBeenCalledWith(
         scicatBaseUrl + "/datasets/" + encodedPid,
-        "_blank"
+        "_blank",
       );
     });
   });
@@ -101,10 +111,15 @@ describe("PublisheddataDetailsComponent", () => {
 
   describe("#getSafeHTML()", () => {
     it("should call sanitize and return script tag and json content", () => {
-      const value = {key: "value", key1: "value"};
+      const value = { key: "value", key1: "value" };
       const safeHTML = component.getSafeHTML(value);
       expect(safeHTML).toEqual(
-        `<script type="application/ld+json">${JSON.stringify(value, null, 2)}</script>`);
+        `<script type="application/ld+json">${JSON.stringify(
+          value,
+          null,
+          2,
+        )}</script>`,
+      );
     });
   });
 
@@ -119,27 +134,27 @@ describe("PublisheddataDetailsComponent", () => {
         publisher: "aPublisher",
         abstract: "",
         resourceType: "",
-        pidArray: []
+        pidArray: [],
       });
       const safeHTML = component.schemaDotOrg(publication);
       expect(safeHTML).toEqual({
         "@context": "https://schema.org",
         "@type": "Dataset",
         "@id": "https://doi.org/123",
-        "name": "aTitle",
-        "creator": {
-          "name": "John Smith",
-          "givenName": "John",
-          "familyName": "Smith",
-          "@type": "Person"
+        name: "aTitle",
+        creator: {
+          name: "John Smith",
+          givenName: "John",
+          familyName: "Smith",
+          "@type": "Person",
         },
-        "description": "aDescription",
-        "datePublished": "2021",
-        "publisher": {
+        description: "aDescription",
+        datePublished: "2021",
+        publisher: {
           "@type": "Organization",
-          "name": "aPublisher"
+          name: "aPublisher",
         },
-        "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+        license: "http://creativecommons.org/licenses/by-sa/4.0/",
       });
     });
   });
@@ -156,7 +171,7 @@ describe("PublisheddataDetailsComponent", () => {
         abstract: "",
         resourceType: "",
         pidArray: [],
-        downloadLink: "someLink"
+        downloadLink: "someLink",
       });
       const openSpy = spyOn(window, "open");
       component.accessData(publication);
@@ -166,7 +181,10 @@ describe("PublisheddataDetailsComponent", () => {
 
     it("should open dialog and start a retrieve", () => {
       spyOn(component.dialog, "open").and.callThrough();
-      const retrieveSpy = spyOn(component["retrieveSrc"], "retrieve").and.callThrough();
+      const retrieveSpy = spyOn(
+        component["retrieveSrc"],
+        "retrieve",
+      ).and.callThrough();
       const publication = new PublishedData({
         doi: "123",
         creator: ["John Smith"],
@@ -175,14 +193,14 @@ describe("PublisheddataDetailsComponent", () => {
         publicationYear: 2021,
         publisher: "aPublisher",
         abstract: "",
-        pidArray: [
-          "pid1",
-          "pid2",
-        ],
+        pidArray: ["pid1", "pid2"],
         resourceType: "",
       });
       component.accessData(publication);
-      expect(retrieveSpy).toHaveBeenCalledWith("test@email.com", ["pid1", "pid2"]);
+      expect(retrieveSpy).toHaveBeenCalledWith("test@email.com", [
+        "pid1",
+        "pid2",
+      ]);
     });
   });
 });

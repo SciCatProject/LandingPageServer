@@ -17,22 +17,15 @@ describe("TableComponent", () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        schemas: [NO_ERRORS_SCHEMA],
-        declarations: [TableComponent],
-        imports: [
-          MatListModule,
-          MatPaginatorModule,
-          MatTableModule,
-          PipesModule,
-        ],
-        providers: [DatePipe],
-      });
-      TestBed.compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [TableComponent],
+      imports: [MatListModule, MatPaginatorModule, MatTableModule, PipesModule],
+      providers: [DatePipe],
+    });
+    TestBed.compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TableComponent);

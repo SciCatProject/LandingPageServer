@@ -5,7 +5,11 @@ import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { OAIService } from "./oai.service";
 import { PublishedDataService } from "./published-data.service";
 import { Job, PublishedData } from "./shared/sdk";
-import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "./app-config.service";
+import {
+  APP_DYN_CONFIG,
+  AppConfigService,
+  AppConfig as Config,
+} from "./app-config.service";
 
 @Injectable()
 export class DatasourceService {
@@ -13,9 +17,9 @@ export class DatasourceService {
   private config: Config;
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    @Inject(APP_DYN_CONFIG)private appConfigService: AppConfigService,
+    @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private oaiService: OAIService,
-    private publishedDataService: PublishedDataService
+    private publishedDataService: PublishedDataService,
   ) {
     this.config = this.appConfigService.getConfig();
     this.directMongoAccess = this.config.directMongoAccess;
@@ -48,7 +52,7 @@ export class DatasourceService {
     currentPage: number,
     sortColumn: string,
     sortDirection: string,
-    itemFields: Partial<{[key in keyof PublishedData]: boolean}>
+    itemFields: Partial<{ [key in keyof PublishedData]: boolean }>,
   ): string {
     return this.directMongoAccess
       ? JSON.stringify({
@@ -67,7 +71,9 @@ export class DatasourceService {
           ",sortDirection=" +
           sortDirection +
           ",excludeFields=" +
-          Object.keys(itemFields).filter(k => !itemFields[k]).join("|") +
+          Object.keys(itemFields)
+            .filter((k) => !itemFields[k])
+            .join("|") +
           ")";
   }
 }

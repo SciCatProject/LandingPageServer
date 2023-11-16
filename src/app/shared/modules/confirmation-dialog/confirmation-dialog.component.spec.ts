@@ -14,31 +14,28 @@ import { MatButtonModule } from "@angular/material/button";
 import { MockMatDialogRef, MockMatDialogData } from "../../MockStubs";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-
 describe("DialogComponent", () => {
   let component: ConfirmationDialogComponent;
   let fixture: ComponentFixture<ConfirmationDialogComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ConfirmationDialogComponent],
-        imports: [
-          CommonModule,
-          FormsModule,
-          MatButtonModule,
-          MatDialogModule,
-          MatFormFieldModule,
-          MatInputModule,
-          BrowserAnimationsModule
-        ],
-        providers: [
-          { provide: MatDialogRef, useClass: MockMatDialogRef },
-          { provide: MAT_DIALOG_DATA, useClass: MockMatDialogData },
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ConfirmationDialogComponent],
+      imports: [
+        CommonModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+      ],
+      providers: [
+        { provide: MatDialogRef, useClass: MockMatDialogRef },
+        { provide: MAT_DIALOG_DATA, useClass: MockMatDialogData },
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConfirmationDialogComponent);

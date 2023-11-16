@@ -2,33 +2,32 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { timeout } from "rxjs/operators";
 import { environment } from "../environments/environment";
-import { InjectionToken } from '@angular/core';
+import { InjectionToken } from "@angular/core";
 
-export const APP_DYN_CONFIG = new InjectionToken<AppConfig>('app.dyn.config');
-
+export const APP_DYN_CONFIG = new InjectionToken<AppConfig>("app.dyn.config");
 
 export interface AppConfig {
-    production: boolean;
-    facility:string;
-    oaiProviderRoute: string;
-    doiBaseUrl: string;
-    directMongoAccess: boolean;
-    accessDataHref: string;
-    accessInstructions:string;
-    scicatBaseUrl: string;
-    showLogoBanner:boolean;
-    logoBanner: string | null;
-    retrieveToEmail: RetrieveDestinations| undefined;
+  production: boolean;
+  facility: string;
+  oaiProviderRoute: string;
+  doiBaseUrl: string;
+  directMongoAccess: boolean;
+  accessDataHref: string;
+  accessInstructions: string;
+  scicatBaseUrl: string;
+  showLogoBanner: boolean;
+  logoBanner: string | null;
+  retrieveToEmail: RetrieveDestinations | undefined;
 }
 
 export class RetrieveDestinations {
-    title: string;
-    option: string;
-    username: string;
-    confirmMessage: string| undefined;
- }
+  title: string;
+  option: string;
+  username: string;
+  confirmMessage: string | undefined;
+}
 
-@Injectable({ providedIn: "root"})
+@Injectable({ providedIn: "root" })
 export class AppConfigService {
   private appConfig: object = {};
 

@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { APP_INITIALIZER,NgModule } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,7 +19,6 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
   return () => appTheme.loadTheme();
 };
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,7 +28,7 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
     BrowserModule,
     MatToolbarModule,
     SDKBrowserModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -39,7 +38,7 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
       multi: true,
       deps: [APP_DYN_CONFIG],
     },
-    { provide: APP_DYN_CONFIG, useClass: AppConfigService},
+    { provide: APP_DYN_CONFIG, useClass: AppConfigService },
     {
       provide: APP_INITIALIZER,
       useFactory: appThemeInitializerFn,
@@ -47,9 +46,7 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
       deps: [AppThemeService],
     },
     AppThemeService,
-    HttpClientModule
-
-  ]
+    HttpClientModule,
+  ],
 })
-
 export class AppModule {}

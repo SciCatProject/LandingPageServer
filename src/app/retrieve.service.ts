@@ -17,7 +17,7 @@ export class RetrieveService {
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
-    private datasourceService: DatasourceService
+    private datasourceService: DatasourceService,
   ) {
     this.config = this.appConfigService.getConfig();
     this.retrieveToEmail = this.config.retrieveToEmail;

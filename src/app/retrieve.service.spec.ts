@@ -2,10 +2,13 @@ import { TestBed, waitForAsync } from "@angular/core/testing";
 import { APP_CONFIG, AppConfigModule } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
 import { RetrieveService } from "./retrieve.service";
-import { MockAppConfigService, MockDatasourceService } from "./shared/MockStubs";
+import {
+  MockAppConfigService,
+  MockDatasourceService,
+} from "./shared/MockStubs";
 import { Job } from "./shared/sdk";
 import { HttpClientModule } from "@angular/common/http";
-import { APP_DYN_CONFIG, AppConfigService } from "./app-config.service";
+import { APP_DYN_CONFIG } from "./app-config.service";
 
 describe("ArchivingService", () => {
   let service: RetrieveService;
@@ -14,15 +17,15 @@ describe("ArchivingService", () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, AppConfigModule],
       providers: [
-        {provide: APP_DYN_CONFIG, useClass: MockAppConfigService},
+        { provide: APP_DYN_CONFIG, useClass: MockAppConfigService },
         RetrieveService,
         { provide: DatasourceService, useClass: MockDatasourceService },
         {
           provide: APP_CONFIG,
           useValue: {
             production: false,
-          }
-        }
+          },
+        },
       ],
     });
     service = TestBed.inject(RetrieveService);
@@ -42,7 +45,7 @@ describe("ArchivingService", () => {
         width: "auto",
         data: {
           title: "An email",
-          confirmMessage: "aMessage"
+          confirmMessage: "aMessage",
         },
       });
     });
@@ -58,18 +61,17 @@ describe("ArchivingService", () => {
         new Job({
           jobParams: {
             username: "lp_service",
-            option: "URLs"
+            option: "URLs",
           },
           emailJobInitiator: "test@email.com",
           creationTime: new Date("2023-01-01"),
           datasetList: [
-            {pid: "pid1", files: []},
-            {pid: "pid2", files: []}
+            { pid: "pid1", files: [] },
+            { pid: "pid2", files: [] },
           ],
           type: "public",
-        })
+        }),
       );
     });
   });
-
 });

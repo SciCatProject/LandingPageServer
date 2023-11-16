@@ -5,7 +5,11 @@ import { map } from "rxjs/operators";
 import { PublishedData } from "./shared/sdk/models";
 import { DatePipe } from "@angular/common";
 import { Observable } from "rxjs";
-import { APP_DYN_CONFIG, AppConfigService, AppConfig as Config } from "./app-config.service";
+import {
+  APP_DYN_CONFIG,
+  AppConfigService,
+  AppConfig as Config,
+} from "./app-config.service";
 
 @Injectable()
 export class OAIService {
@@ -16,7 +20,7 @@ export class OAIService {
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private httpClient: HttpClient,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
   ) {
     this.config = this.appConfigService.getConfig();
     this.oaiServerUri = this.config.oaiProviderRoute;
@@ -42,13 +46,13 @@ export class OAIService {
         if (response) {
           return response.map((pub: PublishedData) => {
             pub.registeredTime = new Date(
-              this.datePipe.transform(pub.registeredTime, "yyyy-MM-dd HH:mm")
+              this.datePipe.transform(pub.registeredTime, "yyyy-MM-dd HH:mm"),
             );
             return pub;
           });
         }
         return [];
-      })
+      }),
     );
   }
 

@@ -13,5 +13,5 @@ export const environment = {
   oaiProviderRoute: null,
   production: true,
   scicatBaseUrl: "https://scicat-test.maxiv.lu.se",
-  showLogoBanner: false
+  showLogoBanner: false,
 };
