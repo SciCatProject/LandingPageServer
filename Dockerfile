@@ -1,4 +1,4 @@
-FROM node:16-alpine AS builder
+FROM node:20-alpine AS builder
 
 RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
 RUN apk update && apk upgrade && \
@@ -24,7 +24,7 @@ COPY --chown=node:node . /home/node/app/
 # Build app
 RUN npx ng build --configuration=${env}
 
-FROM nginx:1.23.3-alpine
+FROM nginx:alpine
 
 RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
 RUN rm -rf /usr/share/nginx/html/*
