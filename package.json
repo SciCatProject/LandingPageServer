@@ -6,7 +6,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "postinstall": "ngcc",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --source-map=false",
