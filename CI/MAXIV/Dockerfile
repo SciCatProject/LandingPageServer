@@ -1,4 +1,4 @@
-FROM node:14-alpine AS builder
+FROM node:18-alpine AS builder
 
 RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
 RUN apk update && apk upgrade && \
