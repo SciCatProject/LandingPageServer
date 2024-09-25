@@ -111,7 +111,7 @@ export class MockAppConfigService extends AppConfigService {
     accessInstructions:
       "Instructions: Login with brightness username and password",
     scicatBaseUrl: "https://scicat.esss.se",
-    lbBaseUrl: "https://scicat.esss.se",
+    lbBaseURL: "https://scicat.esss.se/api",
     retrieveToEmail: {
       option: "URLs",
       username: "lp_service",
