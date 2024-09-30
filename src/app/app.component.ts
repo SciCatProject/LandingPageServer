@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    LoopBackConfig.setBaseURL(this.config.lbBaseURL);
+    LoopBackConfig.setBaseURL(this.config.lbBaseUrl);
     console.log("API Path: ", LoopBackConfig.getPath());
     console.log("API Version: ", LoopBackConfig.getApiVersion());
   }

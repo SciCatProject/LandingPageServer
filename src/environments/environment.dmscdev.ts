@@ -9,7 +9,7 @@ export const environment = {
   directMongoAccess: true,
   doiBaseUrl: "https://doi.org/",
   facility: "ess",
-  lbBaseURL: "https://catamelservice.esss.dk:30003",
+  lbBaseUrl: "https://catamelservice.esss.dk:30003",
   oaiProviderRoute: null,
   production: false,
   scicatBaseUrl: "https://scicat.esss.se",

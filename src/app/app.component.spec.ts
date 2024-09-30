@@ -42,7 +42,7 @@ describe("AppComponent", () => {
     const app = fixture.componentInstance;
     fixture.detectChanges();
     expect(app.config.scicatBaseUrl).toEqual("https://scicat.esss.se");
-    expect(app.config.lbBaseURL).toEqual("https://scicat.esss.se/api");
+    expect(app.config.lbBaseUrl).toEqual("https://scicat.esss.se/api");
     expect(LoopBackConfig.getPath()).toEqual("https://scicat.esss.se/api");
   }));
 });
