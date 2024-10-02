@@ -9,7 +9,7 @@ export const environment = {
   directMongoAccess: true,
   doiBaseUrl: "https://doi.org/",
   facility: "maxiv",
-  lbBaseURL: "https://scicat-demo.maxiv.lu.se",
+  lbBaseUrl: "https://scicat-demo.maxiv.lu.se",
   oaiProviderRoute: null,
   production: true,
   scicatBaseUrl: "https://scicat-demo.maxiv.lu.se",

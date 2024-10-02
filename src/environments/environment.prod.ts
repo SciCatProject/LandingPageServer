@@ -6,7 +6,7 @@ export const environment = {
   directMongoAccess: false,
   doiBaseUrl: "https://doi.org/",
   facility: "psi",
-  lbBaseURL: "https://doi.psi.ch:3001",
+  lbBaseUrl: "https://doi.psi.ch:3001",
   oaiProviderRoute: "https://doi.psi.ch/oaipmh/Publication",
   production: true,
   scicatBaseUrl: null,

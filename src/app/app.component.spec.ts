@@ -1,4 +1,4 @@
-import { TestBed, waitForAsync } from "@angular/core/testing";
+import { fakeAsync, TestBed, waitForAsync } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
 import { APP_CONFIG } from "./app-config.module";
@@ -6,6 +6,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { HttpClientModule } from "@angular/common/http";
 import { APP_DYN_CONFIG } from "./app-config.service";
 import { MockAppConfigService } from "./shared/MockStubs";
+import { LoopBackConfig } from "./shared/sdk";
 
 describe("AppComponent", () => {
   beforeEach(waitForAsync(() => {
@@ -35,4 +36,13 @@ describe("AppComponent", () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual("ESS Public Data Repository test");
   });
+
+  it(`should test app config values'`, fakeAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(app.config.scicatBaseUrl).toEqual("https://scicat.esss.se");
+    expect(app.config.lbBaseUrl).toEqual("https://scicat.esss.se/api");
+    expect(LoopBackConfig.getPath()).toEqual("https://scicat.esss.se/api");
+  }));
 });

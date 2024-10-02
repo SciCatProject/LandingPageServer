@@ -19,6 +19,7 @@ export interface AppConfig {
   logoBanner: string | null;
   logoWidth?: string;
   retrieveToEmail: RetrieveDestinations | undefined;
+  lbBaseUrl: string | null;
 }
 
 export class RetrieveDestinations {
