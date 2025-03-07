@@ -92,6 +92,10 @@ export class PublisheddataDetailsComponent implements OnInit {
     };
   }
 
+  encodeUriComponent(value: string): string {
+    return encodeURIComponent(value);
+  }
+
   ngOnInit(): void {
     const params = this.route.snapshot.params;
     const id: string =
