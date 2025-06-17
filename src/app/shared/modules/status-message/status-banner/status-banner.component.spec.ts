@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { StatusBannerComponent } from './status-banner.component';
-import { APP_CONFIG } from 'src/app/app-config.module';
+import { StatusBannerComponent } from "./status-banner.component";
+import { APP_CONFIG } from "src/app/app-config.module";
 
-describe('StatusBannerComponent', () => {
+describe("StatusBannerComponent", () => {
   let component: StatusBannerComponent;
   let fixture: ComponentFixture<StatusBannerComponent>;
 
@@ -29,7 +29,7 @@ describe('StatusBannerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
