@@ -14,6 +14,7 @@ import {
 })
 export class AppComponent implements OnInit {
   title = "Public Data Repository";
+  showStatusBanner = false;
 
   config: Config;
 
@@ -36,5 +37,6 @@ export class AppComponent implements OnInit {
     LoopBackConfig.setBaseURL(this.config.lbBaseUrl);
     console.log("API Path: ", LoopBackConfig.getPath());
     console.log("API Version: ", LoopBackConfig.getApiVersion());
+    this.showStatusBanner = this.appConfig.statusCode !== "NONE";
   }
 }

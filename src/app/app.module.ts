@@ -10,6 +10,7 @@ import { SDKBrowserModule } from "./shared/sdk";
 import { APP_DYN_CONFIG, AppConfigService } from "./app-config.service";
 import { HttpClientModule } from "@angular/common/http";
 import { AppThemeService } from "./app-theme.service";
+import { StatusMessageModule } from "./shared/modules/status-message/status-message.module";
 
 const appConfigInitializerFn = (appConfig: AppConfigService) => {
   return () => appConfig.loadAppConfig();
@@ -27,6 +28,7 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
     BrowserAnimationsModule,
     BrowserModule,
     MatToolbarModule,
+    StatusMessageModule,
     SDKBrowserModule.forRoot(),
     HttpClientModule,
   ],
