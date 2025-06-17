@@ -1,3 +1,8 @@
+<app-status-banner
+  *ngIf="showStatusBanner"
+  (dismiss)="showStatusBanner = false"
+></app-status-banner>
+
 <mat-toolbar class="mat-elevation-z1" color="primary">
   <mat-toolbar-row>
     <span class="spacer">{{ title }}</span>

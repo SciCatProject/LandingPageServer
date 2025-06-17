@@ -19,6 +19,8 @@ export class AppConfig {
     username: string;
     confirmMessage?: string;
   } | undefined = undefined;
+  statusMessage = "";
+  statusCode: "INFO" | "WARN" | "NONE" = "NONE";
 }
 
 export const APP_DI_CONFIG: AppConfig = {
@@ -32,6 +34,9 @@ export const APP_DI_CONFIG: AppConfig = {
   scicatBaseUrl: environment.scicatBaseUrl ?? "",
   showLogoBanner: environment.showLogoBanner ?? false,
   retrieveToEmail: environment["retrieveToEmail"] ?? undefined,
+  statusMessage: environment["statusMessage"] || "",
+  statusCode: (["INFO", "WARN", "NONE"].includes(environment["statusCode"])
+    ? environment["statusCode"] : "NONE") as "INFO" | "WARN" | "NONE",
 };
 
 @NgModule({

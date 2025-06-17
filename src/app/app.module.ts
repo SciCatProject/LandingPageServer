@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppConfigModule } from "./app-config.module";
 import { SDKBrowserModule } from "./shared/sdk";
+import { StatusMessageModule } from "./shared/modules/status-message/status-message.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { SDKBrowserModule } from "./shared/sdk";
     BrowserAnimationsModule,
     BrowserModule,
     MatToolbarModule,
+    StatusMessageModule,
     SDKBrowserModule.forRoot(),
   ],
   bootstrap: [AppComponent],

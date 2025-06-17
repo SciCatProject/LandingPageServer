@@ -1,0 +1,7 @@
+<mat-toolbar [color]="bannerColor" style="height: 32px">
+  <span [innerHTML]="appConfig.statusMessage"></span>
+  <span class="spacer"></span>
+  <button mat-icon-button aria-label="Dismiss" (click)="onDismiss()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>

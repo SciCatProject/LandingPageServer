@@ -11,6 +11,7 @@ import { environment } from "../environments/environment";
 })
 export class AppComponent implements OnInit {
   title = "Public Data Repository";
+  showStatusBanner = false;
 
   constructor(
     private titleService: Title,
@@ -29,5 +30,6 @@ export class AppComponent implements OnInit {
     LoopBackConfig.setBaseURL(environment.lbBaseURL);
     console.log("API Path: ", LoopBackConfig.getPath());
     console.log("API Version: ", LoopBackConfig.getApiVersion());
+    this.showStatusBanner = this.appConfig.statusCode !== "NONE";
   }
 }
