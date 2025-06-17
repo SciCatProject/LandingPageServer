@@ -1,3 +1,17 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.toolbar {
+  height: 32px;
+}
+
+@media (max-width: 800px) {
+  .toolbar {
+    height: 64px;
+  }
+  .status-message {
+    text-wrap: wrap;
+    font-size: 16px;
+  }
+}
