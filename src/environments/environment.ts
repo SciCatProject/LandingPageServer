@@ -14,6 +14,8 @@ export const environment = {
   production: false,
   scicatBaseUrl: "https://scicat.esss.se",
   showLogoBanner: true,
+  statusMessage: "hello",
+  statusCode: "INFO",
 };
 
 /*
