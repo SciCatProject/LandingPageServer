@@ -13,12 +13,14 @@ export class AppConfig {
   accessInstructions = "";
   scicatBaseUrl = "";
   showLogoBanner = true;
-  retrieveToEmail: {
-    title: string; 
-    option: string; 
-    username: string;
-    confirmMessage?: string;
-  } | undefined = undefined;
+  retrieveToEmail:
+    | {
+        title: string;
+        option: string;
+        username: string;
+        confirmMessage?: string;
+      }
+    | undefined = undefined;
   statusMessage = "";
   statusCode: "INFO" | "WARN" | "NONE" = "NONE";
 }
@@ -36,7 +38,8 @@ export const APP_DI_CONFIG: AppConfig = {
   retrieveToEmail: environment["retrieveToEmail"] ?? undefined,
   statusMessage: environment["statusMessage"] || "",
   statusCode: (["INFO", "WARN", "NONE"].includes(environment["statusCode"])
-    ? environment["statusCode"] : "NONE") as "INFO" | "WARN" | "NONE",
+    ? environment["statusCode"]
+    : "NONE") as "INFO" | "WARN" | "NONE",
 };
 
 @NgModule({

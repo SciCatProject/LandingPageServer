@@ -5,18 +5,9 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 
-
-
 @NgModule({
-  declarations: [
-    StatusBannerComponent
-  ],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule
-  ],
+  declarations: [StatusBannerComponent],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
   exports: [StatusBannerComponent],
 })
-export class StatusMessageModule { }
+export class StatusMessageModule {}

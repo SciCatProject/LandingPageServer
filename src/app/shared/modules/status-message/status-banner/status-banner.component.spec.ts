@@ -9,7 +9,7 @@ describe("StatusBannerComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatusBannerComponent ],
+      declarations: [StatusBannerComponent],
       providers: [
         {
           provide: APP_CONFIG,
@@ -19,8 +19,7 @@ describe("StatusBannerComponent", () => {
           },
         },
       ],
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
