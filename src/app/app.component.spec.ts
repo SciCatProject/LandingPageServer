@@ -7,11 +7,17 @@ import { HttpClientModule } from "@angular/common/http";
 import { APP_DYN_CONFIG } from "./app-config.service";
 import { MockAppConfigService } from "./shared/MockStubs";
 import { LoopBackConfig } from "./shared/sdk";
+import { StatusMessageModule } from "./shared/modules/status-message/status-message.module";
 
 describe("AppComponent", () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MatToolbarModule, RouterTestingModule, HttpClientModule],
+      imports: [
+        MatToolbarModule,
+        RouterTestingModule,
+        HttpClientModule,
+        StatusMessageModule,
+      ],
       declarations: [AppComponent],
       providers: [
         {
