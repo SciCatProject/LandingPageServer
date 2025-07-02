@@ -3,15 +3,32 @@
 }
 
 .toolbar {
-  height: 32px;
+  min-height: 32px;
+  height: fit-content;
 }
 
+.status-message {
+  text-wrap: wrap;
+}
+
+.toolbar-WARN {
+  background-color: #FEEFB3;
+  color: #9F6000;
+}
+
+.toolbar-INFO {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+
 @media (max-width: 800px) {
-  .toolbar {
-    height: 64px;
-  }
   .status-message {
-    text-wrap: wrap;
     font-size: 16px;
   }
+}
+
+:host ::ng-deep a {
+  text-decoration: underline;
+  color: inherit;
 }
