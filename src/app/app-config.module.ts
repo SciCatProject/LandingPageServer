@@ -7,6 +7,7 @@ export class AppConfig {
   production = true;
   statusMessage = "";
   statusCode: "INFO" | "WARN" | "NONE" = "NONE";
+  contactEmail = "";
 }
 
 export const APP_DI_CONFIG: AppConfig = {
@@ -15,6 +16,7 @@ export const APP_DI_CONFIG: AppConfig = {
   statusCode: (["INFO", "WARN", "NONE"].includes(environment["statusCode"])
     ? environment["statusCode"]
     : "NONE") as "INFO" | "WARN" | "NONE",
+  contactEmail: environment["contactEmail"] || "",
 };
 
 @NgModule({
