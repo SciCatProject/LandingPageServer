@@ -1,4 +1,4 @@
-<mat-toolbar [color]="bannerColor" [class]='["toolbar", "toolbar-" + appConfig.statusCode]'>
+<mat-toolbar [class]='["toolbar", "toolbar-" + appConfig.statusCode]'>
   <span [innerHTML]="appConfig.statusMessage" class="status-message"></span>
   <span class="spacer"></span>
   <button mat-icon-button aria-label="Dismiss" (click)="onDismiss()">

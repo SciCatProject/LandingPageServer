@@ -14,15 +14,4 @@ export class StatusBannerComponent {
   onDismiss() {
     this.dismiss.emit();
   }
-
-  get bannerColor() {
-    switch (this.appConfig.statusCode) {
-      case "INFO":
-        return "accent";
-      case "WARN":
-        return "warn";
-      default:
-        return "";
-    }
-  }
 }
