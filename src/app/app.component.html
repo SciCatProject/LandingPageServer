@@ -12,6 +12,13 @@
 
 <router-outlet></router-outlet>
 
-<mat-toolbar class="footer" *ngIf="config.showLogoBanner">
-  <img src="../assets/{{ config.logoBanner }}" width="{{ config.logoWidth }}" alt="logo_banner" />
-</mat-toolbar>
+<footer class="footer">
+  <mat-toolbar class="logo-banner" *ngIf="config.showLogoBanner">
+    <img src="../assets/{{ config.logoBanner }}" width="{{ config.logoWidth }}" alt="logo_banner" />
+  </mat-toolbar>
+
+  <address *ngIf="appConfig.contactEmail">
+    If you have any questions or need help, please contact <a href="mailto:{{ appConfig.contactEmail }}">{{
+      appConfig.contactEmail }}</a>.
+  </address>
+</footer>
