@@ -1,4 +1,9 @@
 /* AppComponent's private CSS styles */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 .header {
   position: sticky;
@@ -7,8 +12,18 @@
 }
 
 .footer {
+  margin-top: auto;
+}
+
+.logo-banner {
   height: 77px;
   justify-content: center;
+}
+
+address {
+  font-size: 16px;
+  padding: 0.5em;
+  background-color: whitesmoke;
 }
 
 .spacer {
