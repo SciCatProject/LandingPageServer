@@ -1,6 +1,5 @@
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { map } from "rxjs/operators";
 import { PublishedData } from "./shared/sdk/models";
 import { DatePipe } from "@angular/common";
@@ -17,7 +16,6 @@ export class OAIService {
   private config: Config;
 
   constructor(
-    @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private httpClient: HttpClient,
     private datePipe: DatePipe,

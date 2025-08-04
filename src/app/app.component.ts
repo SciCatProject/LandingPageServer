@@ -1,4 +1,3 @@
-import { APP_CONFIG, AppConfig } from "./app-config.module";
 import { Component, Inject, OnInit } from "@angular/core";
 import { LoopBackConfig } from "./shared/sdk";
 import { Title } from "@angular/platform-browser";
@@ -20,13 +19,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    @Inject(APP_CONFIG) public appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
   ) {
     this.config = this.appConfigService.getConfig();
     const facility = this.config.facility ?? "";
     let status = "test";
-    if (this.appConfig.production === true) {
+    if (this.config.production === true) {
       status = "";
     }
     this.title = facility.toUpperCase() + " Public Data Repository " + status;
@@ -37,6 +35,6 @@ export class AppComponent implements OnInit {
     LoopBackConfig.setBaseURL(this.config.lbBaseUrl);
     console.log("API Path: ", LoopBackConfig.getPath());
     console.log("API Version: ", LoopBackConfig.getApiVersion());
-    this.showStatusBanner = this.appConfig.statusCode !== "NONE";
+    this.showStatusBanner = this.config.statusCode !== "NONE";
   }
 }

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { PublisheddataDetailsComponent } from "./publisheddata-details.component";
-import { APP_CONFIG, AppConfigModule } from "../app-config.module";
 import {
   MockActivatedRoute,
   MockAppConfigService,
@@ -30,20 +29,8 @@ describe("PublisheddataDetailsComponent", () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [PublisheddataDetailsComponent],
-      imports: [
-        MatCardModule,
-        DialogModule,
-        HttpClientModule,
-        AppConfigModule,
-        AppModule,
-      ],
+      imports: [MatCardModule, DialogModule, HttpClientModule, AppModule],
       providers: [
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            production: false,
-          },
-        },
         { provide: APP_DYN_CONFIG, useClass: MockAppConfigService },
         { provide: ActivatedRoute, useClass: MockActivatedRoute },
         { provide: DatasourceService, useClass: MockDatasourceService },

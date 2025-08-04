@@ -1,7 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { OAIService } from "./oai.service";
 import { PublishedDataService } from "./published-data.service";
 import { Job, PublishedData } from "./shared/sdk";
@@ -16,7 +15,6 @@ export class DatasourceService {
   private directMongoAccess;
   private config: Config;
   constructor(
-    @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private oaiService: OAIService,
     private publishedDataService: PublishedDataService,

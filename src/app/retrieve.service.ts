@@ -1,6 +1,5 @@
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AppConfig, APP_CONFIG } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
 import { Job } from "./shared/sdk/models";
 import {
@@ -15,7 +14,6 @@ export class RetrieveService {
   private retrieveToEmail: RetrieveDestinations | undefined;
   private config: Config;
   constructor(
-    @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
   ) {
