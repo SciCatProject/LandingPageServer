@@ -1,7 +1,6 @@
 import { fakeAsync, TestBed, waitForAsync } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
-import { APP_CONFIG } from "./app-config.module";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { HttpClientModule } from "@angular/common/http";
 import { APP_DYN_CONFIG } from "./app-config.service";
@@ -19,15 +18,7 @@ describe("AppComponent", () => {
         StatusMessageModule,
       ],
       declarations: [AppComponent],
-      providers: [
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            production: false,
-          },
-        },
-        { provide: APP_DYN_CONFIG, useClass: MockAppConfigService },
-      ],
+      providers: [{ provide: APP_DYN_CONFIG, useClass: MockAppConfigService }],
     }).compileComponents();
   }));
 

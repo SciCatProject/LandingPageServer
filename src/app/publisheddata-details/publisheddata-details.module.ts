@@ -7,7 +7,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { FlexLayoutModule } from "@ngbracket/ngx-layout";
 import { PipesModule } from "../shared/pipes/pipes.module";
 import { DatasourceService } from "../datasource.service";
-import { AppConfigModule } from "../app-config.module";
 import { DialogModule } from "../shared/modules/dialog/dialog.module";
 import { RetrieveService } from "../retrieve.service";
 import { PublishedDataService } from "../published-data.service";
@@ -17,7 +16,6 @@ import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [PublisheddataDetailsComponent],
   imports: [
-    AppConfigModule,
     CommonModule,
     FlexLayoutModule,
     MatButtonModule,
@@ -28,7 +26,6 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule,
   ],
   providers: [
-    AppConfigModule,
     DatasourceService,
     DatePipe,
     OAIService,

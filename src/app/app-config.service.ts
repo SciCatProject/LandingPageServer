@@ -4,7 +4,9 @@ import { timeout } from "rxjs/operators";
 import { environment } from "../environments/environment";
 import { InjectionToken } from "@angular/core";
 
-export const APP_DYN_CONFIG = new InjectionToken<AppConfig>("app.dyn.config");
+export const APP_DYN_CONFIG = new InjectionToken<AppConfigService>(
+  "app.dyn.config",
+);
 
 export interface AppConfig {
   production: boolean;
@@ -20,6 +22,9 @@ export interface AppConfig {
   logoWidth?: string;
   retrieveToEmail: RetrieveDestinations | undefined;
   lbBaseUrl: string | null;
+  statusMessage: string;
+  statusCode: "INFO" | "WARN" | "NONE";
+  contactEmail: string;
 }
 
 export class RetrieveDestinations {
@@ -31,32 +36,45 @@ export class RetrieveDestinations {
 
 @Injectable({ providedIn: "root" })
 export class AppConfigService {
-  private appConfig: object = {};
+  private appConfig: AppConfig = {} as AppConfig;
 
   constructor(private http: HttpClient) {}
 
   async loadAppConfig(): Promise<void> {
     try {
-      this.appConfig = await this.http
+      this.appConfig = (await this.http
         .get("/config")
         .pipe(timeout(2000))
-        .toPromise();
+        .toPromise()) as AppConfig;
     } catch (err) {
       console.log("No config available in backend, trying with local config.");
       try {
-        this.appConfig = await this.http.get("/assets/config.json").toPromise();
+        this.appConfig = (await this.http
+          .get("/assets/config.json")
+          .toPromise()) as AppConfig;
       } catch (err) {
         console.log("No config provided, using environment");
-        this.appConfig = environment;
+        this.appConfig = environment as AppConfig;
       }
     }
     // Use old default if not provided
 
-    (this.appConfig as AppConfig).logoWidth =
-      (this.appConfig as AppConfig)?.logoWidth ?? "412";
+    this.appConfig.logoWidth = this.appConfig?.logoWidth ?? "412";
+
+    // Parse status-banner related config if exists or set defaults
+    this.appConfig = {
+      ...this.appConfig,
+      statusMessage: this.appConfig["statusMessage"] || "",
+      statusCode: (["INFO", "WARN", "NONE"].includes(
+        this.appConfig["statusCode"],
+      )
+        ? this.appConfig["statusCode"]
+        : "NONE") as "INFO" | "WARN" | "NONE",
+      contactEmail: this.appConfig["contactEmail"] || "",
+    };
   }
 
   getConfig(): AppConfig {
-    return this.appConfig as AppConfig;
+    return this.appConfig;
   }
 }

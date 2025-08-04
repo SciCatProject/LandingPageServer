@@ -1,5 +1,4 @@
 import { TestBed, waitForAsync } from "@angular/core/testing";
-import { APP_CONFIG, AppConfigModule } from "./app-config.module";
 import { DatasourceService } from "./datasource.service";
 import { RetrieveService } from "./retrieve.service";
 import {
@@ -15,17 +14,11 @@ describe("ArchivingService", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, AppConfigModule],
+      imports: [HttpClientModule],
       providers: [
         { provide: APP_DYN_CONFIG, useClass: MockAppConfigService },
         RetrieveService,
         { provide: DatasourceService, useClass: MockDatasourceService },
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            production: false,
-          },
-        },
       ],
     });
     service = TestBed.inject(RetrieveService);

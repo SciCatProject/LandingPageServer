@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { DashboardComponent } from "./dashboard.component";
-import { APP_CONFIG } from "../app-config.module";
 import { Router } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { DatePipe } from "@angular/common";
@@ -28,13 +27,6 @@ describe("DashboardComponent", () => {
       imports: [MatCardModule, TableModule, HttpClientModule],
       providers: [
         DatePipe,
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            facility: "ess",
-            directMongoAccess: true,
-          },
-        },
         { provide: APP_DYN_CONFIG, useClass: MockAppConfigService },
         { provide: Router, useValue: router },
         { provide: DatasourceService, useClass: MockDatasourceService },

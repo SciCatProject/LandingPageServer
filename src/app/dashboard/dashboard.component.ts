@@ -1,4 +1,3 @@
-import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { Component, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
@@ -61,7 +60,6 @@ export class DashboardComponent {
   config: Config;
 
   constructor(
-    @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
     private router: Router,

@@ -1,5 +1,9 @@
 import { Component, Inject, Output, EventEmitter } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "src/app/app-config.module";
+import {
+  APP_DYN_CONFIG,
+  AppConfig,
+  AppConfigService,
+} from "src/app/app-config.service";
 
 @Component({
   selector: "app-status-banner",
@@ -8,8 +12,13 @@ import { APP_CONFIG, AppConfig } from "src/app/app-config.module";
 })
 export class StatusBannerComponent {
   @Output() dismiss = new EventEmitter<void>();
+  appConfig: AppConfig;
 
-  constructor(@Inject(APP_CONFIG) public appConfig: AppConfig) {}
+  constructor(
+    @Inject(APP_DYN_CONFIG) public appConfigService: AppConfigService,
+  ) {
+    this.appConfig = this.appConfigService.getConfig();
+  }
 
   onDismiss() {
     this.dismiss.emit();

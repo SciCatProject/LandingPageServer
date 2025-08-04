@@ -3,7 +3,6 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { PublishedData } from "../shared/sdk/models";
 import { map } from "rxjs/operators";
-import { APP_CONFIG, AppConfig } from "../app-config.module";
 import { DatasourceService } from "../datasource.service";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { Dataset, Organization, Person, WithContext } from "schema-dts";
@@ -27,13 +26,12 @@ export class PublisheddataDetailsComponent implements OnInit {
   publicationJson$ = new Observable<string>();
 
   doiBaseUrl: string;
-  productionMode = this.appConfig.production;
+  productionMode: boolean;
   accessDataHref: string;
   show = false;
 
   config: Config;
   constructor(
-    @Inject(APP_CONFIG) public appConfig: AppConfig,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
     private datasourceService: DatasourceService,
     private route: ActivatedRoute,
@@ -44,6 +42,7 @@ export class PublisheddataDetailsComponent implements OnInit {
     this.config = this.appConfigService.getConfig();
     this.accessDataHref = this.config.accessDataHref;
     this.doiBaseUrl = this.config.doiBaseUrl;
+    this.productionMode = this.config.production;
   }
 
   onPidClick(pid: string): void {
