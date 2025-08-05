@@ -62,7 +62,15 @@ e2e tests check content is rendered correctly
 npm run e2e
 ```
 
+### Configuration
+Config can be set in one of the three ways, _in decreasing order of precedence_ (see [app-config.service](src/app/app-config.service.ts)):
+1. By returning an AppConfig with a backend `/config` endpoint
+2. By serving the AppConfig stored as static asset in [/assets/config.json](src/assets/config.example.json), or
+3. By exporting it from a TypeScript file from [environmets/environment.ts](src/environments/environment.ts). The `environment.ts` file gets replaced based on build configuration passed to `ng build` (See [angular.json](./angular.json)).
 
+While many settings in AppConfig are self-explanatory, the following optional settings pertain to optional features:
+- `statusCode`: Can be set to `INFO`, `WARN`, or `NONE` to show a status banner at the top of the page. The message can be set with `statusMessage`.
+- `contactEmail`: If set, a message with contact email will be shown in the footer of the page.
 
 ## Deployment
 

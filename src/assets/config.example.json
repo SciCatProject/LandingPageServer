@@ -1,0 +1,15 @@
+{
+  "accessDataHref": null,
+  "accessInstructions": "Instructions: Login with brightness username and password",
+  "directMongoAccess": true,
+  "doiBaseUrl": "https://doi.org/",
+  "facility": "ess",
+  "lbBaseUrl": "http://localhost:3000",
+  "oaiProviderRoute": "http://localhost:3001",
+  "production": false,
+  "scicatBaseUrl": "http://localhost",
+  "showLogoBanner": true,
+  "statusCode": "INFO",
+  "statusMessage": "This is a customizable status message",
+  "contactEmail": "support@scicat.eu"
+}
