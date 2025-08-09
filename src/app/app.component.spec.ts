@@ -7,6 +7,8 @@ import { APP_DYN_CONFIG } from "./app-config.service";
 import { MockAppConfigService } from "./shared/MockStubs";
 import { LoopBackConfig } from "./shared/sdk";
 import { StatusMessageModule } from "./shared/modules/status-message/status-message.module";
+import { Router } from "@angular/router";
+import { By } from "@angular/platform-browser";
 
 describe("AppComponent", () => {
   beforeEach(waitForAsync(() => {
@@ -42,4 +44,18 @@ describe("AppComponent", () => {
     expect(app.config.lbBaseUrl).toEqual("https://scicat.esss.se/api");
     expect(LoopBackConfig.getPath()).toEqual("https://scicat.esss.se/api");
   }));
+
+  it(`should navigate to home when clicking the title'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const router = TestBed.inject(Router);
+    const navigateSpy = spyOn(router, "navigate");
+
+    const titleEl = fixture.debugElement.query(By.css(".title-click"));
+    expect(titleEl).toBeTruthy();
+
+    titleEl.nativeElement.click();
+    expect(navigateSpy).toHaveBeenCalledWith(["/"]);
+  });
 });
