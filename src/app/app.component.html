@@ -5,7 +5,9 @@
 
 <mat-toolbar class="mat-elevation-z1" color="primary">
   <mat-toolbar-row>
-    <span class="spacer">{{ title }}</span>
+    <span class="spacer">
+      <span class="title-click" (click)="navigateHome()">{{ title }}</span>
+    </span>
     <span id="doiValue"></span>
   </mat-toolbar-row>
 </mat-toolbar>
