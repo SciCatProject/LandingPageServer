@@ -21,7 +21,7 @@
 **/
 export class LoopBackConfig {
   private static path: string = '//0.0.0.0:3000';
-  private static version: string | number = 'api/v3';
+  private static version: string | number = 'api/v4';
   private static authPrefix: string = '';
   private static debug: boolean = true;
   private static filterOn: string = 'headers';
