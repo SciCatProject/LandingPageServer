@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoopBackConfig } from "./shared/sdk";
 import { Title } from "@angular/platform-browser";
 import {
@@ -6,6 +7,7 @@ import {
   AppConfigService,
   AppConfig as Config,
 } from "./app-config.service";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -14,12 +16,12 @@ import {
 export class AppComponent implements OnInit {
   title = "Public Data Repository";
   showStatusBanner = false;
-
   config: Config;
 
   constructor(
     private titleService: Title,
     @Inject(APP_DYN_CONFIG) private appConfigService: AppConfigService,
+    private router: Router,
   ) {
     this.config = this.appConfigService.getConfig();
     const facility = this.config.facility ?? "";
@@ -36,5 +38,9 @@ export class AppComponent implements OnInit {
     console.log("API Path: ", LoopBackConfig.getPath());
     console.log("API Version: ", LoopBackConfig.getApiVersion());
     this.showStatusBanner = this.config.statusCode !== "NONE";
+  }
+
+  navigateHome() {
+    this.router.navigate(["/"]);
   }
 }

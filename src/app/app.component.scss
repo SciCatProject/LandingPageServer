@@ -7,7 +7,7 @@
 
 .header {
   position: sticky;
-  position: -webkit-sticky;
+  top: 0;
   z-index: 1000;
 }
 
@@ -30,4 +30,10 @@ address {
 .spacer {
   flex: 1 1 auto;
   text-align: left;
+}
+
+.title-click {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
 }
