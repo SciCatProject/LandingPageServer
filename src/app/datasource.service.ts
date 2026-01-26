@@ -54,9 +54,11 @@ export class DatasourceService {
   ): string {
     return this.directMongoAccess
       ? JSON.stringify({
-          order: sortColumn + " " + sortDirection,
-          skip: itemsPerPage * currentPage,
-          limit: itemsPerPage,
+          limits: {
+            skip: itemsPerPage * currentPage,
+            limit: itemsPerPage,
+            order: sortColumn + ":" + sortDirection,
+          },
           fields: itemFields,
         })
       : "(" +
