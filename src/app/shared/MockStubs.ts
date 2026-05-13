@@ -107,20 +107,32 @@ export class MockAppConfigService extends AppConfigService {
     production: false,
     accessDataHref: "someurl",
     directMongoAccess: true,
-    facility: "ess",
+    facility: "the_facility",
     accessInstructions:
       "Instructions: Login with brightness username and password",
-    scicatBaseUrl: "https://scicat.esss.se",
-    lbBaseUrl: "https://scicat.esss.se/api",
+    scicatBaseUrl: "https://scicat.eu/scicat",
+    lbBaseUrl: "https://scicat.eu/api",
     retrieveToEmail: {
       option: "URLs",
       username: "lp_service",
       title: "An email",
       confirmMessage: "aMessage",
     },
-    showLogoBanner: true,
     oaiProviderRoute: null,
     logoBanner: "",
+    footerMessage: {
+      text: "For more information visit <strong>SciCat</strong>:",
+      links: [
+        {
+          label: "Data policy",
+          url: "https://scicat.eu/data-policy",
+        },
+        {
+          label: "Documentation",
+          url: "https://scicat.eu/documentation",
+        },
+      ],
+    },
   };
 
   async loadAppConfig(): Promise<void> {}

@@ -8,12 +8,24 @@ export const environment = {
     "Instructions: Login with brightness username and password",
   directMongoAccess: true,
   doiBaseUrl: "https://doi.org/",
-  facility: "ess",
+  facility: "the_facility",
   lbBaseUrl: "http://localhost:3000",
   oaiProviderRoute: "http://127.0.0.1:3001",
   production: false,
-  scicatBaseUrl: "https://scicat.esss.se",
-  showLogoBanner: true,
+  scicatBaseUrl: "http://localhost",
+  footerMessage: {
+    text: "For more information visit <strong>SciCat</strong>:",
+    links: [
+      {
+        label: "Data policy",
+        url: "https://scicat.eu/data-policy",
+      },
+      {
+        label: "Documentation",
+        url: "https://scicat.eu/documentation",
+      },
+    ],
+  },
 };
 
 /*

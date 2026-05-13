@@ -15,12 +15,15 @@
 <router-outlet></router-outlet>
 
 <footer class="footer">
-  <mat-toolbar class="logo-banner" *ngIf="config.showLogoBanner">
-    <img src="../assets/{{ config.logoBanner }}" width="{{ config.logoWidth }}" alt="logo_banner" />
-  </mat-toolbar>
-
   <address *ngIf="config.contactEmail">
     If you have any questions or need help, please contact <a href="mailto:{{ config.contactEmail }}">{{
       config.contactEmail }}</a>.
   </address>
+
+  <div class="footer-links" *ngIf="config.footerMessage as footerMessage">
+    <span *ngIf="footerMessage.text" [innerHTML]="footerMessage.text"></span>
+    <ng-container *ngFor="let link of footerMessage.links; let last = last">
+      <a [href]="link.url">{{ link.label }}</a><span *ngIf="!last"> | </span>
+    </ng-container>
+  </div>
 </footer>

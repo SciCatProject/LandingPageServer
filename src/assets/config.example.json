@@ -8,8 +8,20 @@
   "oaiProviderRoute": "http://localhost:3001",
   "production": false,
   "scicatBaseUrl": "http://localhost",
-  "showLogoBanner": true,
   "statusCode": "INFO",
   "statusMessage": "This is a customizable status message",
-  "contactEmail": "support@scicat.eu"
+  "contactEmail": "support@scicat.eu",
+  "footerMessage": {
+    "text": "For more information visit <strong>SciCat</strong>:",
+    "links": [
+      {
+        "label": "Data policy",
+        "url": "https://scicat.eu/data-policy"
+      },
+      {
+        "label": "Documentation",
+        "url": "https://scicat.eu/documentation"
+      }
+    ]
+  }
 }

@@ -30,19 +30,19 @@ describe("AppComponent", () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ESS Public Data Repository test'`, () => {
+  it("should set the title from the configured facility", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual("ESS Public Data Repository test");
+    expect(app.title).toEqual("THE_FACILITY Public Data Repository test");
   });
 
   it(`should test app config values'`, fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     fixture.detectChanges();
-    expect(app.config.scicatBaseUrl).toEqual("https://scicat.esss.se");
-    expect(app.config.lbBaseUrl).toEqual("https://scicat.esss.se/api");
-    expect(LoopBackConfig.getPath()).toEqual("https://scicat.esss.se/api");
+    expect(app.config.scicatBaseUrl).toEqual("https://scicat.eu/scicat");
+    expect(app.config.lbBaseUrl).toEqual("https://scicat.eu/api");
+    expect(LoopBackConfig.getPath()).toEqual("https://scicat.eu/api");
   }));
 
   it(`should navigate to home when clicking the title'`, () => {
@@ -57,5 +57,27 @@ describe("AppComponent", () => {
 
     titleEl.nativeElement.click();
     expect(navigateSpy).toHaveBeenCalledWith(["/"]);
+  });
+
+  it("should render footer message links from config", () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const footerLinks = fixture.debugElement.query(By.css(".footer-links"));
+    const anchors = footerLinks.queryAll(By.css("a"));
+
+    expect(footerLinks.nativeElement.textContent).toContain(
+      "For more information visit SciCat:",
+    );
+    expect(footerLinks.query(By.css("strong")).nativeElement.textContent).toBe(
+      "SciCat",
+    );
+    expect(anchors.length).toBe(2);
+    expect(anchors[0].nativeElement.textContent).toBe("Data policy");
+    expect(anchors[0].nativeElement.href).toBe("https://scicat.eu/data-policy");
+    expect(anchors[1].nativeElement.textContent).toBe("Documentation");
+    expect(anchors[1].nativeElement.href).toBe(
+      "https://scicat.eu/documentation",
+    );
   });
 });

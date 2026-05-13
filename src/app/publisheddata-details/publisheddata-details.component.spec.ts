@@ -24,7 +24,7 @@ describe("PublisheddataDetailsComponent", () => {
   let component: PublisheddataDetailsComponent;
   let fixture: ComponentFixture<PublisheddataDetailsComponent>;
 
-  const scicatBaseUrl = "https://scicat.esss.se";
+  const scicatBaseUrl = "https://scicat.eu/scicat";
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -87,8 +87,7 @@ describe("PublisheddataDetailsComponent", () => {
     });
 
     it("should return true if dataDescription is URL", () => {
-      const dataDescription =
-        "https://github.com/ess-dmsc/ess_file_formats/wiki/NeXus";
+      const dataDescription = "https://scicat.eu/dataset-description";
 
       const isUrl = component.isUrl(dataDescription);
 

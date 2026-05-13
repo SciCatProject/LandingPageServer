@@ -17,7 +17,6 @@ export interface AppConfig {
   accessDataHref: string;
   accessInstructions: string;
   scicatBaseUrl: string;
-  showLogoBanner: boolean;
   logoBanner: string | null;
   logoWidth?: string;
   retrieveToEmail: RetrieveDestinations | undefined;
@@ -25,6 +24,7 @@ export interface AppConfig {
   statusMessage: string;
   statusCode: "INFO" | "WARN" | "NONE";
   contactEmail: string;
+  footerMessage?: FooterMessage;
 }
 
 export class RetrieveDestinations {
@@ -32,6 +32,16 @@ export class RetrieveDestinations {
   option: string;
   username: string;
   confirmMessage: string | undefined;
+}
+
+interface FooterMessage {
+  text: string;
+  links: FooterMessageLink[];
+}
+
+interface FooterMessageLink {
+  label: string;
+  url: string;
 }
 
 @Injectable({ providedIn: "root" })
