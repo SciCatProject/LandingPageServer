@@ -38,7 +38,6 @@ describe("AppConfigService", () => {
       accessDataHref: "test-access",
       accessInstructions: "test-instructions",
       scicatBaseUrl: "test-scicat",
-      showLogoBanner: true,
       logoBanner: "test-logo",
       lbBaseUrl: "test-lb",
       statusMessage: "test-status",
@@ -65,7 +64,6 @@ describe("AppConfigService", () => {
       accessDataHref: "test-access",
       accessInstructions: "test-instructions",
       scicatBaseUrl: "test-scicat",
-      showLogoBanner: true,
       logoBanner: "test-logo",
       lbBaseUrl: "test-lb",
     };
