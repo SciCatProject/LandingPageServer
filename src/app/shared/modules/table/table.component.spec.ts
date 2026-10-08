@@ -6,12 +6,9 @@ import {
   SortChangeEvent,
   CheckboxEvent,
 } from "./table.component";
-import { NO_ERRORS_SCHEMA } from "@angular/core";
-import { MatListModule } from "@angular/material/list";
-import { MatTableModule } from "@angular/material/table";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { TableModule } from "./table.module";
 import { MatCheckboxChange } from "@angular/material/checkbox";
-import { PipesModule } from "../../pipes/pipes.module";
 
 describe("TableComponent", () => {
   let component: TableComponent;
@@ -19,9 +16,7 @@ describe("TableComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      schemas: [NO_ERRORS_SCHEMA],
-      declarations: [TableComponent],
-      imports: [MatListModule, MatPaginatorModule, MatTableModule, PipesModule],
+      imports: [TableModule, NoopAnimationsModule],
       providers: [DatePipe],
     });
     TestBed.compileComponents();
@@ -35,6 +30,106 @@ describe("TableComponent", () => {
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  describe("publication rendering", () => {
+    const publication = {
+      title: "A long publication title",
+      registeredTime: "2026-10-07T12:00:00Z",
+      creator: "A researcher",
+      doi: "10.1234/example",
+      hidden: "not displayed",
+    };
+
+    beforeEach(() => {
+      fixture.destroy();
+      fixture = TestBed.createComponent(TableComponent);
+      component = fixture.componentInstance;
+      component.columns = [
+        { name: "title", icon: "title", sort: true, inList: true },
+        {
+          name: "registeredTime",
+          icon: "calendar_today",
+          sort: true,
+          inList: true,
+          dateFormat: "yyyy-MM-dd",
+        },
+        { name: "creator", icon: "group", sort: true, inList: true },
+        { name: "doi", icon: "label", sort: true, inList: true },
+        { name: "hidden", icon: "", sort: false, inList: false },
+      ];
+      component.data = [publication];
+      component.paginate = true;
+      component.select = true;
+      component.currentPage = 1;
+      component.dataPerPage = 5;
+      component.dataCount = 15;
+      fixture.detectChanges();
+    });
+
+    it("renders all compact fields with the configured date format", () => {
+      const fields = fixture.nativeElement.querySelectorAll(
+        ".publication-link .publication-field",
+      );
+      expect(fields.length).toBe(4);
+      expect(fields[0].textContent).toContain(publication.title);
+      expect(fields[1].textContent).toContain("2026-10-07");
+      expect(fields[2].textContent).toContain(publication.creator);
+      expect(fields[3].textContent).toContain(publication.doi);
+    });
+
+    it("navigates through a native button", () => {
+      spyOn(component.rowClick, "emit");
+      const button = fixture.nativeElement.querySelector(".publication-link");
+      expect(button.tagName).toBe("BUTTON");
+      expect(button.type).toBe("button");
+      button.click();
+      expect(component.rowClick.emit).toHaveBeenCalledWith(publication);
+    });
+
+    it("applies the configured theme to the table header", () => {
+      // TestBed creates a div host; reproduce the app-table ancestor used in the app.
+      const host = document.createElement("app-table");
+      fixture.nativeElement.parentNode.insertBefore(
+        host,
+        fixture.nativeElement,
+      );
+      host.appendChild(fixture.nativeElement);
+      fixture.nativeElement.style.setProperty(
+        "--theme-primary-default",
+        "rgb(12, 34, 56)",
+      );
+      fixture.nativeElement.style.setProperty(
+        "--theme-primary-default-contrast",
+        "rgb(234, 235, 236)",
+      );
+      const header = fixture.nativeElement.querySelector("mat-header-row");
+      const cell = fixture.nativeElement.querySelector("mat-header-cell");
+      expect(getComputedStyle(header).backgroundColor).toBe("rgb(12, 34, 56)");
+      expect(getComputedStyle(cell).color).toBe("rgb(234, 235, 236)");
+      host.replaceWith(fixture.nativeElement);
+    });
+
+    it("selects a compact entry without navigating", () => {
+      spyOn(component.rowClick, "emit");
+      fixture.nativeElement
+        .querySelector(".publication-entry mat-checkbox input")
+        .click();
+      expect(component.selection.isSelected(publication)).toBe(true);
+      expect(component.rowClick.emit).not.toHaveBeenCalled();
+    });
+
+    it("keeps a single paginator outside the desktop-only view", () => {
+      const paginators =
+        fixture.nativeElement.querySelectorAll("mat-paginator");
+      expect(paginators.length).toBe(1);
+      expect(paginators[0].closest(".largeData")).toBeNull();
+      spyOn(component.pageChange, "emit");
+      paginators[0].querySelector(".mat-mdc-paginator-navigation-next").click();
+      expect(component.pageChange.emit).toHaveBeenCalledWith(
+        jasmine.objectContaining({ pageIndex: 2, pageSize: 5, length: 15 }),
+      );
+    });
   });
 
   describe("#onPageChange()", () => {

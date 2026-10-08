@@ -177,6 +177,7 @@ $theme: map-merge(
 @include mat.all-component-themes($theme);
 @include app.theme($theme);
 @include publisheddata-details.theme($theme);
+@include table.theme($theme);
 @include mat.button-density(0);
 @include mat.icon-button-density(0);
 

@@ -1,6 +1,13 @@
-/* DatasetDetailComponent's private CSS styles */
+.publication-container {
+  width: 70%;
+  margin: 5em auto 1em;
+}
 
-/* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
+.publication-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 3fr);
+}
+
 mat-card {
   margin: 1em;
 
@@ -17,20 +24,59 @@ mat-card {
     }
   }
 
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  th {
+    width: 30%;
+    vertical-align: top;
+  }
+
+  mat-card-content {
+    overflow-wrap: anywhere;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
   .json-container {
     margin-top: 1em;
+    max-width: 100%;
+    overflow: auto;
   }
 }
 
 .title-card {
-  margin-top: 5em;
-
-  .title {
+  .title,
+  .creators {
+    padding: 0 16px;
     text-align: center;
-    color: #666666;
+    overflow-wrap: anywhere;
   }
 
-  .creators {
-    text-align: center;
+  .title {
+    color: #666666;
+  }
+}
+
+@media (max-width: 1279px) {
+  .publication-container {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 2em;
+    padding: 0 16px;
+  }
+
+  .publication-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  mat-card {
+    margin: 0 0 1em;
   }
 }

@@ -1,8 +1,7 @@
 <ng-container *ngIf="publication$ | async as publication">
   <div [innerHTML]="getSafeHTML(schemaDotOrg(publication))"></div>
-  <div fxLayout="row" class="title-card">
-    <div fxFlex="15"></div>
-    <div fxFlex="70">
+  <div class="publication-container">
+    <div class="title-card">
       <mat-card appearance="outlined">
         <h1 class="title">
           {{ publication.title }}
@@ -14,180 +13,182 @@
         </h3>
       </mat-card>
     </div>
-    <div fxFlex="15"></div>
-  </div>
 
-  <div fxLayout="row">
-    <div fxFlex="15"></div>
-    <div fxFlex="40">
-      <mat-card appearance="outlined">
-        <mat-card-header class="first-header"> Abstract </mat-card-header>
-        <mat-card-content>
-          <p class="text-content">
-            {{ publication.abstract }}
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card appearance="outlined">
-        <mat-card-header class="second-header">
-          Publication details
-        </mat-card-header>
-        <mat-card-content>
-          <table class="text-content">
-            <tr *ngIf="publication.doi as doi">
-              <th>DOI</th>
-              <td>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="{{ doiBaseUrl + encodeUriComponent(doi) }}"
-                  >{{ doiBaseUrl + doi }}</a
-                >
-              </td>
-            </tr>
-            <tr *ngIf="publication.affiliation as affiliation">
-              <th>Affiliation</th>
-              <td>{{ affiliation }}</td>
-            </tr>
-            <tr *ngIf="publication.resourceType as resourceType">
-              <th>Resource Type</th>
-              <td>{{ resourceType }}</td>
-            </tr>
-            <tr *ngIf="publication.numberOfFiles as numberOfFiles">
-              <th>Number of Datasets</th>
-              <td>
-                {{ numberOfFiles }}
-              </td>
-            </tr>
-            <tr *ngIf="publication.sizeOfArchive as sizeOfArchive">
-              <th>Size</th>
-              <td>{{ sizeOfArchive | filesize }}</td>
-            </tr>
-            <tr *ngIf="publication.relatedPublications as relatedPublications">
-              <th>Related Publications</th>
-              <td>{{ relatedPublications }}</td>
-            </tr>
-          </table>
-        </mat-card-content>
-      </mat-card>
-
-      <ng-container *ngIf="publication.thumbnail">
-        <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
-        <ng-container *ngIf="config.facility === 'psi'">
-          <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
-        </ng-container>
-      </ng-container>
-
-      <ng-template #datasetsCard>
+    <div class="publication-columns">
+      <div class="publication-main">
         <mat-card appearance="outlined">
-          <mat-card-header class="third-header"> Datasets </mat-card-header>
-          <mat-card-content>
-            <table class="text-content">
-              <tr *ngIf="publication.dataDescription as description">
-                <th>Data Description</th>
-                <td *ngIf="config.facility === 'psi'; else notPsi">
-                  {{ description }}
-                </td>
-                <ng-template #notPsi>
-                  <td *ngIf="isUrl(description); else notUrl">
-                    <a
-                      href="{{ description }}"
-                      target="_blank"
-                      rel="noopener"
-                      >{{ description | descriptionTitle }}</a
-                    >
-                  </td>
-                  <ng-template #notUrl>
-                    <td>{{ description }}</td>
-                  </ng-template>
-                </ng-template>
-              </tr>
-            </table>
-
-            <table>
-              <tr *ngFor="let pid of publication.pidArray">
-                <td>
-                  <a
-                    (click)="onPidClick(pid)"
-                    target="_blank"
-                    rel="noopener"
-                    *ngIf="config.scicatBaseUrl; else noLink"
-                  >
-                    {{ pid }}
-                  </a>
-                  <ng-template #noLink>{{ pid }}</ng-template>
-                </td>
-              </tr>
-            </table>
-          </mat-card-content>
-        </mat-card>
-      </ng-template>
-
-      <ng-template #actionsCard>
-        <mat-card appearance="outlined">
-          <mat-card-header class="fourth-header"> Actions </mat-card-header>
+          <mat-card-header class="first-header"> Abstract </mat-card-header>
           <mat-card-content>
             <p class="text-content">
-              {{ config.accessInstructions }}
+              {{ publication.abstract }}
             </p>
-
-            <a
-              mat-raised-button
-              target="_blank"
-              rel="noopener noreferrer"
-              class="description-button"
-              (click)="accessData(publication)"
-            >
-              Access Data
-            </a>
-            <br />
-            <br />
-            <a
-              rel="license"
-              href="http://creativecommons.org/licenses/by-sa/4.0/"
-              ><img
-                alt="Creative Commons License"
-                style="border-width: 0"
-                src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a
-            ><br />This work is licensed under a
-            <a
-              rel="license"
-              href="http://creativecommons.org/licenses/by-sa/4.0/"
-              >Creative Commons Attribution-ShareAlike 4.0 International
-              License</a
-            >
           </mat-card-content>
         </mat-card>
-      </ng-template>
 
-      <ng-container *ngIf="!productionMode">
-        <mat-card appearance="outlined" *ngIf="publicationJson$ | async as json">
-          <button mat-stroked-button (click)="show = !show">
-            {{ show ? "Hide MetaData" : "Show Metadata" }}
-          </button>
-          <div class="json-container" *ngIf="show">
-            <div [innerHTML]="json"></div>
-          </div>
-        </mat-card>
-      </ng-container>
-    </div>
-    <div fxFlex="30">
-      <ng-container
-        *ngIf="publication.thumbnail as thumbnail; else noThumbnail"
-      >
         <mat-card appearance="outlined">
-          <img mat-card-image src="{{ thumbnail }}" alt="data thumbnail" />
+          <mat-card-header class="second-header">
+            Publication details
+          </mat-card-header>
+          <mat-card-content>
+            <table class="text-content">
+              <tr *ngIf="publication.doi as doi">
+                <th>DOI</th>
+                <td>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="{{ doiBaseUrl + encodeUriComponent(doi) }}"
+                    >{{ doiBaseUrl + doi }}</a
+                  >
+                </td>
+              </tr>
+              <tr *ngIf="publication.affiliation as affiliation">
+                <th>Affiliation</th>
+                <td>{{ affiliation }}</td>
+              </tr>
+              <tr *ngIf="publication.resourceType as resourceType">
+                <th>Resource Type</th>
+                <td>{{ resourceType }}</td>
+              </tr>
+              <tr *ngIf="publication.numberOfFiles as numberOfFiles">
+                <th>Number of Datasets</th>
+                <td>
+                  {{ numberOfFiles }}
+                </td>
+              </tr>
+              <tr *ngIf="publication.sizeOfArchive as sizeOfArchive">
+                <th>Size</th>
+                <td>{{ sizeOfArchive | filesize }}</td>
+              </tr>
+              <tr
+                *ngIf="publication.relatedPublications as relatedPublications"
+              >
+                <th>Related Publications</th>
+                <td>{{ relatedPublications }}</td>
+              </tr>
+            </table>
+          </mat-card-content>
         </mat-card>
-      </ng-container>
 
-      <ng-template #noThumbnail>
-        <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
-        <ng-container *ngIf="config.facility === 'psi'">
-          <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+        <ng-container *ngIf="publication.thumbnail">
+          <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
+          <ng-container *ngIf="config.facility === 'psi'">
+            <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+          </ng-container>
         </ng-container>
-      </ng-template>
+
+        <ng-template #datasetsCard>
+          <mat-card appearance="outlined">
+            <mat-card-header class="third-header"> Datasets </mat-card-header>
+            <mat-card-content>
+              <table class="text-content">
+                <tr *ngIf="publication.dataDescription as description">
+                  <th>Data Description</th>
+                  <td *ngIf="config.facility === 'psi'; else notPsi">
+                    {{ description }}
+                  </td>
+                  <ng-template #notPsi>
+                    <td *ngIf="isUrl(description); else notUrl">
+                      <a
+                        href="{{ description }}"
+                        target="_blank"
+                        rel="noopener"
+                        >{{ description | descriptionTitle }}</a
+                      >
+                    </td>
+                    <ng-template #notUrl>
+                      <td>{{ description }}</td>
+                    </ng-template>
+                  </ng-template>
+                </tr>
+              </table>
+
+              <table>
+                <tr *ngFor="let pid of publication.pidArray">
+                  <td>
+                    <a
+                      (click)="onPidClick(pid)"
+                      target="_blank"
+                      rel="noopener"
+                      *ngIf="config.scicatBaseUrl; else noLink"
+                    >
+                      {{ pid }}
+                    </a>
+                    <ng-template #noLink>{{ pid }}</ng-template>
+                  </td>
+                </tr>
+              </table>
+            </mat-card-content>
+          </mat-card>
+        </ng-template>
+
+        <ng-template #actionsCard>
+          <mat-card appearance="outlined">
+            <mat-card-header class="fourth-header"> Actions </mat-card-header>
+            <mat-card-content>
+              <p class="text-content">
+                {{ config.accessInstructions }}
+              </p>
+
+              <a
+                mat-raised-button
+                target="_blank"
+                rel="noopener noreferrer"
+                class="description-button"
+                (click)="accessData(publication)"
+              >
+                Access Data
+              </a>
+              <br />
+              <br />
+              <a
+                rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/"
+                ><img
+                  alt="Creative Commons License"
+                  style="border-width: 0"
+                  src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a
+              ><br />This work is licensed under a
+              <a
+                rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/"
+                >Creative Commons Attribution-ShareAlike 4.0 International
+                License</a
+              >
+            </mat-card-content>
+          </mat-card>
+        </ng-template>
+
+        <ng-container *ngIf="!productionMode">
+          <mat-card
+            appearance="outlined"
+            *ngIf="publicationJson$ | async as json"
+          >
+            <button mat-stroked-button (click)="show = !show">
+              {{ show ? "Hide MetaData" : "Show Metadata" }}
+            </button>
+            <div class="json-container" *ngIf="show">
+              <div [innerHTML]="json"></div>
+            </div>
+          </mat-card>
+        </ng-container>
+      </div>
+      <div class="publication-sidebar">
+        <ng-container
+          *ngIf="publication.thumbnail as thumbnail; else noThumbnail"
+        >
+          <mat-card appearance="outlined">
+            <img mat-card-image src="{{ thumbnail }}" alt="data thumbnail" />
+          </mat-card>
+        </ng-container>
+
+        <ng-template #noThumbnail>
+          <ng-container *ngTemplateOutlet="datasetsCard"></ng-container>
+          <ng-container *ngIf="config.facility === 'psi'">
+            <ng-container *ngTemplateOutlet="actionsCard"></ng-container>
+          </ng-container>
+        </ng-template>
+      </div>
     </div>
-    <div fxFlex="15"></div>
   </div>
 </ng-container>

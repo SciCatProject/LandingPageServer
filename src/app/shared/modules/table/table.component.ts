@@ -44,6 +44,7 @@ export class TableComponent implements OnInit {
   @Input() columns: TableColumn[] = [];
   displayedColumns: string[] = [];
   listItems: string[] = [];
+  listColumns: TableColumn[] = [];
 
   @Input() select?: boolean;
   @Input() allChecked?: boolean;
@@ -104,9 +105,8 @@ export class TableComponent implements OnInit {
     if (this.columns) {
       this.displayedColumns = this.columns.map((column) => column.name);
 
-      this.listItems = this.columns
-        .filter((column) => column.inList)
-        .map((listItem) => listItem.name);
+      this.listColumns = this.columns.filter((column) => column.inList);
+      this.listItems = this.listColumns.map((column) => column.name);
     }
 
     if (this.select) {
