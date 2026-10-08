@@ -1,11 +1,35 @@
-/* DashboardComponent's private CSS styles */
+/* Preserve the desktop proportions while giving compact screens full width. */
+.dashboard-content {
+  width: 80%;
+  margin: 5em 0 0 10%;
+  min-width: 0;
+}
 
-/* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
-mat-card {
-  margin: 5em 0 1em 0;
+.dashboard-title {
+  margin-bottom: 1em;
+  padding: 16px;
+  background-color: var(--theme-primary-lighter);
+  color: var(--theme-primary-lighter-contrast);
 
   .title {
+    margin: 0;
     text-align: center;
-    color: #666666;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 1920px) {
+  .dashboard-content {
+    width: 60%;
+    margin-left: 14%;
+  }
+}
+
+@media (max-width: 1279px) {
+  .dashboard-content {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 2em 0;
+    padding: 0 16px;
   }
 }

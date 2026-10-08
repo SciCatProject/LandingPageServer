@@ -48,6 +48,20 @@ describe("DashboardComponent", () => {
     expect(component).toBeTruthy();
   });
 
+  it("uses the configured lighter primary colors for the dashboard title", () => {
+    fixture.nativeElement.style.setProperty(
+      "--theme-primary-lighter",
+      "rgb(210, 220, 230)",
+    );
+    fixture.nativeElement.style.setProperty(
+      "--theme-primary-lighter-contrast",
+      "rgb(20, 30, 40)",
+    );
+    const title = fixture.nativeElement.querySelector(".dashboard-title");
+    expect(getComputedStyle(title).backgroundColor).toBe("rgb(210, 220, 230)");
+    expect(getComputedStyle(title).color).toBe("rgb(20, 30, 40)");
+  });
+
   describe("#onRowClick()", () => {
     it("should navigate to publication details of the provided doi", () => {
       const param = { doi: "testDOI" };

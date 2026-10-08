@@ -11,12 +11,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppThemeService } from "./app-theme.service";
 import { StatusMessageModule } from "./shared/modules/status-message/status-message.module";
 
-const appConfigInitializerFn = (appConfig: AppConfigService) => {
-  return () => appConfig.loadAppConfig();
-};
-
-const appThemeInitializerFn = (appTheme: AppThemeService) => {
-  return () => appTheme.loadTheme();
+const appConfigInitializerFn = (
+  appConfig: AppConfigService,
+  appTheme: AppThemeService,
+) => {
+  return async () => {
+    await appConfig.loadAppConfig();
+    await appTheme.loadTheme();
+  };
 };
 
 @NgModule({
@@ -36,15 +38,9 @@ const appThemeInitializerFn = (appTheme: AppThemeService) => {
       provide: APP_INITIALIZER,
       useFactory: appConfigInitializerFn,
       multi: true,
-      deps: [APP_DYN_CONFIG],
+      deps: [APP_DYN_CONFIG, AppThemeService],
     },
     { provide: APP_DYN_CONFIG, useClass: AppConfigService },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appThemeInitializerFn,
-      multi: true,
-      deps: [AppThemeService],
-    },
     AppThemeService,
     HttpClientModule,
   ],

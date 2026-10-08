@@ -1,5 +1,30 @@
-@media only screen and (min-width: 1280px) {
-  /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
+/* These styles are global because the table uses ViewEncapsulation.None. */
+app-table {
+  display: block;
+  min-width: 0;
+
+  .mat-mdc-paginator-container {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .mat-mdc-paginator-range-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  .mat-mdc-paginator-range-label {
+    margin: 0 8px;
+  }
+
+  .column-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   mat-table {
     margin-bottom: 5em;
 
@@ -7,16 +32,13 @@
       max-width: 75px;
     }
 
-    mat-header-cell:first-child {
-      justify-content: left;
-    }
-    mat-header-cell:nth-child(n + 2) {
-      justify-content: center;
+    mat-header-cell,
+    mat-cell {
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
-    mat-cell:first-child {
-      justify-content: left;
-    }
+    mat-header-cell:nth-child(n + 2),
     mat-cell:nth-child(n + 2) {
       justify-content: center;
     }
@@ -29,24 +51,80 @@
 
   .smallData {
     display: none;
-  }
-}
-
-@media only screen and (max-width: 1279px) {
-  .largeData {
-    display: none;
-  }
-
-  .smallData {
     margin: 1em 0;
+  }
 
-    .title {
-      font-size: 1.1em;
+  .publication-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .select-all {
+    padding: 8px 16px;
+  }
+
+  .publication-entry {
+    display: flex;
+    align-items: flex-start;
+    min-width: 0;
+
+    > mat-checkbox {
+      margin: 8px 0 0 8px;
+      flex-shrink: 0;
     }
-    /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
-    mat-list-item:hover {
+
+    + .publication-entry {
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .publication-link {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    padding: 16px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+
+    &:hover {
       background-color: rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--theme-primary-default);
+      outline-offset: -2px;
+    }
+  }
+
+  .publication-field {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .publication-title {
+    margin-top: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .field-label {
+    font-weight: 600;
+  }
+
+  @media (max-width: 1279px) {
+    .largeData {
+      display: none;
+    }
+
+    .smallData {
+      display: block;
     }
   }
 }
